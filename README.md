@@ -19,9 +19,9 @@ Buy
 
 Admin Page – Add Product,Editing , Delete 
 
-Packages—-
+### Packages—-
 Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, redux, react-redux, thunk, ** React-Pagination**, firebase etc
-
+# npm i axios redux-thunk styled-components @chakra-ui/react react-icons react-router-dom redux react-redux firebase react-paginate
 
 
   Tasks 
@@ -39,5 +39,3 @@ Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, r
  ### 4-Prayas Tiwari - Footer,
 
 ### 5- Souarbh Patel – Payment Page
-
-
