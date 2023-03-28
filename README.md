@@ -21,7 +21,7 @@ Admin Page – Add Product,Editing , Delete
 
 Packages—-
 Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, redux, react-redux, thunk, ** React-Pagination**, firebase etc
-## npm i Axios redux-thunk styled-components @chakra-ui/react react-icons react-router-dom npm i reduxnpm i redux react-redux firebase react-paginate
+# npm i Axios redux-thunk styled-components @chakra-ui/react react-icons react-router-dom npm i reduxnpm i redux react-redux firebase react-paginate
 
 
   Tasks 
