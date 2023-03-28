@@ -26,18 +26,18 @@ Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, r
 
   Tasks 
 
-1- Disha- HomePage Full,  Add To cart UI
+### 1- Disha- HomePage Full,  Add To cart UI
 
 
-2 -Rahul - Navigaition bar, Admin Page UI
+### 2 -Rahul - Navigaition bar, Admin Page UI
  
 
-3-Lokesh Choudhary- Login Page, single Product UI ,
+### 3-Lokesh Choudhary- Login Page, single Product UI ,
 
 ** finished By Wednesday **
 
-4-Prayas Tiwari - Footer,
+ ### 4-Prayas Tiwari - Footer,
 
-5- Souarbh Patel – Payment Page
+### 5- Souarbh Patel – Payment Page
 
 
