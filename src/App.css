@@ -36,7 +36,7 @@
     transform: rotate(360deg);
   }
 }
+body{
+  background-color:#e9f6f7;
 
-html {
-  font-size: 90%;
 }
