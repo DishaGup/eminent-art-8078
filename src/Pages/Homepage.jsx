@@ -1,8 +1,13 @@
 import React from 'react'
+import ProductCard from '../Components/HomePage/ProductCard'
 
 const Homepage = () => {
   return (
-    <div>Homepage</div>
+    <div>
+
+<ProductCard/>
+
+    </div>
   )
 }
 
