@@ -1,7 +1,7 @@
 import { Box, Center, HStack,Editable,
     EditableInput,EditablePreview,Flex, Image } from '@chakra-ui/react'
 import React from 'react'
-import trendify_logo from '../../Assests/trendify_logo.jpeg'
+import trendify_logo from '../../Asssets/trendifyLogo.jpeg'
 const Navigationbar = () => {
   return (
   <Box h='1cm' position='fixed' top='0' p={3} w='95%' m={'auto'}>
