@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^2.5.4",
+    "@coreui/coreui": "^4.2.6",
+    "@coreui/react": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -26,7 +28,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server":"json-server --watch db.json --port 4444"
+    "server": "json-server --watch db.json --port 4444"
   },
   "eslintConfig": {
     "extends": [
