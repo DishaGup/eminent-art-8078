@@ -1,0 +1,108 @@
+:root {
+  --PrimaryColor: #24a3b5;
+  --HoverColor: #69d2e0;
+  --paleGreen: #d2eff3;
+  --whiteColor: hsl(0, 0%, 100%);
+  --blackColor: hsl(192, 100%, 30%);
+  --textColor: hsl(240, 1%, 48%);
+  --bgColor: hsl(220, 10%, 94%);
+  --greytext: rgb(190, 190, 190);
+  --inputColor: hsl(330, 12%, 97%);
+
+  /* Font and Typography */
+
+  --biggestFontSize: 2.5rem;
+  --h1FontSize: 1.5rem;
+  --h2FontSize: 1.25rem;
+  --h3FontSize: 1rem;
+  --normalFontSize: 0.938rem;
+  --smallFontSize: 0.813rem;
+  --smallestFontSize: 0.75rem;
+}
+
+.topSection {
+  .headerSection {
+    justify-content: space-between;
+
+    .title {
+      h1 {
+        font-size: var(--h1FontSize);
+        color: var(--blackColor);
+        font-weight: 700;
+      }
+
+      p {
+        font-size: var(--normalFontSize);
+        color: var(--textColor);
+        font-weight: 500;
+      }
+    }
+
+    .searchBar {
+      padding: 0.9rem 10rem 0.9rem 2rem;
+      background: var(--whiteColor);
+      border-radius: 5px;
+      gap: 1rem;
+      box-shadow: 0 2px 4px var(--inputColor);
+
+      input {
+        border: none;
+        outline: none;
+        background: none;
+      }
+    }
+    .searchBtn {
+      position: relative;
+      background: linear-gradient(0deg, #ff934b 0%, #ff5e62 100%);
+      padding: 0.85rem 1.5rem;
+      border-radius: 5px;
+      border: none;
+      outline: none;
+      color: var(--whiteColor);
+      font-weight: 700;
+      font-size: var(--normalFontSize);
+      right: 6rem;
+    }
+
+    .adminDiv {
+      gap: 1rem;
+
+      .icon {
+        font-size: var(--biggestFontSize);
+        background: var(--whielColor);
+        border-radius: 5px;
+        padding: 5px;
+        box-shadow: 0 2px 4px var(--inputColor);
+        color: var(--textColor);
+      }
+
+      .adminImage {
+        /* border: 3px solid var(--whiteColor); */
+        border-radius: 10px;
+        width: 2.5rem;
+        overflow: hidden;
+        box-shadow: 0 2px 4px var(--inputColor);
+      }
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  /* .cardSection {
+    margin-top: 3rem;
+    gap: 1rem;
+
+    .rightCard {
+      position: relative;
+      flex-basis: 70%;
+      height: 200px;
+      flex-direction: flex-start;
+      justify-content: center;
+      margin: auto;
+      padding: 2rem;
+      overflow: hidden;
+    }
+  } */
+}
