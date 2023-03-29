@@ -3,9 +3,9 @@
 
 ### DEADLine—----FRIDAY
 
-NAME-Trendify,ClickCart,ZenBuy
-
-
+NAME-Trendify
+Theme color = #24a3b5;
+backgroundColor='#e9f6f7'
 
 Pages-
 HomePage-
