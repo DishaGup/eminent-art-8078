@@ -1,11 +1,14 @@
-import React from 'react'
-import Footer from '../Footer/Footer'
+
+import ProductCard from '../Components/HomePage/ProductCard'
+
 const Homepage = () => {
   return (
-    <>
-    <div>Homepage</div>
-    <Footer/>
-    </>
+    <div>
+
+<ProductCard/>
+
+    </div>
+
   )
 }
 
