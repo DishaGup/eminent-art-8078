@@ -12,6 +12,7 @@ const Payments = () => {
 
   return (
     <div className="container">
+    payment
      <Checkout/> 
     </div>
   );
