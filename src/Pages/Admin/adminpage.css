@@ -13,7 +13,7 @@
   --HoverColor: #69d2e0;
   --paleGreen: #d2eff3;
   --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(192, 100%, 30%);
+  --blackColor: hsl(185, 66%, 23%);
   --textColor: hsl(240, 1%, 48%);
   --bgColor: hsl(220, 10%, 94%);
   --greytext: rgb(190, 190, 190);
@@ -101,4 +101,4 @@ li {
 /* hide the scroll thumb */
 ::-webkit-scrollbar {
   display: none;
-} /*# sourceMappingURL=AdminPage.css.map */
+}/*# sourceMappingURL=adminpage.css.map */

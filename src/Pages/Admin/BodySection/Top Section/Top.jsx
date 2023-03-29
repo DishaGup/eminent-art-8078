@@ -2,8 +2,7 @@ import React from "react";
 import "./top.css";
 import { TbMessageCircle } from "react-icons/tb";
 import { MdOutlineNotificationsNone } from "react-icons/md";
-import user from "../../../../Assets/avatar.png";
-import video from "../../../../Assets/production ID_4443773.mp4";
+// import user from "../../../../Assests/avatar.png";
 
 const Top = () => {
   return (
@@ -23,28 +22,13 @@ const Top = () => {
           <TbMessageCircle className="icon" />
           <MdOutlineNotificationsNone className="icon" />
           <div className="adminImage">
-            <img src={user} alt="" />
+            <img
+              src="https://avatars.githubusercontent.com/u/90616584?v=4"
+              alt=""
+            />
           </div>
         </div>
       </div>
-
-      {/* <div className="cardSection flex">
-        <div className="rightCard flex">
-          <h1>Create and sell extraordinary products</h1>
-          <p>
-            The world's fast growing industry today are natural made products!
-          </p>
-
-          <div className="buttons flex">
-            <button className="btn">Explore Now</button>
-            <button className="btn tranparent">Top Sellers</button>
-          </div>
-
-          <div className="videoDiv">
-            <video src={video} autoPlay loop muted></video>
-          </div>
-        </div>
-      </div> */}
     </div>
   );
 };

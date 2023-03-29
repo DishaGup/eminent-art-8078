@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import trendifyLogo from "../../../Assets/trendifyLogo.jpeg";
+import trendifyLogo from "../../../Assests/trendifyLogo.jpeg";
 import { IoMdSpeedometer } from "react-icons/io";
 import { BsCreditCard2Front, BsQuestionCircle, BsTrophy } from "react-icons/bs";
 import {
@@ -10,6 +10,7 @@ import {
 } from "react-icons/md";
 import { AiOutlinePieChart } from "react-icons/ai";
 import { BiTrendingUp } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   return (
@@ -30,7 +31,7 @@ const Sidebar = () => {
           <li className="listItem">
             <a href="#" className="menuLink flex">
               <MdDeliveryDining className="icon" />
-              <span className="smallText">Order</span>
+              <span className="smallText">Team Members</span>
             </a>
           </li>
           <li className="listItem">
@@ -42,7 +43,7 @@ const Sidebar = () => {
           <li className="listItem">
             <a href="#" className="menuLink flex">
               <BsTrophy className="icon" />
-              <span className="smallText">Dashboard</span>
+              <span className="smallText">Earnings</span>
             </a>
           </li>
         </ul>
