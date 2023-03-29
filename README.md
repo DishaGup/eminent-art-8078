@@ -24,7 +24,7 @@ Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, r
 # npm i axios redux-thunk styled-components @chakra-ui/react react-icons react-router-dom redux react-redux firebase react-paginate
 // npm i react-img-hover-zoom 
 //npm i react-img-zoom
-
+// npm install -g less
   Tasks 
 
 ### 1- Disha- HomePage Full,  Add To cart UI
