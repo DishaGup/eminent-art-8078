@@ -89,20 +89,31 @@
       }
     }
   }
-
-  /* .cardSection {
-    margin-top: 3rem;
-    gap: 1rem;
-
-    .rightCard {
-      position: relative;
-      flex-basis: 70%;
-      height: 200px;
-      flex-direction: flex-start;
-      justify-content: center;
-      margin: auto;
-      padding: 2rem;
-      overflow: hidden;
-    }
-  } */
 }
+
+/* --- Responsive Design*/
+
+@media screen and (max-width: 918px) {
+  .headerSection {
+    .searchBar,
+    .searchBtn {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .headerSection {
+    .adminDiv {
+      display: none;
+    }
+    .title {
+      text-align: center;
+      margin: auto;
+    }
+  }
+}
+/* @media screen and (max-width: 390px) {
+  .topSection {
+  }
+} */

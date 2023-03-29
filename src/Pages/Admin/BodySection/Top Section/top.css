@@ -18,23 +18,6 @@
   --smallestFontSize: 0.75rem;
 }
 
-.topSection {
-  /* .cardSection {
-    margin-top: 3rem;
-    gap: 1rem;
-
-    .rightCard {
-      position: relative;
-      flex-basis: 70%;
-      height: 200px;
-      flex-direction: flex-start;
-      justify-content: center;
-      margin: auto;
-      padding: 2rem;
-      overflow: hidden;
-    }
-  } */
-}
 .topSection .headerSection {
   justify-content: space-between;
 }
@@ -49,7 +32,7 @@
   font-weight: 500;
 }
 .topSection .headerSection .searchBar {
-  padding: 0.9rem 7rem;
+  padding: 0.9rem 10rem 0.9rem 2rem;
   background: var(--whiteColor);
   border-radius: 5px;
   gap: 1rem;
@@ -93,4 +76,25 @@
 .topSection .headerSection .adminDiv img {
   width: 100%;
   height: 100%;
-} /*# sourceMappingURL=Top.css.map */
+}
+
+/* --- Responsive Design*/
+@media screen and (max-width: 918px) {
+  .headerSection .searchBar,
+  .headerSection .searchBtn {
+    display: none;
+  }
+}
+@media screen and (max-width: 490px) {
+  .headerSection .adminDiv {
+    display: none;
+  }
+  .headerSection .title {
+    text-align: center;
+    margin: auto;
+  }
+}
+/* @media screen and (max-width: 390px) {
+  .topSection {
+  }
+} *//*# sourceMappingURL=top.css.map */

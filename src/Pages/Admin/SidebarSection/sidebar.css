@@ -1,9 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap");
 :root {
   --PrimaryColor: #24a3b5;
   --HoverColor: #69d2e0;
   --paleGreen: #d2eff3;
   --whiteColor: hsl(0, 0%, 100%);
-  --blackColor: hsl(192, 100%, 30%);
+  --blackColor: hsl(96, 75%, 18%);
   --textColor: hsl(240, 1%, 48%);
   --bgColor: hsl(220, 10%, 94%);
   --greytext: rgb(190, 190, 190);
@@ -44,8 +45,9 @@
 }
 .sideBar .menuDiv .divTitle,
 .sideBar .settingsDiv .divTitle {
-  font-size: var(--h3FontSize);
-  color: var(--blackColor);
+  font-size: var(--h2FontSize);
+  font-weight: 500;
+  color: var(--PrimaryColor);
   padding: 0 1.5rem 1.5rem;
 }
 .sideBar .menuDiv .menuLists .listItem,
@@ -147,4 +149,52 @@
   bottom: -80px;
   right: -70px;
   z-index: 1;
-} /*# sourceMappingURL=sidebar.css.map */
+}
+
+/* Resposnsive Design */
+@media screen and (max-width: 820px) {
+  .sideBar {
+    padding-bottom: 2rem;
+  }
+  .sideBar .sideBarCard {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 745px) {
+  .sideBar .logoDiv {
+    text-align: center;
+    margin: auto;
+    /* padding: 1rem 0.5rem 0; */
+  }
+  .sideBar .logoDiv img {
+    max-width: 110px;
+  }
+  .sideBar .menuDiv .divTitle,
+  .sideBar .menuDiv .smallText,
+  .sideBar .settingsDiv .divTitle,
+  .sideBar .settingsDiv .smallText {
+    display: none;
+  }
+  .sideBar .menuDiv .menuLists .listItem,
+  .sideBar .settingsDiv .menuLists .listItem {
+    padding: 0.2rem 5rem 0.2rem 0rem;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink,
+  .sideBar .settingsDiv .menuLists .listItem .menuLink {
+    justify-content: center;
+  }
+}
+@media screen and (max-width: 390px) {
+  .sideBar .menuDiv .menuLists .listItem,
+  .sideBar .settingDiv .menuLists .listItem {
+    padding: 0.2rem 4rem 0.2rem 0rem;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink,
+  .sideBar .settingDiv .menuLists .listItem .menuLink {
+    justify-content: center;
+  }
+  .sideBar .menuDiv .menuLists .listItem .menuLink .icon,
+  .sideBar .settingDiv .menuLists .listItem .menuLink .icon {
+    font-size: var(--h2FontSize);
+  }
+}/*# sourceMappingURL=sidebar.css.map */
