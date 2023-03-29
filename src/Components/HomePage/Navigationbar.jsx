@@ -1,7 +1,7 @@
 import { Box, Center, HStack,Editable,
     EditableInput,EditablePreview,Flex, Image,Icon, Button } from '@chakra-ui/react'
 import React from 'react'
-import trendify_logo from '../../Assests/trendify_logo.jpeg'
+import trendify_logo from '../../Assests/trendifyLogo.jpeg'
 import {CiLocationOn} from 'react-icons/ci'
 import {BsBell,BsHeart,BsCart3,BsSearch} from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
