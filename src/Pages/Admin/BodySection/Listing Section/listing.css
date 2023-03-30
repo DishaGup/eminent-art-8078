@@ -30,7 +30,7 @@
 }
 
 /* ======================= Cards ====================== */
-.cardBox {
+.admincardBox {
   position: relative;
   width: 100%;
   padding: 20px;
@@ -39,7 +39,7 @@
   grid-gap: 30px;
 }
 
-.cardBox .card {
+.admincardBox .listingCard {
   position: relative;
   background: var(--white);
   padding: 30px 40px;
@@ -51,30 +51,30 @@
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
 }
 
-.cardBox .card .numbers {
+.admincardBox .listingCard .numbers {
   position: relative;
   font-weight: 500;
   font-size: 2.5rem;
 }
 
-.cardBox .card .cardName {
+.admincardBox .listingCard .cardsName {
   color: var(--black2);
   font-size: 1.1rem;
   margin-top: 5px;
 }
 
-.cardBox .card .iconBx {
+.admincardBox .listingCard .iconBx {
   font-size: 2rem;
   color: var(--black2);
 }
 
-.cardBox .card:hover {
+.admincardBox .listingCard:hover {
   background: var(--PrimaryColor);
 }
 
-.cardBox .card:hover .numbers,
-.cardBox .card:hover .cardName,
-.cardBox .card:hover .iconBx {
+.admincardBox .listingCard:hover .numbers,
+.admincardBox .listingCard:hover .cardsName,
+.admincardBox .listingCard:hover .iconBx {
   color: var(--white);
 }
 
@@ -99,18 +99,19 @@
   border-radius: 20px;
 }
 
-.details .cardHeader {
+.details .recentcardHeader {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
 
-.cardHeader h2 {
+.recentcardHeader .recentTitle {
+  font-size: 20px;
   font-weight: 600;
   color: var(--PrimaryColor);
 }
 
-.cardHeader .btn {
+.recentcardHeader .bttn {
   position: relative;
   padding: 5px 10px;
   background: var(--PrimaryColor);
@@ -250,7 +251,7 @@
 
 /* Resposnsive Design */
 @media (max-width: 991px) {
-  .cardBox {
+  .admincardBox {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -266,10 +267,10 @@
   }
 }
 @media (max-width: 480px) {
-  .cardBox {
+  .admincardBox {
     grid-template-columns: repeat(1, 1fr);
   }
-  .cardHeader h2 {
+  .recentcardHeader .recentTitle {
     font-size: 20px;
   }
   .user {
