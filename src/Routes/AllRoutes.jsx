@@ -5,6 +5,8 @@ import Homepage from '../Pages/Homepage'
 import LoginPage from '../Pages/LoginPage'
 import NotFoundPage from '../Pages/NotFoundPage'
 import Registration from '../Pages/Registration'
+import { AdminPage } from './../Pages/Admin/AdminPage';
+import Payments from './../Pages/Payments';
 
 const AllRoutes = () => {
   return (
@@ -13,6 +15,9 @@ const AllRoutes = () => {
 <Route path='/login' element={<LoginPage/> } />
 <Route path='/register' element={<Registration/> } />
 <Route path='*' element={ <NotFoundPage/>} />
+<Route path='/adminpage' element={ <AdminPage/>} />
+<Route path='/payments' element={ <Payments/>} />
+
 </Routes>
 
 

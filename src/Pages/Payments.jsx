@@ -11,7 +11,7 @@ const Payments = () => {
   
 
   return (
-    <div className="container">
+    <div className="">
     payment
      <Checkout/> 
     </div>

@@ -12,21 +12,24 @@ import { Home } from './Pages/Home';
 
 import AllRoutes from './Routes/AllRoutes';
 import Banner from './Components/HomePage/Banner';
+import { AdminButton } from "./Pages/Admin/AdminButton";
 
 
 function App() {
   return (
     <div className="App">
 
-      {/* <Navigationbar /> */}
+      {/* <Navigationbar />
       {/* <LoginPage/> */}
       {/* <SingleProductPage /> */}
-      <Home/>
+
+      <Home />
 
 
-      
 
-   <AllRoutes/>
+
+      <AllRoutes /> 
+      {/* <AdminButton/> */}
 
     </div>
   );
@@ -34,4 +37,4 @@ function App() {
 
 export default App;
 
-{/*  */}
+{/*  */ }
