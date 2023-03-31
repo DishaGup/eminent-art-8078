@@ -26,8 +26,7 @@ const handleimagezoomout=()=>{
  return (
       <Center py={8}>
         <Box    role={'group'}    p={6}   maxW={'300px'}
-          w={'full'}
-          bg={useColorModeValue('white', 'gray.800')}               
+          w={'full'}           
           pos={'relative'}
           zIndex={1}
           _readOnly

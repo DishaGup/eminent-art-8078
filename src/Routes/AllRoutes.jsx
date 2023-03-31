@@ -11,6 +11,7 @@ import { AdminPage } from './../Pages/Admin/AdminPage';
 import Payments from './../Pages/Payments';
 
 const AllRoutes = () => {
+
   return (
     <Routes>
 <Route path='/' element={<Homepage/> } />

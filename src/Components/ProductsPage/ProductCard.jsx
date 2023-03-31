@@ -1,14 +1,16 @@
-import { Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Text,useColorModeValue} from "@chakra-ui/react";
+import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Text,useColorModeValue} from "@chakra-ui/react";
   import React, { useRef } from "react";
- 
-  import { useLocation, useNavigate } from "react-router-dom";
+ import {FiTruck} from 'react-icons/fi'
+ import {BsFillHeartFill} from 'react-icons/bs'
+  import { useLocation, useNavigate, useParams } from "react-router-dom";
   
   import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
   
   function ProductCard(props) {
-const {   id, image, title, price, discount_price,   rating,  path,  params, } = props;
-//console.log(props)
+ const { path, category, sub_category } = useParams()
+const {   id, image, title, price, discount_price,rating,params, } = props;
+console.log(path)
 const imagezoom = useRef()
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
@@ -18,19 +20,23 @@ const handleimagezoomout=()=>{
     imagezoom.current.style.scale='1'
     
 }
-
     const navigate = useNavigate();
     const location = useLocation();
 
     return (
-    //   <Link
-    //     to={`/products/${path}/${
-    //       params.category === "" ? params.subCategory_like : params.category
-    //     }/${id}/single`}>
-        <Card maxW="sm">
-          <CardBody p={"5px"}>
+    
+        <Link path={`/products/${path}/${category}?/${sub_category}?/${id}/single?`}  key={id}>
+        <Card maxW="sm" >
+           
+          <CardBody p={"5px"}   onMouseOver={handleimagezoomin}
+    onMouseLeave={handleimagezoomout}  _hover={{border:'1px solid #24a3b5'}}>
+           <Box  _hover={{color:'#24a3b5'}} pos='absolute' right='5' top='2' >
+           <Icon size={7} as={BsFillHeartFill} />
+           </Box>
+         
             <VStack p="10px">
               <Box h="300px" overflow="hidden">
+             
               <Box
             rounded={'lg'}
             cursor='pointer'
@@ -40,7 +46,7 @@ const handleimagezoomout=()=>{
               transition: 'all .3s ease',
               content: '""',
               w: 'full',
-              h: 'full',
+             h:'4cm',
               pos: 'absolute',
               top: 5,
               left: 0,
@@ -61,15 +67,15 @@ const handleimagezoomout=()=>{
               src={image}
               p={3}
               ref={imagezoom}
+             
             />
           </Box>
-                {/* <ImageHover image={image} /> */}
               </Box>
   
-              <Stack mt="6" spacing="1">
-                <Heading size="sm">{title}</Heading>
+              <Stack mt="3" spacing="1">
+                <Heading size="sm">{`${title.substring(0,20)}...`}</Heading>
              
-                <StarRating  rating={rating}/> 
+             
                 <HStack>
                   <Text fontSize="2xl" fontWeight="bold" mb={3} color={"#0076be"}>
                     Rs.{price}
@@ -78,9 +84,18 @@ const handleimagezoomout=()=>{
                     textDecorationLine={"line-through"}
                     color="gray.500"
                     fontSize="xl">
-                    Rs.{price}
+                    Rs.{price+350}
                   </Text>
+                  <Text fontWeight={600}  color={"#24a3b5"}>
+                {`${Math.floor(Math.random()*50)}% off`}
+              </Text>
                 </HStack>
+                <StarRating  rating={rating}/> 
+                <HStack >
+                <Icon as={FiTruck} />
+                <Text>Free Delivery</Text>
+                </HStack>
+              
               </Stack>
             </VStack>
           </CardBody>
@@ -90,7 +105,7 @@ const handleimagezoomout=()=>{
 
 
 
-    //   </Link>
+       </Link>
     );
   }
   
