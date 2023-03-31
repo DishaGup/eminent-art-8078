@@ -1,30 +1,28 @@
-// import React from 'react'
-// import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
-// import { useRef } from 'react';
+ import React from 'react'
+ import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
+ import { useRef } from 'react';
 
-//   export default function ProductCard({image,brand,cutprice,discount,actualprice}) {
+   export default function ProductCard({image,brand,cutprice,discount,actualprice}) {
 
-// // const IMAGE = "https://cdn.shopclues.com/images1/thumbnails/99370/200/200/145508146-99370521-1668508420.jpg"
+const imagezoom = useRef()
 
-// // export default function ProductCard() {
-
-
-//   // const imagezoom = useRef()
 
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
     imagezoom.current.style.transition='all .3s ease'
 }
-const handleimagezoomout=()=>{
-    imagezoom.current.style.scale='1'
-    
-}
+ const handleimagezoomout=()=>{
+     imagezoom.current.style.scale='1'
+     }
+
+
+
 
 //  return (
 //       <Center py={8}>
 //         <Box    role={'group'}    p={6}   maxW={'300px'}
 //           w={'full'}
-//           bg={useColorModeValue('white', 'gray.800')}
+
 //           pos={'relative'}
 //           zIndex={1}
 //           _readOnly
@@ -32,8 +30,6 @@ const handleimagezoomout=()=>{
 //     onMouseLeave={handleimagezoomout}
 //     _hover={{border:'1px solid #24a3b5'}}
 //           >
-
-
 //           <Box
 //             rounded={'lg'}
 //             cursor='pointer'
@@ -83,14 +79,9 @@ const handleimagezoomout=()=>{
 //               <Text fontWeight={600}  color={"#24a3b5"}>
 //                 {`${discount}% off`}
 //               </Text>
-//             </Stack>
+//           
 
-//           </Stack>
-//         </Stack>
-//       </Box>
-//     </Center>
-//   );
-// }
+
 
 
           </Stack>
@@ -99,4 +90,5 @@ const handleimagezoomout=()=>{
     </Center>
   );
 }
+
 

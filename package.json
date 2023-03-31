@@ -9,7 +9,9 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@mui/material": "^5.11.15",
+
     "@react-icons/all-files": "^4.1.0",
+
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -24,6 +26,7 @@
     "react-multi-carousel": "^2.8.2",
     "react-paginate": "^8.1.4",
     "react-redux": "^8.0.5",
+    "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.9.0",
     "react-scripts": "5.0.1",
     "redux": "^4.2.1",
