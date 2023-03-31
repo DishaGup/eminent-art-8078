@@ -8,19 +8,23 @@ const Top = () => {
   return (
     <div className="topSection">
       <div className="headerSection flex">
-        <div className="title">
+        <div className="admintitle">
           <h1>Welcome to Trendify.</h1>
           <p>Hello Rahul, Welcome back!</p>
         </div>
 
-        <div className="searchBar flex">
-          <input type="text" placeholder="Search Dashboard" />
+        <div className="adminsearchBar flex">
+          <input
+            className="adminSearchInput"
+            type="text"
+            placeholder="Search Dashboard"
+          />
         </div>
-        <button className="searchBtn">Search</button>
+        <button className="adminsearchBtn">Search</button>
 
         <div className="adminDiv flex">
-          <TbMessageCircle className="icon" />
-          <MdOutlineNotificationsNone className="icon" />
+          <TbMessageCircle className="adminicon" />
+          <MdOutlineNotificationsNone className="adminicon" />
           <div className="adminImage">
             <img
               src="https://avatars.githubusercontent.com/u/90616584?v=4"
