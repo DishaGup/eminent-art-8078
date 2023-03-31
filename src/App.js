@@ -16,7 +16,7 @@ function App() {
       {/* <Navigationbar /> */}
       {/* <LoginPage/> */}
       {/* <SingleProductPage /> */}
-      <Home />
+      {/* <Home /> */}
 
       <AllRoutes />
     </div>
