@@ -24,7 +24,7 @@
   .headerSection {
     justify-content: space-between;
 
-    .title {
+    .admintitle {
       h1 {
         font-size: var(--h1FontSize);
         color: var(--blackColor);
@@ -38,20 +38,20 @@
       }
     }
 
-    .searchBar {
-      padding: 0.9rem 10rem 0.9rem 2rem;
+    .adminsearchBar {
+      padding: 0.8rem 3rem 0.8rem 2rem;
       background: var(--whiteColor);
       border-radius: 5px;
       gap: 1rem;
       box-shadow: 0 2px 4px var(--inputColor);
 
-      input {
+      .adminSearchInput {
         border: none;
         outline: none;
         background: none;
       }
     }
-    .searchBtn {
+    .adminsearchBtn {
       position: relative;
       background: linear-gradient(0deg, #ff934b 0%, #ff5e62 100%);
       padding: 0.85rem 1.5rem;
@@ -67,7 +67,7 @@
     .adminDiv {
       gap: 1rem;
 
-      .icon {
+      .adminicon {
         font-size: var(--biggestFontSize);
         background: var(--whielColor);
         border-radius: 5px;
@@ -95,8 +95,8 @@
 
 @media screen and (max-width: 918px) {
   .headerSection {
-    .searchBar,
-    .searchBtn {
+    .adminsearchBar,
+    .adminsearchBtn {
       display: none;
     }
   }
@@ -107,7 +107,7 @@
     .adminDiv {
       display: none;
     }
-    .title {
+    .admintitle {
       text-align: center;
       margin: auto;
     }

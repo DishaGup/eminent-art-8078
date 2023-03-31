@@ -2,9 +2,20 @@ import { useState } from "react";
 import styled from "styled-components";
 import "./SingleProductPage.css"
 import Zoom from "react-img-zoom";
+import { useParams } from "react-router-dom";
+import { useEffect, } from "react";
+import { useDispatch } from "react-redux";
+import { getSingleProducts } from "../Redux/ProductReducer/action";
 
 export const SingleProductPage = () => {
   const [Price, setPrice] = useState(300);
+  const[data,setdata]=useState({})
+const {id}=useParams()
+
+const dispatch=useDispatch()
+useEffect(()=>{
+  dispatch(getSingleProducts(id)).then((res)=>setdata(res.payload.data)).catch((err)=>console.log(err))
+},[])
 
   return (
     <>
@@ -18,7 +29,7 @@ export const SingleProductPage = () => {
         <div className="box-1-single-page">
 
           <Zoom
-            img="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/41UgeJlsVXL.jpg"
+            img={data.image}
             zoomScale={4}
             width={370}
             height={380}
@@ -32,11 +43,11 @@ export const SingleProductPage = () => {
             </h1>
             <p className="title-2-of-the-product-in-single-page">
               {" "}
-              Product Id : 153323501
+             {data.title}
             </p>
             <p className="title-3-of-the-product-in-single-page">
               {" "}
-              Price :{Price} ₹
+             {data.price}
             </p>
           </div>
 

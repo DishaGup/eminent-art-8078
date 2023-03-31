@@ -125,7 +125,7 @@
   padding-bottom: 1rem;
   font-weight: 500;
 }
-.sideBar .sideBarCard .cardContent .btn {
+.sideBar .sideBarCard .cardContent .bttn {
   position: relative;
   color: var(--textColor);
   z-index: 1000;

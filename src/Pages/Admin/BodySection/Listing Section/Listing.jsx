@@ -5,11 +5,11 @@ import "./listing.css";
 const Listing = () => {
   return (
     <div className="listingSection">
-      <div class="cardBox">
-        <div class="card">
+      <div class="admincardBox">
+        <div class="listingCard">
           <div>
-            <div class="numbers">1,504</div>
-            <div class="cardName">Daily Views</div>
+            <div class="numbers">1504</div>
+            <div class="cardsName">Daily Views</div>
           </div>
 
           <div class="iconBx">
@@ -17,10 +17,10 @@ const Listing = () => {
           </div>
         </div>
 
-        <div class="card">
+        <div class="listingCard">
           <div>
             <div class="numbers">80</div>
-            <div class="cardName">Sales</div>
+            <div class="cardsName">Sales</div>
           </div>
 
           <div class="iconBx">
@@ -28,10 +28,10 @@ const Listing = () => {
           </div>
         </div>
 
-        <div class="card">
+        <div class="listingCard">
           <div>
             <div class="numbers">284</div>
-            <div class="cardName">Comments</div>
+            <div class="cardsName">Comments</div>
           </div>
 
           <div class="iconBx">
@@ -39,10 +39,10 @@ const Listing = () => {
           </div>
         </div>
 
-        <div class="card">
+        <div class="listingCard">
           <div>
-            <div class="numbers">₹ 7,842</div>
-            <div class="cardName">Earning</div>
+            <div class="numbers">7842</div>
+            <div class="cardsName">Earning</div>
           </div>
 
           <div class="iconBx">
@@ -53,9 +53,9 @@ const Listing = () => {
 
       <div class="details">
         <div class="recentOrders">
-          <div class="cardHeader">
-            <h2>Recent Orders</h2>
-            <a href="#" class="btn">
+          <div class="recentcardHeader">
+            <h2 className="recentTitle">Recent Orders</h2>
+            <a href="#" class="bttn">
               View All
             </a>
           </div>
@@ -147,8 +147,8 @@ const Listing = () => {
         </div>
 
         <div class="recentCustomers">
-          <div class="cardHeader">
-            <h2>Recent Customers</h2>
+          <div class="recentcardHeader">
+            <h2 className="recentTitle">Recent Customers</h2>
           </div>
 
           <table>
