@@ -1,6 +1,7 @@
 import { applyMiddleware, combineReducers, legacy_createStore } from "redux";
 import thunk from "redux-thunk";
 import {reducer as ProductReducer} from './ProductReducer/reducer'
+import {reducer as PaymentReducer} from './PaymentReducer/reducer'
 const rootReducer=combineReducers({
     ProductReducer
 })
