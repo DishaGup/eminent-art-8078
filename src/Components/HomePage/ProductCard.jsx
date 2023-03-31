@@ -1,10 +1,9 @@
  import React from 'react'
  import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
  import { useRef } from 'react';
-
-
-
-
+ import React from 'react'
+ import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
+ import { useRef } from 'react';
 
 
 
@@ -90,6 +89,7 @@ const handleimagezoomout=()=>{
               </Text>
             </Stack>
           </Stack>
+          
       </Box>
     </Center>
   )
