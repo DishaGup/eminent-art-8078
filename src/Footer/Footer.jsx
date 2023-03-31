@@ -4,7 +4,9 @@ export default function Footer() {
   return (
     <div className="footer mt-5">
 
-      <div className="foot1a1"><h1>img div</h1></div>
+      <div className="foot1a1">
+        <img src="https://drive.google.com/file/d/1a-j9C-S-IWwArgqXcXDAbzzE3S4lFBQt/view?usp=share_link" alt="" />
+      </div>
       <div className="row">
         <div className="col-12 col-lg d-flex flex-column justify-content-between p-0 m-0">
           <div className="card border-0 bg-transparent">
