@@ -40,3 +40,11 @@ Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, r
  ### 4-Prayas Tiwari - Footer,
 
 ### 5- Souarbh Patel – Payment Page
+
+
+
+
+// http://localhost:4444/products?q=
+
+name
+ 

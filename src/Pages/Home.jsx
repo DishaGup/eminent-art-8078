@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import styled from "styled-components";
-
+import { Carousels } from "./HomeComponents/Carousel"
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
 import { Store } from './HomeComponents/Store';
 import { DailyEssentials } from './HomeComponents/DailyEssentials';
 import { ShopcluesGlobal } from './HomeComponents/ShopcluesGlobal';
@@ -14,6 +16,8 @@ import { BrandStore } from './HomeComponents/BrandStore';
 import { BrandedDeals } from './HomeComponents/BrandedDeals';
 import { FooterUpper } from './HomeComponents/FooterUpper';
 import { Footer } from './HomeComponents/Footer';
+import Navigationbar from '../Components/HomePage/Navigationbar';
+import NavbarDrop from "./HomeComponents/NavbarDrop"
 export const Home = () => {
 
     const responsive = {
@@ -37,7 +41,9 @@ export const Home = () => {
     };
     return (
         <>
-
+            <Navigationbar />
+            <NavbarDrop />
+            <Carousels />
             <DIV >
                 <h2 className='heading-home-page'> Deals of the Day</h2>
             </DIV>
@@ -226,6 +232,7 @@ export const Home = () => {
             <BrandedDeals />
             <FooterUpper />
             <Footer />
+            
         </>
     )
 }
