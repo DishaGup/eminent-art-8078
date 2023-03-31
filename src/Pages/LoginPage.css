@@ -10,7 +10,7 @@ body, input{
     font-family: 'Poppins', sans-serif;
 }
 
-.container{
+.container-login{
     position: relative;
     width: 100%;
     min-height: 100vh;
@@ -18,7 +18,7 @@ body, input{
     overflow: hidden;
 }
 
-.container:before{
+.container-login:before{
     content: '';
     position: absolute;
     width: 2000px;

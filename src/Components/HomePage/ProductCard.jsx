@@ -8,9 +8,14 @@
 
 // // export default function ProductCard() {
 
+
 //   // const imagezoom = useRef()
 
+// export default function ProductCard() {
+
+
 //   // console.log(imagezoom.current)
+
 
 //   // const handleimagezoomin = () => {
 //   //   imagezoom.current.style.scale = '1.03'
@@ -91,6 +96,8 @@
 // }
 // const handleimagezoomout=()=>{
 //     imagezoom.current.style.scale='1'
+  //console.log(imagezoom.current)
+
 
 // }
 //  return (
@@ -105,6 +112,7 @@
 //     onMouseLeave={handleimagezoomout}
 //     _hover={{border:'1px solid #24a3b5'}}
 //           >
+
 
 //           <Box
 //             rounded={'lg'}
@@ -163,3 +171,11 @@
 //     </Center>
 //   );
 // }
+
+          </Stack>
+        {/* </Stack> */}
+      </Box>
+    </Center>
+  );
+}
+

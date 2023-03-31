@@ -68,7 +68,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className={`container ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
+      <div className={`container-login ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
         <div class="forms-container">
           <div class="signin-signup">
             <form action="" class="sign-in-form" onSubmit={handlesubmit}>
