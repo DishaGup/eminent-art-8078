@@ -21,29 +21,29 @@
 .topSection .headerSection {
   justify-content: space-between;
 }
-.topSection .headerSection .title h1 {
+.topSection .headerSection .admintitle h1 {
   font-size: var(--h1FontSize);
   color: var(--blackColor);
   font-weight: 700;
 }
-.topSection .headerSection .title p {
+.topSection .headerSection .admintitle p {
   font-size: var(--normalFontSize);
   color: var(--textColor);
   font-weight: 500;
 }
-.topSection .headerSection .searchBar {
-  padding: 0.9rem 10rem 0.9rem 2rem;
+.topSection .headerSection .adminsearchBar {
+  padding: 0.8rem 3rem 0.8rem 2rem;
   background: var(--whiteColor);
   border-radius: 5px;
   gap: 1rem;
   box-shadow: 0 2px 4px var(--inputColor);
 }
-.topSection .headerSection .searchBar input {
+.topSection .headerSection .adminsearchBar .adminSearchInput {
   border: none;
   outline: none;
   background: none;
 }
-.topSection .headerSection .searchBtn {
+.topSection .headerSection .adminsearchBtn {
   position: relative;
   background: linear-gradient(0deg, #ff934b 0%, #ff5e62 100%);
   padding: 0.85rem 1.5rem;
@@ -58,7 +58,7 @@
 .topSection .headerSection .adminDiv {
   gap: 1rem;
 }
-.topSection .headerSection .adminDiv .icon {
+.topSection .headerSection .adminDiv .adminicon {
   font-size: var(--biggestFontSize);
   background: var(--whielColor);
   border-radius: 5px;
@@ -80,8 +80,8 @@
 
 /* --- Responsive Design*/
 @media screen and (max-width: 918px) {
-  .headerSection .searchBar,
-  .headerSection .searchBtn {
+  .headerSection .adminsearchBar,
+  .headerSection .adminsearchBtn {
     display: none;
   }
 }
@@ -89,7 +89,7 @@
   .headerSection .adminDiv {
     display: none;
   }
-  .headerSection .title {
+  .headerSection .admintitle {
     text-align: center;
     margin: auto;
   }
