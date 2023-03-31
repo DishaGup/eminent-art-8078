@@ -7,7 +7,7 @@ export const getProducts =(data)=>(dispatch) => {
   
   try {
      axios.get(
-      `http://localhost:4444/products?_page=1&_limit=10`,data).then((res)=>dispatch({
+      `http://localhost:4444/products`,data).then((res)=>dispatch({
         type: GET_PRODUCTS_SUCCESS,
         payload: res ,
       }) )
@@ -18,4 +18,17 @@ export const getProducts =(data)=>(dispatch) => {
     console.log(error);
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
   }
+};
+
+
+export const getSingleProducts =(id)=>(dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
+  
+
+   return  axios.get(
+      `http://localhost:4444/products/${id}`).then((res)=>dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: res ,
+      }) ).catch((error)=>dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
+      )
 };
