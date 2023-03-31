@@ -4,6 +4,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
+import { useSelect } from '@mui/base';
+import { store } from '../../Redux/Store';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const products = [
   {
@@ -37,6 +41,29 @@ const payments = [
 ];
 
 export default function Review() {
+ const [addressData,setAddresData]=useState({
+  "firstName":"",
+    "lastName":"",
+    "address1":"",
+    "address2":"",
+    "city":"",
+    "state":"",
+    "zip":"",
+    "country":""
+ })
+
+ const[card,setCard]=useState({ "cardName":'',
+ 'cardNumber':'',
+ 'expDate':"",
+ 'cvv':''})
+
+ useEffect(()=>{
+  let Data= JSON.parse(localStorage.getItem("addressDetails"))
+  let card=JSON.parse(localStorage.getItem("card"))
+  setAddresData(Data)
+  setCard(card)
+},[])
+console.log(addressData)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -61,24 +88,50 @@ export default function Review() {
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{addressData.firstName}</Typography>
+          <Typography gutterBottom>{addressData.address1},{addressData.address2}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
+
+          {/* const payments = [
+  { name: 'Card type', detail: 'Visa' },
+  { name: 'Card holder', detail: 'Mr John Smith' },
+  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
+  { name: 'Expiry date', detail: '04/2024' },
+]; */}
           <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
+           
+              <React.Fragment key={card.cardName}>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
+                  <Typography gutterBottom>{"Card"}</Typography>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
+                  <Typography gutterBottom>{"VISA"}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{"Name"}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{card.cardName}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{"ExpDate"}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{card.expDate}</Typography>
+                </Grid>
+                
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{"Card number"}</Typography>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography gutterBottom>{'xxxx-xxxx-xxxx-1234'}</Typography>
                 </Grid>
               </React.Fragment>
-            ))}
+           
           </Grid>
         </Grid>
       </Grid>

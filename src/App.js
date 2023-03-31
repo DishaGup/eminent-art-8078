@@ -11,7 +11,6 @@ import Banner from "./Components/HomePage/Banner";
 function App() {
   return (
     <div className="App">
-
     </div>
   );
 }
