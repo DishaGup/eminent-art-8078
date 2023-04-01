@@ -244,6 +244,7 @@ export const Home = () => {
 
 const DIV = styled.div`
     /* background: #e1fbff; */
+    background-color:#e9f6f7;
 .heading-home-page{
     margin-top: 52px;
     display: flex;

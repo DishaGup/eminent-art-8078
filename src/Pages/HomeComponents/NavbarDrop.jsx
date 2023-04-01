@@ -505,8 +505,14 @@ function NavDropdown() {
                 </Menu>
                 <Menu>
                     <MenuButton style={{ color: "black" }} className='MenuButton' >
+
+                <Link to={`/products/women`}>
+                <MenuButton className='MenuButton' >
+
                         WOMEN
                     </MenuButton>
+                </Link>
+                   
                     <MenuList marginTop='20px' soli marginLeft={-100}>
                         <Flex gap={5}>
 

@@ -3,14 +3,15 @@ import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Tex
  import {FiTruck} from 'react-icons/fi'
  import {BsFillHeartFill} from 'react-icons/bs'
   import { useLocation, useNavigate, useParams } from "react-router-dom";
-  
+  import { useDispatch, useSelector } from "react-redux";
   import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
+import { memo } from "react";
   
   function ProductCard(props) {
- const { path, category, sub_category } = useParams()
-const {   id, image, title, price, discount_price,rating,params, } = props;
-console.log(path)
+ const { path, category} = useParams()
+const {   id, image, title, price,rating } = props;
+let {loading, productsData,allData}=useSelector((store)=>store.ProductReducer)
 const imagezoom = useRef()
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
@@ -20,19 +21,32 @@ const handleimagezoomout=()=>{
     imagezoom.current.style.scale='1'
     
 }
+
+const dispatch=useDispatch()
+const addtowishlist=(id)=>{
+  console.log('enter')
+
+  allData.map((el)=>
+ {
+  if(el.id==id){
+    dispatch(addtowishlist(el))
+    console.log('added',el)
+  }
+ }) }
+
     const navigate = useNavigate();
     const location = useLocation();
 
     return (
     
-        <Link path={`/products/${path}/${category}?/${sub_category}?/${id}/single?`}  key={id}>
         <Card maxW="sm" >
            
           <CardBody p={"5px"}   onMouseOver={handleimagezoomin}
     onMouseLeave={handleimagezoomout}  _hover={{border:'1px solid #24a3b5'}}>
-           <Box  _hover={{color:'#24a3b5'}} pos='absolute' right='5' top='2' >
-           <Icon size={7} as={BsFillHeartFill} />
+                <Box zIndex='100' onClick={()=>addtowishlist(id)}   _hover={{color:'#24a3b5',zoom:'1.05'}}  pos='absolute' bottom='10' right='10' >
+           <Icon   size='20px' as={BsFillHeartFill} />
            </Box>
+        <Link to={`/products/${category}/${id}/single?`}  >
          
             <VStack p="10px">
               <Box h="300px" overflow="hidden">
@@ -94,10 +108,14 @@ const handleimagezoomout=()=>{
                 <HStack >
                 <Icon as={FiTruck} />
                 <Text>Free Delivery</Text>
+                {" "}
+         
                 </HStack>
               
               </Stack>
-            </VStack>
+      
+            </VStack> 
+            </Link>
           </CardBody>
         </Card>
    
@@ -105,8 +123,7 @@ const handleimagezoomout=()=>{
 
 
 
-       </Link>
     );
   }
   
-  export default ProductCard;
+  export default memo(ProductCard);

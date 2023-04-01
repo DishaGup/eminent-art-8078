@@ -1,5 +1,6 @@
 
 import { Flex, Text,Icon } from "@chakra-ui/react";
+import { memo } from "react";
 import {AiFillStar} from 'react-icons/ai'
 const StarRating = ({ rating }) => {
   const maxRating = 5; 
@@ -18,5 +19,5 @@ const StarRating = ({ rating }) => {
       <Text>({rating})</Text>
     </Flex>
   );
-};
-export default StarRating
+}; 
+export default memo(StarRating)

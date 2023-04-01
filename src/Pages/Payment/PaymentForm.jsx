@@ -7,6 +7,24 @@ import Checkbox from '@mui/material/Checkbox';
 import { Box } from '@mui/system';
 
 export default function PaymentForm() {
+  const initCard={
+    "cardName":'',
+    'cardNumber':'',
+    'expDate':"",
+    'cvv':''
+  }
+const[card,setCard]=React.useState(initCard)
+  const handleSave=()=>{
+     localStorage.setItem("card",JSON.stringify(card))
+  }
+
+  const handleChange=(e)=>{
+    const name=e.target.name
+    const value=e.target.value
+    setCard({...card,[name]:value})
+
+  }
+  const{cardName,cardNumber,expDate,cvv}=card
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -22,6 +40,9 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-name"
             variant="standard"
+            name='cardName'
+            value={cardName}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -32,6 +53,9 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-number"
             variant="standard"
+            name='cardNumber'
+            value={cardNumber}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -42,6 +66,9 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
+            name='expDate'
+            value={expDate}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} md={6}>
@@ -53,11 +80,14 @@ export default function PaymentForm() {
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
+            name='cvv'
+            value={cvv}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
-            control={<Checkbox color="secondary" name="saveCard" value="yes" />}
+            control={<Checkbox color="secondary" name="saveCard" value="yes" onChange={handleSave} />}
             label="Remember credit card details for next time"
           />
         </Grid>
