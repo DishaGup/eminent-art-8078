@@ -1,9 +1,34 @@
-# eminent-art-8078
+### eminent-art-8078
+
+# TRENDIFY    
+<p> RESPONSIVE  |  COLLABORATIVE </p>
+
+<br>
+
+<div display='flex'>
+<img src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' />
+<img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' />
+<img src='https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white' />
+<img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white' />
+<img src='https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white' />
+<img src='https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white' />
+<img src='' />
+   </div>
 
 
-### DEADLine—----FRIDAY
+An e-commerce website for clothing and health & care products. Built and executed in an span of 5 days. 
 
-NAME-Trendify
+
+## Members:
+
+Team Lead : Disha Gupta (All product page,responsiveness, backened, Single Product Page)
+
+<ul>
+<li> Lokesh Chaudhary (HomePage, Responsiveness, Login Page) </li>
+<li> </li>
+</ul>
+
+<!-- 
 Theme color = #24a3b5;
 backgroundColor='#e9f6f7'
 
@@ -14,36 +39,15 @@ Product single Page
 Login 
 Register
 Add To cart 
-Buy
+Buy -->
 
 
-Admin Page – Add Product,Editing , Delete 
+<!-- Admin Page – Add Product,Editing , Delete  -->
 
-### Packages—-
-Axios, styled Components,ChakraUI, Material UI, React-icons, react-router-dom, redux, react-redux, thunk, ** React-Pagination**, firebase etc
-# npm i axios redux-thunk styled-components @chakra-ui/react react-icons react-router-dom redux react-redux firebase react-paginate
-// npm i react-img-hover-zoom 
-//npm i react-img-zoom
-// npm install -g less
-  Tasks 
-
-### 1- Disha- HomePage Full,  Add To cart UI
-
-
-### 2 -Rahul - Navigaition bar, Admin Page UI
  
 
-### 3-Lokesh Choudhary- Login Page, single Product UI ,
 
-** finished By Wednesday **
-
- ### 4-Prayas Tiwari - Footer,
-
-### 5- Souarbh Patel – Payment Page
-
-
-
-
+ 
 // http://localhost:4444/products?q=
 
 name

@@ -2,24 +2,27 @@
  import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
  import { useRef } from 'react';
 
+
+//Main function starts  
+
    export default function ProductCard({image,brand,cutprice,discount,actualprice}) {
 
-const imagezoom = useRef()
-
+ const imagezoom = useRef()
 
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
     imagezoom.current.style.transition='all .3s ease'
 }
- const handleimagezoomout=()=>{
-     imagezoom.current.style.scale='1'
-     }
+const handleimagezoomout=()=>{
+    imagezoom.current.style.scale='1'
+    
+}
 
  return (
       <Center py={8}>
         <Box    role={'group'}    p={6}   maxW={'300px'}
           w={'full'}
-
+          bg={useColorModeValue('white', 'gray.800')}
           pos={'relative'}
           zIndex={1}
           _readOnly
@@ -64,7 +67,7 @@ const handleimagezoomin=()=>{
               Brand
             </Text> */}
             <Heading fontSize={'md'} color={'gray.500'} fontFamily={'body'} fontWeight={600}>
-             {`${brand.substring(0,20)}...`}
+             {/* {`${brand.substring(0,20)}...`} */} brand
             </Heading>
             <Stack direction={'row'} align={'center'}>
               <Text fontWeight={600} fontSize={'xl'}>
@@ -76,11 +79,12 @@ const handleimagezoomin=()=>{
               <Text fontWeight={600}  color={"#24a3b5"}>
                 {`${discount}% off`}
               </Text>
+            </Stack>
           </Stack>
-         </Stack> 
+          
       </Box>
     </Center>
-  );
+  )
 }
 
-
+//Main function ends

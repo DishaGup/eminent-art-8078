@@ -6,11 +6,12 @@ import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Tex
   
   import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
+import { memo } from "react";
   
   function ProductCard(props) {
- const { path, category, sub_category } = useParams()
-const {   id, image, title, price, discount_price,rating,params, } = props;
-console.log(path)
+ const { id,path, category, sub_category } = useParams()
+const {    image, title, price, discount_price,rating,params, } = props;
+//console.log(path)
 const imagezoom = useRef()
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
@@ -20,12 +21,13 @@ const handleimagezoomout=()=>{
     imagezoom.current.style.scale='1'
     
 }
+console.log(id,category)
     const navigate = useNavigate();
     const location = useLocation();
 
     return (
     
-        <Link path={`/products/${path}/${category}?/${sub_category}?/${id}/single?`}  key={id}>
+        <Link to={`/products/${category}/${id}/single?`}  >
         <Card maxW="sm" >
            
           <CardBody p={"5px"}   onMouseOver={handleimagezoomin}
@@ -109,4 +111,4 @@ const handleimagezoomout=()=>{
     );
   }
   
-  export default ProductCard;
+  export default memo(ProductCard);

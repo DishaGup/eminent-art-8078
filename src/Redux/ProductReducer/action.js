@@ -32,3 +32,13 @@ export const getSingleProducts =(id)=>(dispatch) => {
       }) ).catch((error)=>dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
       )
 };
+
+export const getAllProducts =(category) => (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
+   axios.get(
+      `http://localhost:4444/products`,category).then((res)=>dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: res ,
+      }) ).catch((error)=>dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
+      )
+};

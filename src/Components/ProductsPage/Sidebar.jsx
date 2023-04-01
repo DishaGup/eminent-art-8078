@@ -20,35 +20,26 @@ import { useLocation, useNavigate, useParams, useSearchParams } from 'react-rout
 import { getProducts } from '../../Redux/ProductReducer/action';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
+import { memo } from 'react';
 
 const Sidebar = () => {
 const navigate=useNavigate()
-// const { path, category, sub_category } = useParams()
+ const { path, category, sub_category } = useParams()
   const [searchParams,setSearchParams]=useSearchParams()
   const [pageno,setpageno]=useState(1)
   let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
 let location=useLocation()
 
 const initialsortdata =searchParams.get('sortingByPrice')
-   
 const[sortingByPrice,setSortingByPrice]=useState(initialsortdata || '' )
 const handleGoBack = () => {
+  if(pageno===''){
+    navigate('/')
+  }else{
   navigate(-1);
-};
+}};
 const urlPath = location.pathname.split("/");
 let price=199
-let data={
-params:{
-  tag:searchParams.getAll('categorytag'),
-    _sort: searchParams.get('sortingByPrice') && 'price',
-    _order: searchParams.get('sortingByPrice'),
-    price_gte:searchParams.getAll('sortrange').join('').split('-')[0] ,
-     price_lte: searchParams.getAll('sortrange').join('').split('-')[1] ,
-
-}
-
-}
-
 const dispatch=useDispatch()
 
 useEffect(()=>{
@@ -151,6 +142,7 @@ useEffect(()=>{
                       key={e.id}
                     {...e}
                     />
+
                   ))}
               </Grid>
             </VStack>
@@ -171,4 +163,4 @@ useEffect(()=>{
   )
 }
 
-export default Sidebar
+export default memo(Sidebar)
