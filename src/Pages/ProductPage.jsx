@@ -7,8 +7,9 @@ import { useLocation, useNavigate, useParams, useSearchParams } from 'react-rout
 import PriceAccord from "../Components/ProductsPage/PriceAccord";
 
 import Banner from "../Components/HomePage/Banner";
+import { Box } from "@chakra-ui/react";
 const ProductPage = () => {
-  const navigate=useNavigate()
+  const navigate=useNavigate() 
   const {category} = useParams()
 //console.log(category)
   const [searchParams,setSearchParams]=useSearchParams()
@@ -23,7 +24,7 @@ const handleGoBack = () => {
 };
 
 const urlPath = location.pathname.split("/");
-let price=199
+
 let data={
 params:{
   tag:searchParams.getAll('categorytag'),
@@ -35,26 +36,31 @@ params:{
     _limit:15,
     category: category || 'men',
     brand:searchParams.getAll('brandrange') 
-  
 }
-
 }
 
 
 const dispatch=useDispatch()
 
-
 useEffect(()=>{
-   if(category!==undefined){
-    dispatch(getAllProducts(category))
-   }else{ 
-  dispatch(getProducts(data))}
+  dispatch(getAllProducts(data))
 },[location.search])
  
  
     return (
     <div>
- <Banner/>
+ {/* <Banner/> */}
+<Box>
+ 
+
+</Box>
+
+
+
+
+
+
+
 <Sidebar/>
 {/* <PriceAccord/> */}
     </div>
