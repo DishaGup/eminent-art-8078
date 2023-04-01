@@ -1,15 +1,15 @@
-
 import {
     Box, Button,  Container,  Divider,  Grid,  Heading, HStack, Image,Input,Text, useToast, VStack,Icon, Accordion,  AccordionItem,
-    AccordionButton, AccordionIcon,  AccordionPanel, List,  ListItem, useDisclosure, Flex} from "@chakra-ui/react";
+    AccordionButton, AccordionIcon,  AccordionPanel, List,  ListItem, useDisclosure, Flex, Spinner} from "@chakra-ui/react";
   
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle,AiFillStar } from "react-icons/ai";
 import React,{useEffect} from "react";
-
+import discountoff from '../../Assests/singlepage.png'
 import { useDispatch, useSelector } from "react-redux";
 import { getSingleProducts } from "../../Redux/ProductReducer/action";
+import { memo } from "react";
 
 
 
@@ -22,10 +22,9 @@ const SingleProductPageMain = () => {
     const toast = useToast();
     const { id } = useParams();
     const dispatch = useDispatch();
-    let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
+    let {loading, productsData}=useSelector((store)=>store.ProductReducer)
     const [product, setProduct] = React.useState({});
  
- const [imageHeight, setImageHeight] = React.useState("100");
   const handleAddToCart = () => {
     // Add logic to add product to cart
   };
@@ -33,6 +32,19 @@ const SingleProductPageMain = () => {
     dispatch(getSingleProducts(5)).then((res)=>setProduct(res.payload.data)).catch((err)=>console.log(err))
   },[])
   
+const handlebuynow=()=>{
+  // Add logic to buy products
+}
+const addtowishlist=()=>{
+  
+}
+  if (product.length === 0) {
+    return (
+      <Box pt={"23%"} pb="15%">
+        <Spinner />
+      </Box>
+    );
+  } else {
 
   return (
     <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
@@ -63,26 +75,69 @@ const SingleProductPageMain = () => {
               
                       <Box
                      
-                        h={`${imageHeight}`}
+                      
                         overflow="hidden">
                         <Image
                           src={product.image}
                           alt={`Image`}
+                         
                           objectFit="contain"/>
-                                                
+                                          
                       </Box>
              
+                      <Box h="100px" overflow="hidden">
+                              <Image
+                                src={product.image2?product.image2:''}
+                                alt={`Image2`}
+                                objectFit="cover"                              
+                              />
+                            </Box>
+
+
               </VStack>
               
             </HStack>
-          </Box> </Box>
+          </Box> 
+             {/* for small screen */}
+             <Box display={{ base: "block", md: "block", lg: "none" }}>
+                <VStack>
+                  <Box
+                    overflow="hidden"        >
+                   
+                      <Image
+                        src={product.image}
+                        alt={'image'}
+                        objectFit="cover"
+                      />
+                  </Box>
+                  <HStack align="flex-start">
+                  
+                            <Box h="100px" overflow="hidden">
+                              <Image
+                               src={product.image2?product.image2:''}
+                                alt={`Image2`}
+                                objectFit="cover"                              
+                              />
+                            </Box>
+                       
+                  </HStack>
+                </VStack>
+              </Box>
+          
+
+
+
+          
+          
+          </Box>
         
 
         {/* Right sections */}
-        <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }}>
-          <Heading size={{ base: "md", md: "md", lg: "lg" }} mb={3}>
-            {product.product_name}
+        <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }} align='left'>
+          <Heading size={{ base: "md", md: "md", lg: "lg" }} mb={3} fontWeight={500}>
+            {product.title}
           </Heading>
+
           <Box d="flex" alignItems="center" mb={3}>
             <HStack>
               <Text>
@@ -103,71 +158,38 @@ const SingleProductPageMain = () => {
                 ({product.rating})
               </Text>
               <Text color={"#0076be"} fontWeight="medium">
-                | <Link>Write a Review</Link>
+                | <Link>Write a Review {product.reviews} </Link>
               </Text>
             </HStack>
           </Box>
           <HStack>
             <Text fontSize="2xl" fontWeight="bold" mb={3} color={"#e53e3e"}>
-              Rs.{product.discounted_price}
+              Rs.{product.price}
             </Text>
             <Text
               textDecoration={"line-through"}
               fontSize="xl"
               mb={3}
               color="gray.500">
-              Rs.{product.retail_price}
+              Rs.{product.price+623}
             </Text>
+            <Text fontSize='md' color='#24a3b5' >18% off</Text>
           </HStack>
           <Box>
             <VStack>
-              <HStack spacing={0}>
-                <Text w="100%" fontSize={{ base: "16", md: "18px" }}>
-                  or 4 interest-free payments of Rs.17.24 with
-                </Text>
-                <Box w="35%" h={"100%"}>
-                  <Image
-                    objectFit={"cover"}
-                    src="./afterpay_logo.png"></Image>
-                </Box>
-              </HStack>
-              <Divider borderColor={"black"}></Divider>
-              <Box w="full">
-                <Text
-                  fontWeight={"medium"}
-                  w="full"
-                  fontSize={{ base: "16", md: "20px" }}>
-                  Special Offers:{" "}
-                </Text>
-                <Text
-                  color={"#e53e3e"}
-                  fontWeight="medium"
-                  w="full"
-                  fontSize={{ base: "16", md: "18px" }}>
-                  Bobbi Brown Must Haves Set, $15 with Belk purchase
-                </Text>
-              </Box>
-              <Divider borderColor={"black"}></Divider>
+              <Text fontSize='14px' color='gray.400' >Inclusive of all taxes</Text>
+             
+              <Divider borderColor={"#24a3b5"}></Divider>
             </VStack>
-          </Box>
-          <Box mt={3}>
-            <Text
-              fontWeight={"medium"}
-              w="full"
-              fontSize={{ base: "16", md: "20px" }}>
-              Apply Coupon
-            </Text>
-            <Input
-              w="full"
-              placeholder="Enter coupon code"
-              size="lg"
-              mt={3}
-            />
-            <Button colorScheme="blue" size="md" mt={3} mb="3">
-              Apply
-            </Button>
-          </Box>
-          <Divider borderColor={"black"}></Divider>
+       
+    <Box my={3}>
+      <Image src={discountoff}  />
+    </Box>
+
+
+          </Box> 
+
+          {/* <Divider borderColor={"black"}></Divider> */}
           <HStack fontSize={{ base: "16", md: "18px" }} mt="20px" mb="20px">
             <Icon
               as={TbTruckDelivery}
@@ -181,16 +203,26 @@ const SingleProductPageMain = () => {
           <Divider borderColor={"black"}></Divider>
 
           <VStack spacing={3}>
+            <HStack spacing='100px'> 
             <Button
               isLoading={loading}
-              w="full"
-              colorScheme="blue"
+              w="200px"
+      
               size="lg"
+              backgroundImage='-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)'
               onClick={handleAddToCart}>
               Add to cart
             </Button>
-            
-            <HStack>
+            <Button
+              isLoading={loading}
+              w="200px"
+      
+              size="lg"
+              backgroundImage='-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)'
+              onClick={handlebuynow}>
+             Buy Now
+            </Button>  </HStack>
+            <HStack display='inline-flex'>
               <Text
                 color={"#0076be"}
                 fontWeight={"medium"}
@@ -201,6 +233,7 @@ const SingleProductPageMain = () => {
               <Text
                 color={"#0076be"}
                 fontWeight={"medium"}
+                onClick={addtowishlist}
                 cursor="pointer">
                 Add to Wish List
               </Text>
@@ -230,7 +263,8 @@ const SingleProductPageMain = () => {
             </h2>
             <AccordionPanel pb={4}>
               <Box fontSize={{ base: "16", md: "18px" }}>
-                {product.description}
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dolore aut, vero tenetur illum odit atque eveniet accusamus laborum optio architecto? Non dolores rerum impedit quas laborum facilis blanditiis voluptatibus.
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Numquam dolore aut, vero tenetur illum odit atque eveniet accusamus laborum optio architecto? Non dolores rerum impedit quas laborum facilis blanditiis voluptatibus.
               </Box>
               <Box>
                 <Text
@@ -309,5 +343,5 @@ const SingleProductPageMain = () => {
   </Box>
   )
 }
-
-export default SingleProductPageMain
+}
+export default memo(SingleProductPageMain)

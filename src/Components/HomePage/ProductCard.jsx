@@ -1,14 +1,6 @@
  import React from 'react'
  import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
  import { useRef } from 'react';
- import React from 'react'
- import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
- import { useRef } from 'react';
-
-
-
-
-
 
 
 //Main function starts  
@@ -75,7 +67,7 @@ const handleimagezoomout=()=>{
               Brand
             </Text> */}
             <Heading fontSize={'md'} color={'gray.500'} fontFamily={'body'} fontWeight={600}>
-             {`${brand.substring(0,20)}...`}
+             {/* {`${brand.substring(0,20)}...`} */} brand
             </Heading>
             <Stack direction={'row'} align={'center'}>
               <Text fontWeight={600} fontSize={'xl'}>
