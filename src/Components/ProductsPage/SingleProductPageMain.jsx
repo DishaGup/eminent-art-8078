@@ -2,14 +2,15 @@ import {
     Box, Button,  Container,  Divider,  Grid,  Heading, HStack, Image,Input,Text, useToast, VStack,Icon, Accordion,  AccordionItem,
     AccordionButton, AccordionIcon,  AccordionPanel, List,  ListItem, useDisclosure, Flex, Spinner} from "@chakra-ui/react";
   
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle,AiFillStar } from "react-icons/ai";
 import React,{useEffect} from "react";
 import discountoff from '../../Assests/singlepage.png'
 import { useDispatch, useSelector } from "react-redux";
-import { getSingleProducts } from "../../Redux/ProductReducer/action";
+import { addtocart, getSingleProducts } from "../../Redux/ProductReducer/action";
 import { memo } from "react";
+import NotfoundCategory from "../../Pages/NotfoundCategory";
 
 
 
@@ -17,37 +18,55 @@ const SingleProductPageMain = () => {
 
     const navigate = useNavigate();
     const handleGoBack = () => {
-      navigate(-1);
+      navigate('/products');
     };
     const toast = useToast();
     const { id } = useParams();
+
+
+   
     const dispatch = useDispatch();
     let {loading, productsData}=useSelector((store)=>store.ProductReducer)
     const [product, setProduct] = React.useState({});
  
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
     // Add logic to add product to cart
+    e.stopPropogation()
+    dispatch(addtocart(product))
+
   };
+  
   useEffect(()=>{
-    dispatch(getSingleProducts(5)).then((res)=>setProduct(res.payload.data)).catch((err)=>console.log(err))
+    dispatch(getSingleProducts(id)).then((res)=>setProduct(res.payload.data)).catch((err)=>console.log(err))
   },[])
   
 const handlebuynow=()=>{
   // Add logic to buy products
-}
-const addtowishlist=()=>{
+ navigate('/payments')
   
 }
-  if (product.length === 0) {
+const addtowishlist=(e)=>{
+  e.stopPropogation()
+
+}
+
+
+
+  if (typeof (product) !=='object') {
     return (
       <Box pt={"23%"} pb="15%">
         <Spinner />
+        {
+          setTimeout(() => {
+         <NotfoundCategory/>
+          }, 2000)
+        }
       </Box>
     );
   } else {
 
   return (
-    <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
+   product && (<Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
     <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
       <Button
         onClick={handleGoBack}
@@ -73,15 +92,10 @@ const addtowishlist=()=>{
                 gap={0}
                 w={{ base: "20%", md: "30%" }}>
               
-                      <Box
-                     
-                      
-                        overflow="hidden">
+                      <Box  overflow="hidden">
                         <Image
                           src={product.image}
-                          alt={`Image`}
-                         
-                          objectFit="contain"/>
+                          alt={`Image`}       />
                                           
                       </Box>
              
@@ -89,7 +103,7 @@ const addtowishlist=()=>{
                               <Image
                                 src={product.image2?product.image2:''}
                                 alt={`Image2`}
-                                objectFit="cover"                              
+                                                     
                               />
                             </Box>
 
@@ -340,7 +354,7 @@ const addtowishlist=()=>{
         </Accordion>
       </Box>
     </Container>
-  </Box>
+  </Box>)
   )
 }
 }
