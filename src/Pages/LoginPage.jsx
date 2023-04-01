@@ -9,7 +9,9 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 import Navigationbar from "../Components/HomePage/Navigationbar";
+import NavbarDrop from "./HomeComponents/NavbarDrop"
 import { Footer } from "./HomeComponents/Footer";
+import Navbar from "./HomeComponents/Navbar";
 
 const LoginPage = () => {
   // Login Firebase Config
@@ -78,7 +80,9 @@ const LoginPage = () => {
 
   return (
     <>
-      <Navigationbar />
+      
+      <Navbar />
+      
       <div className={`containers ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
         <div class="forms-container">
           <div class="signin-signup">
