@@ -24,7 +24,7 @@ const Allfilters = ({filterHeading, handleGoBack }) => {
     const navigate = useNavigate();
     const location = useLocation();
     const { path,category } = useParams();
-let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
+let {loading, }=useSelector((store)=>store.ProductReducer)
 const[sortrange,setsortrange]=useState( searchParams.getAll('sortrange') || [])
 
 const[brandrange,setbrandrange]=useState( searchParams.getAll('brandrange') || [])
@@ -44,7 +44,6 @@ const[categorytag,setcategorytag]=useState(initialcategory|| [])
     sortrange && (params.sortrange=sortrange)
     brandrange && (params.brandrange=brandrange)
     setSearchParams(params)
-    
     },[categorytag,sortingByPrice,sortrange,brandrange])
 
    const handlechange=(e)=>{
@@ -184,7 +183,7 @@ const handlesort=(e)=>{
 <Checkbox value='topwear' isChecked={categorytag.includes("topwear")} name='categorytag' onChange={handlechange} my={2}>Topwear</Checkbox>
 </Box>
 <Box>
-<Checkbox value='bottomwear' isChecked={categorytag.includes("bottomwear")} name='categorytag' onChange={handlesort} my={2}>Bottomwear</Checkbox>
+<Checkbox value='bottomwear' isChecked={categorytag.includes("bottomwear")} name='categorytag' onChange={handlechange} my={2}>Bottomwear</Checkbox>
 
 </Box>
 <Box>
@@ -211,7 +210,7 @@ const handlesort=(e)=>{
 <Checkbox value='topwear' isChecked={categorytag.includes("topwear")} name='categorytag' onChange={handlechange} my={2}>Topwear</Checkbox>
 </Box>
 <Box>
-<Checkbox value='bottomwear' isChecked={categorytag.includes("bottomwear")} name='categorytag' onChange={handlesort} my={2}>Bottomwear</Checkbox>
+<Checkbox value='bottomwear' isChecked={categorytag.includes("bottomwear")} name='categorytag' onChange={handlechange} my={2}>Bottomwear</Checkbox>
 
 </Box>
 <Box>
@@ -239,7 +238,7 @@ const handlesort=(e)=>{
 <Checkbox value='Eyes' isChecked={categorytag.includes("Eyes")} name='categorytag' onChange={handlechange} my={2}>Eyes</Checkbox>
 </Box>
 <Box>
-<Checkbox value='Sanitizers' isChecked={categorytag.includes("Sanitizers")} name='categorytag' onChange={handlesort} my={2}>Sanitizers</Checkbox>
+<Checkbox value='Sanitizers' isChecked={categorytag.includes("Sanitizers")} name='categorytag' onChange={handlechange} my={2}>Sanitizers</Checkbox>
 
 </Box>
 <Box>

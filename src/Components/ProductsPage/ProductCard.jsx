@@ -34,6 +34,7 @@ const addtowishlist=(id)=>{
   }
  }) }
 
+
     const navigate = useNavigate();
     const location = useLocation();
 
