@@ -26,11 +26,8 @@ const AllRoutes = () => {
       <Route path="/adminpage" element={<AdminPage />} />
       <Route path="/adminproducts" element={<AdminProducts />} />
       <Route path="/adminEditproducts/:id" element={<AdminEditProduct />} />
-      <Route path="*" element={<NotFoundPage />} />
-      
+      <Route path="*" element={<NotFoundPage />} />      
 <Route path='/payments' element={ <Payments/>} />
-{/* <Route path="/products/:path/:category?/:sub_category?/:brand?"  element={ <ProductPage/> }  />
-<Route  path="/products/:path/:category?/:sub_category?/:id/single?"  element={<SingleProductPage/> }  /> */}
 <Route path="/products/:category?"  element={<ProductPage/>}   />
 <Route  path="/products/:category?/:id/single?"  element={<SingleProductPageMain/> }  />
 

@@ -9,9 +9,10 @@ import { Box, Breadcrumb,
   HStack,
   Image,
   Select,
+  Spinner,
   Text,
   VStack, } from '@chakra-ui/react'
-  import React, { useEffect,useState } from "react";
+  import React, { useCallback, useEffect,useState } from "react";
   import { useDispatch, useSelector } from "react-redux";
   import { RxDoubleArrowRight } from "react-icons/rx";
 import Allfilters from './Allfilters'
@@ -21,25 +22,25 @@ import { getProducts } from '../../Redux/ProductReducer/action';
 import ProductCard from './ProductCard';
 import Pagination from './Pagination';
 import { memo } from 'react';
+import NotfoundCategory from '../../Pages/NotfoundCategory';
 
 const Sidebar = () => {
 const navigate=useNavigate()
  const { path, category, sub_category } = useParams()
   const [searchParams,setSearchParams]=useSearchParams()
   const [pageno,setpageno]=useState(1)
-  let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
+  let {loading, productsData,  }=useSelector((store)=>store.ProductReducer)
 let location=useLocation()
 
 const initialsortdata =searchParams.get('sortingByPrice')
 const[sortingByPrice,setSortingByPrice]=useState(initialsortdata || '' )
-const handleGoBack = () => {
-  if(pageno===''){
+const handleGoBack = useCallback(() => {
+ 
     navigate('/')
-  }else{
-  navigate(-1);
-}};
+ 
+},[])
 const urlPath = location.pathname.split("/");
-let price=199
+
 const dispatch=useDispatch()
 
 useEffect(()=>{
@@ -49,13 +50,15 @@ useEffect(()=>{
   setSearchParams(params)
   },[sortingByPrice,pageno])
 
+
+
   return (
     <>
      <Box
           width={"98%"}
           margin="auto"
           pt={{ base: "30px", md: "60px", lg: "80px" }}>
-          {/* <FilterTag title={appliedFilters.subCategory_like} /> */}
+        
           <Flex
             alignItems={"center"}
             // mt={{ base: "10px", sm: "10px", md: "10px", lg: "0px" }}
@@ -94,7 +97,7 @@ useEffect(()=>{
             {/* for large screen */}
             <Box display={{ base: "none", sm: "none", md: "block" }}>
               <Allfilters
-                price={price}
+              
                 handleGoBack={handleGoBack}
               />
             </Box>
@@ -136,14 +139,20 @@ useEffect(()=>{
                   lg: "repeat(4,1fr)",
                 }}
                 gap="5">
-                {productsData &&
-                  productsData.map((e) => (
+                { productsData &&  productsData.length>0 ?(
+                  productsData?.map((e) => (
                     <ProductCard
                       key={e.id}
                     {...e}
-                    />
+                    />) 
 
-                  ))}
+                  )): ( <> <Spinner />     
+
+                 </> 
+                  
+                  
+                  )
+                }
               </Grid>
             </VStack>
           </Grid>

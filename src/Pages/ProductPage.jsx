@@ -10,7 +10,7 @@ import Banner from "../Components/HomePage/Banner";
 const ProductPage = () => {
   const navigate=useNavigate()
   const {category} = useParams()
-
+//console.log(category)
   const [searchParams,setSearchParams]=useSearchParams()
   let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
 let location=useLocation()
@@ -33,7 +33,9 @@ params:{
     price_lte: searchParams.getAll('sortrange').join('').split('-')[1] ,
     _page:searchParams.get('pageno'),
     _limit:15,
-    category:category
+    category: category || 'men',
+    brand:searchParams.getAll('brandrange') 
+  
 }
 
 }
@@ -43,20 +45,16 @@ const dispatch=useDispatch()
 
 
 useEffect(()=>{
-  // if(category!==undefined){
-  //   data.params.catgeory=category
-  //  dispatch(getProducts(data))
-  // }else{ 
-  //   data.params.catgeory=category
-  dispatch(getAllProducts(data))
+   if(category!==undefined){
+    dispatch(getAllProducts(category))
+   }else{ 
+  dispatch(getProducts(data))}
 },[location.search])
  
  
     return (
     <div>
-      <Banner/>
-
-      
+ <Banner/>
 <Sidebar/>
 {/* <PriceAccord/> */}
     </div>
