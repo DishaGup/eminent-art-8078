@@ -1,19 +1,19 @@
- import React from 'react'
- import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
- import { useRef } from 'react';
+// import React from 'react'
+// import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
+// import { useRef } from 'react';
 
-   export default function ProductCard({image,brand,cutprice,discount,actualprice}) {
+// export default function ProductCard({ image, brand, cutprice, discount, actualprice }) {
 
-const imagezoom = useRef()
+//   const imagezoom = useRef()
 
 
-const handleimagezoomin=()=>{
-    imagezoom.current.style.scale='1.03'
-    imagezoom.current.style.transition='all .3s ease'
-}
- const handleimagezoomout=()=>{
-     imagezoom.current.style.scale='1'
-     }
+//   const handleimagezoomin = () => {
+//     imagezoom.current.style.scale = '1.03'
+//     imagezoom.current.style.transition = 'all .3s ease'
+//   }
+//   const handleimagezoomout = () => {
+//     imagezoom.current.style.scale = '1'
+//   }
 
 
 
@@ -80,15 +80,5 @@ const handleimagezoomin=()=>{
 //                 {`${discount}% off`}
 //               </Text>
 //           
-
-
-
-
-          </Stack>
-        {/* </Stack> */}
-      </Box>
-    </Center>
-  );
-}
 
 
