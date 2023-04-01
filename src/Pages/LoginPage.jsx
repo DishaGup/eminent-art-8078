@@ -1,15 +1,21 @@
 import React, { useState } from "react";
+// import "./LoginPage.module.css";
 import "./LoginPage.css";
+import { useNavigate } from "react-router-dom";
 import { app } from "../firebase/firebase";
 import {
   getAuth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
+import Navigationbar from "../Components/HomePage/Navigationbar";
+import NavbarDrop from "./HomeComponents/NavbarDrop"
+import { Footer } from "./HomeComponents/Footer";
+import Navbar from "./HomeComponents/Navbar";
 
 const LoginPage = () => {
   // Login Firebase Config
-
+  const navigate = useNavigate();
   const auth = getAuth(app);
   const [email, setemail] = useState("");
   const [password, setpassword] = useState("");
@@ -20,12 +26,16 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        console.log(user.accessToken);
+        if (user.accessToken) {
+          navigate("/");
+        }
         // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
+        window.alert("Plz Enter Valid Data")
       });
   };
 
@@ -43,8 +53,10 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
-        // ...
+        console.log(user.accessToken);
+        if (user.accessToken) {
+          setMode("sign-in");
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -68,7 +80,10 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className={`container-login ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
+      
+      <Navbar />
+      
+      <div className={`containers ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
         <div class="forms-container">
           <div class="signin-signup">
             <form action="" class="sign-in-form" onSubmit={handlesubmit}>
@@ -193,6 +208,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
