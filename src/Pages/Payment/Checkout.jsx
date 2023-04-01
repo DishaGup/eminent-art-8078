@@ -15,9 +15,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
 import PaymentForm from './PaymentForm';
 import Review from './Review';
-
+import logo from "./ProjectLogo.jpeg"
 import Poster from './right.png'
-
+import { Image } from '@chakra-ui/react';
+import {useNavigate} from "react-router-dom"
+import { ImageList, ImageListItem } from '@mui/material';
 function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary" align="center">
@@ -50,7 +52,7 @@ const theme = createTheme();
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-
+  const navigate=useNavigate()
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
@@ -73,7 +75,12 @@ export default function Checkout() {
       >
         <Toolbar sx = {{display : 'flex', justifyContent : 'space-around'}}>
           <Typography variant="h6" color="inherit" noWrap>
-            Company name
+            {/* <Image src={logo} w={["100px","100px","200px","220px",]} mr={"20px"} onClick={navigate("/")}></Image> */}
+            <ImageList>
+              <ImageListItem>
+              <Image src={logo} w={["100px","100px","200px","220px",]} mr={"20px"} onClick={()=>navigate("/")}></Image>
+              </ImageListItem>
+            </ImageList>
           </Typography>
           <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
             {steps.map((label) => (
