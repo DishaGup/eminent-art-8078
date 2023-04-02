@@ -14,6 +14,8 @@ const ProductPage = () => {
 //console.log(category)
   const [searchParams,setSearchParams]=useSearchParams()
   let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
+
+  console.log(allData)
 let location=useLocation()
 //console.log(category)
 const initialsortdata =searchParams.get('sortingByPrice')

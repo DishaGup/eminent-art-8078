@@ -4,21 +4,16 @@ import CartDisplayProduct from "./Components/cart-display-product/CartDisplayPro
 import { Home } from "./Pages/Home";
 import { Wishlist } from "./Pages/Wishlist";
 import AllRoutes from "./Routes/AllRoutes";
-import ProductPage from './Pages/productpage/ProductPage';
-import CartPage from "./Pages/cart/CartPage";
+import ProductCard from "./Components/ProductsPage/ProductCard";
 
 function App() {
   return (
     <div className="App">
-      {/* <Navigationbar/>
-      <AllRoutes /> */}
-      {/* <CartDisplayProduct/> */}
-      <ProductPage />
-      <CartPage />
+
+      <AllRoutes />
     </div>
   );
 }
 
 export default App;
-{/*  */ }
 

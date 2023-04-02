@@ -13,24 +13,28 @@ import { SingleProductPage } from '../Pages/SingleProductPage'
 import Payments from './../Pages/Payments';
 import { Home } from "../Pages/Home";
 import ProductPage from "../Pages/ProductPage";
+// import { ProductPage as ProductSingle } from "../Pages/productpage/ProductPage";
 import SingleProductPageMain from "../Components/ProductsPage/SingleProductPageMain";
+// import CartPage from "../Pages/cart/CartPage";
+import CartPage from '../Components/cart/CartPage';
 
 
 const AllRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/" element={<Home/>} />
+      <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/adminpage" element={<AdminPage />} />
       <Route path="/adminproducts" element={<AdminProducts />} />
+      <Route path="/cart" element={<CartPage />} />
       <Route path="/adminEditproducts/:id" element={<AdminEditProduct />} />
-      
-      <Route path="*" element={<NotFoundPage />} />      
-<Route path='/payments' element={ <Payments/>} />
-<Route path="/products/:category?"  element={<ProductPage/>}   />
-<Route  path="/products/:category?/:id/single?"  element={<SingleProductPageMain/> }  />
+
+      <Route path="*" element={<NotFoundPage />} />
+      <Route path='/payments' element={<Payments />} />
+      <Route path="/products/:category?" element={<ProductPage />} />
+      <Route path="/products/:category?/:id/single?" element={<SingleProductPageMain />} />
 
     </Routes>
   );

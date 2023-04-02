@@ -38,7 +38,10 @@ const Navigationbar = () => {
           <Icon as={CiLocationOn} />
           <Icon as={BsBell} />
           <Icon as={BsHeart} />
-          <Icon as={BsCart3} />
+          <NavLink to='/cart'>
+
+            <Icon as={BsCart3} />
+          </NavLink>
           <NavLink to='/login'>
 
             <TbLogin />
@@ -66,7 +69,7 @@ const Navigationbar = () => {
   )
 }
 
-const LineNavCompo = ({ name}) => {
+const LineNavCompo = ({ name }) => {
 
   return (
     <Center cursor='pointer' textAlign='center' w='180px' fontSize='13px' h='1cm' href='#' _hover={{ color: '#24a3b5' }}>

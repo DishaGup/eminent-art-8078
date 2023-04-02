@@ -24,7 +24,7 @@ function NavDropdown() {
             <HStack gap='5' ml={2} >
 
                 <Menu >
-                    <MenuButton style={{ color: "black" }}  className='MenuButton' >
+                    <MenuButton style={{ color: "black" }} className='MenuButton' >
                         MOBILE & MORE
                     </MenuButton>
 
@@ -506,13 +506,13 @@ function NavDropdown() {
                 <Menu>
                     <MenuButton style={{ color: "black" }} className='MenuButton' >
 
-                <Link to={`/products/women`}>
-                <MenuButton className='MenuButton' >
+                        <Link to={`/products/women`}>
+                            <MenuButton style={{ color: "black" }} className='MenuButton' >
 
-                        WOMEN
+                                WOMEN
+                            </MenuButton>
+                        </Link>
                     </MenuButton>
-                </Link>
-                </MenuButton>
                     <MenuList marginTop='20px' soli marginLeft={-100}>
                         <Flex gap={5}>
 

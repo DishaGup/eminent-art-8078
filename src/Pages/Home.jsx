@@ -42,8 +42,8 @@ export const Home = () => {
     };
     return (
         <>
-            {/* <Navigationbar /> */}
-            <Navbar/>
+            <Navigationbar />
+            {/* <Navbar/> */}
             <NavbarDrop />
             <Carousels />
             <DIV >
