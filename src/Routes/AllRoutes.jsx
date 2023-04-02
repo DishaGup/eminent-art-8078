@@ -15,6 +15,7 @@ import ProductPage from '../Pages/ProductPage'
 import { SingleProductPage } from '../Pages/SingleProductPage'
 
 import Payments from './../Pages/Payments';
+import { Wishlist } from "../Pages/Wishlist";
 
 
 const AllRoutes = () => {
@@ -32,7 +33,7 @@ const AllRoutes = () => {
 <Route path='/payments' element={ <Payments/>} />
 <Route path="/products/:path/:category?/:sub_category?/:brand?"  element={ <ProductPage/> }  />
 <Route  path="/products/:path/:category?/:sub_category?/:id/single?"  element={<SingleProductPage/> }  />
-
+<Route path="/wishlist"  element={<Wishlist/>}/>
     </Routes>
   );
 };
