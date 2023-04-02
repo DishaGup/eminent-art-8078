@@ -8,10 +8,10 @@ const initState={
 export const reducer =(state=initState,{type,payload})=>{
       switch(type){
         case SHHIPINGADD:{
-            return {...state.Address,payload}
+            return {...state,Address:payload}
         }
         case CARDDETAIL:{
-            return {...state.card,payload}
+            return {...state,card:payload}
         }
         default:{
             return state

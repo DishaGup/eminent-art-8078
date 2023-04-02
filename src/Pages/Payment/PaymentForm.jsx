@@ -5,6 +5,8 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Box } from '@mui/system';
+import { useDispatch } from 'react-redux';
+import {UdateCard } from '../../Redux/PaymentReducer/action';
 
 export default function PaymentForm() {
   const initCard={
@@ -14,8 +16,11 @@ export default function PaymentForm() {
     'cvv':''
   }
 const[card,setCard]=React.useState(initCard)
+//const dispatch=useDispatch()
+
   const handleSave=()=>{
      localStorage.setItem("card",JSON.stringify(card))
+     //dispatch(UdateCard(card))
   }
 
   const handleChange=(e)=>{
