@@ -20,6 +20,7 @@ function addItemToCart({
     price,
     rating,
     quantity,
+    
     img,
     date,
 }) {

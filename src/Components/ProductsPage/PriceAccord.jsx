@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { AccordionPanel, Radio, RadioGroup, Stack } from "@chakra-ui/react";
 import { useDispatch, useSelector } from "react-redux";
 
+
 const PriceAccord = ({ priceRanges, getProducts }) => {
   let dispatch = useDispatch();
   let { params } = useSelector((store) => store.ProductsManager);

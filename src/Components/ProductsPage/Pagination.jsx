@@ -4,6 +4,7 @@ import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { memo } from "react";
 
+
 let BTN_COUNT = 5;
 
 const getStartingIdx = (current, total) => {

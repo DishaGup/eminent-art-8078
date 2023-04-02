@@ -101,7 +101,11 @@ const SingleProductPageMain = () => {
         ]
         : "";
     return `${d}${a} ${monthNames[m]}`;
+    
   };
+
+
+
 
   const addItem = () => {
     addItemToCart({

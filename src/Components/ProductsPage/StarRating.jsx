@@ -6,6 +6,9 @@ const StarRating = ({ rating }) => {
   const maxRating = 5; 
   const percent = (rating / maxRating) * 100; 
 
+
+
+  
   return (
     <Flex>
       <Text>

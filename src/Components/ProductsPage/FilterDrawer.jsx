@@ -3,6 +3,7 @@ import { Button } from "@chakra-ui/button";
 import { useDisclosure } from "@chakra-ui/hooks";
 import { Box, Heading } from "@chakra-ui/layout";
 import {
+  
   Drawer,DrawerCloseButton,DrawerContent,DrawerFooter,DrawerOverlay,} from "@chakra-ui/modal";
 import Allfilters from './Allfilters';
 const FilterDrawer = ({filterHeading,price}) => {

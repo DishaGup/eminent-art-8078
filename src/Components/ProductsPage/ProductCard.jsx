@@ -8,6 +8,7 @@ import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Tex
 import StarRating from "./StarRating";
 import { memo } from "react";
   
+
   function ProductCard(props) {
  const { path, category} = useParams()
 const {   id, image, title, price,rating } = props;

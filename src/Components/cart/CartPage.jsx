@@ -171,6 +171,7 @@ function CartPage(props) {
                         />
                     ))}
                 </div>
+                
                 <Modal
                     open={open}
                     onClose={handleClose}

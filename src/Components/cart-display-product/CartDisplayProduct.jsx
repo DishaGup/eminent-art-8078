@@ -19,6 +19,7 @@ function CartDisplayProduct(props) {
         if (quantity > 1) {
             setQuantity(quantity - 1);
         }
+        
         reduceItemQuantity(id);
         props.setCartItems(getCart());
         // calculateTotalPrice();
