@@ -3,10 +3,10 @@ import { Carousel } from 'react-responsive-carousel';
 import { styled } from 'styled-components';
 
 export const Carousels = () => (
-    <div style={{ display: "flex" }}>
+    <div  style={{ display: "flex",zIndex:'-1' }}>
 
-        <div style={{ width: "83%",marginTop:"43px" }}>
-
+       <div style={{ width: "83%",marginTop:"80px" }}>
+ 
             <Carousel autoPlay>
                 <div>
                     <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Mar/31/HB1_Month_Web_Esha_31Mar23.jpg" />

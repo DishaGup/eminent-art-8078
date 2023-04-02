@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addtocart, getSingleProducts } from "../../Redux/ProductReducer/action";
 import { memo } from "react";
 import NotfoundCategory from "../../Pages/NotfoundCategory";
-
-
+import Zoom from "react-img-zoom";
+import { Carousel } from 'react-responsive-carousel';
 
 const SingleProductPageMain = () => {
 
@@ -86,16 +86,18 @@ const addtowishlist=(e)=>{
           <Box display={{ base: "none", md: "none", lg: "block" }}>
             <HStack justify={"space-between"}>
               {/* left multiple images */}
-
+{/* 
               <VStack
                 align="flex-start"
                 gap={0}
                 w={{ base: "20%", md: "30%" }}>
               
-                      <Box  overflow="hidden">
+                      <Box  overflow="hidden" w='150px'>
                         <Image
                           src={product.image}
-                          alt={`Image`}       />
+                          alt={`Image`}    
+                          objectFit='cover'
+                          />
                                           
                       </Box>
              
@@ -108,8 +110,28 @@ const addtowishlist=(e)=>{
                             </Box>
 
 
-              </VStack>
-              
+              </VStack> */}
+             
+       <div style={{ width: "83%",marginTop:"80px",h:'7cm' }}>
+ 
+ <Carousel autoPlay>
+     <div>
+         <img alt="1" src={product.image} />
+
+     </div>
+     <div>
+         <img alt="2" src={product.image2}  />
+
+     </div>
+     <div>
+         <img alt="" src="https://th.bing.com/th/id/R.cbc82af939081036784d5a25eef97567?rik=kSY%2btYZ3WJEG%2bw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-0lMF5Ciqcc4%2fVqERZmlvEGI%2fAAAAAAAABVU%2fFLECfobh3Yg%2fs1600%2fShopclues-4th-aniversary-sale.png&ehk=MpFW%2fxBFlenYs8ePTe%2fJYjNOL19YnLcepuIGD5q2NWQ%3d&risl=&pid=ImgRaw&r=0" />
+
+     </div>
+
+
+ </Carousel>
+
+</div> 
             </HStack>
           </Box> 
              {/* for small screen */}

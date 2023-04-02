@@ -47,8 +47,10 @@ useEffect(()=>{
   setSearchParams(params)
   },[sortingByPrice,pageno])
 
-
-
+  
+if(loading){
+  return ( <Spinner />)
+}else{
   return (
     <>
      <Box
@@ -147,7 +149,7 @@ useEffect(()=>{
                     {...e}
                     />) 
 
-                  )): ( <> <Spinner />     
+                  )): ( <> <NotfoundCategory/>     
 
                  </> 
                   
@@ -171,6 +173,6 @@ useEffect(()=>{
       </>
 
   )
-}
+}}
 
 export default memo(Sidebar)

@@ -1,3 +1,10 @@
+
+/////REMOVING
+
+
+
+
+
 import React from 'react'
 import {
     Image,
@@ -8,7 +15,7 @@ import {
     HStack,
     Menu,
     MenuButton,
-    MenuList, MenuItem
+    MenuList, MenuItem, border
 } from "@chakra-ui/react"
 import { Link } from 'react-router-dom'
 // import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
@@ -20,7 +27,7 @@ function NavDropdown() {
 
     return (
 
-        <div className='outSide'>
+        <div className='outSide'   >
             <HStack gap='5' ml={2} >
 
                 <Menu >
@@ -507,10 +514,10 @@ function NavDropdown() {
                     <MenuButton style={{ color: "black" }} className='MenuButton' >
 
                 <Link to={`/products/women`}>
-                <MenuButton className='MenuButton' >
+               
 
                         WOMEN
-                    </MenuButton>
+                  
                 </Link>
                 </MenuButton>
                     <MenuList marginTop='20px' soli marginLeft={-100}>

@@ -26,11 +26,11 @@ export const DailyEssentials = () => {
     };
     return (
         <>
-
-            <DIV >
+<DIV> 
+            <div >
                 <h2 className='heading-home-page'>Daily Essentials</h2>
-            </DIV>
-            <BOX style={{ position: "relative", marginTop: "32px", boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}>
+            </div>
+            <BOX style={{ position: "relative", marginTop: "32px", boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",backgroundColor:'white' }}>
                 <Carousel responsive={responsive}>
                     <div className='imgtag' style={{
                         display: "flex",
@@ -149,7 +149,7 @@ export const DailyEssentials = () => {
 
 
 
-            </BOX>
+            </BOX> </DIV>
         </>
     )
 }
@@ -157,6 +157,9 @@ export const DailyEssentials = () => {
 
 
 const DIV = styled.div`
+ background-color:#e9f6f7;
+ 
+
 .heading-home-page{
     margin-top: 52px;
     display: flex;

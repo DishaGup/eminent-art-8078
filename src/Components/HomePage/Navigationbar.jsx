@@ -1,19 +1,28 @@
 import {
   Box, Center, HStack, Editable,
-  EditableInput, EditablePreview, Flex, Image, Icon, Button
+  EditableInput, EditablePreview, Flex, Image, Icon, Button,  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  MenuItemOption,
+  MenuGroup,
+  MenuOptionGroup,
+  MenuDivider,
+
 } from '@chakra-ui/react'
 import React from 'react'
 import trendify_logo from '../../Assests/trendifyLogo.jpeg'
 import { CiLocationOn } from 'react-icons/ci'
 import { BsBell, BsHeart, BsCart3, BsSearch } from 'react-icons/bs'
 import "./Navigationabar.module.css"
-import { NavLink } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 
 import { TbLogin } from "react-icons/tb";
+import NavDrop from './NavDrop'
 const Navigationbar = () => {
   return (
-    <Box position='sticky' top='0' left='0' right='0' p={3} w='100%' overflow='hidden' m={'auto'} zIndex='1000' backgroundColor='#fff'>
-      <Flex justify='space-around'>
+    <Box position='fixed' top='0' left='0'display={{base:'none',md:'block'}} right='0' p={3} w='100%' overflow='hidden' m={'auto'} zIndex='1000' backgroundColor='#fff'>
+      <Flex   justify='space-around'>
         <Box w='20%' mx='20px'>
           <Center w='80%' >
             <button>
@@ -37,43 +46,43 @@ const Navigationbar = () => {
         <HStack color='#24a3b5' fontSize={22} justify='space-between' w='15%' >
           <Icon as={CiLocationOn} />
           <Icon as={BsBell} />
-          <Icon as={BsHeart} />
-          <Icon as={BsCart3} />
-          <NavLink to='/login'>
+        
+        
+          <Link to ='/wishlistpage' >  <Icon as={BsHeart} />  </Link>
 
-            <TbLogin />
-          </NavLink>
+          <Link to ='/cartpage' >  <Icon as={BsCart3} />   </Link>
 
-        </HStack>
 
-        <Box w='5%'>
+         
+
+
+          <Menu zIndex={200}>
+  <MenuButton as={Button} bg='white' size='20px' rightIcon={<TbLogin />}>
+  </MenuButton>
+  <MenuList fontSize='14px'>
+    <MenuItem >
+    <NavLink to='/login'>
+LOGIN/SIGNUP 
+</NavLink>
+    </MenuItem>
+    <MenuDivider m={0} />
+    <NavLink to='/adminpage'>
+    <MenuItem >
+ SELL WITH US
+    </MenuItem>
+    </NavLink>
+  </MenuList>
+</Menu>
+        
+   </HStack>
+  <Box w='3%'>
           {/* username */}
         </Box>
       </Flex>
-
-      <Box backgroundColor='#fff' >
-        <Flex w='93%' justifyContent='space-between' align='center' m='auto' display='inline-flex'>
-          {
-            ['Time Sales', 'Flu Care', 'Food & Beverage', "Personal Hygiene", "Home Cleaning", "Nutrition",
-              "Kitchen & Dining", "Refurbished Mobiles", "Mobile Accessories"].map((el, i) => <LineNavCompo key={i} name={el} />)
-
-          }
-
-        </Flex>
-      </Box>
-
+      <NavDrop/>
+    
     </Box >
   )
-}
-
-const LineNavCompo = ({ name}) => {
-
-  return (
-    <Center cursor='pointer' textAlign='center' w='180px' fontSize='13px' h='1cm' href='#' _hover={{ color: '#24a3b5' }}>
-      {name}
-    </Center>
-  )
-
 }
 
 

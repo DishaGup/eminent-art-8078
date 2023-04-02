@@ -14,6 +14,9 @@ import Payments from './../Pages/Payments';
 import { Home } from "../Pages/Home";
 import ProductPage from "../Pages/ProductPage";
 import SingleProductPageMain from "../Components/ProductsPage/SingleProductPageMain";
+import CartDisplayProduct from "../Pages/cart-display-product/CartDisplayProduct";
+import { Wishlist } from "../Pages/Wishlist";
+import CartPage from "../Pages/cart/CartPage";
 
 
 const AllRoutes = () => {
@@ -22,7 +25,8 @@ const AllRoutes = () => {
     <Routes>
       <Route path="/" element={<Home/>} />
       <Route path="/login" element={<LoginPage />} />
-      <Route path="/register" element={<Registration />} />
+       <Route path="/cartpage" element={<CartPage/>  } /> 
+       <Route path="/wishlistpage" element={<Wishlist/>  } />
       <Route path="/adminpage" element={<AdminPage />} />
       <Route path="/adminproducts" element={<AdminProducts />} />
       <Route path="/adminEditproducts/:id" element={<AdminEditProduct />} />
