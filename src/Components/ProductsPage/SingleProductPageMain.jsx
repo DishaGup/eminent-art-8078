@@ -44,6 +44,7 @@ import NotfoundCategory from "../../Pages/NotfoundCategory";
 import Zoom from "react-img-zoom";
 import { Carousel } from "react-responsive-carousel";
 import { useState } from "react";
+import Navmain from "../HomePage/Navmain.jsx";
 
 const SingleProductPageMain = () => {
   const [itemInCart, setItemInCart] = useState(false);
@@ -123,7 +124,9 @@ const SingleProductPageMain = () => {
     );
   } else {
     return (
-      product && (
+      <>
+        <Navmain />
+        product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -464,7 +467,8 @@ const SingleProductPageMain = () => {
             </Box>
           </Container>
         </Box>
-      )
+        )
+      </>
     );
   }
 };
