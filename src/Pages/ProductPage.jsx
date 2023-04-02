@@ -9,6 +9,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
+import Navmain from "../Components/HomePage/Navmain";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -52,7 +53,7 @@ const ProductPage = () => {
   return (
     <div>
       {/* <Banner/> */}
-
+      <Navmain />
       <Sidebar />
     </div>
   );

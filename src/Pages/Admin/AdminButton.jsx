@@ -56,15 +56,7 @@ export function AdminButton() {
 
   return (
     <>
-      <Button
-        onClick={onOpen}
-        bg={"#24a3b5"}
-        color={"white"}
-        _hover={{
-          bg: "black",
-        }}
-        mt="20vh"
-      >
+      <Button onClick={onOpen} color={"#24a3b5"}>
         Admin
       </Button>
 

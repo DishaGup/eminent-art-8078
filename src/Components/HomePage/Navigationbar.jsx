@@ -27,6 +27,7 @@ import { NavLink, Link } from "react-router-dom";
 
 import { TbLogin } from "react-icons/tb";
 import NavDrop from "./NavDrop";
+import { AdminButton } from "../../Pages/Admin/AdminButton";
 const Navigationbar = () => {
   return (
     <Box
@@ -118,9 +119,7 @@ const Navigationbar = () => {
                 <NavLink to="/login">LOGIN/SIGNUP</NavLink>
               </MenuItem>
               <MenuDivider m={0} />
-              <NavLink to="/adminpage">
-                <MenuItem>SELL WITH US</MenuItem>
-              </NavLink>
+              <AdminButton />
             </MenuList>
           </Menu>
         </HStack>
