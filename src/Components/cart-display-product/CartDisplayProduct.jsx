@@ -1,20 +1,21 @@
 import { useState } from "react";
 
-import "./CartDisplayProduct.css";
+import "./Category.css";
 import {
   addItemQuantity,
   getCart,
   reduceItemQuantity,
-} from "../../pages/cart/useLocalStorage";
+} from "./useLocalStorage";
+
 import { Link } from "react-router-dom";
 
 function CartDisplayProduct(props) {
-  const [quantity, setQuantity] = useState(props.quantity);
+  const [quantity, setQuantity] = useState(1);
 
   const seller = "Seller: DJP Team";
-  const { id, name, image, price, rating, handleRemove, calculateTotalPrice } =
-    props;
-
+  // const { id, name, image, price, rating, handleRemove, calculateTotalPrice } =
+  //   props;
+const id=2,price=2342,rating=34
   function handleReduce() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -38,14 +39,14 @@ function CartDisplayProduct(props) {
     <div className="single-cart-product-card">
       <div className="cart-card-flex">
         <div className="cart-product-image">
-          <img src={image} alt={name} />
+          <img src="https://rukminim1.flixcart.com/image/416/416/kg8avm80/mobile/s/9/w/apple-iphone-12-pro-dummyapplefsn-original-imafwgbr37gm57f7.jpeg?q=70" alt={name} />
           <div className="cart-quantity-buttons">
             <button
               disabled={quantity <= 1}
               onClick={handleReduce}
               className="reduce"
             >
-            
+
             </button>
             {quantity}
             <button onClick={handleAdd} className="increase">

@@ -1,0 +1,91 @@
+.single-cart-product-card {
+    margin: 1rem 0.5rem;
+    padding: 0.5rem;
+    /* border: 2px solid salmon; */
+    /* border: 2px solid #e3e5e8; */
+  }
+  .single-cart-product-card:hover {
+    box-shadow: 5px 1px 12px 1px rgba(228, 228, 228, 0.75);
+    -webkit-box-shadow: 5px 1px 12px 1px rgba(228, 228, 228, 0.75);
+    -moz-box-shadow: 5px 1px 12px 1px rgba(228, 228, 228, 0.75);
+    transition: box-shadow 0.2s;
+  }
+  
+  .cart-card-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    /* width: 50%; */
+  }
+  
+  .cart-product-image {
+    width: 20%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 0px 5px 0px;
+  }
+  
+  .cart-product-image > img {
+    /* border: 0.5px solid grey; */
+    max-height: 80%;
+  }
+  
+  .cart-quantity-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .cart-quantity-buttons > button {
+    margin: 1rem;
+    /* padding: 0.2rem 0.5rem; */
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5px;
+    /* color: white; */
+    font-size: 1rem;
+    border: 1px solid #e4e4e4;
+    box-shadow: 1px 1px 2px #e4e4e4;
+  }
+  
+  button :disabled {
+    background-color: red;
+  }
+  .cart-product-details {
+    width: 70%;
+    font-size: 100%;
+  }
+  .cart-product-buttons {
+    margin-top: 5vh;
+    color: rgb(121, 121, 121);
+  }
+  .cart-product-buttons:hover {
+    color: black;
+  }
+  .capitalize {
+    text-transform: capitalize;
+  }
+  @media screen and (max-width: 768px) {
+    .single-cart-product-card:hover {
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+    }
+    .cart-page-left-header h1 {
+      font-size: 0.8rem;
+      padding: 0;
+    }
+    .cart-product-details h3,
+    h6,
+    p {
+      padding-left: 7%;
+    }
+    .cart-product-buttons button {
+      margin-left: 7%;
+    }
+  }
+  

@@ -1,0 +1,222 @@
+.cart-page {
+    margin-top: 9vh;
+    display: flex;
+    background-color: #f1f3f6;
+    color: #29303e;
+    min-height: 91vh;
+    padding: 5px 10px;
+  }
+  
+  .cart-page > * {
+    margin: 20px;
+  }
+  
+  .cart-page-left {
+    width: 60%;
+    margin-left: 4%;
+    border: 1px solid #aaa;
+    background-color: white;
+    border: 1px solid #e3e5e8;
+    height: fit-content;
+  }
+  
+  .cart-page-right {
+    /* height: 50vh; */
+    width: 30%;
+    position: fixed;
+    right: 2%;
+    background-color: white;
+    border: 1px solid #e3e5e8;
+  }
+  
+  .cart-page-left-header {
+    border: 1px solid #aaa;
+    border: 1px solid #e3e5e8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .address-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .cart-page-left-header-address {
+    border: 1px solid #888;
+    padding: 5px;
+    margin: 5px;
+  }
+  
+  .cart-price-details {
+    height: 20%;
+    width: 100%;
+    font-weight: 550;
+    font-size: 1.05rem;
+    padding: 2vh 2vw 2vh 2vw;
+    color: #878787;
+  }
+  .cart-price {
+    height: 20%;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 2vh 2vw 2vh 2vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .cart-price h1 {
+    font-weight: 500;
+  }
+  
+  .cart-discount {
+    height: 20%;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 2vh 2vw 2vh 2vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .disc {
+    color: green;
+  }
+  .cart-delivery-charges {
+    height: 20%;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 2vh 2vw 2vh 2vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .cart-total {
+    height: 20%;
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 2vh 2vw 2vh 2vw;
+    display: flex;
+    justify-content: space-between;
+  }
+  .edit-address {
+    border: 1px solid #e3e5e8;
+    background-color: #e3e5e8;
+    padding: 8px 10px;
+    font-size: 0.95rem;
+  }
+  
+  .add-address {
+    border: 1px solid #e3e5e8;
+    background-color: #e3e5e8;
+    padding: 2px;
+    font-size: 0.95rem;
+    color: rgb(78, 78, 78);
+    padding: 5px 10px;
+  }
+  
+  .add-address-cart {
+    border: 1px solid #e3e5e8;
+    background-color: #e3e5e8;
+    padding: 2px;
+    font-size: 0.95rem;
+    color: rgb(78, 78, 78);
+    padding: 5px 10px;
+  }
+  
+  .addressForm {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .addressForm form {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 10px;
+    width: 70%;
+    max-width: 470px;
+  }
+  
+  .input__container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .input__container > * {
+    flex-grow: 1;
+  }
+  
+  .addressForm input {
+    padding: 5px;
+    margin: 5px;
+    outline: none;
+    border: 1px solid #aaa;
+  }
+  .place-order {
+    background-color: #e72744;
+    padding: 1vh 1.5vw 1vh 1.5vw;
+    margin: 5px 0 10px 2vw;
+    color: white;
+    border-radius: 5px;
+  }
+  
+  .orderPlaced__mastercontainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .orderPlacedClip__container {
+    width: 70%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 20px 20px;
+  }
+  
+  .orderPlacedClip__container > * {
+    margin: 2px;
+  }
+  
+  .orderPlacedClip__clip {
+    width: 60%;
+  }
+  
+  .orderPlacedClip__button {
+    font-size: 1.2rem;
+    border: 1px solid #aaa;
+    outline: none;
+    background-color: #fb641b;
+    color: white;
+    padding: 3px 11px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .cart-page {
+      flex-direction: column;
+      align-items: center;
+    }
+    .cart-page-right {
+      position: relative;
+      width: 90%;
+      right: 0;
+      margin: 0 0 15px 0;
+    }
+    .cart-page-left {
+      width: 90%;
+      margin-left: auto;
+    }
+    .place-order-div {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .place-order {
+      margin-right: 2vw;
+    }
+  }
+  
