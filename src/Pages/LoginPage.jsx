@@ -8,10 +8,8 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
 } from "firebase/auth";
-import Navigationbar from "../Components/HomePage/Navigationbar";
-import NavbarDrop from "./HomeComponents/NavbarDrop"
+
 import { Footer } from "./HomeComponents/Footer";
-import Navbar from "./HomeComponents/Navbar";
 
 const LoginPage = () => {
   // Login Firebase Config
@@ -27,6 +25,7 @@ const LoginPage = () => {
         // Signed in
         const user = userCredential.user;
         console.log(user.accessToken);
+        localStorage.setItem("Isauth", user.accessToken);
         if (user.accessToken) {
           navigate("/");
         }
@@ -35,7 +34,7 @@ const LoginPage = () => {
       .catch((error) => {
         // const errorCode = error.code;
         // const errorMessage = error.message;
-        window.alert("Plz Enter Valid Data")
+        window.alert("Plz Enter Valid Data");
       });
   };
 
@@ -80,9 +79,6 @@ const LoginPage = () => {
 
   return (
     <>
-      
-      <Navbar />
-      
       <div className={`containers ${mode === "sign-up" ? "sign-up-mode" : ""}`}>
         <div class="forms-container">
           <div class="signin-signup">
@@ -208,7 +204,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

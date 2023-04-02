@@ -1,10 +1,23 @@
-import { Box, HStack, Text, Image, Button, VStack, Heading } from "@chakra-ui/react";
-import axios, { Axios } from "axios";
-import {  useEffect, useState } from "react";
-import {  Navigate, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { Box, HStack, Text, Image, Button, VStack } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 export const RightDiv = () => {
-  const naigate=useNavigate()
+  const naigate = useNavigate();
+  const [item, setItem] = useState("");
+  const [wishlistData, setWishlistData] = useState([]);
+
+  const getData = () => {
+    axios.get(`http://localhost:4444/wishlist`).then((res) => {
+      setWishlistData(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getData();
+  }, [wishlistData.length]);
+  console.log(item);
   // const Items = [
   //   {
   //     id: 1,
@@ -31,35 +44,29 @@ export const RightDiv = () => {
   //     tag: "menaccessories",
   //   },
   // ];
-   
 
-
-  //only 
-  
-  
-  const[ wishlistData,setWishlistData]=useState([])
-  const handleDelete=(id)=>{
-
-axios.delete(`http://localhost:4444/wishlist/${id}`).then((res)=>alert("Redirecting to Homepage--" )  ).catch((err)=>console.log(err)).finally(()=><Navigate to='/' /> )
-  }
+  const handleDelete = (item) => {
+    //    let x = wishlistData.filter((el)=>+el.id!==+item.id)
+    //  setWishlistData(x)
+    let id = +item.id;
+    axios.delete(`http://localhost:4444/wishlist/${id}`).then((res) => {
+      console.log(res);
+    });
+    getData();
+  };
   //console.log(wishlistData)
-  
-//only rectify these function using wishlist reducer
-
-
-  useEffect(()=>{
-    axios.get(`http://localhost:4444/wishlist`).then((res)=>setWishlistData(res.data)).catch((err)=>console.log(err))
-    localStorage.setItem("wishlength",JSON.stringify(wishlistData.length))
-  },[])
+  // useEffect(()=>{
+  //   localStorage.setItem("listLength",JSON.stringify(Items.length))
+  // },[Items.length])
 
   return (
     <Box
-      width={{base:'95%',lg:"71%"}} p={5}
+      width={{ base: "98%", lg: "70%" }}
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ sm: "xs", md: "sm", lr: "sm", "2xl": "sm" }}
     >
       <Text fontWeight={"bold"} mt="10px">
-        Wishlist Page
+        My Wishlist
       </Text>
 
       {wishlistData.map((item) => {
@@ -72,15 +79,14 @@ axios.delete(`http://localhost:4444/wishlist/${id}`).then((res)=>alert("Redirect
             key={item.id}
           >
             <HStack>
-              <Image
-                width={"100px"}
-                src={item.image}
-              />
-              <Box align='left' ml='20px' >
-                <Heading fontSize='28px' fontWeight={'600'}>{item.title}</Heading>
-                <Text textDecoration={"line-through"}>₹{+item.price+100} </Text>
+              <Image width={"100px"} src={item.image} />
+              <Box>
+                <Text>{item.title}</Text>
+                <Text textDecoration={"line-through"}>
+                  ₹{+item.price + 100}{" "}
+                </Text>
                 <Text>
-                ₹{item.price} <span style={{ color: "green" }}>50% Off</span>{" "}
+                  ₹{item.price} <span style={{ color: "green" }}>35% Off</span>{" "}
                 </Text>
               </Box>
             </HStack>
@@ -90,7 +96,9 @@ axios.delete(`http://localhost:4444/wishlist/${id}`).then((res)=>alert("Redirect
                 color={"white"}
                 size={["xs", "sm", "md", "md"]}
                 fontSize={["sm", "md", "md", "md"]}
-                onClick={()=>{ naigate("/payments")}}
+                onClick={() => {
+                  naigate("/payments");
+                }}
               >
                 Buy Now
               </Button>
@@ -99,8 +107,7 @@ axios.delete(`http://localhost:4444/wishlist/${id}`).then((res)=>alert("Redirect
                 color="orange.300"
                 size={["xs", "sm", "md", "md"]}
                 fontSize={["xs", "md", "md", "md"]}
-                onClick={()=>handleDelete(item.id)}
-
+                onClick={() => handleDelete(item)}
               >
                 Remove
               </Button>

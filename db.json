@@ -2709,20 +2709,31 @@
       "category": "women",
       "brand": "levis",
       "tag": "saree"
+    },
+    {
+      "id": 3,
+      "title": "Fab Women Art Silk Sarees",
+      "image": "https://images.meesho.com/images/products/60877542/quzdp_400.webp",
+      "image2": "https://images.meesho.com/images/products/60877542/quzdp_400.webp",
+      "price": 280,
+      "rating": "3.7",
+      "reviews": "23947 Reviews",
+      "brand": "levis",
+      "category": "women",
+      "tag": "saree"
+    },
+    {
+      "id": 1,
+      "title": "Lycra Drawstring and Elastic Saree Shapewear",
+      "image": "https://images.meesho.com/images/products/102247670/sysxa_400.webp",
+      "image2": "https://images.meesho.com/images/products/102247670/sysxa_400.webp",
+      "price": 239,
+      "rating": "3.9",
+      "reviews": "906 Reviews",
+      "category": "women",
+      "tag": "saree",
+      "brand": "levis"
     }
   ],
-  "wishlist" :[
-    {
-      "id": 2,
-      "title": "Adrika Cotton Sarees",
-      "image": "https://images.meesho.com/images/products/32768758/y5lju_400.webp",
-      "image2": "https://images.meesho.com/images/products/32768758/y5lju_400.webp",
-      "price": 223,
-      "rating": "3.7",
-      "reviews": "27596 Reviews",
-      "category": "women",
-      "brand": "levis",
-      "tag": "saree"
-    }
-  ]
+  "wishlist": []
 }

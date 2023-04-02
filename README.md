@@ -1,7 +1,8 @@
-### eminent-art-8078
+### Project-Code: eminent-art-8078
 
-# TRENDIFY    
-<p> RESPONSIVE  |  COLLABORATIVE </p>
+# TRENDIFY
+
+<p> RESPONSIVE  |  DYNAMIC | COLLABORATIVE </p>
 
 <br>
 
@@ -12,43 +13,24 @@
 <img src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white' />
 <img src='https://img.shields.io/badge/Material%20UI-007FFF?style=for-the-badge&logo=mui&logoColor=white' />
 <img src='https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white' />
-<img src='' />
-   </div>
+<!-- <img src='' />
+   </div> -->
 
-
-An e-commerce website for clothing and health & care products. Built and executed in an span of 5 days. 
-
+An e-commerce website for clothing, health & care products. A Collaborative project Built in 5 Days.
 
 ## Members:
 
-Team Lead : Disha Gupta (All product page,responsiveness, backened, Single Product Page)
+- Team Lead : <strong> Disha Gupta </strong>
+  (Product page, Responsiveness, Single Product Page )
 
 <ul>
-<li> Lokesh Chaudhary (HomePage, Responsiveness, Login Page) </li>
-<li> </li>
+<li> Team Member: Lokesh Chaudhary ( HomePage, Responsiveness, Login Page) </li>
+<br />
+<li> Team Member: Rahul Dudka ( Admin Page, CRUD Functionality) </li>
+<br />
+<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page) </li>
+<br />
+<li> Team Member: Prayas Tiwari ( Footer ) </li>
+<br />
+
 </ul>
-
-<!-- 
-Theme color = #24a3b5;
-backgroundColor='#e9f6f7'
-
-Pages-
-HomePage-
-Products Page- 5 or more
-Product single Page
-Login 
-Register
-Add To cart 
-Buy -->
-
-
-<!-- Admin Page – Add Product,Editing , Delete  -->
-
- 
-
-
- 
-// http://localhost:4444/products?q=
-
-name
- 
