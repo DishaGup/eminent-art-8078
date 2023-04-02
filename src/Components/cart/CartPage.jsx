@@ -14,7 +14,7 @@ function CartPage(props) {
 
     const cartItemst = getCart();
     const [cartItemsCount, setCartItemsCount] = useState(cartItemst.length);
-    console.log(cartItemst[0].price)
+    console.log(cartItemst.price)
 
     const [cartItems, setCartItems] = useState(getCart() || []);
     const [totalPrice, setTotalPrice] = useState(0);
@@ -171,7 +171,7 @@ function CartPage(props) {
                         />
                     ))}
                 </div>
-                
+
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -310,12 +310,12 @@ function CartPage(props) {
                         <h1>₹{totalPrice}</h1>
                     </div>
                     <div className="place-order-div">
-                    <NavLink to='/payments'>
+                        <NavLink to='/payments'>
 
-                        <button onClick={handleOrder} className="place-order">
-                            Place Order
-                        </button>
-                    </NavLink>
+                            <button onClick={handleOrder} className="place-order">
+                                Place Order
+                            </button>
+                        </NavLink>
                     </div>
                 </div>
             </div>

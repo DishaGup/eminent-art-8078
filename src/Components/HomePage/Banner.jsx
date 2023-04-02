@@ -1,3 +1,7 @@
+
+
+//remove  
+
 import React from 'react'
 import {CCarousel,CCarouselItem,CImage} from '@coreui/react'
 import '@coreui/coreui/dist/css/coreui.min.css'

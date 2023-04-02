@@ -6,8 +6,15 @@ import {AiOutlineStar} from "react-icons/ai"
 import {AiOutlineHeart} from "react-icons/ai"
 import{BsCursor, BsHouseGear} from "react-icons/bs"
 import{BsHeadset} from "react-icons/bs"
+import { useEffect, useState } from "react"
 export default function LeftDiv(){
-    return<Box width={"30%"} boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"} fontSize={{ base: 'sm', md: 'md', lg: 'md',xl:"md","2xl":"md" }}  >
+   const [itemCount,setItemCount]=useState(0)
+     useEffect(()=>{
+      let length= JSON.parse(localStorage.getItem("wishlength"))
+       setItemCount(length)
+     },[])
+
+    return<Box width={{base:'95%',lg:"25%"}} p={5}  boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"} fontSize={{ base: 'sm', md: 'md', lg: 'md',xl:"md","2xl":"md" }}  >
 
          <Stack p = '3%'>
 
@@ -49,7 +56,7 @@ export default function LeftDiv(){
               <HStack justifyContent="space-around">
                  <AiOutlineHeart size = '25px'/>
                   <Text>MY Wishlist</Text>
-                  <Button color={"white"} bg={"teal.400"} size={['2xs', 'sm', 'md', 'md']} fontSize={["2xs", 'sm', 'md', 'md',"md"]}>0</Button>
+                  <Button color={"white"} bg={"teal.400"} size={['2xs', 'sm', 'md', 'md']} fontSize={["2xs", 'sm', 'md', 'md',"md"]}>{itemCount}</Button>
               </HStack>
 
 

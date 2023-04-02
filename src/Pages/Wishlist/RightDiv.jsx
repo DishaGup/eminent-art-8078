@@ -1,52 +1,65 @@
-import { Box, HStack, Text, Image, Button, VStack } from "@chakra-ui/react";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
+import { Box, HStack, Text, Image, Button, VStack, Heading } from "@chakra-ui/react";
+import axios, { Axios } from "axios";
+import {  useEffect, useState } from "react";
+import {  Navigate, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 export const RightDiv = () => {
-
   const naigate=useNavigate()
-  const Items = [
-    {
-      id: 1,
-      title: "Stylish Men Watches",
-      image:
-        "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/t/r/b/l-bonflower-511-light-green-fifth-u-original-imagj85mwejpz4fq.jpeg?q=70",
-      price: 243,
-      rating: "3.8",
-      reviews: "4637 Reviews",
-      category: "men",
-      tag: "menaccessories",
-    },
-    {
-      id: 2,
-      title: "Ravishing Men Watches",
-      image:
-        "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
-      image2:
-        "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
-      price: 203,
-      rating: "3.9",
-      reviews: "418 Reviews",
-      category: "men",
-      tag: "menaccessories",
-    },
-  ];
-   const[ wishlistData,setWishlistData]=useState(Items)
-  const handleDelete=(item)=>{
-   let x = wishlistData.filter((el)=>
-     +el.id!=+item.id
-    )
- setWishlistData(x)
+  // const Items = [
+  //   {
+  //     id: 1,
+  //     title: "Stylish Men Watches",
+  //     image:
+  //       "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/t/r/b/l-bonflower-511-light-green-fifth-u-original-imagj85mwejpz4fq.jpeg?q=70",
+  //     price: 243,
+  //     rating: "3.8",
+  //     reviews: "4637 Reviews",
+  //     category: "men",
+  //     tag: "menaccessories",
+  //   },
+  //   {
+  //     id: 2,
+  //     title: "Ravishing Men Watches",
+  //     image:
+  //       "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
+  //     image2:
+  //       "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
+  //     price: 203,
+  //     rating: "3.9",
+  //     reviews: "418 Reviews",
+  //     category: "men",
+  //     tag: "menaccessories",
+  //   },
+  // ];
+   
+
+
+  //only 
+  
+  
+  const[ wishlistData,setWishlistData]=useState([])
+  const handleDelete=(id)=>{
+
+axios.delete(`http://localhost:4444/wishlist/${id}`).then((res)=>alert("Redirecting to Homepage--" )  ).catch((err)=>console.log(err)).finally(()=><Navigate to='/' /> )
   }
-  console.log(wishlistData)
+  //console.log(wishlistData)
+  
+//only rectify these function using wishlist reducer
+
+
+  useEffect(()=>{
+    axios.get(`http://localhost:4444/wishlist`).then((res)=>setWishlistData(res.data)).catch((err)=>console.log(err))
+    localStorage.setItem("wishlength",JSON.stringify(wishlistData.length))
+  },[])
+
   return (
     <Box
-      w="67%"
+      width={{base:'95%',lg:"71%"}} p={5}
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ sm: "xs", md: "sm", lr: "sm", "2xl": "sm" }}
     >
       <Text fontWeight={"bold"} mt="10px">
-        My Wishlist
+        Wishlist Page
       </Text>
 
       {wishlistData.map((item) => {
@@ -63,11 +76,11 @@ export const RightDiv = () => {
                 width={"100px"}
                 src={item.image}
               />
-              <Box>
-                <Text>{item.title}</Text>
+              <Box align='left' ml='20px' >
+                <Heading fontSize='28px' fontWeight={'600'}>{item.title}</Heading>
                 <Text textDecoration={"line-through"}>₹{+item.price+100} </Text>
                 <Text>
-                 {item.price} <span style={{ color: "green" }}>50% Off</span>{" "}
+                ₹{item.price} <span style={{ color: "green" }}>50% Off</span>{" "}
                 </Text>
               </Box>
             </HStack>
@@ -86,7 +99,7 @@ export const RightDiv = () => {
                 color="orange.300"
                 size={["xs", "sm", "md", "md"]}
                 fontSize={["xs", "md", "md", "md"]}
-                onClick={()=>handleDelete(item)}
+                onClick={()=>handleDelete(item.id)}
 
               >
                 Remove

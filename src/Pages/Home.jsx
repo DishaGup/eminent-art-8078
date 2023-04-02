@@ -42,20 +42,28 @@ export const Home = () => {
     };
     return (
         <>
+<<<<<<< HEAD
             <Navigationbar />
             {/* <Navbar/> */}
             <NavbarDrop />
+=======
+            {/* <Navigationbar />  */}
+            {/* <Navbar/> */}
+            {/* <NavbarDrop /> */}
+>>>>>>> 1d86af8d59e6a284ba62ff29810433ed17c7eb40
             <Carousels />
-            <DIV >
+            <DIV>
+            <div >
                 <h2 className='heading-home-page'> Deals of the Day</h2>
-            </DIV>
-            <BOX style={{ position: "relative", marginTop: "22px", boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px" }}>
+            </div>
+            <BOX style={{ position: "relative", marginTop: "22px", boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",backgroundColor:'white' }}>
                 <Carousel responsive={responsive}>
                     <div className='imgtag' style={{
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center", padding: "30px",
-                        padding: "30px"
+                        padding: "30px",
+                        backgroundColor:'1px solid green'
                     }}>
                         <div>
 
@@ -216,13 +224,10 @@ export const Home = () => {
 
                             <p>₹199 MRP:₹205 3% off</p>
                         </div>
-                    </div>
+                    </div>  
                 </Carousel>
-
-
-
             </BOX>
-
+            </DIV>
             <Store />
             <DailyEssentials />
             <ShopcluesGlobal />
@@ -256,13 +261,15 @@ const DIV = styled.div`
 }
 
 .imga{
-    border: 3px solid black;
+    border: 1px solid black;
 }
  
 `;
 
 const BOX = styled.div`
-    /* background: #e1fbff; */
+     background-colour: #fff
+     border='1px solid red'
+     
 .imgtag:hover{
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     border: 1px solid #24a3b5;

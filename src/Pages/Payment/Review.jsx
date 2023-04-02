@@ -4,10 +4,9 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import { useSelect } from '@mui/base';
-import { store } from '../../Redux/Store';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const products = [
   {
@@ -56,14 +55,25 @@ export default function Review() {
  'cardNumber':'',
  'expDate':"",
  'cvv':''})
+    // const Card=useSelector((store)=>{
+    //   return store.PaymentReducer.card
+    // })
 
+    
+
+    // const Address=useSelector((store)=>{
+    //   return store.PaymentReducer.Address
+
+    // })
+    // console.log(Card)
  useEffect(()=>{
   let Data= JSON.parse(localStorage.getItem("addressDetails"))
   let card=JSON.parse(localStorage.getItem("card"))
-  setAddresData(Data)
-  setCard(card)
+  setAddresData({...addressData,...Data})
+  setCard({...card})
 },[])
-console.log(addressData)
+//console.log(addressData)
+console.log(card)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>

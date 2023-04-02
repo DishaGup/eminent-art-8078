@@ -1,0 +1,46 @@
+#maindiv {
+    background-color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 100%;
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin: auto;
+    align-items: center;
+    height: 70px;
+  }
+  
+  .logo > img:hover {
+    cursor: pointer;
+  }
+  
+  
+  
+ 
+  @media screen and (max-width: 1024px) {
+    .logo {
+      width: 8%;
+    }
+  
+    
+  
+  }
+  
+  @media screen and (max-width: 650px) {
+    #maindiv {
+      width: 100%;
+      position: sticky;
+      z-index: 1000;
+    }
+    .logo {
+      width: 15%;
+      margin-right: 20px;
+    }
+    
+  }

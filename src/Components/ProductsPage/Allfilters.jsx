@@ -47,7 +47,7 @@ const[categorytag,setcategorytag]=useState(initialcategory|| [])
     setSearchParams(params)
     },[categorytag,sortingByPrice,sortrange,brandrange])
 
-   const handlechange=(e)=>{
+   const handlechange=  (e)=>{
     let filterdata=[...categorytag]
     let value=e.target.value
     if(filterdata.includes(value)){
@@ -196,7 +196,7 @@ const handlesort=(e)=>{
 
       
 {
-    category==='men' || category===undefined && (<AccordionPanel pb={4}>   
+    category==='men'  || category===undefined && (<AccordionPanel pb={4}>   
     <Box p={1} > 
     <Checkbox isChecked={categorytag.includes("menaccessories")} name='categorytag' onChange={handlechange}  my={2} value='menaccessories' >Men accessories</Checkbox>
     </Box>

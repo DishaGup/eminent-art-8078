@@ -1,6 +1,20 @@
+
+
+///REMOVE_______
+
+
+
+
+
+
+
 import { Box, Heading, Center, Flex, Grid, GridItem, SimpleGrid } from '@chakra-ui/react'
 import React from 'react'
 import ProductCard from './ProductCard'
+
+
+
+
 
 export const objectofdealsoftheday = [
   {

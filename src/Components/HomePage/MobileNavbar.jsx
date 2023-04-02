@@ -1,10 +1,12 @@
 
 import React from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { Flex, IconButton, useDisclosure, Image } from "@chakra-ui/react";
-import Bag from "./Bag";
+import { Flex, IconButton, useDisclosure, Image, Icon } from "@chakra-ui/react";
+import {BsCart3 } from 'react-icons/bs'
+
 import { Link } from "react-router-dom";
-import MobileMenu from "./MobileMenu";
+import MobileMenu from "./Mobilemenu";
+import logo from '../../Assests/trendifyLogo.jpeg'
 const MobileNavbar = () => {
     
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -23,9 +25,12 @@ const MobileNavbar = () => {
     <MobileMenu isOpen={isOpen} onClose={onClose} />
     <Link to="/">
       {" "}
-      <Image h="60px" src="lint_lightmode.png" alt="logo" />
+      <Image h="60px" src={logo} alt="logo" />
     </Link>
-    <Bag fontSize="30px" />
+ {' '}
+ <Link to='/cartpage' >
+     <Icon size='22px' colour='#24a3b5' as={BsCart3} />
+     </Link>
   </Flex>
   )
 }

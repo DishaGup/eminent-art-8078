@@ -13,9 +13,13 @@ const ProductPage = () => {
   const {category} = useParams()
 //console.log(category)
   const [searchParams,setSearchParams]=useSearchParams()
+<<<<<<< HEAD
   let {loading, productsData, allData, params, filters}=useSelector((store)=>store.ProductReducer)
 
   console.log(allData)
+=======
+  let {loading, productsData, allData}=useSelector((store)=>store.ProductReducer)
+>>>>>>> 1d86af8d59e6a284ba62ff29810433ed17c7eb40
 let location=useLocation()
 //console.log(category)
 const initialsortdata =searchParams.get('sortingByPrice')
@@ -45,26 +49,16 @@ params:{
 const dispatch=useDispatch()
 
 useEffect(()=>{
-  dispatch(getAllProducts(data))
-},[location.search])
+  dispatch(getProducts(data))
+},[location.search,category])
  
  
     return (
     <div>
  {/* <Banner/> */}
-<Box>
- 
-
-</Box>
-
-
-
-
-
-
 
 <Sidebar/>
-{/* <PriceAccord/> */}
+
     </div>
   )
 }

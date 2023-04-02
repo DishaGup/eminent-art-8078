@@ -1,4 +1,4 @@
-import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Text,useColorModeValue} from "@chakra-ui/react";
+import { Spinner,Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Text,useColorModeValue} from "@chakra-ui/react";
   import React, { useRef } from "react";
  import {FiTruck} from 'react-icons/fi'
  import {BsFillHeartFill} from 'react-icons/bs'
@@ -7,13 +7,15 @@ import { Icon,Box,Center,Image,HStack,VStack, Card, CardBody, Heading,Stack, Tex
   import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
 import { memo } from "react";
+import NotfoundCategory from "../../Pages/NotfoundCategory";
   
 
   function ProductCard(props) {
  const { path, category} = useParams()
 const {   id, image, title, price,rating } = props;
-let {loading, productsData,allData}=useSelector((store)=>store.ProductReducer)
+let {loading, productsData,allData,wishlistdata}=useSelector((store)=>store.ProductReducer)
 const imagezoom = useRef()
+
 const handleimagezoomin=()=>{
     imagezoom.current.style.scale='1.03'
     imagezoom.current.style.transition='all .3s ease'
@@ -24,18 +26,21 @@ const handleimagezoomout=()=>{
 }
 
 const dispatch=useDispatch()
-const addtowishlist=(id)=>{
-  console.log('enter')
-
-  allData.map((el)=>
- {
-  if(el.id==id){
-    dispatch(addtowishlist(el))
-    console.log('added',el)
+const addtowishlist=(ids)=>{
+ let data={
+  brand: ids.brand,
+category:ids.category,id:ids.id,
+image:ids.image,
+image2:ids.image2,
+price:ids.price,
+rating:ids.rating,
+reviews:ids.reviews,
+tag:ids.tag,
+title:ids.title,
+ }
   }
- }) }
 
-
+  // dispatch(addtowishlist(data))
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -45,7 +50,7 @@ const addtowishlist=(id)=>{
            
           <CardBody p={"5px"}   onMouseOver={handleimagezoomin}
     onMouseLeave={handleimagezoomout}  _hover={{border:'1px solid #24a3b5'}}>
-                <Box zIndex='100' onClick={()=>addtowishlist(id)}   _hover={{color:'#24a3b5',zoom:'1.05'}}  pos='absolute' bottom='10' right='10' >
+                <Box zIndex='100' onClick={()=>addtowishlist(props)}   _hover={{color:'#24a3b5',zoom:'1.05'}}  pos='absolute' bottom='10' right='10' >
            <Icon   size='20px' as={BsFillHeartFill} />
            </Box>
         <Link to={`/products/${category}/${id}/single?`}  >
@@ -121,11 +126,7 @@ const addtowishlist=(id)=>{
           </CardBody>
         </Card>
    
-
-
-
-
     );
   }
-  
+
   export default memo(ProductCard);

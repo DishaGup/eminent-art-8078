@@ -6,6 +6,10 @@
 
 //Main function starts  
 
+
+// Remove  ------------
+
+
 export default function ProductCard({ image, brand, cutprice, discount, actualprice }) {
 
 
