@@ -2,6 +2,7 @@ import axios from "axios";
 import {
   ADD_PRODUCTS_SUCCESS,
   ADD_WISHLIST_SUCCESS,
+  GET_ALL_DATA_SUCCESS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
@@ -45,7 +46,7 @@ export const getAllProducts = (category) => (dispatch) => {
     .get(`http://localhost:4444/products`, category)
     .then((res) =>
       dispatch({
-        type: GET_PRODUCTS_SUCCESS,
+        type: GET_ALL_DATA_SUCCESS,
         payload: res,
       })
     )

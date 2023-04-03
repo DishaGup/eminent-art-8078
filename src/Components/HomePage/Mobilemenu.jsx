@@ -45,7 +45,7 @@ export default function MobileMenu({ isOpen, onOpen, onClose }) {
                     {label.lists.alldata.map((i) => (
                       <AccordionPanel pb={4}>
                         <Link
-                          to={`/products/${label.lists.title}/${i.heading}`}>
+                          to={`/products/${label.lists.title.toLowerCase()}`}>
                           {i.heading}
                         </Link>
                       </AccordionPanel>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Sidebar from "../Components/ProductsPage/Sidebar";
-import { getAllProducts } from "../Redux/ProductReducer/action";
+import { getAllProducts,getProducts } from "../Redux/ProductReducer/action";
 import {
   useLocation,
   useNavigate,
@@ -47,8 +47,19 @@ const ProductPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllProducts(data));
-  }, [location.search, category]);
+  //  if(category===undefined){
+  //   let datas={
+  //     params:{
+  //       category: category || "men",
+  //       _page: searchParams.get("pageno"),
+  //       _limit: 15,
+  //     }
+  //   }
+  //   dispatch(getProducts(datas))
+  //  }else{
+      
+    dispatch(getProducts(data))
+  }, [location.search]);
 
   return (
     <div>

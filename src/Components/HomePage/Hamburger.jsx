@@ -31,7 +31,7 @@ function Hamburger() {
             </div>
             <span><RxCardStackPlus /><li>Lint Rewards</li></span>
             <span><AiFillDollarCircle /><li>Coupons</li></span>
-            {/* <span><BsPerson /><li>My Account</li></span>      */}
+           
             <span><BsBagPlus /><li>Bag</li></span>
             <span><AccountDropdown /></span>
           </ul>

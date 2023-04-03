@@ -34,3 +34,36 @@ An e-commerce website for clothing, health & care products. A Collaborative proj
 <br />
 
 </ul>
+
+## Snippets of Our Website-
+
+<br/>
+
+## Home Page-
+
+<img  src='./src/Assests/homepage.png' alt='homepage' />
+
+<br/>
+
+## Product Page-
+
+### Men's-
+<img  src='./src/Assests/menpage.png' alt='homepage' />
+
+<br/>
+
+### Women's-
+
+<img  src='./src/Assests/womenpage.png' alt='homepage' />
+
+<br/>
+
+
+## Single Product Page-
+
+<img  src='./src/Assests/singlecartpage.png' alt='homepage' />
+<br/>
+<!-- 
+## HomePage-
+
+<img  src='./src/Assests/homepage.png' alt='homepage' /> -->

@@ -74,10 +74,9 @@ const SingleProductPageMain = () => {
     // console.log(getCart());
     const cartItems = getCart();
 
-    // console.log("ASD", cartItems);
-
     cartItems.map((item) => {
       if (item.id === id) setItemInCart(true);
+    
     });
   }, []);
 
@@ -91,10 +90,7 @@ const SingleProductPageMain = () => {
     // Add logic to buy products
     navigate("/payments");
   };
-  // const addtowishlist=(e)=>{
-  //   e.stopPropogation()
-
-  // }
+  
 
   const addItem = () => {
     addItemToCart({
@@ -105,7 +101,8 @@ const SingleProductPageMain = () => {
       quantity: 1,
       img: product.image,
     });
-    console.log(product);
+    //console.log(product);
+    window.alert('You Item has been added to Cart')
     setItemInCart(true);
     setCartItemsCount(getCart().length);
   };
@@ -153,31 +150,7 @@ const SingleProductPageMain = () => {
                 <Box display={{ base: "none", md: "none", lg: "block" }}>
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
-                    {/* 
-              <VStack
-                align="flex-start"
-                gap={0}
-                w={{ base: "20%", md: "30%" }}>
-              
-                      <Box  overflow="hidden" w='150px'>
-                        <Image
-                          src={product.image}
-                          alt={`Image`}    
-                          objectFit='cover'
-                          />
-                                          
-                      </Box>
-             
-                      <Box h="100px" overflow="hidden">
-                              <Image
-                                src={product.image2?product.image2:''}
-                                alt={`Image2`}
-                                                     
-                              />
-                            </Box>
-
-
-              </VStack> */}
+                   
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
                       <Carousel autoPlay>

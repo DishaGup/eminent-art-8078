@@ -16,6 +16,7 @@ const NavDrop = () => {
             <div id="dropcont">
               <div className="big_parent">
                 <div id="parent">
+                  
                   <Link to={`/products/${el.lists.title.toLowerCase()}`}>
                     <h2 className="q">{el.lists.title}</h2>
                   </Link>

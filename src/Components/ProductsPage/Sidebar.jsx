@@ -170,7 +170,7 @@ const Sidebar = () => {
               justify={{ base: "center", md: "flex-end" }}
             >
               {productsData.length > 1 && (
-                <Pagination
+                <Pagination 
                   current={pageno}
                   total={Math.ceil(100 / 15)}
                   handlePageChange={(page) => setpageno(page)}
