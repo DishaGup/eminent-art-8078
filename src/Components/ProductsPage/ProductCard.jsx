@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { FiTruck } from "react-icons/fi";
@@ -27,8 +28,9 @@ import { Addtowishlist } from "../../Redux/ProductReducer/action";
 
 function ProductCard(props) {
   const { path, category } = useParams();
+  const toast=useToast()
   const { id, image, title, price, rating } = props;
-  let { loading, productsData, allData, wishlistdata } = useSelector(
+  let { loading, productsData, wishlistdata } = useSelector(
     (store) => store.ProductReducer
   );
   const imagezoom = useRef();
@@ -56,12 +58,23 @@ function ProductCard(props) {
       tag: ids.tag,
       title: ids.title,
     };
+    toast({
+      title: 'Product Added',
+          description: "Product added to wishlist.",
+          status: 'success',
+          duration: 2000,
+          isClosable: true,
+          position: 'top',
+    })
     // console.log(data);
     dispatch(Addtowishlist(data));
   };
 
   const navigate = useNavigate();
   const location = useLocation();
+
+
+
 
   return (
     <Card maxW="sm">

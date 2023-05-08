@@ -12,6 +12,8 @@ import SingleProductPageMain from "../Components/ProductsPage/SingleProductPageM
 import { Wishlist } from "../Pages/Wishlist";
 import CartPage from "../Pages/cart/CartPage";
 import { PrivateRoute } from "../Components/PrivateRoute";
+import Allfilters from "../Components/ProductsPage/Allfilters";
+import Sidebar from "../Components/ProductsPage/Sidebar";
 
 const AllRoutes = () => {
   return (
@@ -53,7 +55,7 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/products/:category?" element={<ProductPage />} />
+      <Route path="/products/:category?" element={<Sidebar />} />
       <Route
         path="/products/:category?/:id/single?"
         element={<SingleProductPageMain />}
