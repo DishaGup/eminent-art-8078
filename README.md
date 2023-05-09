@@ -1,5 +1,5 @@
 ### Project-Code: eminent-art-8078
-<a href="https://velvety-churros-bb0ba8.netlify.app/" >Deployed Link</a>
+<a href="[https://velvety-churros-bb0ba8.netlify.app/](https://trendifies.vercel.app/)" >Deployed Link</a>
 # TRENDIFY
 
 <p> RESPONSIVE  |  DYNAMIC | COLLABORATIVE </p>
