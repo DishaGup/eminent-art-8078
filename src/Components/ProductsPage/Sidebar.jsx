@@ -1,19 +1,7 @@
 import {
-  Box,
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  Button,
-  Divider,
-  Flex,
-  Grid,
-  Heading,
-  HStack,
-  Image,
-  Select,
-  Spinner,
-  Text,
+  Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, GridItem,Divider, Flex, Grid, Heading, HStack, Image, Select, Spinner, Text,
   VStack,
+  CloseButton,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,14 +19,18 @@ import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import { memo } from "react";
 import NotfoundCategory from "../../Pages/NotfoundCategory";
+import Navmain from "../HomePage/Navmain";
 
 const Sidebar = () => {
+ 
   const navigate = useNavigate();
   const { path, category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
-  const [pageno, setpageno] = useState(1);
+  let urlpage = searchParams.get("pageno")
+  const [pageno, setpageno] = useState(urlpage || 1);
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
   let location = useLocation();
+  const dispatch = useDispatch();
   let breadcrumblinks = searchParams.toString().split("&").join(" ").split("=");
   const initialsortdata = searchParams.get("sortingByPrice");
   const [sortingByPrice, setSortingByPrice] = useState(initialsortdata || "");
@@ -46,20 +38,42 @@ const Sidebar = () => {
     navigate("/");
   }, []);
 
-  const dispatch = useDispatch();
-
   useEffect(() => {
     let params = {};
     sortingByPrice && (params.sortingByPrice = sortingByPrice);
     pageno && (params.pageno = pageno);
     setSearchParams(params);
-  }, [sortingByPrice, pageno]);
+  }, [pageno, sortingByPrice]);
+
+
+  let data = {
+    params: {
+      tag: searchParams.getAll("categorytag"),
+      _sort: searchParams.get("sortingByPrice") && "price",
+      _order: searchParams.get("sortingByPrice"),
+      price_gte: searchParams.getAll("sortrange").join("").split("-")[0],
+      price_lte: searchParams.getAll("sortrange").join("").split("-")[1],
+      _page: searchParams.get("pageno"),
+      _limit: 15,
+      category: category || "men",
+      brand: searchParams.getAll("brandrange"),
+    },
+  };
+
+
+
+  useEffect(() => {
+    dispatch(getProducts(data))
+  }, [location.search]);
+
+
 
   if (loading) {
     return <Spinner />;
   } else {
     return (
       <>
+      <Navmain/>
         <Box
           width={"98%"}
           margin="auto"
@@ -83,6 +97,7 @@ const Sidebar = () => {
                   return (
                     <BreadcrumbItem key={i}>
                       <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text>
+                    {/* <CloseButton  onClick={()=>searchParams.delete(el)} /> */}
                     </BreadcrumbItem>
                   );
                 }
@@ -109,13 +124,19 @@ const Sidebar = () => {
           <Grid gridTemplateColumns={{ sm: "100%", md: "20% 78%" }} gap={"5px"}>
             {/* filters section start */}
             {/* for large screen */}
+            <GridItem> 
             <Box display={{ base: "none", sm: "none", md: "block" }}>
+             
               <Allfilters handleGoBack={handleGoBack} />
+             
             </Box>
+            </GridItem>
             {/* for small screen */}
 
             {/* products section start */}
-            <VStack justify={"space-between"} p="10px">
+            <GridItem>  
+              <VStack justify={"space-between"} p="10px">
+               
               <HStack justify={"space-between"} w="full">
                 <Heading
                   fontWeight={"medium"}
@@ -127,6 +148,7 @@ const Sidebar = () => {
                   }}
                 >
                   Products
+
                 </Heading>
                 <HStack
                   w={{ sm: "60%", md: "50%", lg: "40%" }}
@@ -139,12 +161,12 @@ const Sidebar = () => {
                     //value={sortingByPrice.order}
                     onChange={(e) => setSortingByPrice(e.target.value)}
                   >
-                    <option value="asc">Price: Low to High</option>
-                    <option value="desc">Price: High to low</option>
+                    <option value="asc" >Price: Low to High</option>
+                    <option value="desc" >Price: High to low</option>
                   </Select>
                 </HStack>
               </HStack>
-              <Divider borderColor={"black"} />
+              <Divider borderColor={"black"}  />
               <Grid
                 gridTemplateColumns={{
                   sm: "repeat(2,1fr)",
@@ -153,7 +175,7 @@ const Sidebar = () => {
                 }}
                 gap="5"
               >
-                {productsData && productsData.length > 0 ? (
+                { productsData && productsData.length > 0 ? (
                   productsData?.map((e) => <ProductCard key={e.id} {...e} />)
                 ) : (
                   <>
@@ -163,14 +185,15 @@ const Sidebar = () => {
                 )}
               </Grid>
             </VStack>
+            </GridItem>
           </Grid>
           <Box>
             <Flex
               m="10px 30px 50px  "
               justify={{ base: "center", md: "flex-end" }}
             >
-              {productsData.length > 1 && (
-                <Pagination 
+              {productsData && productsData.length > 1 && (
+                <Pagination
                   current={pageno}
                   total={Math.ceil(100 / 15)}
                   handlePageChange={(page) => setpageno(page)}

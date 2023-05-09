@@ -30,42 +30,39 @@ const ProductPage = () => {
 
   const urlPath = location.pathname.split("/");
 
-  let data = {
-    params: {
-      tag: searchParams.getAll("categorytag"),
-      _sort: searchParams.get("sortingByPrice") && "price",
-      _order: searchParams.get("sortingByPrice"),
-      price_gte: searchParams.getAll("sortrange").join("").split("-")[0],
-      price_lte: searchParams.getAll("sortrange").join("").split("-")[1],
-      _page: searchParams.get("pageno"),
-      _limit: 15,
-      category: category || "men",
-      brand: searchParams.getAll("brandrange"),
-    },
-  };
+  // let data = {
+  //   params: {
+  //     tag: searchParams.getAll("categorytag"),
+  //     _sort: searchParams.get("sortingByPrice") && "price",
+  //     _order: searchParams.get("sortingByPrice"),
+  //     price_gte: searchParams.getAll("sortrange").join("").split("-")[0],
+  //     price_lte: searchParams.getAll("sortrange").join("").split("-")[1],
+  //     _page: searchParams.get("pageno"),
+  //     _limit: 15,
+  //     category: category || "men",
+  //     brand: searchParams.getAll("brandrange"),
+  //   },
+  // };
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-  //  if(category===undefined){
-  //   let datas={
-  //     params:{
-  //       category: category || "men",
-  //       _page: searchParams.get("pageno"),
-  //       _limit: 15,
-  //     }
-  //   }
-  //   dispatch(getProducts(datas))
-  //  }else{
-      
-    dispatch(getProducts(data))
-  }, [location.search]);
+  // useEffect(() => {
+  //     dispatch(getProducts(data))
+  // }, [location.search]);
 
   return (
     <div>
       {/* <Banner/> */}
       <Navmain />
-      <Sidebar />
+
+
+
+
+
+     
+     
+
+
     </div>
   );
 };

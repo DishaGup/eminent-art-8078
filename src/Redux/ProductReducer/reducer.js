@@ -21,14 +21,14 @@ import {
         };
       }
      
-      case GET_ALL_DATA_SUCCESS: {
-        return {
-          ...state,
-          loading: false,
-          allData: payload.data,
+      // case GET_ALL_DATA_SUCCESS: {
+      //   return {
+      //     ...state,
+      //     loading: false,
+      //     allData: payload.data,
          
-        };
-      }
+      //   };
+      // }
   
       case GET_PRODUCTS_SUCCESS: {
         return {
@@ -52,6 +52,7 @@ case ADD_PRODUCTS_SUCCESS: {
           cartdata:payload.data
         };
       }
+
       case ADD_WISHLIST_SUCCESS: {
         return {
     ...state,

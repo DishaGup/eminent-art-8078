@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   ADD_PRODUCTS_SUCCESS,
   ADD_WISHLIST_SUCCESS,
-  GET_ALL_DATA_SUCCESS,
+  // GET_ALL_DATA_SUCCESS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
@@ -40,20 +40,20 @@ export const getSingleProducts = (id) => (dispatch) => {
     );
 };
 
-export const getAllProducts = (category) => (dispatch) => {
-  dispatch({ type: GET_PRODUCTS_LOADING });
-  axios
-    .get(`http://localhost:4444/products`, category)
-    .then((res) =>
-      dispatch({
-        type: GET_ALL_DATA_SUCCESS,
-        payload: res,
-      })
-    )
-    .catch((error) =>
-      dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
-    );
-};
+// export const getAllProducts = (category) => (dispatch) => {
+//   dispatch({ type: GET_PRODUCTS_LOADING });
+//   axios
+//     .get(`http://localhost:4444/products`, category)
+//     .then((res) =>
+//       dispatch({
+//         type: GET_ALL_DATA_SUCCESS,
+//         payload: res,
+//       })
+//     )
+//     .catch((error) =>
+//       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
+//     );
+// };
 
 export const addtocart = (data) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });

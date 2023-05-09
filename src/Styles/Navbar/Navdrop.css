@@ -52,12 +52,12 @@
 
 #dropcont {
     position: fixed;
-    top: 18.8%;
+    top: 20%;
     left: 6%;
     bottom: 3%;
     right: 3%;
     display: none;
-    width: 1338px;
+    width: 1100px;
     height: 550px;
     z-index: 10;
     background-color: white;
