@@ -6,7 +6,7 @@ import { useState } from "react";
 import { EmptyCart } from "./EmptyCart";
 
 const Cartpage = () => {
-  const [change, setChange] = useState(true);
+  const [change, setChange] = useState(false);
   return (
     <>
       <Link to="/">
@@ -21,13 +21,66 @@ const Cartpage = () => {
       {change ? (
         <EmptyCart />
       ) : (
-        <div class="cartwrapper">
-          <div>
-            <h1 id="mycartid">
-              My Cart ( <span id="spancartwrapper">0</span> Item )
-            </h1>
+        <div style={{ marginTop: "100px" }}>
+          <div class="cartwrapper">
+            <div>
+              <h1 id="mycartid">
+                My Cart ( <span id="spancartwrapper">0</span> Item )
+              </h1>
+            </div>
+            {/* //map */}
+
+            <div id="cartitemwrapper">
+              <div id="main-div">
+                <div id="cartimgname">
+                  {/* 11div */}
+                  <div>
+                    <img
+                      id="c11"
+                      src="https://images.shopclues.com/images1/thumbnails/116980/320/320/153323501-116980797-1678944373.jpg"
+                      alt=""
+                    />
+                  </div>
+                  {/* 12div */}
+                  <div>
+                    <h3 id="c12div">Hana & Morris Men Red Casual Shirt</h3>
+                  </div>
+                </div>
+
+                <div id="plusminus">
+                  <div>
+                    <button id="plus">+</button>
+                    <span id="spanp">2</span>
+                    <button id="minus">-</button>
+                  </div>
+
+                  <div>
+                    <button id="removeitem">Remove</button>
+                  </div>
+                </div>
+
+                <div>
+                  <span className="spanmid1">Price</span>
+                  <span className="spanmid"> $7788</span>
+
+                  <div>
+                    <span className="spanmid1">Shipping Fee</span>
+                    <span className="spanmid"> FREE</span>
+                  </div>
+                </div>
+
+                <div id="inclusivetax">
+                  <div>
+                    <h3 id="h3ss">₹ 555</h3>
+                  </div>
+                  <div>
+                    <p id="pspan">Inclusive of all the applicable taxes</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {/* //map */}
           </div>
-          <div id="cartitemwrapper"></div>
           <div id="lastdivcart">
             <div>
               <div id="cartone">
