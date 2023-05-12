@@ -54,16 +54,15 @@ export const RightDiv = () => {
     });
     getData();
   };
-  //console.log(wishlistData)
-  // useEffect(()=>{
-  //   localStorage.setItem("listLength",JSON.stringify(Items.length))
-  // },[Items.length])
+  
 
   return (
     <Box
-      width={{ base: "98%", lg: "70%" }}
+      width={{base: "90%",sm:"70%", md:"70%", lg: "80%", xl:"70%","2xl":"70%"}}  //{{ base: "70%",sm:"50%", md:"40%", lg: "40%", xl:"28%","2xl":"28%" }}
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ sm: "xs", md: "sm", lr: "sm", "2xl": "sm" }}
+      margin={"auto"}
+      minHeight={"390px"}
     >
       <Text fontWeight={"bold"} mt="10px">
         My Wishlist

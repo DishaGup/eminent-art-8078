@@ -30,8 +30,8 @@ export default function LeftDiv() {
       fontSize={{ base: "sm", md: "md", lg: "md", xl: "md", "2xl": "md" }}
       margin={"auto"}
      >
-      <Stack p="3%">
-        <HStack mb="20px" w={"100%"} justifyContent="space-around">
+      <Stack p="3%" >
+        <HStack mb="20px" w={"100%"} justifyContent="space-around" mt={"5px"}>
           <Text color="teal">My Account</Text>
           <Button
             ml="20%"
@@ -44,10 +44,57 @@ export default function LeftDiv() {
           </Button>
         </HStack>
 
-        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"}>
+        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"} mt={"5px"}>
           <TbNotes size="25px" justifyContent="space-around" />
           <Text pl="15%" 
           fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}>My Orders</Text>
+        </HStack>
+
+        
+
+        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"} mt={"5px"}>
+          <RxAvatar size="25px" />
+          <Text pl="15%"
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >My Profile</Text>
+        </HStack>
+
+        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
+          <AiOutlineStar size={"25px"} />
+          <Text pl="15%"
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >Rate Your Purchase</Text>
+        </HStack>
+
+      
+
+        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
+          <BsHouseGear size="25px" />
+          <Text pl="15%"
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >My Favorite Stories</Text>
+        </HStack>
+
+        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
+          <BsHeadset size="25px" />
+          <Text pl="15%"
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >Help & Support</Text>
+        </HStack>
+
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+          <AiOutlineHeart size="25px" />
+          <Text
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >MY Wishlist</Text>
+          <Button
+            color={"white"}
+            bg={"teal.400"}
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            {itemCount}
+          </Button>
         </HStack>
 
         <HStack justifyContent="space-around" w={"100%"} paddingLeft={"3%"}>
@@ -75,49 +122,6 @@ export default function LeftDiv() {
           >
             0
           </Button>
-        </HStack>
-
-        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"}>
-          <RxAvatar size="25px" />
-          <Text pl="15%"
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
-          >My Profile</Text>
-        </HStack>
-
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"}>
-          <AiOutlineStar size="25px" />
-          <Text pl="15%"
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
-          >Rate Your Purchase</Text>
-        </HStack>
-
-        <HStack justifyContent="space-around">
-          <AiOutlineHeart size="25px" />
-          <Text
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
-          >MY Wishlist</Text>
-          <Button
-            color={"white"}
-            bg={"teal.400"}
-            size={["2xs", "sm", "md", "md"]}
-            fontSize={["2xs", "sm", "md", "md", "md"]}
-          >
-            {itemCount}
-          </Button>
-        </HStack>
-
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"}>
-          <BsHouseGear size="25px" />
-          <Text pl="15%"
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
-          >My Favorite Stories</Text>
-        </HStack>
-
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"}>
-          <BsHeadset size="25px" />
-          <Text pl="15%"
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
-          >Help & Support</Text>
         </HStack>
       </Stack>
     </Box>

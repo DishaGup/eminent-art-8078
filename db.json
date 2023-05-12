@@ -2721,5 +2721,18 @@
       "brand": "levis"
     }
   ],
-  "wishlist": []
+  "wishlist": [
+    {
+      "brand": "Hilfiger",
+      "category": "women",
+      "id": 6,
+      "image": "https://images.meesho.com/images/products/12153332/y7wre_400.webp",
+      "image2": "https://images.meesho.com/images/products/12153332/y7wre_400.webp",
+      "price": 539,
+      "rating": "4.0",
+      "reviews": "55026 Reviews",
+      "tag": "saree",
+      "title": "Banarasi Silk Jacquard Saree With Blouse"
+    }
+  ]
 }
