@@ -3,11 +3,13 @@ import LeftDiv from "./Wishlist/LeftDiv";
 import { RightDiv } from "./Wishlist/RightDiv";
 import Navmain from "../Components/HomePage/Navmain";
 import SearchBar from "../Components/SearchBar";
+import LocationBox from "../Components/LocationBox";
 
 const Wishlist = () => {
   return (
     <>
     <Navmain/>
+    <LocationBox/>
     <Box h="100vh" w="95%" m="auto" >
       <Box
         display={"flex"}
