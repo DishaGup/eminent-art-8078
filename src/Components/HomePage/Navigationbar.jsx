@@ -31,14 +31,14 @@ import { AdminButton } from "../../Pages/Admin/AdminButton";
 const Navigationbar = () => {
   return (
     <Box
-      position="fixed"
-      top="0"
-      left="0"
+      // position="fixed"
+      // top="0"
+      // left="0"
       display={{ base: "none", md: "block" }}
       right="0"
       p={3}
       w="100%"
-      overflow="hidden"
+      // overflow="hidden"
       m={"auto"}
       zIndex="1000"
       backgroundColor="#fff"

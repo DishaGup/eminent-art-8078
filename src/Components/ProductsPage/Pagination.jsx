@@ -7,7 +7,7 @@ import { memo } from "react";
 let BTN_COUNT = 5;
 
 const getStartingIdx = (current, total) => {
-  if (total - current < 2)
+  if (total - current < 3)
     return Math.max(current - (BTN_COUNT - 1 - total + current), 1);
   return Math.max(current - 2, 1);
 };
