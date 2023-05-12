@@ -8,8 +8,8 @@ const NavDrop = () => {
   return (
     <div className="bottom_cont">
       <ul id="bottom_category">
-        {gift?.map((el) => (
-          <div id="dropdown" key={el}>
+        {gift?.map((el,ind) => (
+          <div id="dropdown" key={ind}>
             <li key={el} id="dropbtn">
               <Link to={`/products/${el.text.toLowerCase()}`}>{el.text}</Link>
             </li>
@@ -17,25 +17,25 @@ const NavDrop = () => {
               <div className="big_parent">
                 <div id="parent">
                   
-                  <Link to={`/products/${el.lists.title.toLowerCase()}`}>
+                  <Link to={`/products/${el.text.toLowerCase}/${el.lists.title.toLowerCase()}`}>
                     <h2 className="q">{el.lists.title}</h2>
                   </Link>
-                  {el.lists.Sidebar?.map((item) => (
-                    <div key={item}>
+                  {el.lists.Sidebar?.map((item,indi) => (
+                    <div key={indi}>
                       <p className="hub">{item}</p>
                     </div>
                   ))}
                 </div>
                 <div className="right_grid">
-                  {el.lists.alldata?.map((divs) => (
-                    <div key={divs.heading}>
-                      <Link to={`/products/${el.lists.title}/${divs.heading}`}>
+                  {el.lists.alldata?.map((divs,ind) => (
+                    <div key={divs.heading+ind}>
+                      <Link to={`/products/${el.lists.title.toLowerCase()}/${divs.heading.toLowerCase()}`}>
                         {" "}
                         <h2 className="grid_head">{divs.heading}</h2>
                       </Link>
-                      {divs.child?.map((fields) => (
-                        <Link
-                          to={`/products/${el.lists.title}/${divs.heading}/${fields}`}>
+                      {divs.child?.map((fields,ind) => (
+                        <Link key={fields+ind}
+                          to={`/products/${el.lists.title.toLowerCase()}/${divs.heading.toLowerCase()}/${fields.toLowerCase()}`}>
                           {" "}
                           <p className="hub" key={fields}>
                             {fields}
