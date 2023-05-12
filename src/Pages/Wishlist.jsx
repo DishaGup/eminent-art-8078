@@ -2,6 +2,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import LeftDiv from "./Wishlist/LeftDiv";
 import { RightDiv } from "./Wishlist/RightDiv";
 import Navmain from "../Components/HomePage/Navmain";
+import SearchBar from "../Components/SearchBar";
 
 const Wishlist = () => {
   return (
