@@ -1,0 +1,216 @@
+.cartwrapper {
+  width: 88%;
+  margin: auto;
+  background-color: white;
+  padding-top: 10px;
+  /* margin-top: 100px; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* border: 1px solid; */
+  height: 400px;
+  overflow: scroll;
+}
+#cartitemwrapper {
+  width: 97%;
+  margin: auto;
+  /* border: 1px solid red; */
+  height: auto;
+  border-top: 1px solid rgb(210, 205, 205);
+  border-bottom: 1px solid rgb(210, 205, 205);
+}
+
+#main-div {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin: 15px 0;
+  padding: 15px 8px;
+  align-items: center;
+  /* border: 1px solid; */
+}
+#mycartid {
+  color: #363636;
+  font-size: 24px;
+  font-weight: 1000;
+  text-align: left;
+  margin-left: 20px;
+  padding: 5px 0 10px 0;
+}
+#cartimgname {
+  /* border: 1px solid; */
+  display: flex;
+  height: 100px;
+  padding: 5px;
+}
+
+#c11 {
+  margin-left: 10px;
+  margin-top: 10px;
+  border: 1px solid rgb(218, 216, 216);
+  margin: auto;
+  height: 100%;
+}
+
+#c12div {
+  color: #777;
+  font-weight: normal;
+  font-size: 14px;
+  margin-left: 10px;
+  /* border: 1px solid red; */
+  margin-top: 10px;
+}
+#main-div > div:nth-child(1) {
+  /* border: 1px solid red; */
+  width: 500px;
+}
+
+#plusminus {
+  /* border: 1px solid red; */
+  padding-top: 10px;
+}
+#plus {
+  width: 25px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ded7d7;
+  height: 25px;
+  cursor: pointer;
+}
+
+#minus {
+  width: 25px;
+  border-radius: 25px;
+  border: none;
+  background-color: #ded7d7;
+  height: 25px;
+  cursor: pointer;
+}
+
+#spanp {
+  margin: 12px;
+}
+#removeitem {
+  display: block;
+  margin: auto;
+  border: none;
+  background-color: white;
+  margin-top: 5px;
+  color: #24a3b5;
+  cursor: pointer;
+  font: normal 14px/1.42857143 Roboto, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+#pricefee {
+  /* display: flex; */
+  text-align: right;
+  padding-top: 10px;
+}
+.spanmid1 {
+  font: normal 14px/1.42857143 Roboto, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+}
+.spanmid {
+  font: normal 14px/1.42857143 Roboto, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  margin-left: 6px;
+}
+#inclusivetax {
+  text-align: right;
+}
+#h3ss {
+  font: normal 14px/1.42857143 Roboto, Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 6px;
+  /* border: 1px solid red; */
+  margin-top: 10px;
+}
+#pspan {
+  font: normal 14px/1.42857143 Roboto, Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  /* border: 1px solid red; */
+  /* margin-top: -18px; */
+}
+#lastdivcart {
+  width: 88%;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  justify-content: right;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  /* border-top: 1px solid rgb(210, 205, 205); */
+}
+#lastdivcart > div {
+  width: 20%;
+}
+#cartone {
+  display: flex;
+  justify-content: space-between;
+}
+
+#totalcart {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+#totalcartvalue {
+  font-weight: normal;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+#carttwo {
+  display: flex;
+  justify-content: space-between;
+}
+#grandcartvalue {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  margin: 0;
+  width: 100%;
+}
+#grandtotal {
+  font-weight: bold;
+  font-size: 18px;
+  color: #000000;
+  margin: 0;
+  width: 100%;
+}
+#cartinclusive {
+  font-size: 12px !important;
+  color: #757575 !important;
+  font-weight: normal !important;
+}
+#placeorder {
+  width: 100%;
+  margin-top: 8px;
+  background-image: -webkit-linear-gradient(0deg, #ff934b 0%, #ff5e62 100%);
+  box-shadow: 0px 2px 8px 0px rgb(255 97 98 / 46%);
+  color: #ffffff !important;
+  text-align: center;
+  font-size: 18px;
+  font-weight: normal;
+  border-radius: 3px;
+  padding: 12px 10px;
+  cursor: pointer;
+  border: none;
+}
+#headercart {
+  display: flex;
+  width: 100%;
+  height: 75px;
+  background-color: white;
+  /* border: 1px solid; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: fixed;
+  top: 0;
+}
+#headercart > img:nth-child(1) {
+  height: 100%;
+  margin-left: 70px;
+  cursor: pointer;
+}
+#headercart > img:nth-child(2) {
+  height: 100%;
+  cursor: pointer;
+}

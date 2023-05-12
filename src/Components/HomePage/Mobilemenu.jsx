@@ -31,8 +31,8 @@ export default function MobileMenu({ isOpen, onOpen, onClose }) {
           <DrawerHeader borderBottomWidth="1px">Categories</DrawerHeader>
           <DrawerBody>
             {gift.map(
-              (label) => (
-                <Accordion allowMultiple>
+              (label,ind) => (
+                <Accordion allowMultiple key={ind} >
                   <AccordionItem>
                     <h2>
                       <AccordionButton>
@@ -42,8 +42,8 @@ export default function MobileMenu({ isOpen, onOpen, onClose }) {
                         <AccordionIcon />
                       </AccordionButton>
                     </h2>
-                    {label.lists.alldata.map((i) => (
-                      <AccordionPanel pb={4}>
+                    {label.lists.alldata.map((i,indi) => (
+                      <AccordionPanel pb={4} key={indi}>
                         <Link
                           to={`/products/${label.lists.title.toLowerCase()}`}>
                           {i.heading}

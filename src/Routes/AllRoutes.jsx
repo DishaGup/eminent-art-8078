@@ -7,14 +7,18 @@ import { AdminProducts } from "../Pages/Admin/AdminProducts/AdminProducts";
 import { AdminEditProduct } from "../Pages/Admin/AdminEditProduct";
 import Payments from "./../Pages/Payments";
 import { Home } from "../Pages/Home";
-import ProductPage from "../Pages/ProductPage";
+// import ProductPage from "../Pages/ProductPage";
 import SingleProductPageMain from "../Components/ProductsPage/SingleProductPageMain";
 import { Wishlist } from "../Pages/Wishlist";
-import CartPage from "../Pages/cart/CartPage";
+// import CartPage from "../Pages/cart/CartPage";
 import { PrivateRoute } from "../Components/PrivateRoute";
-import Allfilters from "../Components/ProductsPage/Allfilters";
+// import Allfilters from "../Components/ProductsPage/Allfilters";
 import Sidebar from "../Components/ProductsPage/Sidebar";
+
 import Auth from "../Pages/Auth";
+
+import Cartpage from "../Pages/CartPage/Cartpage";
+
 
 const AllRoutes = () => {
   return (
@@ -24,9 +28,9 @@ const AllRoutes = () => {
       <Route
         path="/cartpage"
         element={
-          <PrivateRoute>
-            <CartPage />
-          </PrivateRoute>
+          // <PrivateRoute>
+          <Cartpage />
+          // </PrivateRoute>
         }
       />
       <Route
@@ -56,9 +60,9 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/products/:category?" element={<Sidebar />} />
+      <Route path="/products/:category?/:subcategory?/:subcat2?" element={<Sidebar />} />
       <Route
-        path="/products/:category?/:id/single?"
+        path="/products/:category/single/:id"
         element={<SingleProductPageMain />}
       />
       <Route path="*" element={<NotFoundPage />} />
