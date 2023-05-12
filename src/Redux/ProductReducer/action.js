@@ -96,7 +96,7 @@ export const getProductsSubSubcategory = (category, data, subcategory,subcat2) =
 export const getSingleProducts = (id) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
 
- axios.get(`http://localhost:8080/trendify/products/:category/single/${id}`)
+ axios.get(`http://localhost:8080/trendify/products/:categoryy/:subcategory/single/${id}`)
     .then((res) =>{
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
