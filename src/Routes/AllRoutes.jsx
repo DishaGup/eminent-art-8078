@@ -14,13 +14,17 @@ import { Wishlist } from "../Pages/Wishlist";
 import { PrivateRoute } from "../Components/PrivateRoute";
 // import Allfilters from "../Components/ProductsPage/Allfilters";
 import Sidebar from "../Components/ProductsPage/Sidebar";
+
+import Auth from "../Pages/Auth";
+
 import Cartpage from "../Pages/CartPage/Cartpage";
+
 
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route path="/login" element={<Auth />} />
       <Route
         path="/cartpage"
         element={
