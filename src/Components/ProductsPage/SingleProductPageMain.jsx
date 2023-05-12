@@ -60,6 +60,7 @@ const toast=useToast()
 
   const dispatch = useDispatch();
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
+  console.log(productsData)
  let {product} =useSelector((store) => store.ProductReducer.productsData)
   const handleAddToCart = (e) => {
    
@@ -75,7 +76,7 @@ const toast=useToast()
   };
   const cartItems = getCart();
   const [cartItemsCount, setCartItemsCount] = useState(cartItems.length);
-  console.log(cartItems);
+
   useEffect(() => {
     window.scrollTo(0, 0);
     // console.log(getCart());
@@ -95,7 +96,7 @@ const toast=useToast()
     //   setProduct(res)})
     //    .catch((err) => console.log(err));
   }, []);
-
+console.log(product)
   const handlebuynow = () => {
     // Add logic to buy products
     toast({
@@ -127,7 +128,7 @@ const toast=useToast()
   };
 
   const cart = JSON.parse(localStorage.getItem("cartItems"));
-  console.log(cart);
+  
 
     return (
       <>
@@ -454,4 +455,4 @@ const toast=useToast()
     );
   }
 
-export default memo(SingleProductPageMain);
+export default SingleProductPageMain;

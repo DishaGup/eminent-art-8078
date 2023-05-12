@@ -55,7 +55,7 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/products/:category/:subcategory?/:subcat2?" element={<Sidebar />} />
+      <Route path="/products/:category?/:subcategory?/:subcat2?" element={<Sidebar />} />
       <Route
         path="/products/:category/single/:id"
         element={<SingleProductPageMain />}

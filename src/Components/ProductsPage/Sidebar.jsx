@@ -1,5 +1,5 @@
 import {
-  Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, GridItem,Divider, Flex, Grid, Heading, HStack, Image, Select, Spinner, Text,
+  Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, GridItem, Divider, Flex, Grid, Heading, HStack, Image, Select, Spinner, Text,
   VStack,
   CloseButton,
 } from "@chakra-ui/react";
@@ -14,7 +14,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { getProducts, getProductsSubcategory } from "../../Redux/ProductReducer/action";
+import { getProducts, getProductsSubcategory, getProductsSubSubcategory, getAllProducts } from "../../Redux/ProductReducer/action";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import { memo } from "react";
@@ -22,14 +22,14 @@ import NotfoundCategory from "../../Pages/NotfoundCategory";
 import Navmain from "../HomePage/Navmain";
 
 const Sidebar = () => {
- const {category,subcategory,subcat2}=useParams()
- const par=useParams()
-  console.log(par)
+  const { category, subcategory, subcat2 } = useParams()
+
+
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   let urlpage = searchParams.get("pageno")
   const [pageno, setpageno] = useState(urlpage || 1);
-  let {loading,productsData} = useSelector((store) => store.ProductReducer);
+  let { loading, productsData } = useSelector((store) => store.ProductReducer);
 
   let location = useLocation();
   const dispatch = useDispatch();
@@ -39,26 +39,26 @@ const Sidebar = () => {
   const handleGoBack = useCallback(() => {
     navigate("/");
   }, []);
-  
+
 
   useEffect(() => {
     let params = {};
     sortingByPrice && (params.sortingByPrice = sortingByPrice);
     pageno && (params.pageno = pageno);
     setSearchParams(params);
-  }, [pageno, sortingByPrice]);
+  }, [pageno, sortingByPrice, category, subcategory, subcat2]);
 
 
-    let queryParams = {
-      tag: searchParams.getAll("categorytag"),
-      sort: searchParams.get("sortingByPrice") && "price",
-      order: searchParams.get("sortingByPrice"),
-      priceMinn: searchParams.getAll("sortrange").join("").split("-")[0],
-      priceMaxx: searchParams.getAll("sortrange").join("").split("-")[1],
-      page: searchParams.get("pageno"),
-      brand: searchParams.getAll("brandrange"),
-    }
-  
+  let queryParams = {
+    tag: searchParams.getAll("categorytag"),
+    sort: searchParams.get("sortingByPrice") && "price",
+    order: searchParams.get("sortingByPrice"),
+    priceMinn: searchParams.getAll("sortrange").join("").split("-")[0],
+    priceMaxx: searchParams.getAll("sortrange").join("").split("-")[1],
+    page: searchParams.get("pageno"),
+    brand: searchParams.getAll("brandrange"),
+  }
+
   Object.keys(queryParams).forEach((key) => {
     if (!queryParams[key]) {
       delete queryParams[key];
@@ -66,83 +66,86 @@ const Sidebar = () => {
   });
 
   useEffect(() => {
-    if(subcategory==undefined){
-    dispatch(getProducts(category,queryParams))
-  }else if(subcat2==undefined ){ 
-     dispatch(getProductsSubcategory(category,queryParams,subcategory))
-   }else{
-    dispatch(getProductsSubSubcategory(category,queryParams,subcategory,subcat2))
-   }
+
+    if (category != undefined) {
+      dispatch(getProducts(category, queryParams))
+    } else if (subcategory !== undefined && category !== undefined) {
+      dispatch(getProductsSubcategory(category, queryParams, subcategory))
+    } else if (subcat2 !== undefined && subcategory !== undefined && category !== undefined) {
+      dispatch(getProductsSubSubcategory(category, queryParams, subcategory, subcat2))
+    } else {
+      dispatch(getAllProducts(queryParams))
+    }
 
 
-  }, [location.search,category]);
+  }, [location.search])
 
-    return (
-      <>
-      <Navmain/>
-        <Box
-          width={"98%"}
-          margin="auto"
-          pt={{ base: "30px", md: "60px", lg: "80px" }}
-        >
-          <Flex alignItems={"left"} pb={{ base: "10px", sm: "5px" }}>
-            <Breadcrumb separator="/" fontSize={{ base: "16px", md: "18px" }}>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/products">products</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                <Text>{category ? category : "men"}</Text>
-              </BreadcrumbItem>
-              {breadcrumblinks.map((el, i) => {
-                if (
-                  i % 2 == 1 &&
-                  el !== "brandrange" &&
-                  el !== "categorytag" &&
-                  el !== "sortrange"
-                ) {
-                  return (
-                    <BreadcrumbItem key={i}>
-                      {/* <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text> */}
+  return (
+    <>
+      <Navmain />
+      <Box
+        width={"98%"}
+        margin="auto"
+        pt={{ base: "30px", md: "60px", lg: "80px" }}
+      >
+        <Flex alignItems={"left"} pb={{ base: "10px", sm: "5px" }}>
+          <Breadcrumb separator="/" fontSize={{ base: "16px", md: "18px" }}>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/products">products</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Text>{category ? category : "men"}</Text>
+            </BreadcrumbItem>
+            {breadcrumblinks.map((el, i) => {
+              if (
+                i % 2 == 1 &&
+                el !== "brandrange" &&
+                el !== "categorytag" &&
+                el !== "sortrange"
+              ) {
+                return (
+                  <BreadcrumbItem key={i}>
+                    {/* <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text> */}
                     {/* <CloseButton  onClick={()=>searchParams.delete(el)} /> */}
-                    </BreadcrumbItem>
-                  );
-                }
-              })}
-            </Breadcrumb>
-          </Flex>
-          <Flex mb="10px">
+                  </BreadcrumbItem>
+                );
+              }
+            })}
+          </Breadcrumb>
+        </Flex>
+        <Flex mb="10px">
+          {" "}
+          <Button
+            mr="2%"
+            onClick={handleGoBack}
+            display={{ base: "block", sm: "block", md: "none" }}
+          >
+            Go Back
+          </Button>
+          <Box display={{ base: "block", sm: "block", md: "none" }}>
             {" "}
-            <Button
-              mr="2%"
-              onClick={handleGoBack}
-              display={{ base: "block", sm: "block", md: "none" }}
-            >
-              Go Back
-            </Button>
-            <Box display={{ base: "block", sm: "block", md: "none" }}>
-              {" "}
-              <FilterDrawer />
-            </Box>
-            <HStack
-              display={{ base: "none", sm: "none", md: "block" }}
-            ></HStack>
-          </Flex>
-          <Grid gridTemplateColumns={{ sm: "100%", md: "20% 78%" }} gap={"5px"}>
-            {/* filters section start */}
-            {/* for large screen */}
-            <GridItem> 
+            <FilterDrawer />
+          </Box>
+          <HStack
+            display={{ base: "none", sm: "none", md: "block" }}
+          ></HStack>
+        </Flex>
+        <Grid gridTemplateColumns={{ sm: "100%", md: "20% 78%" }} gap={"5px"}>
+          {/* filters section start */}
+          {/* for large screen */}
+          <GridItem>
             <Box display={{ base: "none", sm: "none", md: "block" }}>
-             
-              <Allfilters handleGoBack={handleGoBack} />
-             
-            </Box>
-            </GridItem>
-            {/* for small screen */}
 
-            {/* products section start */}
-            <GridItem>  
-              <VStack justify={"space-between"} p="10px">
-               
+              <Allfilters handleGoBack={handleGoBack} />
+
+            </Box>
+          </GridItem>
+          {/* for small screen */}
+
+          {/* products section start */}
+          <GridItem>
+            <VStack justify={"space-between"} p="10px">
+
               <HStack justify={"space-between"} w="full">
                 <Heading
                   fontWeight={"medium"}
@@ -172,7 +175,7 @@ const Sidebar = () => {
                   </Select>
                 </HStack>
               </HStack>
-              <Divider borderColor={"black"}  />
+              <Divider borderColor={"black"} />
               <Grid
                 gridTemplateColumns={{
                   sm: "repeat(2,1fr)",
@@ -181,36 +184,36 @@ const Sidebar = () => {
                 }}
                 gap="5"
               >
-                 { productsData.products && productsData.products.length > 0 ? (
+                {productsData.products && productsData.products.length > 0 ? (
                   productsData.products.map((e) => <ProductCard key={e.id} {...e} />)
                 ) : (
                   <>
                     {" "}
                     <NotfoundCategory />
                   </>
-                )} 
+                )}
               </Grid>
             </VStack>
-            </GridItem>
-          </Grid>
-          <Box>
-            <Flex
-              m="10px 30px 50px  "
-              justify={{ base: "center", md: "flex-end" }}
-            >
-               {productsData.products && productsData.products.length > 1 && (
-                <Pagination
-                  current={pageno}
-                  total={Math.ceil(productsData.total/15)}
-                  handlePageChange={(page) => setpageno(page)}
-                />
-              )} 
-            </Flex>
-          </Box>
+          </GridItem>
+        </Grid>
+        <Box>
+          <Flex
+            m="10px 30px 50px  "
+            justify={{ base: "center", md: "flex-end" }}
+          >
+            {productsData.products && productsData.products.length > 1 && (
+              <Pagination
+                current={pageno}
+                total={Math.ceil(productsData.total / 10)}
+                handlePageChange={(page) => setpageno(page)}
+              />
+            )}
+          </Flex>
         </Box>
-      </>
-    );
-  }
+      </Box>
+    </>
+  );
+}
 
 
 export default Sidebar;

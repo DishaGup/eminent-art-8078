@@ -14,7 +14,7 @@ import {
   useColorModeValue,
   useToast,Skeleton, SkeletonCircle, SkeletonText 
 } from "@chakra-ui/react";
-import React, { useRef } from "react";
+import React, { useRef,useState } from "react";
 import { FiTruck } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -25,9 +25,11 @@ import { memo } from "react";
 import NotfoundCategory from "../../Pages/NotfoundCategory";
 // import { AddToWishList } from "../../Redux/WishList/action";
 import { Addtowishlist } from "../../Redux/ProductReducer/action";
+import { useEffect } from "react";
 
 function ProductCard(props) {
   const { path, category } = useParams();
+  const[times,settimes]=useState(0)
   const toast=useToast()
   const { id, image, title, price, rating,discount,_id } = props;
   let { loading, productsData, wishlistdata,error } = useSelector(
@@ -76,8 +78,17 @@ function ProductCard(props) {
   const navigate = useNavigate();
   const location = useLocation();
 
+useEffect(()=>{
+  const timer = setTimeout(() => {
+    settimes(times + 1);
+  }, 1000);
+  return () => clearTimeout(timer);
 
- if(loading){
+},[times])
+
+
+
+ if(loading && times<5){
   return(
     <Box padding='6' boxShadow='lg' bg='white' w='150px'>
   <SkeletonCircle size='10' />
@@ -94,6 +105,9 @@ function ProductCard(props) {
  }else if(productsData.products.length<=0 || error==true){
   return <NotfoundCategory />
 }
+// else if( loading==true && times>=10 ){
+//   return <h1>SERVER ERROR </h1>
+// }
   return (
     <Card maxW="sm">
       <CardBody
