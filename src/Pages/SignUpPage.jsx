@@ -30,10 +30,10 @@ function SignUpForm() {
   };
 
   return (
-    <div className="form-container sign-up-container">
+    <div className="form-authcontainer sign-up-authcontainer">
       <form onSubmit={handleOnSubmit}>
         <h1>Create Account</h1>
-        <div className="social-container">
+        <div className="social-authcontainer">
           <a href="#" className="social">
             <i className="fab fa-facebook-f" />
           </a>

@@ -1,13 +1,9 @@
-/*  Google Fornt */
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
-
-
-
-.App {
+/* .App {
   font-family: sans-serif;
   text-align: center;
 }
 
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
 
 * {
   box-sizing: border-box;
@@ -50,6 +46,43 @@ a {
   font-size: 14px;
   text-decoration: none;
   margin: 15px 0;
+}
+
+button {
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button:focus {
+  outline: none;
+}
+
+button.ghost {
+  background-color: transparent;
+  border-color: #ffffff;
+}
+
+form {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
 }
 
 input {
@@ -103,7 +136,6 @@ input {
 }
 
 @keyframes show {
-
   0%,
   49.99% {
     opacity: 0;
@@ -199,41 +231,6 @@ input {
   width: 40px;
 }
 
-
-/* buttons Css */
-
-button {
-  border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
-  color: #ffffff;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 12px 45px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: transform 80ms ease-in;
-}
-
-button:active {
-  transform: scale(0.95);
-}
-
-button:focus {
-  outline: none;
-}
-
-button.ghost {
-  background-color: transparent;
-  border-color: #ffffff;
-}
-
-
-
-/* Footer Css */
-
-
-
 footer {
   background-color: #222;
   color: #fff;
@@ -257,22 +254,4 @@ footer i {
 footer a {
   color: #3c97bf;
   text-decoration: none;
-}
-
-
-
-
-/*  From Css */
-
-
-
-form {
-  background-color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-}
+} */
