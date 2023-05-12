@@ -10,7 +10,7 @@ const Wishlist = () => {
     <Box h="100vh" w="98%" m="auto">
       <Box
         display={"flex"}
-        flexDirection={{ base: "column", lg: "row" }}
+        flexDirection={{ base: "column",sm:"column", md:"row", lg: "row", xl:"row","2xl":"row" }}
         justifyContent="space-around"
         mt={"2%"}
       >
