@@ -171,6 +171,7 @@ const toast=useToast()
                         <div>
                           <img alt="2" src={product.image2} />
                         </div>
+                        
 {      product.images?.map((el,ind)=><div key={ind}>
   <img
     alt={el.substring(0,5)}
