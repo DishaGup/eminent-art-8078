@@ -1,6 +1,7 @@
 import { ADDTOWISHLIST, REMOVEFROMWISHLIST } from "../WishList/actiontype";
 
-export const AddToWishList = (payload) => (dispatch) => {
+export const AddToWishList = (productData) => (dispatch) => {
+axios.post("",productData).then
   dispatch({ type: ADDTOWISHLIST, payload: payload });
 };
 

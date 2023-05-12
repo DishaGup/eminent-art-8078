@@ -16,16 +16,11 @@ export default function LeftDiv() {
     });
   });
 
-// base: "0px",
-//   sm: "30em", // 480px
-//   md: "48em", // 768px
-//   lg: "62em", // 992px
-//   xl: "80em", // 1280px
-//   "2xl": "96em", // 1536px
+
 
   return (
     <Box
-      width={{ base: "70%",sm:"50%", md:"40%", lg: "40%", xl:"28%","2xl":"28%" }}  //{ base: "column",sm:"column", md:"row", lg: "row", xl:"row","2xl":"row" }
+      width={{ base: "70%",sm:"50%", md:"40%", lg: "40%", xl:"28%","2xl":"28%" }}  
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ base: "sm", md: "md", lg: "md", xl: "md", "2xl": "md" }}
       margin={"auto"}
