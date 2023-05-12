@@ -19,19 +19,19 @@ const Auth = () => {
             <Navmain></Navmain>
             <div className="App">
 
-                <h2>Sign in/up Form</h2>
+                <h2 className='authhstag'>Sign in/up Form</h2>
                 <div className={containerClass} id="authcontainer">
                     <SignUpForm />
                     <SignInForm />
                     <div className="overlay-authcontainer">
                         <div className="overlay">
                             <div className="overlay-panel overlay-left">
-                                <h1>Welcome Back!</h1>
-                                <p>
+                                <h1  className="authhtag">Welcome Back!</h1>
+                                <p className='Authptag'>
                                     To keep connected with us please login with your personal info
                                 </p>
                                 <button
-                                    className="ghost"
+                                    className="ghost authform"
                                     id="signIn"
                                     onClick={() => handleOnClick("signIn")}
                                 >
@@ -39,10 +39,11 @@ const Auth = () => {
                                 </button>
                             </div>
                             <div className="overlay-panel overlay-right">
-                                <h1>Hello, Friend!</h1>
+                                <h1  className="authhtag">Hello, Friend!</h1>
                                 <p>Enter your personal details and start journey with us</p>
                                 <button
-                                    className="ghost "
+                             
+                                    className="ghost authform"
                                     id="signUp"
                                     onClick={() => handleOnClick("signUp")}
                                 >

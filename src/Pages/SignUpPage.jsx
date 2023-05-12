@@ -5,6 +5,7 @@ function SignUpForm() {
     email: "",
     password: ""
   });
+
   const handleChange = evt => {
     const value = evt.target.value;
     setState({
@@ -31,42 +32,43 @@ function SignUpForm() {
 
   return (
     <div className="form-authcontainer sign-up-authcontainer">
-      <form onSubmit={handleOnSubmit}>
-        <h1>Create Account</h1>
+      <form onSubmit={handleOnSubmit} className="authform">
+        <h1  className="authhtag">Create Account</h1>
         <div className="social-authcontainer">
           <a href="#" className="social">
-            <i className="fab fa-facebook-f" />
+            <i className="fab fa-facebook-f authatag" />
           </a>
-          <a href="#" className="social">
+          <a href="#" className="social authatag">
             <i className="fab fa-google-plus-g" />
-          </a>
-          <a href="#" className="social">
+          </a> 
+          <a href="#" className="social authatag">
             <i className="fab fa-linkedin-in" />
           </a>
         </div>
-        <span>or use your email for registration</span>
+        <span className="authspantag">or use your email for registration</span>
         <input
+        className="Authinput"
           type="text"
           name="name"
           value={state.name}
           onChange={handleChange}
           placeholder="Name"
         />
-        <input
+        <input className="Authinput"
           type="email"
           name="email"
           value={state.email}
           onChange={handleChange}
           placeholder="Email"
         />
-        <input
+        <input className="Authinput"
           type="password"
           name="password"
           value={state.password}
           onChange={handleChange}
           placeholder="Password"
         />
-        <button>Sign Up</button>
+        <button className="AuthButton">Sign Up</button>
       </form>
     </div>
   );

@@ -28,10 +28,10 @@ function SignInForm() {
 
   return (
     <div className="form-authcontainer sign-in-authcontainer">
-      <form onSubmit={handleOnSubmit}>
-        <h1>Sign in</h1>
+      <form onSubmit={handleOnSubmit}  className="authform">
+        <h1  className="authhtag">Sign in</h1>
         <div className="social-authcontainer">
-          <a href="#" className="social">
+          <a href="#" className="social ay">
             <i className="fab fa-facebook-f" />
           </a>
           <a href="#" className="social">
@@ -41,8 +41,9 @@ function SignInForm() {
             <i className="fab fa-linkedin-in" />
           </a>
         </div>
-        <span>or use your account</span>
+        <span className="authspantag">or use your account</span>
         <input
+        className="Authinput"
           type="email"
           placeholder="Email"
           name="email"
@@ -50,6 +51,7 @@ function SignInForm() {
           onChange={handleChange}
         />
         <input
+        className="Authinput"
           type="password"
           name="password"
           placeholder="Password"
@@ -57,7 +59,7 @@ function SignInForm() {
           onChange={handleChange}
         />
         <a href="#">Forgot your password?</a>
-        <button>Sign In</button>
+        <button className="AuthButton">Sign In</button>
       </form>
     </div>
   );
