@@ -2,21 +2,24 @@ import axios from "axios";
 import {
   ADD_PRODUCTS_SUCCESS,
   ADD_WISHLIST_SUCCESS,
-  // GET_ALL_DATA_SUCCESS,
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
 } from "./actiontype";
 
-export const getProducts = (data) => (dispatch) => {
+export const getProducts = (category, data) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
-
+  
   try {
-    axios.get(`http://localhost:4444/products`, data).then((res) =>
+    axios.get(`http://localhost:8080/trendify/products/${category}`, {
+      params: data
+    }).then((res) => {
+    
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
         payload: res,
       })
+    }
     );
   } catch (error) {
     console.log(error);
@@ -24,11 +27,68 @@ export const getProducts = (data) => (dispatch) => {
   }
 };
 
+export const getProductsSubcategory = (category, data, subcategory) => (dispatch) => {
+
+  dispatch({ type: GET_PRODUCTS_LOADING });
+ 
+  try {
+    axios.get(`http://localhost:8080/trendify/products/${category}/${subcategory}?page=${data.pageno}`, {params:data}).then((res) => {
+    
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: res,
+      })
+    }
+    );
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+
+}
+//get bu sub sub category--
+export const getProductsSubSubcategory = (category, data, subcategory) => (dispatch) => {
+
+  dispatch({ type: GET_PRODUCTS_LOADING });
+ 
+  try {
+    axios.get(`http://localhost:8080/trendify/products/${category}/${subcategory}?page=${data.pageno}`, {params:data}).then((res) => {
+    
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: res,
+      })
+    }
+    );
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+
+}
+
+
+
 export const getSingleProducts = (id) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
 
+ axios.get(`http://localhost:8080/trendify/products/:category/single/${id}`)
+    .then((res) =>{
+      dispatch({
+        type: GET_PRODUCTS_SUCCESS,
+        payload: res,
+      })
+})
+    .catch((error) =>
+      dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
+    );
+};
+
+export const getSingleProductsSubcategory = (id) => (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
+
   return axios
-    .get(`http://localhost:4444/products/${id}`)
+    .get(`/:category/:subcategory?/single/${id}`)
     .then((res) =>
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
@@ -39,7 +99,6 @@ export const getSingleProducts = (id) => (dispatch) => {
       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
     );
 };
-
 // export const getAllProducts = (category) => (dispatch) => {
 //   dispatch({ type: GET_PRODUCTS_LOADING });
 //   axios

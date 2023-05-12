@@ -49,7 +49,7 @@ import Navmain from "../HomePage/Navmain.jsx";
 const SingleProductPageMain = () => {
   const [itemInCart, setItemInCart] = useState(false);
 const toast=useToast()
-  const [product, setProduct] = React.useState({});
+  // const [product, setProduct] = React.useState({});
 
   const navigate = useNavigate();
   const handleGoBack = () => {
@@ -60,10 +60,9 @@ const toast=useToast()
 
   const dispatch = useDispatch();
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-
+ let {product} =useSelector((store) => store.ProductReducer.productsData)
   const handleAddToCart = (e) => {
-    // Add logic to add product to cart
-    // e.stopPropogation()
+   
     toast({
       title: 'Product Added',
           description: "Product added to Cart.",
@@ -87,11 +86,14 @@ const toast=useToast()
     
     });
   }, []);
+// console.log(product)
 
   useEffect(() => {
     dispatch(getSingleProducts(id))
-      .then((res) => setProduct(res.payload.data))
-      .catch((err) => console.log(err));
+    // .then((res) =>{ 
+    //   console.log(res,'...useFee')
+    //   setProduct(res)})
+    //    .catch((err) => console.log(err));
   }, []);
 
   const handlebuynow = () => {
@@ -127,20 +129,10 @@ const toast=useToast()
   const cart = JSON.parse(localStorage.getItem("cartItems"));
   console.log(cart);
 
-  if (typeof product !== "object") {
-    return (
-      <Box pt={"23%"} pb="15%">
-        <Spinner />
-        {setTimeout(() => {
-          <NotfoundCategory />;
-        }, 2000)}
-      </Box>
-    );
-  } else {
     return (
       <>
         <Navmain />
-        product && (
+       { product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -457,9 +449,9 @@ const toast=useToast()
             </Box>
           </Container>
         </Box>
-        )
+        )}
       </>
     );
   }
-};
+
 export default memo(SingleProductPageMain);

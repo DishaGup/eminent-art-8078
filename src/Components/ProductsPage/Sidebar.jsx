@@ -14,7 +14,7 @@ import {
   useParams,
   useSearchParams,
 } from "react-router-dom";
-import { getProducts } from "../../Redux/ProductReducer/action";
+import { getProducts, getProductsSubcategory } from "../../Redux/ProductReducer/action";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
 import { memo } from "react";
@@ -22,13 +22,15 @@ import NotfoundCategory from "../../Pages/NotfoundCategory";
 import Navmain from "../HomePage/Navmain";
 
 const Sidebar = () => {
- 
+ const {category,subcategory,subcat2}=useParams()
+ const par=useParams()
+  console.log(par)
   const navigate = useNavigate();
-  const { path, category } = useParams();
   const [searchParams, setSearchParams] = useSearchParams();
   let urlpage = searchParams.get("pageno")
   const [pageno, setpageno] = useState(urlpage || 1);
-  let { loading, productsData } = useSelector((store) => store.ProductReducer);
+  let {loading,productsData} = useSelector((store) => store.ProductReducer);
+
   let location = useLocation();
   const dispatch = useDispatch();
   let breadcrumblinks = searchParams.toString().split("&").join(" ").split("=");
@@ -37,6 +39,7 @@ const Sidebar = () => {
   const handleGoBack = useCallback(() => {
     navigate("/");
   }, []);
+  
 
   useEffect(() => {
     let params = {};
@@ -46,31 +49,34 @@ const Sidebar = () => {
   }, [pageno, sortingByPrice]);
 
 
-  let data = {
-    params: {
+    let queryParams = {
       tag: searchParams.getAll("categorytag"),
-      _sort: searchParams.get("sortingByPrice") && "price",
-      _order: searchParams.get("sortingByPrice"),
-      price_gte: searchParams.getAll("sortrange").join("").split("-")[0],
-      price_lte: searchParams.getAll("sortrange").join("").split("-")[1],
-      _page: searchParams.get("pageno"),
-      _limit: 15,
-      category: category || "men",
+      sort: searchParams.get("sortingByPrice") && "price",
+      order: searchParams.get("sortingByPrice"),
+      priceMinn: searchParams.getAll("sortrange").join("").split("-")[0],
+      priceMaxx: searchParams.getAll("sortrange").join("").split("-")[1],
+      page: searchParams.get("pageno"),
       brand: searchParams.getAll("brandrange"),
-    },
-  };
-
-
+    }
+  
+  Object.keys(queryParams).forEach((key) => {
+    if (!queryParams[key]) {
+      delete queryParams[key];
+    }
+  });
 
   useEffect(() => {
-    dispatch(getProducts(data))
-  }, [location.search]);
+    if(subcategory==undefined){
+    dispatch(getProducts(category,queryParams))
+  }else if(subcat2==undefined ){ 
+     dispatch(getProductsSubcategory(category,queryParams,subcategory))
+   }else{
+    dispatch(getProductsSubSubcategory(category,queryParams,subcategory,subcat2))
+   }
 
 
+  }, [location.search,category]);
 
-  if (loading) {
-    return <Spinner />;
-  } else {
     return (
       <>
       <Navmain/>
@@ -96,7 +102,7 @@ const Sidebar = () => {
                 ) {
                   return (
                     <BreadcrumbItem key={i}>
-                      <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text>
+                      {/* <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text> */}
                     {/* <CloseButton  onClick={()=>searchParams.delete(el)} /> */}
                     </BreadcrumbItem>
                   );
@@ -175,14 +181,14 @@ const Sidebar = () => {
                 }}
                 gap="5"
               >
-                { productsData && productsData.length > 0 ? (
-                  productsData?.map((e) => <ProductCard key={e.id} {...e} />)
+                 { productsData.products && productsData.products.length > 0 ? (
+                  productsData.products.map((e) => <ProductCard key={e.id} {...e} />)
                 ) : (
                   <>
                     {" "}
                     <NotfoundCategory />
                   </>
-                )}
+                )} 
               </Grid>
             </VStack>
             </GridItem>
@@ -192,19 +198,19 @@ const Sidebar = () => {
               m="10px 30px 50px  "
               justify={{ base: "center", md: "flex-end" }}
             >
-              {productsData && productsData.length > 1 && (
+               {productsData.products && productsData.products.length > 1 && (
                 <Pagination
                   current={pageno}
-                  total={Math.ceil(100 / 15)}
+                  total={Math.ceil(productsData.total/15)}
                   handlePageChange={(page) => setpageno(page)}
                 />
-              )}
+              )} 
             </Flex>
           </Box>
         </Box>
       </>
     );
   }
-};
 
-export default memo(Sidebar);
+
+export default Sidebar;
