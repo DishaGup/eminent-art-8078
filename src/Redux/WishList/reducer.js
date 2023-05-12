@@ -1,4 +1,5 @@
-import { ADDTOWISHLIST, REMOVEFROMWISHLIST } from "./actiontype"
+
+import { DDTOWISHLIST_REQ,  REMOVEFROMWISHLIST_REQ } from "./actiontype"
 
 const initState={
     isLoadind:false,
@@ -8,12 +9,12 @@ const initState={
 
 export const reducer =(state=initState,{type,payload})=>{
       switch(type){
-        case ADDTOWISHLIST:{
-            return {...state,WishList:payload}
-        }
-        case REMOVEFROMWISHLIST:{
-            return {...state, WishList:payload}
-        }
+        // case DDTOWISHLIST_REQ:{
+        //     return {...state,WishList:payload}
+        // }
+        // case  REMOVEFROMWISHLIST_REQ:{
+        //     return {...state, WishList:payload}
+        // }
         default:{
             return state
         }
