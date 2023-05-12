@@ -1,8 +1,9 @@
 import { ADDTOWISHLIST, REMOVEFROMWISHLIST } from "./actiontype"
 
 const initState={
+    isLoadind:false,
+    isError:false,
     "WishList":[],
-    
 }
 
 export const reducer =(state=initState,{type,payload})=>{

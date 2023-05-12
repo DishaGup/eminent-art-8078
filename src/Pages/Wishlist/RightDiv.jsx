@@ -7,7 +7,7 @@ export const RightDiv = () => {
   const naigate = useNavigate();
   const [item, setItem] = useState("");
   const [wishlistData, setWishlistData] = useState([]);
-
+const [rerender,setRerender]=useState(false)
   const getData = () => {
     axios.get(`http://localhost:4444/wishlist`).then((res) => {
       setWishlistData(res.data);
@@ -18,52 +18,26 @@ export const RightDiv = () => {
     getData();
   }, [wishlistData.length]);
   console.log(item);
-  // const Items = [
-  //   {
-  //     id: 1,
-  //     title: "Stylish Men Watches",
-  //     image:
-  //       "https://rukminim1.flixcart.com/image/832/832/xif0q/shirt/t/r/b/l-bonflower-511-light-green-fifth-u-original-imagj85mwejpz4fq.jpeg?q=70",
-  //     price: 243,
-  //     rating: "3.8",
-  //     reviews: "4637 Reviews",
-  //     category: "men",
-  //     tag: "menaccessories",
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Ravishing Men Watches",
-  //     image:
-  //       "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
-  //     image2:
-  //       "https://images.meesho.com/images/products/67584294/aycy1_400.webp",
-  //     price: 203,
-  //     rating: "3.9",
-  //     reviews: "418 Reviews",
-  //     category: "men",
-  //     tag: "menaccessories",
-  //   },
-  // ];
+  
 
   const handleDelete = (item) => {
-    //    let x = wishlistData.filter((el)=>+el.id!==+item.id)
-    //  setWishlistData(x)
+   
     let id = +item.id;
     axios.delete(`http://localhost:4444/wishlist/${id}`).then((res) => {
       console.log(res);
     });
     getData();
+    setRerender(!rerender)
   };
-  //console.log(wishlistData)
-  // useEffect(()=>{
-  //   localStorage.setItem("listLength",JSON.stringify(Items.length))
-  // },[Items.length])
+  
 
   return (
     <Box
-      width={{ base: "98%", lg: "70%" }}
+      width={{base: "90%",sm:"70%", md:"70%", lg: "80%", xl:"70%","2xl":"70%"}}  
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ sm: "xs", md: "sm", lr: "sm", "2xl": "sm" }}
+      margin={"auto"}
+      minHeight={"390px"}
     >
       <Text fontWeight={"bold"} mt="10px">
         My Wishlist

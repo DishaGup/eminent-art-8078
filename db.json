@@ -2720,54 +2720,5 @@
       "tag": "saree",
       "brand": "levis"
     }
-  ],
-  "wishlist": [
-    {
-      "brand": "levis",
-      "category": "women",
-      "id": 3,
-      "image": "https://images.meesho.com/images/products/60877542/quzdp_400.webp",
-      "image2": "https://images.meesho.com/images/products/60877542/quzdp_400.webp",
-      "price": 280,
-      "rating": "3.7",
-      "reviews": "23947 Reviews",
-      "tag": "saree",
-      "title": "Fab Women Art Silk Sarees"
-    },
-    {
-      "brand": "Hilfiger",
-      "category": "women",
-      "id": 7,
-      "image": "https://images.meesho.com/images/products/133855865/bkc8r_400.webp",
-      "image2": "https://images.meesho.com/images/products/133855865/bkc8r_400.webp",
-      "price": 495,
-      "rating": "3.8",
-      "reviews": "747 Reviews",
-      "tag": "Dupattas",
-      "title": "Alluring Fancy Women Dupattas"
-    },
-    {
-      "brand": "levis",
-      "category": "women",
-      "id": 5,
-      "image2": "https://images.meesho.com/images/products/127938144/qllpy_400.webp",
-     "image": "https://images.meesho.com/images/products/127938144/qllpy_400.webp",
-       "price": 183,
-      "rating": "3.8",
-      "reviews": "17656 Reviews",
-      "tag": "Kurtis",
-      "title": "Aakarsha Sensational Kurtis"
-    },
-    {
-      "brand": "Hollister",
-      "category": "men",
-      "id": 61,
-      "image": "https://images.meesho.com/images/products/144906418/lscec_400.webp",
-      "price": 297,
-      "rating": "3.9",
-      "reviews": "25920 Reviews",
-      "tag": "topwear",
-      "title": "Stylish Designer Men Shirts"
-    }
   ]
-}
+
