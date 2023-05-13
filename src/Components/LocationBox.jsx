@@ -1,23 +1,15 @@
 import {
   Box,
-  Button,
   Flex,
   Input,
   InputGroup,
   InputLeftAddon,
-  Text,
-  Link,
-  useBoolean,
 } from "@chakra-ui/react";
 
 import React, { useEffect, useState } from "react";
 import { FaSearchLocation } from "react-icons/fa";
-function SearchBar() {
-  const [onChangeValue, setOnChangeValue] = useState("");
-  const [search, setSearch] = useState([]);
-  const [Products, setProducts] = useState([]);
-  const [showDropdown, setShowDropdown] = useBoolean();
- const [add, setP] = useState("");
+function LocationBox() {
+  const [add, setP] = useState("");
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -62,18 +54,14 @@ function SearchBar() {
             />
             <Input
               bg={"#f1f4f6"}
-              focusBorderColor="#f1f4f6"
+              focusBorderColor="green"
               value={add ? add : "New Delhi"}
             />
           </InputGroup>
-         
-          
         </Flex>
-
-       
       </Flex>
     </Box>
   );
 }
 
-export default SearchBar;
+export default LocationBox;
