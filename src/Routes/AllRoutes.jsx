@@ -19,14 +19,13 @@ import Auth from "../Pages/Auth";
 
 import Cartpage from "../Pages/CartPage/Cartpage";
 
-
 const AllRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Auth />} />
       <Route
-        path="/cartpage"
+        path="/cart"
         element={
           // <PrivateRoute>
           <Cartpage />
@@ -60,7 +59,10 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/products/:category?/:subcategory?/:subcat2?" element={<Sidebar />} />
+      <Route
+        path="/products/:category?/:subcategory?/:subcat2?"
+        element={<Sidebar />}
+      />
       <Route
         path="/products/:category/single/:id"
         element={<SingleProductPageMain />}

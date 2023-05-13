@@ -102,7 +102,7 @@ const Navigationbar = () => {
             <Icon as={BsHeart} />{" "}
           </Link>
 
-          <Link to="/cartpage">
+          <Link to="/cart">
             {" "}
             <Icon as={BsCart3} />{" "}
           </Link>

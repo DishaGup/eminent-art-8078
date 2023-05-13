@@ -23,12 +23,12 @@ import {
   Flex,
   Spinner,
 } from "@chakra-ui/react";
-import {
-  addItemToCart,
-  addItemToWishlist,
-  getCart,
-  itemPresentInWishlist,
-} from "../../Pages/cart/useLocalStorage.js";
+// import {
+//   addItemToCart,
+//   addItemToWishlist,
+//   getCart,
+//   itemPresentInWishlist,
+// } from "../../Pages/cart/useLocalStorage.js";
 import { Link, useParams, useNavigate, Navigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
@@ -48,92 +48,88 @@ import Navmain from "../HomePage/Navmain.jsx";
 
 const SingleProductPageMain = () => {
   const [itemInCart, setItemInCart] = useState(false);
-const toast=useToast()
+  const toast = useToast();
   // const [product, setProduct] = React.useState({});
 
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate("/products");
   };
- 
+
   const { id } = useParams();
 
   const dispatch = useDispatch();
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-  console.log(productsData)
- let {product} =useSelector((store) => store.ProductReducer.productsData)
+  console.log(productsData);
+  let { product } = useSelector((store) => store.ProductReducer.productsData);
   const handleAddToCart = (e) => {
-   
     toast({
-      title: 'Product Added',
-          description: "Product added to Cart.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-          position: 'top',
-    })
+      title: "Product Added",
+      description: "Product added to Cart.",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    });
     dispatch(addtocart(product));
   };
-  const cartItems = getCart();
-  const [cartItemsCount, setCartItemsCount] = useState(cartItems.length);
+  //const cartItems = getCart();
+  // const [cartItemsCount, setCartItemsCount] = useState(cartItems.length);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     // console.log(getCart());
-    const cartItems = getCart();
+    //const cartItems = getCart();
 
-    cartItems.map((item) => {
-      if (item.id === id) setItemInCart(true);
-    
-    });
+    // cartItems.map((item) => {
+    //   if (item.id === id) setItemInCart(true);
+    // });
   }, []);
-// console.log(product)
+  // console.log(product)
 
   useEffect(() => {
-    dispatch(getSingleProducts(id))
-    // .then((res) =>{ 
+    dispatch(getSingleProducts(id));
+    // .then((res) =>{
     //   console.log(res,'...useFee')
     //   setProduct(res)})
     //    .catch((err) => console.log(err));
   }, []);
-console.log(product)
+  console.log(product);
   const handlebuynow = () => {
     // Add logic to buy products
     toast({
-      title: 'Redirecting..',
-          description: "Navigating To payment page.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-          position: 'top',
-    })
+      title: "Redirecting..",
+      description: "Navigating To payment page.",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    });
 
     navigate("/payments");
   };
-  
 
-  const addItem = () => {
-    addItemToCart({
-      id: product.id,
-      title: product.title,
-      price: product.price,
-      rating: product.rating,
-      quantity: 1,
-      img: product.image,
-    });
-    //console.log(product);
-    window.alert('You Item has been added to Cart')
-    setItemInCart(true);
-    setCartItemsCount(getCart().length);
-  };
+  // const addItem = () => {
+  //   addItemToCart({
+  //     id: product.id,
+  //     title: product.title,
+  //     price: product.price,
+  //     rating: product.rating,
+  //     quantity: 1,
+  //     img: product.image,
+  //   });
+  //   //console.log(product);
+  //   window.alert("You Item has been added to Cart");
+  //   setItemInCart(true);
+  //   setCartItemsCount(getCart().length);
+  // };
 
   const cart = JSON.parse(localStorage.getItem("cartItems"));
-  
 
-    return (
-      <>
-        <Navmain />
-       { product && (
+  return (
+    <>
+      <Navmain />
+      {product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -160,7 +156,6 @@ console.log(product)
                 <Box display={{ base: "none", md: "none", lg: "block" }}>
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
-                   
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
                       <Carousel autoPlay>
@@ -302,7 +297,7 @@ console.log(product)
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
-                      onClick={addItem}
+                      // onClick={addItem}
                     >
                       Add to cart
                     </Button>
@@ -450,9 +445,9 @@ console.log(product)
             </Box>
           </Container>
         </Box>
-        )}
-      </>
-    );
-  }
+      )}
+    </>
+  );
+};
 
 export default SingleProductPageMain;
