@@ -1,6 +1,6 @@
 import {
   Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, GridItem, Divider, Flex, Grid, Heading, HStack, Image, Select, Spinner, Text,
-  VStack,
+  VStack,Skeleton, SkeletonCircle, SkeletonText ,
   CloseButton,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
@@ -189,9 +189,15 @@ const Sidebar = () => {
                 ) : (
                   <>
                     {" "}
-                    <NotfoundCategory />
+                   
                   </>
                 )}
+{
+  productsData.total<=0 && (<> <NotfoundCategory/>  </>)
+}
+
+
+
               </Grid>
             </VStack>
           </GridItem>

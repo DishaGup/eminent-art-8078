@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/layout";
 import { useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Center, Tag,TagCloseButton,TagLabel } from '@chakra-ui/react'
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { Spinner } from "@chakra-ui/spinner";
 import { Button } from "@chakra-ui/button";
@@ -24,9 +24,8 @@ const Allfilters = ({ filterHeading, handleGoBack }) => {
   let dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { path, category } = useParams();
+  const { path, category,subcategory,subcat2 } = useParams();
  
-  let { loading } = useSelector((store) => store.ProductReducer)
   const [sortrange, setsortrange] = useState(searchParams.getAll('sortrange') || [])
 
   const [brandrange, setbrandrange] = useState(searchParams.getAll('brandrange') || [])
@@ -39,7 +38,7 @@ const Allfilters = ({ filterHeading, handleGoBack }) => {
   const initialsortdata = searchParams.get('sortingByPrice')
 
   const [sortingByPrice, setSortingByPrice] = useState(initialsortdata || '')
-
+const[ uniquebrands,setUniquebrand]=useState([])
   useEffect(() => {
     let params = {}
     categorytag && (params.categorytag = categorytag)
@@ -62,7 +61,30 @@ const Allfilters = ({ filterHeading, handleGoBack }) => {
     setcategorytag(filterdata)
 
   }
+  let { loading, productsData } = useSelector((store) => store.ProductReducer);
+  let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
+ 
+  
+useEffect(()=>{
+  let unibrands={}
+  if(brands && brands.length>0){
+   let answer= brands.map((product) => {
+      if (unibrands[product.brand]) {
+        unibrands[product.brand]++;
+      } else {
+        unibrands[product.brand] = 1;
+      }
 
+    })
+    //console.log(unibrands)
+    //console.log(answer)
+     setUniquebrand([unibrands])
+  }
+
+},[])
+
+
+console.log(uniquebrands)
 
   const handlebrand = (e) => {
     let sortdata = [...brandrange]
@@ -379,7 +401,20 @@ const Allfilters = ({ filterHeading, handleGoBack }) => {
 
                     </AccordionPanel>
                   }
+{
+    <AccordionPanel >
+     { uniquebrands.length>0 &&  uniquebrands?.map((brand, ind) => (
 
+        
+    <Box p={1} key={ind} >
+      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={brandrange.includes(brand)} name={brand} onChange={handlebrand} my={2} value={brand}  >{brand}</Checkbox>
+      <Text fontSize={"1em"}>{uniquebrands[brand]}</Text>
+    </Box>
+       )
+       )}
+  </AccordionPanel>
+
+}
 
 
 

@@ -2,12 +2,11 @@ import React from "react";
 import { Flex, Button, Text, IconButton } from "@chakra-ui/react";
 import { RxDoubleArrowLeft, RxDoubleArrowRight } from "react-icons/rx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-import { memo } from "react";
 
 let BTN_COUNT = 5;
 
 const getStartingIdx = (current, total) => {
-  if (total - current < 3)
+  if (total - current < 2)
     return Math.max(current - (BTN_COUNT - 1 - total + current), 1);
   return Math.max(current - 2, 1);
 };
@@ -16,6 +15,7 @@ const Pagination = ({ current, total, handlePageChange }) => {
   if (current === "") {
     current = 1;
   }
+  current=Number(current)
   let btns = [];
   let start = getStartingIdx(current, total);
   for (let i = start; i < Math.min(start + BTN_COUNT, total + 1); i++) {
@@ -69,4 +69,4 @@ const Pagination = ({ current, total, handlePageChange }) => {
   );
 };
 
-export default memo(Pagination);
+export default Pagination;
