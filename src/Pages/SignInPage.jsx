@@ -22,7 +22,7 @@ function SignInForm() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user.accessToken);
+       
         localStorage.setItem("Isauth", user.accessToken);
         if (user.accessToken) {
           navigate("/");

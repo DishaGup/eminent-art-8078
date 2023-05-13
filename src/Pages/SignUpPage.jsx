@@ -22,7 +22,7 @@ function SignUpForm() {
         // Signed in
         const user = userCredential.user;
       
-        console.log(user.accessToken);
+        // console.log(user.accessToken);
         if (user.accessToken) {
           navigation("/sign-in")
         }
@@ -30,7 +30,7 @@ function SignUpForm() {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorMessage);
+        // console.log(errorMessage);
         // ..
       });
   };
