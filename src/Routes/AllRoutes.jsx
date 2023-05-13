@@ -21,7 +21,6 @@ import Cartpage from "../Pages/CartPage/Cartpage";
 import SignInForm from "../Pages/SignInPage";
 import SignUpForm from "../Pages/SignUpPage";
 
-
 const AllRoutes = () => {
 
   return (
@@ -33,7 +32,7 @@ const AllRoutes = () => {
       <Route path="/sign-up" element={<SignUpForm />} />
 
       <Route
-        path="/cartpage"
+        path="/cart"
         element={
           // <PrivateRoute>
           <Cartpage />
@@ -67,7 +66,10 @@ const AllRoutes = () => {
           </PrivateRoute>
         }
       />
-      <Route path="/products/:category?/:subcategory?/:subcat2?" element={<Sidebar />} />
+      <Route
+        path="/products/:category?/:subcategory?/:subcat2?"
+        element={<Sidebar />}
+      />
       <Route
         path="/products/:category/single/:id"
         element={<SingleProductPageMain />}

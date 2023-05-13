@@ -49,7 +49,7 @@ const Navigationbar = () => {
       backgroundColor="#fff"
     >
       <Flex justify="space-around">
-        <Box w="20%" mx="20px">
+        <Box w="15%" mx="20px">
           <Center w="80%">
             <button>
               <NavLink to="/">
@@ -98,7 +98,13 @@ const Navigationbar = () => {
           </Button>
         </HStack>
 
-        <HStack color="#24a3b5" fontSize={22} justify="space-between" w="15%">
+        <HStack
+          color="#24a3b5"
+          fontSize={22}
+          justify="space-between"
+          w="15%"
+          ml="-150px"
+        >
           <Icon as={CiLocationOn} />
           <Icon as={BsBell} />
 
@@ -107,7 +113,7 @@ const Navigationbar = () => {
             <Icon as={BsHeart} />{" "}
           </Link>
 
-          <Link to="/cartpage">
+          <Link to="/cart">
             {" "}
             <Icon as={BsCart3} />{" "}
           </Link>
