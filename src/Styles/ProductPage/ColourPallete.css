@@ -1,0 +1,57 @@
+/* Color palette component */
+.color-palette {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .color-palette__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .color-palette__swatches {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border: 1px solid gray;
+    border-style: double;
+  }
+  
+  .color-palette__swatch {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .color-palette__swatch:hover {
+    transform: scale(1.2);
+  }
+  
+  .color-palette__swatch--black {
+    background-color: #000;
+  }
+  
+  .color-palette__swatch--white {
+    background-color: #fff;
+    border: 1px solid #000;
+  }
+  
+  .color-palette__swatch--red {
+    background-color: #ff0000;
+  }
+  
+  .color-palette__swatch--green {
+    background-color: #008000;
+  }
+  
+  .color-palette__swatch--blue {
+    background-color: #0000ff;
+  }
+  

@@ -32,7 +32,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
 
 import Navmain from "../HomePage/Navmain.jsx";
+
 import axios from "axios";
+
+import ColorPalette from "./ColorPalette.jsx";
+
 
 const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
@@ -47,9 +51,11 @@ const SingleProductPageMain = () => {
     navigate("/products");
   };
 
+
   const [data, setData] = useState({});
 
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
+
 
   //console.log(productsData.products);
   useEffect(() => {
@@ -57,6 +63,7 @@ const SingleProductPageMain = () => {
     const data = productsData.products.find((el) => el._id === id);
     setData(data);
   }, []);
+
 
   // useEffect(() => {
   //   dispatch(getSingleProducts(id));
@@ -107,6 +114,16 @@ const SingleProductPageMain = () => {
             "Please do login to your account or signup to start a new journey with us!",
           status: "error",
           duration: 1000,
+
+
+  const handlebuynow = () => {
+    // Add logic to buy products
+    toast({
+      title: 'Redirecting..',
+          description: "Navigating To payment page.",
+          status: 'success',
+          duration: 2000,
+
           isClosable: true,
           position: "top",
         });
@@ -164,19 +181,25 @@ const SingleProductPageMain = () => {
                     {/* left multiple images */}
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
-                      <Carousel autoPlay>
+                      <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
                         <div>
                           <img alt="1" src={data.image} />
                         </div>
                         <div>
                           <img alt="2" src={data.image2} />
                         </div>
-                        <div>
-                          <img
-                            alt=""
-                            src="https://th.bing.com/th/id/R.cbc82af939081036784d5a25eef97567?rik=kSY%2btYZ3WJEG%2bw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-0lMF5Ciqcc4%2fVqERZmlvEGI%2fAAAAAAAABVU%2fFLECfobh3Yg%2fs1600%2fShopclues-4th-aniversary-sale.png&ehk=MpFW%2fxBFlenYs8ePTe%2fJYjNOL19YnLcepuIGD5q2NWQ%3d&risl=&pid=ImgRaw&r=0"
-                          />
-                        </div>
+                        
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
                       </Carousel>
                     </div>
                   </HStack>
@@ -184,6 +207,7 @@ const SingleProductPageMain = () => {
                 {/* for small screen */}
                 <Box display={{ base: "block", md: "block", lg: "none" }}>
                   <VStack>
+
                     <Box overflow="hidden">
                       <Image src={data.image} alt={"image"} objectFit="cover" />
                     </Box>
@@ -196,6 +220,28 @@ const SingleProductPageMain = () => {
                         />
                       </Box>
                     </HStack>
+
+                  <Carousel  w='50%' autoPlay={true} infiniteLoop={true} transitionTime={2000}  axis='vertical'  stopOnHover={false}>
+                        <div>
+                          <img alt="1" src={product.image} />
+                        </div>
+                        <div>
+                          <img alt="2" src={product.image2} />
+                        </div>
+                        
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
+                      </Carousel>
+
                   </VStack>
                 </Box>
               </Box>
@@ -267,6 +313,11 @@ const SingleProductPageMain = () => {
 
                   <Box my={3}>
                     <Image src={discountoff} />
+                  </Box>
+                  <Box my={3} border='1mm solid black' w='max-content' p={5} borderRadius={'10px'}>
+                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
+    
+    
                   </Box>
                 </Box>
 

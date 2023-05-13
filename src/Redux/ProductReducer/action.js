@@ -92,9 +92,10 @@ export const getProductsSubSubcategory =
 export const getSingleProducts = (id) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
 
-  axios
-    .get(`http://localhost:8080/trendify/products/:category/single/${id}`)
-    .then((res) => {
+
+ axios.get(`http://localhost:8080/trendify/products/:category/:subcategory/single/${id}`)
+    .then((res) =>{
+
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
         payload: res,

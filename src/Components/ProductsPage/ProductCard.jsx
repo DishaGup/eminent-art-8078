@@ -81,11 +81,12 @@ function ProductCard(props) {
 useEffect(()=>{
   const timer = setTimeout(() => {
     settimes(times + 1);
+   if(times==10) clearTimeout(timer)
+
   }, 1000);
   return () => clearTimeout(timer);
 
 },[times])
-
 
 
  if(loading && times<5){
@@ -102,7 +103,8 @@ useEffect(()=>{
 </Box>
 
   )
- }else if(productsData.products.length<=0 || error==true){
+ }
+ if(productsData.products.length<=0 || productsData.total==0 ){
   return <NotfoundCategory />
 }
 // else if( loading==true && times>=10 ){
