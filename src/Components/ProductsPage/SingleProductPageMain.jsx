@@ -45,6 +45,7 @@ import Zoom from "react-img-zoom";
 import { Carousel } from "react-responsive-carousel";
 import { useState } from "react";
 import Navmain from "../HomePage/Navmain.jsx";
+import ColorPalette from "./ColorPalette.jsx";
 
 const SingleProductPageMain = () => {
   const [itemInCart, setItemInCart] = useState(false);
@@ -55,12 +56,17 @@ const toast=useToast()
   const handleGoBack = () => {
     navigate("/products");
   };
- 
+  const [selectedColor, setSelectedColor] = useState("blue");
+  const colors = ["blue", "green", "red", "yellow"];
+
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+  };
   const { id } = useParams();
 
   const dispatch = useDispatch();
-  let { loading, productsData } = useSelector((store) => store.ProductReducer);
-  console.log(productsData)
+  let { loading} = useSelector((store) => store.ProductReducer);
+
  let {product} =useSelector((store) => store.ProductReducer.productsData)
   const handleAddToCart = (e) => {
    
@@ -91,12 +97,9 @@ const toast=useToast()
 
   useEffect(() => {
     dispatch(getSingleProducts(id))
-    // .then((res) =>{ 
-    //   console.log(res,'...useFee')
-    //   setProduct(res)})
-    //    .catch((err) => console.log(err));
+   
   }, []);
-console.log(product)
+
   const handlebuynow = () => {
     // Add logic to buy products
     toast({
@@ -163,19 +166,25 @@ console.log(product)
                    
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
-                      <Carousel autoPlay>
+                      <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
                         <div>
                           <img alt="1" src={product.image} />
                         </div>
                         <div>
                           <img alt="2" src={product.image2} />
                         </div>
-                        <div>
-                          <img
-                            alt=""
-                            src="https://th.bing.com/th/id/R.cbc82af939081036784d5a25eef97567?rik=kSY%2btYZ3WJEG%2bw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-0lMF5Ciqcc4%2fVqERZmlvEGI%2fAAAAAAAABVU%2fFLECfobh3Yg%2fs1600%2fShopclues-4th-aniversary-sale.png&ehk=MpFW%2fxBFlenYs8ePTe%2fJYjNOL19YnLcepuIGD5q2NWQ%3d&risl=&pid=ImgRaw&r=0"
-                          />
-                        </div>
+                        
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
                       </Carousel>
                     </div>
                   </HStack>
@@ -183,22 +192,26 @@ console.log(product)
                 {/* for small screen */}
                 <Box display={{ base: "block", md: "block", lg: "none" }}>
                   <VStack>
-                    <Box overflow="hidden">
-                      <Image
-                        src={product.image}
-                        alt={"image"}
-                        objectFit="cover"
-                      />
-                    </Box>
-                    <HStack align="flex-start">
-                      <Box h="100px" overflow="hidden">
-                        <Image
-                          src={product.image2 ? product.image2 : ""}
-                          alt={`Image2`}
-                          objectFit="cover"
-                        />
-                      </Box>
-                    </HStack>
+                  <Carousel  w='50%' autoPlay={true} infiniteLoop={true} transitionTime={2000}  axis='vertical'  stopOnHover={false}>
+                        <div>
+                          <img alt="1" src={product.image} />
+                        </div>
+                        <div>
+                          <img alt="2" src={product.image2} />
+                        </div>
+                        
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
+                      </Carousel>
                   </VStack>
                 </Box>
               </Box>
@@ -270,6 +283,11 @@ console.log(product)
 
                   <Box my={3}>
                     <Image src={discountoff} />
+                  </Box>
+                  <Box my={3} border='1mm solid black' w='max-content' p={5} borderRadius={'10px'}>
+                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
+    
+    
                   </Box>
                 </Box>
 

@@ -41,7 +41,6 @@ const Sidebar = () => {
   }, []);
 
 
-  console.log(productsData,'...sidebar')
   useEffect(() => {
     let params = {};
     sortingByPrice && (params.sortingByPrice = sortingByPrice);

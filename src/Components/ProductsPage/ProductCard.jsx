@@ -81,12 +81,13 @@ function ProductCard(props) {
 useEffect(()=>{
   const timer = setTimeout(() => {
     settimes(times + 1);
+   if(times==10) clearTimeout(timer)
+
   }, 1000);
   return () => clearTimeout(timer);
 
 },[times])
 
-console.log(productsData)
 
  if(loading && times<5){
   return(
