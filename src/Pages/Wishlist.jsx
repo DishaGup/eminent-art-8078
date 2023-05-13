@@ -2,12 +2,16 @@ import { Box, Heading } from "@chakra-ui/react";
 import LeftDiv from "./Wishlist/LeftDiv";
 import { RightDiv } from "./Wishlist/RightDiv";
 import Navmain from "../Components/HomePage/Navmain";
+import SearchBar from "../Components/SearchBar";
+import LocationBox from "../Components/LocationBox";
+import Footer1 from "../Components/Footer1";
 
 const Wishlist = () => {
   return (
     <>
     <Navmain/>
-    <Box h="100vh" w="95%" m="auto" >
+    <LocationBox/>
+    <Box  w="95%" m="auto" >
       <Box
         display={"flex"}
         flexDirection={{ base: "column",sm:"column", md:"row", lg: "row", xl:"row","2xl":"row" }}
@@ -19,6 +23,7 @@ const Wishlist = () => {
         <RightDiv />
       </Box>
     </Box>
+    <Footer1/>
     </>
   );
 };
