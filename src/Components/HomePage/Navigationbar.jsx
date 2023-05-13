@@ -29,6 +29,11 @@ import { TbLogin } from "react-icons/tb";
 import NavDrop from "./NavDrop";
 import { AdminButton } from "../../Pages/Admin/AdminButton";
 const Navigationbar = () => {
+
+
+  let auth = JSON.parse(localStorage.getItem("auth"))
+  console.log(auth.user.name)
+
   return (
     <Box
       // position="fixed"
@@ -122,7 +127,9 @@ const Navigationbar = () => {
             ></MenuButton>
             <MenuList fontSize="14px">
               <MenuItem>
-                <NavLink to="/login">LOGIN/SIGNUP</NavLink>
+                {
+                  auth.user.name ? <h3>{`UserName : ${auth.user.name}`}</h3> : <NavLink to="/login">LOGIN/SIGNUP</NavLink>
+                }
               </MenuItem>
               <MenuDivider m={0} />
               <AdminButton />

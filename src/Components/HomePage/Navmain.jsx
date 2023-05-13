@@ -5,12 +5,17 @@ import Navigationbar from "./Navigationbar";
 import NavDrop from "./NavDrop";
 import style from "./navmain.module.css";
 const Navmain = () => {
+
+  let auth = JSON.parse(localStorage.getItem("auth"))
+  console.log(auth)
+
   return (
     <Flex w="100%">
       <MobileNavbar />
       <Flex
         display={{ base: "none", md: "flex" }}
         direction={"column"}
+
         id="maindiv"
         backgroundColor="#fff"
       >

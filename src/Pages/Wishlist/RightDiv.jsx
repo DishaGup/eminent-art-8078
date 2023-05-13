@@ -39,7 +39,7 @@ const [rerender,setRerender]=useState(false)
       margin={"auto"}
       minHeight={"390px"}
     >
-      <Text fontWeight={"bold"} mt="10px">
+      <Text fontWeight={"bold"} mt="10px"  paddingLeft={"40%"} >
         My Wishlist
       </Text>
 
