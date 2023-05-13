@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+ /* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
 
 *{
     padding: 0;
@@ -226,8 +226,6 @@ form.sign-up-form{
     transform: translateX(800px);
 }
 
-/* ANIMATION */
-
 .containers.sign-up-mode:before{
     transform: translate(100%, -50%);
     right: 52%;
@@ -381,4 +379,4 @@ form.sign-up-form{
         bottom: 28%;
         left: 50%;
     }
-}
+}  */
