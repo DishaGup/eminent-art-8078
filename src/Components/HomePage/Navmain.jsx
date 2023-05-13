@@ -11,7 +11,6 @@ const Navmain = () => {
       <Flex
         display={{ base: "none", md: "flex" }}
         direction={"column"}
-       
         id="maindiv"
         backgroundColor="#fff"
       >

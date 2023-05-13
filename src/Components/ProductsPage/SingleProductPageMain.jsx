@@ -78,7 +78,7 @@ const SingleProductPageMain = () => {
         },
       })
       .then((res) => {
-        console.log("res:", res);
+        console.log("res:", res.token);
         if (res.data.msg === "Please Login First!!") {
           toast({
             title: "Login First!",
