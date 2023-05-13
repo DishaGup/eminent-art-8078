@@ -43,6 +43,7 @@ const LoginPage = () => {
   // Config with New User's
 
   // const auth = getAuth();
+  
   const [NewUserEmail, setNewuserEmail] = useState("");
   const [NewUserPassword, setNewuserPassword] = useState("");
 
