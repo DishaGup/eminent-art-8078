@@ -32,8 +32,10 @@ import Navmain from "../HomePage/Navmain.jsx";
 import axios from "axios";
 import { getSingleProducts } from "../../Redux/ProductReducer/action";
 import ColorPalette from "./ColorPalette";
+import { AddtoWishlist } from "../../Redux/WishList/action";
 
 const SingleProductPageMain = () => {
+ 
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -124,6 +126,40 @@ const SingleProductPageMain = () => {
     });
 
     navigate("/payments");
+  };
+
+  const handleAddToWishlist = (data) => {
+    let url = "http://localhost:8080/trendify/wishlist"
+    //dispatch(AddtoWishlist(item))
+    let product = {
+      image: data.image,
+      name: data.title,
+      price: data.price,
+      category: data.category,
+      quantity: 1,
+    };
+  
+    axios
+      .post(`${url}/add`, product, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+       // dispatch({ type: ADDTOWISHLIS_SUCCESS });
+       console.log("success")
+      });
+
+      toast({
+        title: "Successful!",
+          description:
+            "Product Added to wishlist!!",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+      })
+    
   };
 
   return (
@@ -345,6 +381,7 @@ const SingleProductPageMain = () => {
                       fontWeight={"medium"}
                       // onClick={addtowishlist}
                       cursor="pointer"
+                      onClick={() => handleAddToWishlist(product)}
                     >
                       Add to Wish List
                     </Text>

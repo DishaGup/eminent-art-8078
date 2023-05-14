@@ -33,9 +33,9 @@ const AllRoutes = () => {
       <Route
         path="/wishlistpage"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Wishlist />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
       <Route
@@ -52,9 +52,9 @@ const AllRoutes = () => {
       <Route
         path="/payments"
         element={
-          <PrivateRoute>
+          // <PrivateRoute>
             <Payments />
-          </PrivateRoute>
+          // </PrivateRoute>
         }
       />
       <Route
