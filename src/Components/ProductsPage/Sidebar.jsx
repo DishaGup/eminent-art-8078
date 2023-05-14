@@ -48,7 +48,7 @@ const Sidebar = () => {
     pageno && (params.pageno = pageno);
 
     setSearchParams(params);
-  }, [pageno, sortingByPrice, category, subcategory, subcat2]);
+  }, [pageno, sortingByPrice]);
 
 
   let queryParams = {
@@ -82,24 +82,7 @@ const Sidebar = () => {
 
   }, [location.search])
 
-  
-
-  useEffect(() => {
-    let unibrands = {}
-    if (brands && brands.length > 0) {
-      let answer = brands.forEach((product) => {
-        if (unibrands[product.brand]) {
-          unibrands[product.brand]++;
-        } else {
-          unibrands[product.brand] = 1;
-        }
-      })
-
-      setUniquebrand(unibrands)
-    }
-  }, [brands, productsData])
-
-console.log(uniquebrands)
+ 
 
   return (
     <>

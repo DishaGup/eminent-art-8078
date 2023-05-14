@@ -110,6 +110,7 @@ export const getSingleProducts = (id) => (dispatch) => {
     );
 };
 
+
 // export const getSingleProductsSubcategory = (id) => (dispatch) => {
 //   dispatch({ type: GET_PRODUCTS_LOADING });
 
@@ -160,3 +161,7 @@ export const Addtowishlist = (data) => (dispatch) => {
       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
     );
 };
+
+export const DeleteAllParams=(obj)=>{
+  Object.keys(obj).forEach(key => delete obj[key]);
+}
