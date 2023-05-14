@@ -10,7 +10,7 @@ import { useToast } from "@chakra-ui/react";
 
 const Cartpage = () => {
   const token = localStorage.getItem("token");
-  console.log(token);
+
   const [refresh, setRefresh] = useState(false);
   const [cartData, setCartData] = useState([]);
 
@@ -38,13 +38,12 @@ const Cartpage = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8080/trendify/cart/delete/${id}`, {
+      .delete(`https://erin-dizzy-clam.cyclic.app/trendify/cart/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
       .then((res) => {
-        console.log(res);
         toast({
           title: "Product removed from cart!!",
           status: "success",
@@ -62,7 +61,7 @@ const Cartpage = () => {
       if (el._id === id) {
         axios
           .patch(
-            `http://localhost:8080/trendify/cart/update/${id}`,
+            `https://erin-dizzy-clam.cyclic.app/trendify/cart/update/${id}`,
             { quantity: el.quantity + 1 },
             {
               headers: {
@@ -71,7 +70,7 @@ const Cartpage = () => {
             }
           )
           .then((res) => {
-            console.log(res);
+            // console.log(res);
             setRefresh(!refresh);
           });
       }
@@ -83,7 +82,7 @@ const Cartpage = () => {
       if (el._id === id) {
         axios
           .patch(
-            `http://localhost:8080/trendify/cart/update/${id}`,
+            `https://erin-dizzy-clam.cyclic.app/trendify/cart/update/${id}`,
             { quantity: el.quantity - 1 },
             {
               headers: {
@@ -97,16 +96,15 @@ const Cartpage = () => {
       }
     });
   };
-  console.log(cartData);
 
   const totalPrice = cartData.reduce((acc, curr) => {
     const data = cartData.find((el) => el._id === curr._id);
     return acc + data.price * data.quantity;
   }, 0);
-
+  console.log(cartData);
   return (
     <>
-      <Link to="/">
+      <Link to="/products">
         <div id="headercart">
           <img
             src="https://secure.shopclues.com/atom_view/images/prev.png"
@@ -129,7 +127,7 @@ const Cartpage = () => {
             {/* //map */}
             {cartData.map((el) => {
               return (
-                <div id="cartitemwrapper">
+                <div id="cartitemwrapper" key={el._id}>
                   <div id="main-div">
                     <div id="cartimgname">
                       {/* 11div */}
@@ -139,24 +137,25 @@ const Cartpage = () => {
                       {/* 12div */}
                       <div>
                         <h3 id="c12div">{el.title}</h3>
+                        <p>category: {el.category} </p>
                       </div>
                     </div>
 
                     <div id="plusminus">
                       <div>
                         <button
-                          id="plus"
-                          onClick={() => handleIncrease(el._id)}
-                        >
-                          +
-                        </button>
-                        <span id="spanp">{el.quantity}</span>
-                        <button
                           id="minus"
                           onClick={() => handleDecrease(el._id)}
                           disabled={el.quantity === 1}
                         >
                           -
+                        </button>
+                        <span id="spanp">{el.quantity}</span>
+                        <button
+                          id="plus"
+                          onClick={() => handleIncrease(el._id)}
+                        >
+                          +
                         </button>
                       </div>
 
@@ -170,15 +169,18 @@ const Cartpage = () => {
                       </div>
                     </div>
 
-                    <div>
+                    <div id="res-spanmid1">
                       <span className="spanmid1">Price:</span>
                       <span className="spanmid">
                         ₹ {el.price * el.quantity}{" "}
                       </span>
 
                       <div>
-                        <span className="spanmid1">Shipping Fee</span>
-                        <span className="spanmid"> FREE</span>
+                        <span className="spanmid1">Shipping Fee : </span>
+                        <span className="spanmid" id="Free">
+                          {" "}
+                          FREE
+                        </span>
                       </div>
                     </div>
 
