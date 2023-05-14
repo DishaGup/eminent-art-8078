@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const {connection} = require("./Connection/connection");
+const { connection } = require("./Connection/connection");
 
 const { auth } = require("./MiddleWare/logintrendify.middleware");
 
@@ -9,18 +9,17 @@ const cors = require("cors");
 require("dotenv").config();
 
 const { userTrendifyRouter } = require("./Routes/usertrendify.route");
- const { cartTrendifyRouter } = require("./Routes/carttrendify.route");
-
+const { cartTrendifyRouter } = require("./Routes/carttrendify.route");
+const { wishlistRouter } = require("./Routes/wishlist.route");
 
 app.use(cors());
 app.use(express.json());
 
-
 app.use("/trendify/products", productTrendifyRouter);
 
 app.use("/trendify/users", userTrendifyRouter);
- app.use("/trendify/cart", auth, cartTrendifyRouter);
-
+app.use("/trendify/cart", auth, cartTrendifyRouter);
+app.use("/trendify/wishlist",auth,wishlistRouter)
 app.listen(process.env.port, async () => {
   try {
     await connection;
@@ -29,4 +28,4 @@ app.listen(process.env.port, async () => {
     console.log("cannot connect to the db");
   }
   console.log("Port 8080 is running");
-})
+});

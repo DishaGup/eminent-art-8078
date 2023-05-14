@@ -31,13 +31,7 @@ const products = [
   },
   { name: 'Shipping', desc: '', price: 'Free' },
 ];
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+
 
 export default function Review() {
  const [addressData,setAddresData]=useState({
@@ -55,25 +49,20 @@ export default function Review() {
  'cardNumber':'',
  'expDate':"",
  'cvv':''})
-    // const Card=useSelector((store)=>{
-    //   return store.PaymentReducer.card
-    // })
-
     
-
-    // const Address=useSelector((store)=>{
-    //   return store.PaymentReducer.Address
-
-    // })
-    // console.log(Card)
  useEffect(()=>{
   let Data= JSON.parse(localStorage.getItem("addressDetails"))
   let card=JSON.parse(localStorage.getItem("card"))
   setAddresData({...addressData,...Data})
   setCard({...card})
 },[])
-//console.log(addressData)
-console.log(card)
+const address=useSelector((store)=>{
+  return store.PaymentReducer.address
+})
+const card1=useSelector((store)=>{
+  return store.PaymentReducer.card
+})
+console.log(address,card1)
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -89,7 +78,7 @@ console.log(card)
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $34.06
+          ₹ 34.06
           </Typography>
         </ListItem>
       </List>

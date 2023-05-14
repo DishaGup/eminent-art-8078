@@ -1,9 +1,8 @@
-import { CARDDETAIL, SHHIPINGADD } from "./actiontype"
-
-export const UdateAddress=(payload)=>(dispatch)=>{
-    dispatch({type:SHHIPINGADD,payload:payload})
+import { ADD_CARD, ADD_USER} from "./actionType"
+export const AddUser=(payload)=>(dispatch)=>{
+    dispatch({type:ADD_USER,payload:payload})
 }
 
-export const UdateCard=(payload)=>(dispatch)=>{
-      dispatch({type:CARDDETAIL,payload:payload})
+export const AddCard=(payload)=>(dispatch)=>{
+      dispatch({type:ADD_CARD,payload:payload})
 }

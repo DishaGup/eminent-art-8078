@@ -31,8 +31,8 @@ import { AdminButton } from "../../Pages/Admin/AdminButton";
 const Navigationbar = () => {
 
 
-  let auth = JSON.parse(localStorage.getItem("auth"))
-  console.log(auth.user.name)
+  let auth = JSON.parse(localStorage.getItem("auth"))||{user:""}
+  //console.log(auth.user.name)
 
   return (
     <Box

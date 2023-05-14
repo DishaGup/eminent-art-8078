@@ -3,6 +3,12 @@ export const GET_USER_SUCCESS="GET_USER_SUCCESS"
 export const GET_USER_FAIL="GET_USER_FAIL"
 
 
+export const ADD_USER="ADD_USER"
+export const ADD_USER_SUCCESS="ADD_USER_SUCCESS"
+export const ADD_USER_FAIL="ADD_USER_FAIL"
+
+
+
 export const  REMOVE_USER_REQ="REMOVE_USER_REQ"
 export const  REMOVE_USER_SUCCESS="REMOVE_USER_SUCCESS"
 export const  REMOVE_USER_FAIL="REMOVE_USER_FAIL"
@@ -14,6 +20,8 @@ export const  UPDATE_USER_FAIL="UPDATE_USER_FAIL"
 
 
 // -----card actions -----
+
+export const ADD_CARD="ADD_CARD"
 
 export const ADD_CARD_REQ="ADD_CARD_REQ"
 export const ADD_CARD_SUCCESS="ADD_CARD__SUCCESS"

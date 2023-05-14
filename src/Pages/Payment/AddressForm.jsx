@@ -5,8 +5,7 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useDispatch } from 'react-redux';
-import { Button } from '@mui/material';
-import {UdateAddress} from "../../Redux/PaymentReducer/action"
+import { AddUser } from '../../Redux/PaymentReducer/action';
 export default function AddressForm() {
   let initAdd={
     "firstName":"",
@@ -21,7 +20,8 @@ export default function AddressForm() {
   }
   const [address,setAddress]=React.useState(initAdd)
 
-//const dispatch=useDispatch()
+  const dispatch=useDispatch()
+
 
   const handleChange=(e)=>{
     const name=e.target.name
@@ -30,8 +30,9 @@ export default function AddressForm() {
 
   }
   const handleSave=()=>{
-   //dispatch(UdateAddress(address))
-   localStorage.setItem("addressDetails",JSON.stringify(address))
+  
+   //localStorage.setItem("addressDetails",JSON.stringify(address))
+     dispatch(AddUser(address))
   }
   console.log(address)
   const {firstName,lastName,address1,address2,city,state,zip,country}=address
