@@ -52,26 +52,20 @@ const SingleProductPageMain = () => {
     navigate("/products");
   };
 
-  const [data, setData] = useState({});
-
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-  let {product} =useSelector((store) => store.ProductReducer.productsData)
-  //console.log(productsData.products);
+  let { product } = useSelector((store) => store.ProductReducer.productsData);
+
   useEffect(() => {
     // window.scrollTo(0, 0);
-    dispatch(getSingleProducts(id))
+    dispatch(getSingleProducts(id));
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(getSingleProducts(id));
-  // }, []);
 
   const handleAddToCart = () => {
     const obj = {
-      image: data.image,
-      title: data.title,
-      price: data.price,
-      category: data.category,
+      image: product.image,
+      title: product.title,
+      price: product.price,
+      category: product.category,
       quantity: 1,
     };
 
@@ -135,7 +129,7 @@ const SingleProductPageMain = () => {
   return (
     <>
       <Navmain />
-      { product && (
+      {product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -162,25 +156,23 @@ const SingleProductPageMain = () => {
                 <Box display={{ base: "none", md: "none", lg: "block" }}>
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
-                   
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
-                      <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
+                      <Carousel
+                        autoPlay={true}
+                        infiniteLoop={true}
+                        transitionTime={2000}
+                        stopOnHover={false}
+                      >
                         <div>
                           <img alt="1" src={product.image} />
                         </div>
-                                               
-{      product.images?.map((el,ind)=><div key={ind}>
-  <img
-    alt={el.substring(0,5)}
-    src={el}
-  />
-</div>   )
-}
 
-
-
-
+                        {product.images?.map((el, ind) => (
+                          <div key={ind}>
+                            <img alt={el.substring(0, 5)} src={el} />
+                          </div>
+                        ))}
                       </Carousel>
                     </div>
                   </HStack>
@@ -188,26 +180,27 @@ const SingleProductPageMain = () => {
                 {/* for small screen */}
                 <Box display={{ base: "block", md: "block", lg: "none" }}>
                   <VStack>
-                  <Carousel  w='50%' autoPlay={true} infiniteLoop={true} transitionTime={2000}  axis='vertical'  stopOnHover={false}>
-                        <div>
-                          <img alt="1" src={product.image} />
+                    <Carousel
+                      w="50%"
+                      autoPlay={true}
+                      infiniteLoop={true}
+                      transitionTime={2000}
+                      axis="vertical"
+                      stopOnHover={false}
+                    >
+                      <div>
+                        <img alt="1" src={product.image} />
+                      </div>
+                      <div>
+                        <img alt="2" src={product.image2} />
+                      </div>
+
+                      {product.images?.map((el, ind) => (
+                        <div key={ind}>
+                          <img alt={el.substring(0, 5)} src={el} />
                         </div>
-                        <div>
-                          <img alt="2" src={product.image2} />
-                        </div>
-                        
-{      product.images?.map((el,ind)=><div key={ind}>
-  <img
-    alt={el.substring(0,5)}
-    src={el}
-  />
-</div>   )
-}
-
-
-
-
-                      </Carousel>
+                      ))}
+                    </Carousel>
                   </VStack>
                 </Box>
               </Box>
@@ -280,10 +273,18 @@ const SingleProductPageMain = () => {
                   <Box my={3}>
                     <Image src={discountoff} />
                   </Box>
-                  <Box my={3} border='1mm solid black' w='max-content' p={5} borderRadius={'10px'}>
-                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
-    
-    
+                  <Box
+                    my={3}
+                    border="1mm solid black"
+                    w="max-content"
+                    p={5}
+                    borderRadius={"10px"}
+                  >
+                    <ColorPalette
+                      colors={colors}
+                      selectedColor={selectedColor}
+                      onColorChange={handleColorChange}
+                    />
                   </Box>
                 </Box>
 
@@ -464,7 +465,7 @@ const SingleProductPageMain = () => {
             </Box>
           </Container>
         </Box>
-        )}
+      )}
     </>
   );
 };

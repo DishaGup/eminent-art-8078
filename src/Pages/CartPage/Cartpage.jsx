@@ -5,27 +5,33 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { EmptyCart } from "./EmptyCart";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { getCartData } from "../../Redux/ProductReducer/action";
 
 const Cartpage = () => {
-  const [change, setChange] = useState(false);
   const token = localStorage.getItem("token");
-  const fun = async () => {
-    try {
-      axios
-        .get("http://localhost:8080/trendify/cart", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => console.log(res.data));
-    } catch (err) {
-      console.log(err);
-    }
-  };
+  const { loading, cartdata } = useSelector((store) => store.ProductReducer);
+  const [change, setChange] = useState(false);
+  const dispatch = useDispatch();
+  // const fun = async () => {
+  //   try {
+  //     axios
+  //       .get("http://localhost:8080/trendify/cart", {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       })
+  //       .then((res) => console.log(res.data));
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
 
   useEffect(() => {
-    fun();
+    dispatch(getCartData(token));
   }, []);
+
+  console.log(cartdata);
   return (
     <>
       <Link to="/">
@@ -37,7 +43,7 @@ const Cartpage = () => {
           <img src={trendifyLogo} alt="" />
         </div>
       </Link>
-      {change ? (
+      {cartdata.length === 0 ? (
         <EmptyCart />
       ) : (
         <div style={{ marginTop: "100px" }}>

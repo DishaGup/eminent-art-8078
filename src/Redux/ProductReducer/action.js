@@ -5,6 +5,7 @@ import {
   GET_PRODUCTS_ERROR,
   GET_PRODUCTS_LOADING,
   GET_PRODUCTS_SUCCESS,
+  GET_CART_DATA,
 } from "./actiontype";
 
 export const getAllProducts = (data) => (dispatch) => {
@@ -92,10 +93,11 @@ export const getProductsSubSubcategory =
 export const getSingleProducts = (id) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
 
-
- axios.get(`http://localhost:8080/trendify/products/:category/:subcategory/single/${id}`)
-    .then((res) =>{
-
+  axios
+    .get(
+      `http://localhost:8080/trendify/products/:category/:subcategory/single/${id}`
+    )
+    .then((res) => {
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
         payload: res,
@@ -121,6 +123,26 @@ export const getSingleProducts = (id) => (dispatch) => {
 //       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
 //     );
 // };
+
+export const getCartData = (token) => (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
+  axios
+    .get("http://localhost:8080/trendify/cart", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      dispatch({
+        type: GET_CART_DATA,
+        payload: res,
+      });
+      console.log(res);
+    })
+    .catch((error) =>
+      dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
+    );
+};
 
 export const Addtowishlist = (data) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
