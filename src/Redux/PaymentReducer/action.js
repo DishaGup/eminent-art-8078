@@ -1,4 +1,4 @@
-import { ADD_CARD, ADD_USER} from "./actionType"
+import { ADD_CARD, ADD_USER} from "./actiontype"
 export const AddUser=(payload)=>(dispatch)=>{
     dispatch({type:ADD_USER,payload:payload})
 }

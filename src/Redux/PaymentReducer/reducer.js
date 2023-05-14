@@ -12,7 +12,7 @@ import {
   GET_USER_SUCCESS,
   GET_USER_FAIL,
   ADD_CARD,
-} from "./actionType";
+} from "./actiontype";
 
 const initState = {
   address: {},
