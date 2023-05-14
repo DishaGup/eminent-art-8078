@@ -4,13 +4,20 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RightDiv = () => {
+  let url="http://localhost:8080/trendify/wishlist"
   const naigate = useNavigate();
   const [item, setItem] = useState("");
   const [wishlistData, setWishlistData] = useState([]);
-const [rerender,setRerender]=useState(false)
+  const [rerender, setRerender] = useState(false);
   const getData = () => {
-    axios.get(`http://localhost:4444/wishlist`).then((res) => {
-      setWishlistData(res.data);
+    axios.get(url,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      console.log(res.data)
+      if(res.data.length)
+     { setWishlistData(res.data);}
     });
   };
 
@@ -18,28 +25,32 @@ const [rerender,setRerender]=useState(false)
     getData();
   }, [wishlistData.length]);
   console.log(item);
-  
 
   const handleDelete = (item) => {
-   
     let id = +item.id;
-    axios.delete(`http://localhost:4444/wishlist/${id}`).then((res) => {
+    axios.delete(`${url}/${id}`).then((res) => {
       console.log(res);
     });
     getData();
-    setRerender(!rerender)
+    setRerender(!rerender);
   };
-  
 
   return (
     <Box
-      width={{base: "90%",sm:"70%", md:"70%", lg: "80%", xl:"70%","2xl":"70%"}}  
+      width={{
+        base: "90%",
+        sm: "70%",
+        md: "70%",
+        lg: "80%",
+        xl: "70%",
+        "2xl": "70%",
+      }}
       boxShadow={"rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"}
       fontSize={{ sm: "xs", md: "sm", lr: "sm", "2xl": "sm" }}
       margin={"auto"}
       minHeight={"390px"}
     >
-      <Text fontWeight={"bold"} mt="10px"  paddingLeft={"40%"} >
+      <Text fontWeight={"bold"} mt="10px" paddingLeft={"40%"}>
         My Wishlist
       </Text>
 

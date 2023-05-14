@@ -32,9 +32,13 @@ import Navmain from "../HomePage/Navmain.jsx";
 import axios from "axios";
 import { getSingleProducts } from "../../Redux/ProductReducer/action";
 import ColorPalette from "./ColorPalette";
+
 import { Coupon, OneMoreOffer } from "./OneMoreOffer";
+import { AddtoWishlist } from "../../Redux/WishList/action";
+
 
 const SingleProductPageMain = () => {
+ 
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -53,26 +57,20 @@ const SingleProductPageMain = () => {
     navigate("/products");
   };
 
-  const [data, setData] = useState({});
-
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-  let {product} =useSelector((store) => store.ProductReducer.productsData)
-  //console.log(productsData.products);
+  let { product } = useSelector((store) => store.ProductReducer.productsData);
+
   useEffect(() => {
     // window.scrollTo(0, 0);
-    dispatch(getSingleProducts(id))
+    dispatch(getSingleProducts(id));
   }, []);
-
-  // useEffect(() => {
-  //   dispatch(getSingleProducts(id));
-  // }, []);
 
   const handleAddToCart = () => {
     const obj = {
-      image: data.image,
-      title: data.title,
-      price: data.price,
-      category: data.category,
+      image: product.image,
+      title: product.title,
+      price: product.price,
+      category: product.category,
       quantity: 1,
     };
 
@@ -133,10 +131,44 @@ const SingleProductPageMain = () => {
     navigate("/payments");
   };
 
+  const handleAddToWishlist = (data) => {
+    let url = "http://localhost:8080/trendify/wishlist"
+    //dispatch(AddtoWishlist(item))
+    let product = {
+      image: data.image,
+      name: data.title,
+      price: data.price,
+      category: data.category,
+      quantity: 1,
+    };
+  
+    axios
+      .post(`${url}/add`, product, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+       // dispatch({ type: ADDTOWISHLIS_SUCCESS });
+       console.log("success")
+      });
+
+      toast({
+        title: "Successful!",
+          description:
+            "Product Added to wishlist!!",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+          position: "top",
+      })
+    
+  };
+
   return (
     <>
       <Navmain />
-      { product && (
+      {product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -163,24 +195,23 @@ const SingleProductPageMain = () => {
                 <Box display={{ base: "none", md: "none", lg: "block" }}>
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
-                   
+
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
-                      <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
+                      <Carousel
+                        autoPlay={true}
+                        infiniteLoop={true}
+                        transitionTime={2000}
+                        stopOnHover={false}
+                      >
                         <div>
                           <img alt="1" src={product.image} />
                         </div>
-                                               
-{      product.images?.map((el,ind)=><div key={ind}>
-  <img
-    alt={el.substring(0,5)}
-    src={el}
-  />
-</div>   )
-}
 
-
-
-
+                        {product.images?.map((el, ind) => (
+                          <div key={ind}>
+                            <img alt={el.substring(0, 5)} src={el} />
+                          </div>
+                        ))}
                       </Carousel>
                     </div>
                   </HStack>
@@ -188,26 +219,27 @@ const SingleProductPageMain = () => {
                 {/* for small screen */}
                 <Box display={{ base: "block", md: "block", lg: "none" }}>
                   <VStack>
-                  <Carousel  w='50%' autoPlay={true} infiniteLoop={true} transitionTime={2000}  axis='vertical'  stopOnHover={false}>
-                        <div>
-                          <img alt="1" src={product.image} />
+                    <Carousel
+                      w="50%"
+                      autoPlay={true}
+                      infiniteLoop={true}
+                      transitionTime={2000}
+                      axis="vertical"
+                      stopOnHover={false}
+                    >
+                      <div>
+                        <img alt="1" src={product.image} />
+                      </div>
+                      <div>
+                        <img alt="2" src={product.image2} />
+                      </div>
+
+                      {product.images?.map((el, ind) => (
+                        <div key={ind}>
+                          <img alt={el.substring(0, 5)} src={el} />
                         </div>
-                        <div>
-                          <img alt="2" src={product.image2} />
-                        </div>
-                        
-{      product.images?.map((el,ind)=><div key={ind}>
-  <img
-    alt={el.substring(0,5)}
-    src={el}
-  />
-</div>   )
-}
-
-
-
-
-                      </Carousel>
+                      ))}
+                    </Carousel>
                   </VStack>
                 </Box>
               </Box>
@@ -286,6 +318,7 @@ const SingleProductPageMain = () => {
    <Coupon product={product} />*/}
 
                   </Box>
+
                   <Box my={3} border='3px solid #0076be' w='max-content' p={3} borderRadius={'10px'} >
                   <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
     
@@ -352,6 +385,7 @@ const SingleProductPageMain = () => {
                       fontWeight={"medium"}
                       // onClick={addtowishlist}
                       cursor="pointer"
+                      onClick={() => handleAddToWishlist(product)}
                     >
                       Add to Wish List
                     </Text>
@@ -466,7 +500,7 @@ const SingleProductPageMain = () => {
             </Box>
           </Container>
         </Box>
-        )}
+      )}
     </>
   );
 };
