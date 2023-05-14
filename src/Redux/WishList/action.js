@@ -12,6 +12,7 @@ import {
   UPDATE_WISHLIST_SUCCESS,
 } from "./actiontype";
 
+let url = "http://localhost:8080/trendify/wishlist";
 export const GetWishlist = () => async (dispatch) => {
   dispatch({ type: GET_WISHLIST_REQ });
   try {
@@ -22,7 +23,6 @@ export const GetWishlist = () => async (dispatch) => {
         },
       })
       .then((res) => {
-        console.log(res);
         dispatch({ type: GET_WISHLIST_SUCCESS, payload: res.data });
       });
   } catch (error) {
@@ -30,13 +30,18 @@ export const GetWishlist = () => async (dispatch) => {
   }
 };
 
-export const AddtoWishlist = (obj) => {
+export const AddtoWishlist = (data) => (dispatch) => {
   dispatch({ type: ADDTOWISHLIST_REQ });
-  let data = { ...obj };
-  data["quantity"] = 1;
-  console.log(data);
+  let product = {
+    image: data.image,
+    title: data.title,
+    price: data.price,
+    category: data.category,
+    quantity: 1,
+  };
+
   axios
-    .post(`${url}/add`, data, {
+    .post(`${url}/add`, product, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -45,19 +50,32 @@ export const AddtoWishlist = (obj) => {
       dispatch({ type: ADDTOWISHLIS_SUCCESS });
     });
 };
-export const UpdateWishlist = (obj, payload, id) => {
-  dispatch({ type: UPDATE_WISHLIST_REQ });
-  let data = { ...obj };
-  if (data.quantity + payload >= 1) {
-    data.quantity = data.quantity + payload;
-    axios.patch(`${url}/update/${id}`, data).then((res) => {
-      dispatch({ type: UPDATE_WISHLIST_SUCCESS });
-    });
-  }
-};
-export const DeleteWishlist = (id) => {
-  dispatch({ type: REMOVEFROMWISHLIST_REQ });
-  axios.delete(`${url}/delete/${id}`).then((res) => {
-    dispatch({ type: REMOVEFROMWISHLIST_SUCCESS });
-  });
-};
+
+// export const UpdateWishlist = (obj, payload, id) => {
+//   dispatch({ type: UPDATE_WISHLIST_REQ });
+//   let data = { ...obj };
+//   if (data.quantity + payload >= 1) {
+//     data.quantity = data.quantity + payload;
+//     axios.patch(`${url}/update/${id}`, data).then((res) => {
+//       dispatch({ type: UPDATE_WISHLIST_SUCCESS });
+//     });
+//   }
+// };
+// export const DeleteWishlist = (id) =>(dispatch)=> {
+//   dispatch({ type: REMOVEFROMWISHLIST_REQ });
+//   axios.delete(`${url}/delete/${id}`).then((res) => {
+
+//     dispatch({ type: REMOVEFROMWISHLIST_SUCCESS });
+
+//   });
+// };
+
+// toast({
+//   title: "Successful!",
+//     description:
+//       "Product Added to wishlist!!",
+//     status: "success",
+//     duration: 4000,
+//     isClosable: true,
+//     position: "top",
+// })

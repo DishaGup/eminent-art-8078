@@ -8,6 +8,20 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+
+
+// const products = [...cartItems, { title: "Shipping", desc: "", price: "30" }];
+// {products.map((product, index) => (
+//   <ListItem key={product.title} sx={{ py: 1, px: 0 }}>
+//     <ListItemText
+//       primary={index<products.length-1?`Product${index + 1}`:""}
+//       secondary={`${product.title}`}
+//     />
+//     <Typography variant="body2">₹{product.price}</Typography>
+//   </ListItem>
+// ))}
+
+
 const products = [
   {
     name: 'Product 1',
@@ -49,13 +63,7 @@ export default function Review() {
  'cardNumber':'',
  'expDate':"",
  'cvv':''})
-    
- useEffect(()=>{
-  let Data= JSON.parse(localStorage.getItem("addressDetails"))
-  let card=JSON.parse(localStorage.getItem("card"))
-  setAddresData({...addressData,...Data})
-  setCard({...card})
-},[])
+ 
 const address=useSelector((store)=>{
   return store.PaymentReducer.address
 })
@@ -63,6 +71,11 @@ const card1=useSelector((store)=>{
   return store.PaymentReducer.card
 })
 console.log(address,card1)
+   
+useEffect(()=>{
+  setAddresData(address)
+  setCard(card1)
+},[])
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -95,12 +108,7 @@ console.log(address,card1)
             Payment details
           </Typography>
 
-          {/* const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-]; */}
+          
           <Grid container>
            
               <React.Fragment key={card.cardName}>
