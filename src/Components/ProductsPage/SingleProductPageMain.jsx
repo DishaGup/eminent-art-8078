@@ -20,7 +20,7 @@ import {
   ListItem,
   Flex,
 } from "@chakra-ui/react";
-import './productspage.css'
+import "./productspage.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
@@ -36,9 +36,7 @@ import ColorPalette from "./ColorPalette";
 import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 import { AddtoWishlist } from "../../Redux/WishList/action";
 
-
 const SingleProductPageMain = () => {
- 
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -75,7 +73,7 @@ const SingleProductPageMain = () => {
     };
 
     axios
-      .post(`http://localhost:8080/trendify/cart/add`, obj, {
+      .post(`https://erin-dizzy-clam.cyclic.app/trendify/cart/add`, obj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -132,7 +130,7 @@ const SingleProductPageMain = () => {
   };
 
   const handleAddToWishlist = (data) => {
-    let url = "http://localhost:8080/trendify/wishlist"
+    let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
     //dispatch(AddtoWishlist(item))
     let product = {
       image: data.image,
@@ -141,7 +139,7 @@ const SingleProductPageMain = () => {
       category: data.category,
       quantity: 1,
     };
-  
+
     axios
       .post(`${url}/add`, product, {
         headers: {
@@ -149,20 +147,18 @@ const SingleProductPageMain = () => {
         },
       })
       .then((res) => {
-       // dispatch({ type: ADDTOWISHLIS_SUCCESS });
-       console.log("success")
+        // dispatch({ type: ADDTOWISHLIS_SUCCESS });
+        console.log("success");
       });
 
-      toast({
-        title: "Successful!",
-          description:
-            "Product Added to wishlist!!",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-          position: "top",
-      })
-    
+    toast({
+      title: "Successful!",
+      description: "Product Added to wishlist!!",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+      position: "top",
+    });
   };
 
   return (
@@ -246,8 +242,14 @@ const SingleProductPageMain = () => {
 
               {/* Right sections */}
               <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }} align="left">
-
-                <Heading textAlign='center' fontSize={'24px'} textTransform={'uppercase'} color={'#0076be'}>{product.brand}</Heading>
+                <Heading
+                  textAlign="center"
+                  fontSize={"24px"}
+                  textTransform={"uppercase"}
+                  color={"#0076be"}
+                >
+                  {product.brand}
+                </Heading>
                 <Heading
                   size={{ base: "md", md: "md", lg: "lg" }}
                   mb={3}
@@ -316,16 +318,21 @@ const SingleProductPageMain = () => {
 
                     {/* <OneMoreOffer/> 
    <Coupon product={product} />*/}
-
                   </Box>
 
-                  <Box my={3} border='3px solid #0076be' w='max-content' p={3} borderRadius={'10px'} >
-                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
-    
-    
+                  <Box
+                    my={3}
+                    border="3px solid #0076be"
+                    w="max-content"
+                    p={3}
+                    borderRadius={"10px"}
+                  >
+                    <ColorPalette
+                      colors={colors}
+                      selectedColor={selectedColor}
+                      onColorChange={handleColorChange}
+                    />
                   </Box>
-
-
                 </Box>
 
                 {/* <Divider borderColor={"black"}></Divider> */}
@@ -371,7 +378,7 @@ const SingleProductPageMain = () => {
                       Buy Now
                     </Button>{" "}
                   </HStack>
-                  <HStack textAlign='center' justifyContent='center'  >
+                  <HStack textAlign="center" justifyContent="center">
                     <Text
                       color={"#0076be"}
                       fontWeight={"medium"}
@@ -421,7 +428,7 @@ const SingleProductPageMain = () => {
                       Numquam dolore aut, vero tenetur illum odit atque eveniet
                       accusamus laborum optio architecto? Non dolores rerum
                       impedit quas laborum facilis blanditiis voluptatibus.
-                                </Box>
+                    </Box>
                     <Box>
                       <Text
                         fontWeight="medium"
@@ -433,19 +440,14 @@ const SingleProductPageMain = () => {
                       </Text>
                       <Coupon Product={product} />
                       <List spacing="1">
-                     
                         <ListItem key={1}>
                           <Text
                             fontSize={{ base: "16", md: "18px" }}
                             fontWeight="medium"
                             display="inline-block"
                             w="35%"
-                          >
-                         
-                          </Text>
-                         
+                          ></Text>
                         </ListItem>
-                      
                       </List>
                     </Box>
                   </AccordionPanel>

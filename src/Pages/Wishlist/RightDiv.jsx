@@ -4,27 +4,30 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RightDiv = () => {
-  let url="http://localhost:8080/trendify/wishlist"
+  let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
   const naigate = useNavigate();
-  const [item, setItem] = useState("");
+  // const [item, setItem] = useState("");
   const [wishlistData, setWishlistData] = useState([]);
   const [rerender, setRerender] = useState(false);
   const getData = () => {
-    axios.get(url,{
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      console.log(res.data)
-      if(res.data.length)
-     { setWishlistData(res.data);}
-    });
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.length) {
+          setWishlistData(res.data);
+        }
+      });
   };
 
   useEffect(() => {
     getData();
   }, [wishlistData.length]);
-  console.log(item);
+  // console.log(item);
 
   const handleDelete = (item) => {
     let id = +item.id;
