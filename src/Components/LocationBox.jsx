@@ -25,14 +25,14 @@ function LocationBox() {
   }, []);
   return (
     <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
-      <Flex justify={"space-around"} minH={"40px"} py="10px" align={"center"}>
+      <Flex justify={"space-around"} minH={"40px"} py="10px" align={"right"}>
         <Flex
           gap={0.1}
           width={{ base: "100%", md: "60%" }}
           flexDir={{ base: "column", md: "row" }}
           align={"center"}
-        >
-          <InputGroup size={"sm"} width={{ base: "90%", md: "30%" }}>
+         >
+          <InputGroup size={"sm"} width={{ base: "90%", md: "90%" }} >
             <InputLeftAddon
               children={
                 <FaSearchLocation

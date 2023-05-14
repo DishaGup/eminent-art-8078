@@ -7,46 +7,29 @@ import Grid from '@mui/material/Grid';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import axios from "axios"
 
 
 
-// const products = [...cartItems, { title: "Shipping", desc: "", price: "30" }];
-// {products.map((product, index) => (
-//   <ListItem key={product.title} sx={{ py: 1, px: 0 }}>
-//     <ListItemText
-//       primary={index<products.length-1?`Product${index + 1}`:""}
-//       secondary={`${product.title}`}
-//     />
-//     <Typography variant="body2">₹{product.price}</Typography>
-//   </ListItem>
-// ))}
-
-
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
+let products = [
+ 
   { name: 'Shipping', desc: '', price: 'Free' },
 ];
 
 
+axios.get("https://erin-dizzy-clam.cyclic.app/trendify/cart",{
+  headers: {
+    Authorization: `Bearer ${localStorage.getItem("token")}`,
+  },
+}).then((res) => {
+  let x=(res.data.cart)
+  console.log(x)
+  if(x.length){
+    products=[...x,...products]
+  }
+
+});
+console.log(products)
 export default function Review() {
  const [addressData,setAddresData]=useState({
   "firstName":"",
@@ -70,12 +53,17 @@ const address=useSelector((store)=>{
 const card1=useSelector((store)=>{
   return store.PaymentReducer.card
 })
-console.log(address,card1)
+//console.log(address,card1)
    
 useEffect(()=>{
   setAddresData(address)
   setCard(card1)
 },[])
+
+let totalPrice=0
+for(let i of products){
+  totalPrice+=i.price
+}
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -84,14 +72,14 @@ useEffect(()=>{
       <List disablePadding>
         {products.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant="body2">{product.price}</Typography>
+            <ListItemText primary={product.name} secondary={product.title} />
+            <Typography variant="body2"> ₹{product.price}</Typography>
           </ListItem>
         ))}
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-          ₹ 34.06
+          ₹ {totalPrice}
           </Typography>
         </ListItem>
       </List>
