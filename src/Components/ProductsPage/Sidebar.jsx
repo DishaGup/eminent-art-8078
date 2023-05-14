@@ -1,6 +1,6 @@
 import {
   Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Button, GridItem, Divider, Flex, Grid, Heading, HStack, Image, Select, Spinner, Text,
-  VStack,Skeleton, SkeletonCircle, SkeletonText ,
+  VStack, Skeleton, SkeletonCircle, SkeletonText,
   CloseButton,
 } from "@chakra-ui/react";
 import React, { useCallback, useEffect, useState } from "react";
@@ -30,12 +30,13 @@ const Sidebar = () => {
   let urlpage = searchParams.get("pageno")
   const [pageno, setpageno] = useState(urlpage || 1);
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-
+  const [uniquebrands, setUniquebrand] = useState({})
   let location = useLocation();
   const dispatch = useDispatch();
   let breadcrumblinks = searchParams.toString().split("&").join(" ").split("=");
   const initialsortdata = searchParams.get("sortingByPrice");
   const [sortingByPrice, setSortingByPrice] = useState(initialsortdata || "");
+  let { products, brands, currentPage, totalPages, totalResults } = useSelector((store) => store.ProductReducer.productsData);
   const handleGoBack = useCallback(() => {
     navigate("/");
   }, []);
@@ -45,6 +46,7 @@ const Sidebar = () => {
     let params = {};
     sortingByPrice && (params.sortingByPrice = sortingByPrice);
     pageno && (params.pageno = pageno);
+
     setSearchParams(params);
   }, [pageno, sortingByPrice, category, subcategory, subcat2]);
 
@@ -57,6 +59,7 @@ const Sidebar = () => {
     priceMaxx: searchParams.getAll("sortrange").join("").split("-")[1],
     page: searchParams.get("pageno"),
     brand: searchParams.getAll("brandrange"),
+    rating: searchParams.get('ratingplus')
   }
 
   Object.keys(queryParams).forEach((key) => {
@@ -77,8 +80,26 @@ const Sidebar = () => {
       dispatch(getAllProducts(queryParams))
     }
 
-
   }, [location.search])
+
+  
+
+  useEffect(() => {
+    let unibrands = {}
+    if (brands && brands.length > 0) {
+      let answer = brands.forEach((product) => {
+        if (unibrands[product.brand]) {
+          unibrands[product.brand]++;
+        } else {
+          unibrands[product.brand] = 1;
+        }
+      })
+
+      setUniquebrand(unibrands)
+    }
+  }, [brands, productsData])
+
+console.log(uniquebrands)
 
   return (
     <>
@@ -136,7 +157,7 @@ const Sidebar = () => {
           <GridItem>
             <Box display={{ base: "none", sm: "none", md: "block" }}>
 
-              <Allfilters handleGoBack={handleGoBack} />
+              <Allfilters handleGoBack={handleGoBack} uniquebrands={uniquebrands} productsData={productsData} />
 
             </Box>
           </GridItem>
@@ -176,6 +197,7 @@ const Sidebar = () => {
                 </HStack>
               </HStack>
               <Divider borderColor={"black"} />
+              <Text>Total Results:- {totalResults} </Text>
               <Grid
                 gridTemplateColumns={{
                   sm: "repeat(2,1fr)",
@@ -189,12 +211,12 @@ const Sidebar = () => {
                 ) : (
                   <>
                     {" "}
-                   
+
                   </>
                 )}
-{
-  productsData.total<=0 && (<> <NotfoundCategory/>  </>)
-}
+                {
+                  productsData.total <= 0 && (<> <NotfoundCategory />  </>)
+                }
 
 
 
@@ -210,7 +232,7 @@ const Sidebar = () => {
             {productsData.products && productsData.products.length > 1 && (
               <Pagination
                 current={pageno}
-                total={Math.ceil(productsData.total / 10)}
+                total={totalPages}
                 handlePageChange={(page) => setpageno(page)}
               />
             )}

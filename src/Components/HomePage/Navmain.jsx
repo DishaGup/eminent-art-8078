@@ -7,7 +7,7 @@ import style from "./navmain.module.css";
 const Navmain = () => {
 
   let auth = JSON.parse(localStorage.getItem("auth"))
-  console.log(auth)
+  
 
   return (
     <Flex w="100%">

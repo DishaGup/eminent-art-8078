@@ -20,7 +20,7 @@ import {
   ListItem,
   Flex,
 } from "@chakra-ui/react";
-
+import './productspage.css'
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
@@ -32,6 +32,7 @@ import Navmain from "../HomePage/Navmain.jsx";
 import axios from "axios";
 import { getSingleProducts } from "../../Redux/ProductReducer/action";
 import ColorPalette from "./ColorPalette";
+import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 
 const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
@@ -163,7 +164,6 @@ const SingleProductPageMain = () => {
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
                    
-
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
                       <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
                         <div>
@@ -214,6 +214,8 @@ const SingleProductPageMain = () => {
 
               {/* Right sections */}
               <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }} align="left">
+
+                <Heading textAlign='center' fontSize={'24px'} textTransform={'uppercase'} color={'#0076be'}>{product.brand}</Heading>
                 <Heading
                   size={{ base: "md", md: "md", lg: "lg" }}
                   mb={3}
@@ -279,12 +281,18 @@ const SingleProductPageMain = () => {
 
                   <Box my={3}>
                     <Image src={discountoff} />
+
+                    {/* <OneMoreOffer/> 
+   <Coupon product={product} />*/}
+
                   </Box>
-                  <Box my={3} border='1mm solid black' w='max-content' p={5} borderRadius={'10px'}>
+                  <Box my={3} border='3px solid #0076be' w='max-content' p={3} borderRadius={'10px'} >
                   <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
     
     
                   </Box>
+
+
                 </Box>
 
                 {/* <Divider borderColor={"black"}></Divider> */}
@@ -330,7 +338,7 @@ const SingleProductPageMain = () => {
                       Buy Now
                     </Button>{" "}
                   </HStack>
-                  <HStack display="inline-flex">
+                  <HStack textAlign='center' justifyContent='center'  >
                     <Text
                       color={"#0076be"}
                       fontWeight={"medium"}
@@ -379,11 +387,7 @@ const SingleProductPageMain = () => {
                       Numquam dolore aut, vero tenetur illum odit atque eveniet
                       accusamus laborum optio architecto? Non dolores rerum
                       impedit quas laborum facilis blanditiis voluptatibus.
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                      Numquam dolore aut, vero tenetur illum odit atque eveniet
-                      accusamus laborum optio architecto? Non dolores rerum
-                      impedit quas laborum facilis blanditiis voluptatibus.
-                    </Box>
+                                </Box>
                     <Box>
                       <Text
                         fontWeight="medium"
@@ -393,10 +397,9 @@ const SingleProductPageMain = () => {
                       >
                         Product Specifications:
                       </Text>
+                      <Coupon Product={product} />
                       <List spacing="1">
-                        {/* {product &&
-                    product.product_specifications.product_specification.map(
-                      (spec, index) => ( */}
+                     
                         <ListItem key={1}>
                           <Text
                             fontSize={{ base: "16", md: "18px" }}
@@ -404,12 +407,11 @@ const SingleProductPageMain = () => {
                             display="inline-block"
                             w="35%"
                           >
-                            {/* {spec.key}: */}
+                         
                           </Text>
-                          <Text display="inline-block">{4}</Text>
+                         
                         </ListItem>
-                        {/* )
-                    )} */}
+                      
                       </List>
                     </Box>
                   </AccordionPanel>
