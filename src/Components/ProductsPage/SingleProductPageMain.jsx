@@ -57,11 +57,30 @@ const SingleProductPageMain = () => {
 
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
   let { product } = useSelector((store) => store.ProductReducer.productsData);
+  const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
     // window.scrollTo(0, 0);
     dispatch(getSingleProducts(id));
+    getCartData();
   }, []);
+
+  const getCartData = async () => {
+    try {
+      axios
+        .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setCartData(res.data.cart);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(cartData);
 
   const handleAddToCart = () => {
     const obj = {
@@ -111,8 +130,6 @@ const SingleProductPageMain = () => {
           position: "top",
         });
       });
-
-    // console.log(obj,"objClick")
   };
 
   const handlebuynow = () => {
