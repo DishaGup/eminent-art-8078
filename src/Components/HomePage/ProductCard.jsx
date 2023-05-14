@@ -1,13 +1,3 @@
-// import React from 'react'
-// import { Box, Center, useColorModeValue, Heading, Text, Stack, Image } from '@chakra-ui/react';
-// import { useRef } from 'react';
-
-
-
-//Main function starts  
-
-
-// Remove  ------------
 
 
 export default function ProductCard({ image, brand, cutprice, discount, actualprice }) {

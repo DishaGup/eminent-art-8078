@@ -1,0 +1,314 @@
+.wrapper {
+    background-color: rgb(238, 246, 250);
+  }
+  
+  .breadcrump {
+    font-size: 14px;
+    color: rgb(117, 117, 117);
+  }
+  
+  .details-top {
+    background-color: white;
+    margin-top: 25px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    justify-content: space-evenly;
+  }
+  
+  .image-box {
+    width: 45%;
+    padding: 10px;
+  }
+  
+  .product-info {
+    width: 50%;
+    padding: 10px;
+  }
+  
+  .display-img {
+    width: 70%;
+    margin: auto;
+  }
+  
+  .img-button {
+    width: 35px;
+    height: 50px;
+    padding: 3px;
+    border-radius: 3px;
+  }
+  
+  .img-button-wrapper {
+    margin: 15px;
+    justify-content: space-evenly;
+  }
+  
+  .prod-name-sold {
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .pid {
+    color: rgb(117, 117, 117);
+    font-size: 14px;
+    margin: 8px 0px;
+  }
+  
+  .costing {
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 8px;
+    padding: 0px;
+  }
+  
+  .price {
+    font-size: 28px;
+    text-decoration: none;
+  }
+  
+  .mrp {
+    font-size: 16px;
+    color: rgb(117, 117, 117);
+  }
+  
+  .discount {
+    font-size: 18px;
+    color: rgb(36, 163, 181);
+  }
+  
+  .taxes {
+    font-size: 12px;
+    color: rgb(117, 117, 117);
+  }
+  
+  .sold {
+    font-size: 12px;
+    color: rgb(117, 117, 117);
+    margin-bottom: 5px;
+  }
+  
+  .seller {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 5px;
+  }
+  
+  .location {
+    font-size: 12px;
+    color: rgb(117, 117, 117);
+    margin-bottom: 5px;
+  }
+  
+  .star {
+    color: rgb(255, 140, 78);
+  }
+  
+  .visit {
+    color: rgb(36, 163, 181);
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .visit:hover {
+    text-decoration: underline;
+  }
+  
+  .top-rated-merchant {
+    padding: 5px;
+  }
+  
+  .coupon-wrapper {
+    width: 80%;
+    border: solid rgb(36, 163, 181) 0.5px;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  .final-Price {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: rgb(226, 247, 248);
+    align-items: center;
+    padding: 5px;
+    justify-content: space-between;
+  }
+  
+  .getThis {
+    font-size: 16px;
+  }
+  
+  .oasis-bucks {
+    font-size: 10px;
+    color: rgb(36, 163, 181);
+  }
+  
+  .og {
+    width: 25%;
+    border: solid rgb(36, 163, 181) 0.5px;
+  }
+  
+  .applicable {
+    width: 50%;
+    border: solid rgb(36, 163, 181) 0.5px;
+  }
+  
+  .dp {
+    width: 25%;
+    border: solid rgb(36, 163, 181) 0.5px;
+  }
+  
+  .l1 {
+    height: 80px;
+    border-bottom: solid rgb(210, 199, 199) 0.5px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .l2 {
+    height: 30px;
+    font-size: 14px;
+  }
+  
+  .m1 {
+    height: 25px;
+    border: solid rgb(129, 216, 227) 0.1px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .m2 {
+    height: 55px;
+    border: solid rgb(103, 222, 237) 0.1px;
+    font-size: 10px;
+    color: green;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .m3 {
+    height: 30px;
+    border: solid rgb(114, 218, 232) 0.1px;
+    justify-content: space-evenly;
+    font-size: 14px;
+  }
+  
+  .m2c {
+    padding: 5px;
+  }
+  
+  .dp1 {
+    height: 80px;
+    border-bottom: solid grey 0.5px;
+    font-size: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .dp2 {
+    height: 30px;
+    color: green;
+  }
+  
+  .offer-tag {
+    font-size: 18px;
+    align-items: center;
+    margin: 10px 0px;
+  }
+  
+  .MYOASIS {
+    width: 50%;
+    align-items: center;
+  }
+  
+  .buttons {
+    justify-content: space-between;
+    width: 80%;
+    margin: 15px 0px;
+  }
+  
+  .add {
+    width: 190px;
+    border: solid orangered 0.5px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: orangered;
+    font-size: 18px;
+  }
+  
+  .buy {
+    width: 190px;
+    background-image: linear-gradient(to right, orange, orangered);
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+  
+  .item-av {
+    border: solid rgb(208, 201, 201) 0.5px;
+    padding: 5px;
+    color: gray;
+    margin: 10px;
+    margin-left: 0px;
+    font-size: 14px;
+  }
+  
+  .change {
+    font-size: 12px;
+    color: rgb(22, 112, 124);
+  }
+  
+  .shipping {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .Returns {
+    font-size: 14px;
+    color: gray;
+    margin: 10px;
+  }
+  
+  .prod-middle {
+    margin-top: 25px;
+  }
+  
+  .head {
+    text-align: left;
+    font-size: 20px;
+  }
+  
+  .name {
+    text-align: left;
+    font-size: 16px;
+    color: rgb(117, 117, 117);
+  }
+  
+  .tabs {
+    background-color: white;
+    padding-top: 30px;
+    margin-top: 15px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    color: gray;
+  }
+  
+  .prod-bottom {
+    margin: 20px 0px;
+  }
+  
+  .rating {
+    background-color: white;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: 40px;
+    margin: 10px 0px;
+  }
+  
+  .circular {
+    justify-content: space-evenly;
+  }

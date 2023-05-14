@@ -13,7 +13,7 @@ export const getAllProducts = (data) => (dispatch) => {
 
   try {
     axios
-      .get(`http://localhost:8080/trendify/products`, { params: data })
+      .get(`http://localhost:8080/trendify/products`,{params:data})
       .then((res) => {
         dispatch({
           type: GET_PRODUCTS_SUCCESS,
