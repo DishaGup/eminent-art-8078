@@ -35,7 +35,7 @@ import {
           ...state,
           loading: false,
           productsData: payload.data,
-         
+        
         };
       }
       case GET_PRODUCTS_ERROR: {

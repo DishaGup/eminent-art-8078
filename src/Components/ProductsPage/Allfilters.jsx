@@ -18,7 +18,7 @@ import { Button } from "@chakra-ui/button";
 import { getProducts } from "../../Redux/ProductReducer/action";
 import { memo } from "react";
 
-const Allfilters = ({ filterHeading, handleGoBack }) => {
+const Allfilters = ({ filterHeading, handleGoBack,uniquebrands }) => {
 
   const [searchParams, setSearchParams] = useSearchParams()
   let dispatch = useDispatch();
@@ -38,7 +38,7 @@ const Allfilters = ({ filterHeading, handleGoBack }) => {
   const initialsortdata = searchParams.get('sortingByPrice')
 
   const [sortingByPrice, setSortingByPrice] = useState(initialsortdata || '')
-const[ uniquebrands,setUniquebrand]=useState([])
+
   useEffect(() => {
     let params = {}
     categorytag && (params.categorytag = categorytag)
@@ -65,26 +65,11 @@ const[ uniquebrands,setUniquebrand]=useState([])
   let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
  
   
-useEffect(()=>{
-  let unibrands={}
-  if(brands && brands.length>0){
-   let answer= brands.map((product) => {
-      if (unibrands[product.brand]) {
-        unibrands[product.brand]++;
-      } else {
-        unibrands[product.brand] = 1;
-      }
-
-    })
-    //console.log(unibrands)
-    //console.log(answer)
-     setUniquebrand([unibrands])
-  }
-
-},[])
 
 
-console.log(uniquebrands)
+
+
+console.log(uniquebrands,'...allfitl')
 
   const handlebrand = (e) => {
     let sortdata = [...brandrange]

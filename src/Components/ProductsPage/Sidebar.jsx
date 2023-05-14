@@ -23,8 +23,8 @@ import Navmain from "../HomePage/Navmain";
 
 const Sidebar = () => {
   const { category, subcategory, subcat2 } = useParams()
-
-
+  const[ uniquebrands,setUniquebrand]=useState([])
+  let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   let urlpage = searchParams.get("pageno")
@@ -78,7 +78,25 @@ const Sidebar = () => {
     }
 
 
+    
+  let unibrands={}
+  if(brands && brands.length>0){
+   let answer= brands.map((product) => {
+      if (unibrands[product.brand]) {
+        unibrands[product.brand]++;
+      } else {
+        unibrands[product.brand] = 1;
+      }
+
+    })
+    console.log(unibrands)
+    //console.log(answer)
+     setUniquebrand([unibrands])
+  }
+
   }, [location.search])
+
+console.log(uniquebrands)
 
   return (
     <>
@@ -136,7 +154,7 @@ const Sidebar = () => {
           <GridItem>
             <Box display={{ base: "none", sm: "none", md: "block" }}>
 
-              <Allfilters handleGoBack={handleGoBack} />
+              <Allfilters handleGoBack={handleGoBack} uniquebrands={uniquebrands} />
 
             </Box>
           </GridItem>
