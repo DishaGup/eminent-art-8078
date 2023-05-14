@@ -1,116 +1,219 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { app } from "../firebase/firebase";
 import {
-  getAuth,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
-import { useState } from "react";
+  Button,
+  Checkbox,
+  Flex,
+  FormControl,
+  FormLabel,
+  Heading,
+  Input,
+  Link,
+  Stack,
+  Image,
+  useToast,
+} from "@chakra-ui/react";
+import { FormErrorMessage } from "@chakra-ui/react";
 
-function SignUpForm() {
-  const navigation = useNavigate()
-  const [NewUserEmail, setNewuserEmail] = useState("");
-  const [newUser, setnewName] = useState("");
-  const [NewUserPassword, setNewuserPassword] = useState("");
-  const auth = getAuth(app);
-  const HandleNewUserSubmitData = (e) => {
-    e.preventDefault();
-    createUserWithEmailAndPassword(auth, NewUserEmail, NewUserPassword)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-      
-        // console.log(user.accessToken);
-        if (user.accessToken) {
-          navigation("/sign-in")
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // console.log(errorMessage);
-        // ..
-      });
+import React from "react";
+import axios from "axios";
+import { useContext } from "react";
+// import { AuthContext } from "../components/authContext";
+import { useNavigate } from "react-router-dom";
+
+import { useColorModeValue } from "@chakra-ui/react";
+import Navigationbar from "../Components/HomePage/Navigationbar";
+// import { CONFETTI_LIGHT, CONFETTI_DARK } from "../components/Confetti";
+// import Navbar from "../components/HomePage/Navbar";
+// import Footer from "../components/HomePage/Footer";
+
+export default function SignUpPage() {
+  const [userData, setUserData] = React.useState({
+    name: "",
+    username: "",
+    email: "",
+    password: "",
+    location: "",
+    age: "",
+  });
+  const [emailError, setEmailError] = React.useState("");
+  const [passError, setPassError] = React.useState("");
+  const { email, password, username, name } = userData;
+
+  // const { authState, Login } = useContext(AuthContext);
+
+  const toast = useToast();
+
+  const Navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!email && !password) {
+      setEmailError("Email address is required.");
+      setPassError("Please Fill the Password");
+    }
+  }, []);
+
+  const handleSubmit = async () => {
+    try {
+      axios
+        .post(`http://localhost:8080/trendify/users/register`, userData)
+        .then((res) => {
+          console.log(res, "user");
+          alert("Registet success");
+        })
+        .catch((error) => {
+          // fill the correct detail
+          toast({
+            title: "Wrong Credential.",
+            description: "Please correct your detail.",
+            status: "error",
+            duration: 1000,
+            isClosable: true,
+            position: "top",
+          });
+        });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <>
-      <nav>
+      <Navigationbar />
+      <Stack
+        bg={useColorModeValue("gray.100", "gray.900")}
+        css={{
+          // backgroundImage: useColorModeValue(CONFETTI_LIGHT, CONFETTI_DARK),
+          backgroundAttachment: "fixed",
+        }}
+        p={10}
+        minH={"100vh"}
+        direction={{ base: "column", md: "row" }}
+      >
+        <Flex
+          shadow="1px 1px 3px rgba(0,0,0,0.3)"
+          p={8}
+          flex={1}
+          align={"center"}
+          justify={"center"}
+        >
+          <Stack spacing={4} w={"full"} maxW={"md"}>
+            <Heading fontSize={"2xl"}>Sign UP</Heading>
 
-        <div style={{ display: "flex", justifyContent: "space-around" }}>
+            <FormControl isRequired id="name">
+              <FormLabel>Name</FormLabel>
+              <Input
+                borderColor="black"
+                value={name}
+                onChange={(e) => {
+                  setUserData({ ...userData, name: e.target.value });
+                }}
+                type="name"
+                required
+              />
+            </FormControl>
+            <FormControl isRequired id="username">
+              <FormLabel>Username</FormLabel>
+              <Input
+                borderColor="black"
+                value={username}
+                onChange={(e) => {
+                  setUserData({ ...userData, username: e.target.value });
+                }}
+                type="username"
+                required
+              />
+            </FormControl>
 
-          <Link style={{ display: "flex", alignItems: "center" }} className="navbar-brand" to={'/'}>
-            Trendify
-          </Link>
+            <FormControl
+              isRequired
+              id="email"
+              isInvalid={!!emailError}
+              errorBorderColor="red"
+            >
+              <FormLabel>Email address</FormLabel>
+              <Input
+                borderColor="black"
+                value={email}
+                onChange={(e) => {
+                  setUserData({ ...userData, email: e.target.value });
+                  if (!e.target.value) {
+                    setEmailError("Email address is required.");
+                  } else {
+                    setEmailError("");
+                  }
+                }}
+                type="email"
+                required
+              />
+              <FormErrorMessage>{emailError}</FormErrorMessage>
+            </FormControl>
 
-          <div >
+            <FormControl
+              isRequired
+              id="password"
+              isInvalid={!!passError}
+              errorBorderColor="red"
+            >
+              <FormLabel>Password</FormLabel>
+              <Input
+                borderColor="black"
+                value={password}
+                onChange={(e) => {
+                  setUserData({ ...userData, password: e.target.value });
+                  if (!e.target.value) {
+                    setPassError("Passsword address is required.");
+                  } else {
+                    setPassError("");
+                  }
+                }}
+                type="password"
+                isRequired
+              />
+              <FormErrorMessage>{passError}</FormErrorMessage>
+            </FormControl>
 
-            <ul style={{ display: "flex", justifyContent: "space-around", gap: "80px", padding: "15px" }}>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/sign-in'}>
-                  Login
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link" to={'/sign-up'}>
-                  Sign up
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+            <Stack spacing={6}>
+              <Stack
+                direction={{ base: "column", sm: "row" }}
+                align={"start"}
+                justify={"space-between"}
+              >
+                <Checkbox>Remember me</Checkbox>
+                <Link color={"orange.500"}>Forgot password?</Link>
+              </Stack>
+              <Button
+                onClick={() => {
+                  if (!emailError && !passError) {
+                    handleSubmit();
+                  } else {
+                    toast({
+                      title: "Fill all the Input.",
+                      description: "Please correct your detail.",
+                      status: "warning",
+                      duration: 1000,
+                      isClosable: true,
+                    });
+                  }
+                }}
+                bg={"orange.400"}
+                colorScheme={"orange"}
+                variant={"solid"}
+              >
+                Sign in
+              </Button>
+            </Stack>
+          </Stack>
+        </Flex>
 
-
-      <div style={{ backgroundColor: "rgb(72 82 212)", width: "100%", height: "100vh" }}>
-        <div style={{
-          width: "39 %",
-          display: "flex",
-          alignItems: "center",
-          margin: "auto",
-          justifyContent: "center"
-
-        }}>
-          <h3 style={{ marginTop: "162px", marginBottom: "-124px" }}>Create Your Account </h3>
-        </div>
-        <div style={{
-          width: "39 %",
-          display: "flex",
-          alignItems: "center",
-          margin: "auto",
-          justifyContent: "center"
-
-        }}>
-
-
-          <form onSubmit={HandleNewUserSubmitData} style={{ marginTop: "190px", display: "flex", flexDirection: "column", gap: "27px", alignItems: "center" }}>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Name</label>
-              <input onChange={(e) => setnewName(e.target.value)} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" />
-              {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input onChange={(e) => setNewuserEmail(e.target.value)} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
-              {/* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> */}
-            </div>
-
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input onChange={(e) => setNewuserPassword(e.target.value)} type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
-            </div>
-            <div class="form-group">
-              <a style={{ color: "white" }} href="/sign-up">If You Are Already Register <mark> Click Here</mark> </a>
-              {/* <label class="form-check-label" for="exampleCheck1">Check me out</label> */}
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div >
+        <Flex flex={1}>
+          <Image
+            alt={"Login Image"}
+            objectFit={"cover"}
+            src={
+              "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80"
+            }
+          />
+        </Flex>
+      </Stack>
     </>
   );
 }
-
-export default SignUpForm;

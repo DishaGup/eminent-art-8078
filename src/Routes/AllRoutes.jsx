@@ -18,18 +18,16 @@ import Sidebar from "../Components/ProductsPage/Sidebar";
 import Auth from "../Pages/Auth";
 
 import Cartpage from "../Pages/CartPage/Cartpage";
-import SignInForm from "../Pages/SignInPage";
-import SignUpForm from "../Pages/SignUpPage";
+import SignInPage from "../Pages/SignInPage";
+import SignUpPage from "../Pages/SignUpPage";
 
 const AllRoutes = () => {
-
   return (
-
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/login" element={<SignInForm />} />
-      <Route path="/sign-in" element={<SignInForm />} />
-      <Route path="/sign-up" element={<SignUpForm />} />
+      <Route path="/login" element={<SignInPage />} />
+
+      <Route path="/register" element={<SignUpPage />} />
 
       <Route
         path="/cart"
