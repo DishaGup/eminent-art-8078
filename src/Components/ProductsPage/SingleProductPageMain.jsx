@@ -30,12 +30,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Carousel } from "react-responsive-carousel";
 import Navmain from "../HomePage/Navmain.jsx";
 import axios from "axios";
+import { getSingleProducts } from "../../Redux/ProductReducer/action";
+import ColorPalette from "./ColorPalette";
 
 const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
+  const [selectedColor, setSelectedColor] = useState("blue");
+  const colors = ["blue", "green", "red", "yellow"];
 
+  const handleColorChange = (color) => {
+    setSelectedColor(color);
+  };
   const toast = useToast();
   const dispatch = useDispatch();
 
@@ -48,19 +55,18 @@ const SingleProductPageMain = () => {
   const [data, setData] = useState({});
 
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-
+  let {product} =useSelector((store) => store.ProductReducer.productsData)
   //console.log(productsData.products);
   useEffect(() => {
     // window.scrollTo(0, 0);
-    const data = productsData.products.find((el) => el._id === id);
-    setData(data);
+    dispatch(getSingleProducts(id))
   }, []);
 
   // useEffect(() => {
   //   dispatch(getSingleProducts(id));
   // }, []);
 
-  const handleClick = () => {
+  const handleAddToCart = () => {
     const obj = {
       image: data.image,
       title: data.title,
@@ -129,7 +135,7 @@ const SingleProductPageMain = () => {
   return (
     <>
       <Navmain />
-      {productsData.products && (
+      { product && (
         <Box display={"grid"} py={10} pt={{ base: "30px", md: "120px" }}>
           <Flex ml={{ base: "2%", sm: "2%", md: "2%", lg: "2%" }}>
             <Button
@@ -140,10 +146,7 @@ const SingleProductPageMain = () => {
             </Button>
           </Flex>
           {/* Top section for image and prices */}
-          <Container
-            maxW={{ base: "80%", md: "95%", lg: "90%" }}
-            key={data._id}
-          >
+          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }}>
             <Grid
               gridTemplateColumns={{
                 base: "100%",
@@ -159,21 +162,25 @@ const SingleProductPageMain = () => {
                 <Box display={{ base: "none", md: "none", lg: "block" }}>
                   <HStack justify={"space-between"}>
                     {/* left multiple images */}
+                   
 
                     <div style={{ width: "83%", marginTop: "80px", h: "7cm" }}>
-                      <Carousel autoPlay>
+                      <Carousel autoPlay={true} infiniteLoop={true} transitionTime={2000}   stopOnHover={false}>
                         <div>
-                          <img alt="1" src={data.image} />
+                          <img alt="1" src={product.image} />
                         </div>
-                        <div>
-                          <img alt="2" src={data.image2} />
-                        </div>
-                        <div>
-                          <img
-                            alt=""
-                            src="https://th.bing.com/th/id/R.cbc82af939081036784d5a25eef97567?rik=kSY%2btYZ3WJEG%2bw&riu=http%3a%2f%2f1.bp.blogspot.com%2f-0lMF5Ciqcc4%2fVqERZmlvEGI%2fAAAAAAAABVU%2fFLECfobh3Yg%2fs1600%2fShopclues-4th-aniversary-sale.png&ehk=MpFW%2fxBFlenYs8ePTe%2fJYjNOL19YnLcepuIGD5q2NWQ%3d&risl=&pid=ImgRaw&r=0"
-                          />
-                        </div>
+                                               
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
                       </Carousel>
                     </div>
                   </HStack>
@@ -181,18 +188,26 @@ const SingleProductPageMain = () => {
                 {/* for small screen */}
                 <Box display={{ base: "block", md: "block", lg: "none" }}>
                   <VStack>
-                    <Box overflow="hidden">
-                      <Image src={data.image} alt={"image"} objectFit="cover" />
-                    </Box>
-                    <HStack align="flex-start">
-                      <Box h="100px" overflow="hidden">
-                        <Image
-                          src={data.image2 ? data.image2 : ""}
-                          alt={`Image2`}
-                          objectFit="cover"
-                        />
-                      </Box>
-                    </HStack>
+                  <Carousel  w='50%' autoPlay={true} infiniteLoop={true} transitionTime={2000}  axis='vertical'  stopOnHover={false}>
+                        <div>
+                          <img alt="1" src={product.image} />
+                        </div>
+                        <div>
+                          <img alt="2" src={product.image2} />
+                        </div>
+                        
+{      product.images?.map((el,ind)=><div key={ind}>
+  <img
+    alt={el.substring(0,5)}
+    src={el}
+  />
+</div>   )
+}
+
+
+
+
+                      </Carousel>
                   </VStack>
                 </Box>
               </Box>
@@ -204,7 +219,7 @@ const SingleProductPageMain = () => {
                   mb={3}
                   fontWeight={500}
                 >
-                  {data.title}
+                  {product.title}
                 </Heading>
 
                 <Box d="flex" alignItems="center" mb={3}>
@@ -217,7 +232,7 @@ const SingleProductPageMain = () => {
                             as={AiFillStar}
                             key={i}
                             color={
-                              i < Math.floor(data.rating)
+                              i < Math.floor(product.rating)
                                 ? "yellow.500"
                                 : "gray.300"
                             }
@@ -225,10 +240,10 @@ const SingleProductPageMain = () => {
                         ))}
                     </Text>
                     <Text ml={2} color="gray.500">
-                      ({data.rating})
+                      ({product.rating})
                     </Text>
                     <Text color={"#0076be"} fontWeight="medium">
-                      | <Link>Write a Review {data.reviews} </Link>
+                      | <Link>Write a Review {product.reviews} </Link>
                     </Text>
                   </HStack>
                 </Box>
@@ -239,7 +254,7 @@ const SingleProductPageMain = () => {
                     mb={3}
                     color={"#e53e3e"}
                   >
-                    Rs.{data.price}
+                    Rs.{product.price}
                   </Text>
                   <Text
                     textDecoration={"line-through"}
@@ -247,7 +262,7 @@ const SingleProductPageMain = () => {
                     mb={3}
                     color="gray.500"
                   >
-                    Rs.{data.price + 623}
+                    Rs.{product.price + 623}
                   </Text>
                   <Text fontSize="md" color="#24a3b5">
                     18% off
@@ -264,6 +279,11 @@ const SingleProductPageMain = () => {
 
                   <Box my={3}>
                     <Image src={discountoff} />
+                  </Box>
+                  <Box my={3} border='1mm solid black' w='max-content' p={5} borderRadius={'10px'}>
+                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
+    
+    
                   </Box>
                 </Box>
 
@@ -296,7 +316,7 @@ const SingleProductPageMain = () => {
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
-                      onClick={handleClick}
+                      onClick={handleAddToCart}
                     >
                       Add to cart
                     </Button>
@@ -444,7 +464,7 @@ const SingleProductPageMain = () => {
             </Box>
           </Container>
         </Box>
-      )}
+        )}
     </>
   );
 };
