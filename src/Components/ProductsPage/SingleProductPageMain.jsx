@@ -34,7 +34,7 @@ import { getSingleProducts } from "../../Redux/ProductReducer/action";
 import ColorPalette from "./ColorPalette";
 
 import { Coupon, OneMoreOffer } from "./OneMoreOffer";
-import { AddtoWishlist } from "../../Redux/WishList/action";
+
 
 
 const SingleProductPageMain = () => {
@@ -75,7 +75,7 @@ const SingleProductPageMain = () => {
     };
 
     axios
-      .post(`http://localhost:8080/trendify/cart/add`, obj, {
+      .post(`https://erin-dizzy-clam.cyclic.app/trendify/cart/add`, obj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -132,7 +132,7 @@ const SingleProductPageMain = () => {
   };
 
   const handleAddToWishlist = (data) => {
-    let url = "http://localhost:8080/trendify/wishlist"
+    let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist"
     //dispatch(AddtoWishlist(item))
     let product = {
       image: data.image,

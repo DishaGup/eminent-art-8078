@@ -23,7 +23,7 @@ const Cartpage = () => {
   const getCartData = async () => {
     try {
       axios
-        .get("http://localhost:8080/trendify/cart", {
+        .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

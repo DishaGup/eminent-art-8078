@@ -34,7 +34,7 @@ export default function AddressForm() {
    //localStorage.setItem("addressDetails",JSON.stringify(address))
      dispatch(AddUser(address))
   }
-  console.log(address)
+ // console.log(address)
   const {firstName,lastName,address1,address2,city,state,zip,country}=address
   return (
     <React.Fragment>
