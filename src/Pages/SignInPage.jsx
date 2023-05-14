@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { app } from "../firebase/firebase";
@@ -33,6 +33,58 @@ function SignInForm() {
         window.alert("Plz Enter Valid Data");
       });
   };
+
+useEffect(()=>{
+
+
+
+
+},[])
+
+const loginPost=()=>{
+  axios
+  .post(`http://localhost:8080/trendify/users/add`,{
+    headers: {
+      Authorization: `${token}`,
+    },
+  })
+  .then((res) => {
+    console.log("res:", res.token);
+    if (res.data.msg === "Please Login First!!") {
+      toast({
+        title: "Login First!",
+        description:
+          "Please do login to your account or signup to start a new journey with us!",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      toast({
+        title: "Product added to cart!!",
+        description: "The product is added to your cart",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+      });
+    }
+  })
+  .catch((err) => {
+    toast({
+      title: "Login First!",
+      description:
+        "Please do login to your account or signup to start a new journey with us!",
+      status: "error",
+      duration: 1000,
+      isClosable: true,
+      position: "top",
+    });
+  });
+}
+
+
   return (
     <>
       <nav>
