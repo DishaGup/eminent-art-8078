@@ -29,14 +29,7 @@ const AllRoutes = () => {
 
       <Route path="/register" element={<SignUpPage />} />
 
-      <Route
-        path="/cart"
-        element={
-          // <PrivateRoute>
-          <Cartpage />
-          // </PrivateRoute>
-        }
-      />
+      <Route path="/cart" element={<Cartpage />} />
       <Route
         path="/wishlistpage"
         element={

@@ -54,26 +54,20 @@ const SingleProductPageMain = () => {
     navigate("/products");
   };
 
-  const [data, setData] = useState({});
-
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
   let { product } = useSelector((store) => store.ProductReducer.productsData);
-  //console.log(productsData.products);
+
   useEffect(() => {
     // window.scrollTo(0, 0);
     dispatch(getSingleProducts(id));
   }, []);
 
-  // useEffect(() => {
-  //   dispatch(getSingleProducts(id));
-  // }, []);
-
   const handleAddToCart = () => {
     const obj = {
-      image: data.image,
-      title: data.title,
-      price: data.price,
-      category: data.category,
+      image: product.image,
+      title: product.title,
+      price: product.price,
+      category: product.category,
       quantity: 1,
     };
 

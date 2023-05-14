@@ -1,12 +1,12 @@
 const express = require("express");
 const cartTrendifyRouter = express.Router();
-const { CartTrendifyModel  } = require("../Model/cart.trendify.mode");
+const { CartTrendifyModel } = require("../Model/cart.trendify.mode");
 
 cartTrendifyRouter.post("/add", async (req, res) => {
   try {
-    const product = new CartTrendifyModel (req.body)
+    const product = new CartTrendifyModel(req.body);
     await product.save();
-    res.status(201).send({product});
+    res.status(201).send({ product });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -31,7 +31,7 @@ cartTrendifyRouter.delete("/delete/:productId", async (req, res) => {
 cartTrendifyRouter.post("/delete/all", async (req, res) => {
   try {
     const { userId } = req.body;
-    const deletedProducts = await CartTrendifyModel .deleteMany({ userId });
+    const deletedProducts = await CartTrendifyModel.deleteMany({ userId });
     if (!deletedProducts.deletedCount) {
       return res.status(404).send("No products found for user");
     }
@@ -45,12 +45,12 @@ cartTrendifyRouter.post("/delete/all", async (req, res) => {
 // Get all products in cart
 cartTrendifyRouter.get("/", async (req, res) => {
   try {
-    const userId = req.body.userId; 
+    const userId = req.body.userId;
 
     const products = await CartTrendifyModel.find({
       userId,
     }); // Retrieve products that match user ID
-    res.status(200).send({products});
+    res.status(200).send({ products });
   } catch (err) {
     console.error(err);
     res.status(500).send("Server error");
@@ -65,7 +65,7 @@ cartTrendifyRouter.patch("/increase", async (req, res) => {
       return res.status(400).send("Missing required fields");
     }
 
-    const product = await CartTrendifyModel .findOne({ _id: id });
+    const product = await CartTrendifyModel.findOne({ _id: id });
     if (!product) {
       return res.status(404).send("Product not found");
     }
