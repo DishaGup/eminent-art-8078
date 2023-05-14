@@ -1,12 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Cartpage.css";
 import trendifyLogo from "../../Assests/trendifyLogo.jpeg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { EmptyCart } from "./EmptyCart";
+import axios from "axios";
 
 const Cartpage = () => {
   const [change, setChange] = useState(false);
+  const token = localStorage.getItem("token");
+  const fun = async () => {
+    try {
+      axios
+        .get("http://localhost:8080/trendify/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => console.log(res.data));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    fun();
+  }, []);
   return (
     <>
       <Link to="/">
