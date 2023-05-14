@@ -1,41 +1,60 @@
-import { Box, HStack, Text, Image, Button, VStack } from "@chakra-ui/react";
+import { Box, HStack, Text, Image, Button, VStack, useToast } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RightDiv = () => {
-  let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
+
+  const toast = useToast();
+  let url="https://erin-dizzy-clam.cyclic.app/trendify/wishlist"
+  
   const naigate = useNavigate();
-  // const [item, setItem] = useState("");
+
+
   const [wishlistData, setWishlistData] = useState([]);
-  const [rerender, setRerender] = useState(false);
+  const [render, setRender] = useState(false);
   const getData = () => {
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.length) {
-          setWishlistData(res.data);
-        }
-      });
+
+    axios.get(url,{
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      //console.log(res.data)
+      if(res.data.length)
+     { setWishlistData(res.data);}
+    });
+
   };
 
   useEffect(() => {
     getData();
-  }, [wishlistData.length]);
-  // console.log(item);
+
+  }, [wishlistData.length,render]);
+ 
+
 
   const handleDelete = (item) => {
-    let id = +item.id;
-    axios.delete(`${url}/${id}`).then((res) => {
+    let id = item._id;
+    console.log(id,item)
+    axios.delete(`${url}/delete/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      }}).then((res) => {
       console.log(res);
     });
+
+    toast({
+      title: "Successful!",
+        description:
+          "Product deleted to wishlist!!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top",
+    })
     getData();
-    setRerender(!rerender);
+    setRender(!render);
   };
 
   return (
@@ -69,7 +88,7 @@ export const RightDiv = () => {
             <HStack>
               <Image width={"100px"} src={item.image} />
               <Box>
-                <Text>{item.title}</Text>
+                <Text color={"orange"}>{item.name}</Text>
                 <Text textDecoration={"line-through"}>
                   ₹{+item.price + 100}{" "}
                 </Text>
