@@ -15,10 +15,10 @@ const { wishlistRouter } = require("./Routes/wishlist.route");
 app.use(cors());
 app.use(express.json());
 
-app.use("/trendify/products", productTrendifyRouter);
+app.use("/trendify/products", productTrendifyRouter)
 
 app.use("/trendify/users", userTrendifyRouter);
-app.use("/trendify/cart", auth, cartTrendifyRouter);
+app.use("/trendify/cart", auth, cartTrendifyRouter)
 app.use("/trendify/wishlist",auth,wishlistRouter)
 app.listen(process.env.port, async () => {
   try {

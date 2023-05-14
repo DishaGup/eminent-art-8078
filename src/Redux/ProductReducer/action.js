@@ -108,41 +108,6 @@ export const getSingleProducts = (id) => (dispatch) => {
     );
 };
 
-// export const getSingleProductsSubcategory = (id) => (dispatch) => {
-//   dispatch({ type: GET_PRODUCTS_LOADING });
-
-//   return axios
-//     .get(`/:category/:subcategory?/single/${id}`)
-//     .then((res) =>
-//       dispatch({
-//         type: GET_PRODUCTS_SUCCESS,
-//         payload: res,
-//       })
-//     )
-//     .catch((error) =>
-//       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
-//     );
-// };
-
-// export const getCartData = (token) => (dispatch) => {
-//   dispatch({ type: GET_PRODUCTS_LOADING });
-//   axios
-//     .get("http://localhost:8080/trendify/cart", {
-//       headers: {
-//         Authorization: `Bearer ${token}`,
-//       },
-//     })
-//     .then((res) => {
-//       dispatch({
-//         type: GET_CART_DATA,
-//         payload: res,
-//       });
-//       console.log(res);
-//     })
-//     .catch((error) =>
-//       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
-//     );
-// };
 
 export const Addtowishlist = (data) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
@@ -158,3 +123,7 @@ export const Addtowishlist = (data) => (dispatch) => {
       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message })
     );
 };
+
+export const DeleteAllParams=(obj)=>{
+  Object.keys(obj).forEach(key => delete obj[key]);
+}

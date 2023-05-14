@@ -15,11 +15,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { Spinner } from "@chakra-ui/spinner";
 import { Button } from "@chakra-ui/button";
-import { getProducts } from "../../Redux/ProductReducer/action";
+import { DeleteAllParams, getProducts } from "../../Redux/ProductReducer/action";
 import { memo } from "react";
 
-const Allfilters = ({ filterHeading, handleGoBack ,uniquebrands,productsData}) => {
-
+const Allfilters = ({ filterHeading, handleGoBack ,}) => {
+  const [uniquebrands, setUniquebrand] = useState({})
   const [searchParams, setSearchParams] = useSearchParams()
   let dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,8 +63,8 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
     setcategorytag(filterdata)
 
   }
-//   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-//   let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
+   let { loading, productsData } = useSelector((store) => store.ProductReducer);
+  let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
 //  console.log(productsData)
   
 // useEffect(()=>{
@@ -88,6 +88,22 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
 
 // console.log(uniquebrands)
 
+  useEffect(() => {
+    let unibrands = new Object()
+    if (brands && brands.length > 0) {
+      let answer = brands.forEach((product) => {
+        if (unibrands[product.brand]) {
+          unibrands[product.brand]++;
+        } else {
+          unibrands[product.brand] = 1;
+        }
+      })
+
+      setUniquebrand(unibrands)
+    }
+  }, [brands, productsData])
+
+console.log(uniquebrands)
   const handlebrand = (e) => {
     let sortdata = [...brandrange]
     let value = e.target.value
@@ -304,6 +320,10 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
         </Accordion>
       </Box>
 
+      <Divider h='0.5cm' colour='white' />
+      <Button onClick={()=>DeleteAllParams(searchParams)}>
+        Clear All
+      </Button>
 
 
 
