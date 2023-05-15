@@ -20,7 +20,11 @@
 <img src='https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white' />
 <!-- <img src='' />
    </div> -->
-
+<div align="center"><h3 align="center">Backend</h3> 
+<img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" align="center" alt="nodejs" />
+<img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" align="center" alt="expressjs"/>
+<img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" align="center" alt="mongodb"/>
+ </div>
 An e-commerce website for clothing, health & care products. A Collaborative project Built in 5 Days.
 
 ## Members:
@@ -33,7 +37,7 @@ An e-commerce website for clothing, health & care products. A Collaborative proj
 <br />
 <li> Team Member: Rahul Dudka ( Admin Page, CRUD Functionality) </li>
 <br />
-<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page) </li>
+<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page with Backend and CRUD operatins ,Search Funtionality, Footer, Checkout Section with redux , Navbar) </li>
 <br />
 <li> Team Member: Prayas Tiwari ( Footer ) </li>
 <br />
