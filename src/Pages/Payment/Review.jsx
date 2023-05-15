@@ -22,14 +22,14 @@ axios.get("https://erin-dizzy-clam.cyclic.app/trendify/cart",{
     Authorization: `Bearer ${localStorage.getItem("token")}`,
   },
 }).then((res) => {
-  let x=(res.data.cart)
+  let x=(res.data.cart)||[]
   console.log(x)
   if(x.length){
     products=[...x,...products]
   }
 
 });
-console.log(products)
+//console.log(products)
 export default function Review() {
  const [addressData,setAddresData]=useState({
   "firstName":"",

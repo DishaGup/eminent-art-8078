@@ -54,7 +54,7 @@ export default function SignUpPage() {
   const handleSubmit = async () => {
     try {
       axios
-        .post(`http://localhost:8080/trendify/users/register`, userData)
+        .post(`https://erin-dizzy-clam.cyclic.app/trendify/users/register`, userData)
         .then((res) => {
           console.log(res, "user");
           alert("Registet success");

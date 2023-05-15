@@ -51,14 +51,14 @@ export default function SignInPage() {
   const handleSubmit = async () => {
     try {
       axios
-        .post(`http://localhost:8080/trendify/users/login`, userData)
+        .post(`https://erin-dizzy-clam.cyclic.app/trendify/users/login`, userData)
         .then((res) => {
           const getToken = res.data.token;
-          const getName = res.data.Name;
+          const Name = res.data.Name;
 
           console.log(res, "line55");
           localStorage.setItem("token", getToken);
-          localStorage.setItem("UserName", getName);
+          localStorage.setItem("UserName",JSON.stringify(Name) );
 
           toast({
             title: "Sucessfully Login.",

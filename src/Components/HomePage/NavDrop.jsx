@@ -4,8 +4,8 @@ import { gift } from "./data";
 import { Link } from "react-router-dom";
 const NavDrop = () => {
   return (
-    <div className="bottom_cont">
-      <ul id="bottom_category">
+    <div className="bottom_cont" >
+      <ul id="bottom_category" fontsize={["5px","5px","5px","5px","10px","10px"]}>
         {gift?.map((el, ind) => (
           <div id="dropdown" key={ind}>
             <li key={el} id="dropbtn">
