@@ -57,11 +57,11 @@ export default function SignInPage() {
         )
         .then((res) => {
           const getToken = res.data.token;
-          const getName = res.data.Name;
+          const Name = res.data.Name;
 
           console.log(res, "line55");
           localStorage.setItem("token", getToken);
-          localStorage.setItem("UserName", getName);
+          localStorage.setItem("UserName",JSON.stringify(Name) );
 
           toast({
             title: "Sucessfully Login.",

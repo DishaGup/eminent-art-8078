@@ -17,7 +17,7 @@ import { FooterUpper } from "./HomeComponents/FooterUpper";
 import { Footer } from "./HomeComponents/Footer";
 import Navmain from "../Components/HomePage/Navmain";
 import Footer1 from "../Components/Footer1";
-
+import SearchBar from "../Components/SearchBar"
 export const Home = () => {
   const responsive = {
     superLargeDesktop: {
@@ -53,7 +53,7 @@ export const Home = () => {
             boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
             backgroundColor: "white",
           }}
-        >
+         >
           <Carousel responsive={responsive}>
             <div
               className="imgtag"
@@ -65,7 +65,7 @@ export const Home = () => {
                 padding: "30px",
                 backgroundColor: "1px solid green",
               }}
-            >
+             >
               <div>
                 <img
                   src="https://cdn.shopclues.com/images1/thumbnails/99370/200/200/145508146-99370521-1668508420.jpg"
@@ -281,7 +281,7 @@ const DIV = styled.div`
   /* background: #e1fbff; */
   background-color: #e9f6f7;
   .heading-home-page {
-    margin-top: 52px;
+    margin-top: 12px;
     display: flex;
     font-size: 27px;
     font-weight: 700;

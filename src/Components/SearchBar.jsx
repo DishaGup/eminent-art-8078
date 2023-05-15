@@ -60,11 +60,11 @@ import { searchProducts } from "../Redux/ProductReducer/action";
     const [add, setP] = useState("");
   
     return (
-      <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
+      <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff" >
         <Flex justify={"space-around"} minH={"40px"} py="10px" align={"center"}>
           <Flex
             gap={0.1}
-            width={{ base: "90%", md: "90%" }}
+            width={{ base: "100%" ,md: "90%" }}
             flexDir={{ base: "column", md: "row" }}
             align={"center"}
           >

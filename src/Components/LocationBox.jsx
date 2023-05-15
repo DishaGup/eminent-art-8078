@@ -24,8 +24,8 @@ function LocationBox() {
     });
   }, []);
   return (
-    <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff">
-      <Flex justify={"space-around"} minH={"40px"} py="10px" align={"right"}>
+    <Box fontFamily={"Clear-Sans"} shadow={"sm"} bg="#fff"  display={["none","none","none","none","block","block",]}>
+      <Flex justify={"space-around"} minH={"40px"} py="10px" align={"left"}>
         <Flex
           gap={0.1}
           width={{ base: "100%", md: "60%" }}

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import { styled } from 'styled-components';
-
+import {Box} from "@chakra-ui/react"
 export const Carousels = () => (
-   
+    <div  style={{ display: "flex",zIndex:'-1' }} >
 
-       <div style={{ width: "98%",marginTop:"70px",margin:"auto" }}>
+       <div style={{ width: "83%",marginTop:"20px",paddingLeft:"20px" }} >
  
             <Carousel autoPlay   showThumbs={false}
         showStatus={false}
@@ -41,6 +41,17 @@ export const Carousels = () => (
             </Carousel>
 
         </div>
-      
-  
+        <Box display={["none","none","block","block","block","block"]} mt="15px" >
+            <Box>
+                <img width={"183px"} src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_01.jpg" alt="" />
+            </Box>
+            <Box>
+                <img width={"191px"}  src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_02.jpg" alt="" />
+            </Box>
+            <Box>
+                <img width={"191px"}  src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_03.jpg" alt="" />
+            </Box>
+        </Box>
+    </div>
+
 );
