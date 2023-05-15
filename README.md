@@ -33,7 +33,7 @@ An e-commerce website for clothing, health & care products. A Collaborative proj
 <br />
 <li> Team Member: Rahul Dudka ( Admin Page, CRUD Functionality) </li>
 <br />
-<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page) </li>
+<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page with Backend and CRUD operatins ,Search Funtionality, Footer, Checkout Section with redux , Navbar) </li>
 <br />
 <li> Team Member: Prayas Tiwari ( Footer ) </li>
 <br />
