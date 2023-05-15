@@ -5,11 +5,11 @@
 
 <!-- # TRENDIFY -->
 
-<!-- <p> RESPONSIVE  |  DYNAMIC | COLLABORATIVE </p> -->
+<h3 > RESPONSIVE  |  DYNAMIC | COLLABORATIVE </h3>
 
 <br>
 
-
+- Trendify is Ecommerce website inspired by Shopclues.com. It is a Lifestyle Accessories Brand that curates stunning designs and prints it on a wide range of personal accessories. 
 
 <div display='flex' ><h3 >Frontend</h3> 
 <img src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' />
@@ -25,22 +25,22 @@
 <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" align="center" alt="expressjs"/>
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" align="center" alt="mongodb"/>
  </div>
-An e-commerce website for clothing, health & care products. A Collaborative project Built in 5 Days.
+<!-- An e-commerce website for clothing, health & care products. A Collaborative project Built in 5 Days. -->
 
 ## Members:
 
 - Team Lead : <strong> Disha Gupta </strong>
-  (Product page, Responsiveness, Single Product Page )
+  (Product page, Responsiveness, Single Product Page,Backend )
 
 <ul>
 <li> Team Member: Lokesh Chaudhary ( HomePage, Responsiveness, Login Page) </li>
 <br />
-<li> Team Member: Rahul Dudka ( Admin Page, CRUD Functionality) </li>
+<li> Team Member: Rahul Dudka ( Cart Page, Admin Page, CRUD Functionality) </li>
 <br />
-<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page with Backend and CRUD operatins ,Search Funtionality, Footer, Checkout Section with redux , Navbar) </li>
+<li> Team Member: Sourabh Patel ( Payment Page,Wishlist Page Including CRUD Functionality, Search Funtionality, Footer, Checkout Section, Navbar ) </li>
 <br />
-<li> Team Member: Prayas Tiwari ( Footer ) </li>
-<br />
+
+
 
 </ul>
 
@@ -72,6 +72,13 @@ An e-commerce website for clothing, health & care products. A Collaborative proj
 
 <img  src='./src/Assests/singlecartpage.png' alt='homepage' />
 <br/>
+   
+## Cart Page-
+
+<!-- <img  src='./src/Assests/singlecartpage.png' alt='homepage' /> -->
+![Screenshot (1962)](https://github.com/DishaGup/eminent-art-8078/assets/90616584/822dc14c-6990-4886-9b93-cecc706ad066)
+
+<br/>   
 
 ## Admin Page\*
 
