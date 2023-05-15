@@ -65,26 +65,18 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
   }
    let { loading, productsData } = useSelector((store) => store.ProductReducer);
   let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
-//  console.log(productsData)
-  
-// useEffect(()=>{
-//   let unibrands={}
-//   if(brands && brands.length>0){
-//    let answer= brands.map((product) => {
-//       if (unibrands[product.brand]) {
-//         unibrands[product.brand]++;
-//       } else {
-//         unibrands[product.brand] = 1;
-//       }
 
-//     })
-//     //console.log(unibrands)
-//     //console.log(answer)
-//      setUniquebrand([unibrands])
-//   }
+function clearAllFilters() {
+  const emptyParams = {};
 
-// },[])
-
+  setSearchParams(emptyParams);
+  setcategorytag([])
+  setratingplus('')
+  setSortingByPrice([])
+  setbrandrange([])
+  setsortrange([])
+ // dispatch(updateQueryParams(emptyParams));
+}
 
 // console.log(uniquebrands)
 
@@ -103,7 +95,6 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
     }
   }, [brands, productsData])
 
-console.log(uniquebrands)
   const handlebrand = (e) => {
     let sortdata = [...brandrange]
     let value = e.target.value
@@ -115,7 +106,7 @@ console.log(uniquebrands)
     setbrandrange(sortdata)
 
   }
-  console.log(brandrange)
+  
 
   const handlesort = (e) => {
     let sortdata = [...sortrange]
@@ -200,7 +191,7 @@ console.log(uniquebrands)
 
       <Divider h='0.5cm' colour='white' />
       {" "}
-      <Box maxH="400px" overflowY="scroll" w="full" >
+      <Box maxH="400px" w="full" >
         <Accordion flex="1" allowToggle>
           <AccordionItem>
             <h2>
@@ -211,7 +202,7 @@ console.log(uniquebrands)
                 <AccordionIcon />
               </AccordionButton>
               <Box as="span" flex="1" textAlign="left">
-                <Flex> <AccordionPanel pb={4}>
+                <Flex> <AccordionPanel pb={4} overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px' >
                 {
                     productsData.tag && productsData.tag.map((el)=>  
                     <Box p={1} >
@@ -246,13 +237,13 @@ console.log(uniquebrands)
                 <Flex>
 
 {
-    <AccordionPanel >
+    <AccordionPanel overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px'  >
 
      {Object.keys(uniquebrands).map((brand, ind) => (
 
     <Flex p={1} key={ind} justify={'space-around'}>
       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={brandrange.includes(brand)} name={brand} onChange={handlebrand} my={2} value={brand}  >{brand}</Checkbox>
-      <Text fontSize={"18px"}>{uniquebrands[brand]}</Text>
+      {/* <Text fontSize={"18px"}>{uniquebrands[brand]}</Text> */}
     </Flex>
        )
        )}
@@ -295,7 +286,7 @@ console.log(uniquebrands)
 {
     <AccordionPanel >
               <Box p={1}>
-                        <Radio value='1'  isChecked={ratingplus==1} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2}>⭐</Radio>
+                        <Radio value='1'   isChecked={ratingplus==1} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2}>⭐</Radio>
                       </Box>
                  <Box p={1} >
                         <Radio isChecked={ratingplus==2} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2} value='2' >⭐⭐</Radio>
@@ -321,7 +312,7 @@ console.log(uniquebrands)
       </Box>
 
       <Divider h='0.5cm' colour='white' />
-      <Button onClick={()=>DeleteAllParams(searchParams)}>
+      <Button bg='#0076be' color='white' onClick={clearAllFilters}>
         Clear All
       </Button>
 

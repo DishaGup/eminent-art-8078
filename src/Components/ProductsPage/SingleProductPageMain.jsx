@@ -196,13 +196,14 @@ const SingleProductPageMain = () => {
             </Button>
           </Flex>
           {/* Top section for image and prices */}
-          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }}>
+          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }} m='auto'>
             <Grid
               gridTemplateColumns={{
-                base: "100%",
+                base: "90%",
                 md: "50% 50%",
                 lg: "60%,40%",
               }}
+              gap='10px'
               direction={{ base: "column", md: "row" }}
               justifyContent="space-between"
             >
@@ -234,23 +235,21 @@ const SingleProductPageMain = () => {
                   </HStack>
                 </Box>
                 {/* for small screen */}
-                <Box display={{ base: "block", md: "block", lg: "none" }}>
-                  <VStack>
+                <Box display={{ base: "block", md: "block", lg: "none" }} w='90%' m='auto'>
+                  <VStack w='90%' m='auto' >
                     <Carousel
-                      w="50%"
+                      width="80%"
                       autoPlay={true}
                       infiniteLoop={true}
                       transitionTime={2000}
                       axis="vertical"
-                      stopOnHover={false}
+                      stopOnHover={true} showThumbs={false}
+                      showStatus={false}
                     >
                       <div>
                         <img alt="1" src={product.image} />
                       </div>
-                      <div>
-                        <img alt="2" src={product.image2} />
-                      </div>
-
+                  
                       {product.images?.map((el, ind) => (
                         <div key={ind}>
                           <img alt={el.substring(0, 5)} src={el} />
@@ -262,10 +261,10 @@ const SingleProductPageMain = () => {
               </Box>
 
               {/* Right sections */}
-              <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }} align="left">
+              <Box py={{ base: 6, md: 0 }}  align="left" w={{base:'80%',lg:'auto'}} m='auto' >
                 <Heading
                   textAlign="center"
-                  fontSize={"24px"}
+                  fontSize={{base:'19px',lg:"24px"}}
                   textTransform={"uppercase"}
                   color={"#0076be"}
                 >
@@ -334,7 +333,7 @@ const SingleProductPageMain = () => {
                     <Divider borderColor={"#24a3b5"}></Divider>
                   </VStack>
 
-                  <Box my={3}>
+                  <Box my={3} base={{display:'none',lg:'block'}} >
                     <Image src={discountoff} />
 
                     {/* <OneMoreOffer/> 
@@ -347,6 +346,7 @@ const SingleProductPageMain = () => {
                     w="max-content"
                     p={3}
                     borderRadius={"10px"}
+                    base={{display:'none',lg:'block'}}
                   >
                     <ColorPalette
                       colors={colors}
@@ -358,7 +358,7 @@ const SingleProductPageMain = () => {
 
                 {/* <Divider borderColor={"black"}></Divider> */}
                 <HStack
-                  fontSize={{ base: "16", md: "18px" }}
+                  fontSize={{ base: "13px", md: "18px" }}
                   mt="20px"
                   mb="20px"
                 >
@@ -378,7 +378,7 @@ const SingleProductPageMain = () => {
                 </HStack>
                 <Divider borderColor={"black"}></Divider>
 
-                <VStack spacing={3}>
+                <VStack spacing={3} display={{base:'none',lg:'flex'}}>
                   <HStack spacing="100px">
                     <Button
                       isLoading={loading}
@@ -419,6 +419,38 @@ const SingleProductPageMain = () => {
                     </Text>
                   </HStack>
                 </VStack>
+
+<Box  display={{base:'block',lg:'flex'}}> 
+                <VStack spacing={3} > 
+                
+                    <Button
+                      isLoading={loading}
+                      w="200px"
+                      size="lg"
+                      backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
+                      onClick={handleAddToCart}
+                    >
+                      Add to cart
+                    </Button>
+                
+                 
+                                       <Button
+
+                      color={"#0076be"}
+                      fontWeight={"medium"}
+                      // onClick={addtowishlist}
+                      cursor="pointer"
+                      onClick={() => handleAddToWishlist(product)}
+                    >
+                      Add to Wish List
+                    </Button>
+               
+                </VStack>
+
+</Box>
+
+
+
               </Box>
             </Grid>
             {/* Bottom section for description */}

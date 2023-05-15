@@ -1,4 +1,4 @@
-import { Box, Button, HStack, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, HStack, Stack, Text,VStack } from "@chakra-ui/react";
 import { RxAvatar } from "react-icons/rx";
 import { TbNotes } from "react-icons/tb";
 import { HiOutlineCurrencyRupee } from "react-icons/hi";
@@ -25,8 +25,8 @@ export default function LeftDiv() {
       fontSize={{ base: "sm", md: "md", lg: "md", xl: "md", "2xl": "md" }}
       margin={"auto"}
      >
-      <Stack p="3%" >
-        <HStack mb="20px" w={"100%"} justifyContent="space-around" mt={"5px"}>
+      <VStack p="3%" textAlign='left' >
+        <HStack mb="20px" w={"100%"} justifyContent="space-between" mt={"5px"}>
           <Text color="teal">My Account</Text>
           <Button
             ml="20%"
@@ -39,44 +39,89 @@ export default function LeftDiv() {
           </Button>
         </HStack>
 
-        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"} mt={"5px"}>
-          <TbNotes size="25px" justifyContent="space-around" />
-          <Text pl="15%" 
-          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}>My Orders</Text>
-        </HStack>
-
+      
         
 
-        <HStack pl={"10%"} w={"55%"} justifyContent={"space-between"} mt={"5px"}>
-          <RxAvatar size="25px" />
-          <Text pl="15%"
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+        <TbNotes size="25px"  />
+          <Text
+          fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
+          >My Orders</Text>
+          <Button
+            color={"white"}
+          
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            
+          </Button>
+        </HStack>
+       
+
+    
+
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+        <RxAvatar size="25px" />
+          <Text
           fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
           >My Profile</Text>
+          <Button
+            color={"white"}
+          
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            
+          </Button>
         </HStack>
+       
 
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
-          <AiOutlineStar size={"25px"} />
-          <Text pl="15%"
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+        <AiOutlineStar size={"25px"} />
+          <Text
           fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
           >Rate Your Purchase</Text>
+          <Button
+            color={"white"}
+          
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            
+          </Button>
         </HStack>
-
       
 
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
-          <BsHouseGear size="25px" />
-          <Text pl="15%"
+      
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+        <BsHouseGear size="25px" />
+          <Text
           fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
           >My Favorite Stories</Text>
+          <Button
+            color={"white"}
+          
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            
+          </Button>
         </HStack>
 
-        <HStack pl={"10%"} w={"65%"} justifyContent={"space-between"} mt={"5px"}>
-          <BsHeadset size="25px" />
-          <Text pl="15%"
+        <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
+        <BsHeadset size="25px" />
+          <Text
           fontSize={{ base: "2xs",sm:"sm", md:"sm", lg: "sm", xl:"sm","2xl":"sm" }}
           >Help & Support</Text>
+          <Button
+            color={"white"}
+          
+            size={["2xs", "sm", "md", "md"]}
+            fontSize={["2xs", "sm", "md", "md", "md"]}
+          >
+            
+          </Button>
         </HStack>
-
         <HStack justifyContent="space-around" w={"101%"}  paddingLeft={"2%"} mt={"5px"}>
           <AiOutlineHeart size="25px" />
           <Text
@@ -118,7 +163,7 @@ export default function LeftDiv() {
             0
           </Button>
         </HStack>
-      </Stack>
+      </VStack>
     </Box>
   );
 }

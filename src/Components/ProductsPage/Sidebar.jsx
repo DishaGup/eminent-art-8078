@@ -69,17 +69,7 @@ const Sidebar = () => {
   });
 
   useEffect(() => {
-
-    if (category != undefined) {
-      dispatch(getProducts(category, queryParams))
-    } else if (subcategory !== undefined && category !== undefined) {
-      dispatch(getProductsSubcategory(category, queryParams, subcategory))
-    } else if (subcat2 !== undefined && subcategory !== undefined && category !== undefined) {
-      dispatch(getProductsSubSubcategory(category, queryParams, subcategory, subcat2))
-    } else {
-      dispatch(getAllProducts(queryParams))
-    }
-
+    dispatch(getProductsSubSubcategory(category, queryParams, subcategory, subcat2))
   }, [location.search])
 
  
@@ -92,7 +82,7 @@ const Sidebar = () => {
         margin="auto"
         pt={{ base: "30px", md: "60px", lg: "80px" }}
       >
-        <Flex alignItems={"left"} pb={{ base: "10px", sm: "5px" }}>
+        <Flex alignItems={"center"} pb={{ base: "10px", sm: "5px" }} border='1px solid black' borderRadius={'10px'} w='fit-content' m={1} >
           <Breadcrumb separator="/" fontSize={{ base: "16px", md: "18px" }}>
             <BreadcrumbItem>
               <BreadcrumbLink href="/products">products</BreadcrumbLink>
@@ -100,21 +90,13 @@ const Sidebar = () => {
             <BreadcrumbItem>
               <Text>{category ? category : "men"}</Text>
             </BreadcrumbItem>
-            {breadcrumblinks.map((el, i) => {
-              if (
-                i % 2 == 1 &&
-                el !== "brandrange" &&
-                el !== "categorytag" &&
-                el !== "sortrange"
-              ) {
-                return (
-                  <BreadcrumbItem key={i}>
-                    {/* <Text>{el.length > 1 ? el.split(" ")[0] : el}</Text> */}
-                    {/* <CloseButton  onClick={()=>searchParams.delete(el)} /> */}
-                  </BreadcrumbItem>
-                );
-              }
-            })}
+            <BreadcrumbItem>
+              <Text>{subcategory ? subcategory : "Clothings"}</Text>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <Text>{subcat2 ? subcat2 : "Festives"}</Text>
+            </BreadcrumbItem>
+          
           </Breadcrumb>
         </Flex>
         <Flex mb="10px">
@@ -198,7 +180,7 @@ const Sidebar = () => {
                   </>
                 )}
                 {
-                  productsData.total <= 0 && (<> <NotfoundCategory />  </>)
+                  totalResults <= 0 && (<> <NotfoundCategory />  </>)
                 }
 
 
@@ -209,8 +191,13 @@ const Sidebar = () => {
         </Grid>
         <Box>
           <Flex
-            m="10px 30px 50px  "
-            justify={{ base: "center", md: "flex-end" }}
+            m="10px auto"
+            justify={'center'}
+            border='2px solid #0076be'
+            alignItems='center'
+           w='300px'
+           borderStyle='dashed'
+            borderRadius={'5px'}
           >
             {productsData.products && productsData.products.length > 1 && (
               <Pagination
