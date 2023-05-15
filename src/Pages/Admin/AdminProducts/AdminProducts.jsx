@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Sidebar from "../SidebarSection/Sidebar";
 import "./adminproducts.css";
@@ -7,20 +7,22 @@ import {
   adminDeleteProduct,
   getAdminProducts,
 } from "../../../Redux/AdminReducer/action";
-import { Input, Text } from "@chakra-ui/react";
+import { Input, Text, Box, Flex } from "@chakra-ui/react";
 import { AdminAddProducts } from "../AdminAddProducts/AdminAddProducts";
 import { Link } from "react-router-dom";
+import Pagination from "../../../Components/ProductsPage/Pagination";
 
 export const AdminProducts = () => {
-  const { adminProducts, isLoading } = useSelector(
-    (store) => store.adminReducer
+  const [pageno, setpageno] = useState(1);
+  let { products, brands, currentPage, totalPages, totalResults } = useSelector(
+    (store) => store.adminReducer.adminProducts
   );
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getAdminProducts());
-  }, [adminProducts.length]);
+  }, []);
 
   const handleDelete = (id) => {
     dispatch(adminDeleteProduct(id));
@@ -42,8 +44,9 @@ export const AdminProducts = () => {
           </span>
 
           <div className="admin-prod-container">
-            {adminProducts.length > 0 &&
-              adminProducts.reverse().map((item) => {
+            {products &&
+              products.length > 0 &&
+              products.reverse().map((item) => {
                 return (
                   <div className="admin-prod" key={item.id}>
                     <img className="admin-prod-img" src={item.image} alt="" />
@@ -66,6 +69,26 @@ export const AdminProducts = () => {
                 );
               })}
           </div>
+
+          <Box>
+            <Flex
+              m="10px auto"
+              justify={"center"}
+              // border="2px solid #0076be"
+              alignItems="center"
+              w="300px"
+              // borderStyle="dashed"
+              borderRadius={"5px"}
+            >
+              {products && products.length > 1 && (
+                <Pagination
+                  current={pageno}
+                  total={totalPages}
+                  handlePageChange={(page) => setpageno(page)}
+                />
+              )}
+            </Flex>
+          </Box>
         </div>
       </div>
     </div>

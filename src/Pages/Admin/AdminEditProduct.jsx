@@ -26,7 +26,6 @@ export const AdminEditProduct = () => {
   const [success, setSuccess] = useState(false);
 
   const { adminProducts } = useSelector((store) => store.adminReducer);
-  //console.log(adminProducts);
 
   const dispatch = useDispatch();
   const toast = useToast();
@@ -55,9 +54,8 @@ export const AdminEditProduct = () => {
   };
   useEffect(() => {
     const data = adminProducts.find((el) => +el.id === +id);
-    console.log(data);
+
     setData(data);
-    //console.log(id);
   }, []);
 
   return (

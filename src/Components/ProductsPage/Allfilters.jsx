@@ -78,7 +78,7 @@ function clearAllFilters() {
  // dispatch(updateQueryParams(emptyParams));
 }
 
-// console.log(uniquebrands)
+
 
   useEffect(() => {
     let unibrands = new Object()

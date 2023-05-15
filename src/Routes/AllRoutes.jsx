@@ -11,7 +11,7 @@ import { Home } from "../Pages/Home";
 import SingleProductPageMain from "../Components/ProductsPage/SingleProductPageMain";
 import { Wishlist } from "../Pages/Wishlist";
 // import CartPage from "../Pages/cart/CartPage";
-import { PrivateRoute } from "../Components/PrivateRoute";
+// import { PrivateRoute } from "../Components/PrivateRoute";
 // import Allfilters from "../Components/ProductsPage/Allfilters";
 import Sidebar from "../Components/ProductsPage/Sidebar";
 
@@ -41,9 +41,9 @@ const AllRoutes = () => {
       <Route
         path="/adminpage"
         element={
-          <PrivateRoute>
-            <AdminPage />
-          </PrivateRoute>
+          // <PrivateRoute>
+          <AdminPage />
+          // </PrivateRoute>
         }
       />
       <Route path="/adminproducts" element={<AdminProducts />} />

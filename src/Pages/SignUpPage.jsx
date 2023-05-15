@@ -56,7 +56,6 @@ export default function SignUpPage() {
           userData
         )
         .then((res) => {
-          // console.log(res, "user");
           toast({
             title: "Register Successfully!",
             description: "Please go to Login.",
@@ -79,7 +78,7 @@ export default function SignUpPage() {
           });
         });
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

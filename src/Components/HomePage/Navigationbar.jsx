@@ -24,7 +24,9 @@ import {
   PopoverBody,
   PopoverFooter,
   PopoverArrow,
-  PopoverCloseButton,useToast 
+  PopoverCloseButton,
+  useToast,
+  Text,
 } from "@chakra-ui/react";
 import React from "react";
 import trendify_logo from "../../Assests/trendifyLogo.jpeg";
@@ -39,27 +41,24 @@ import { AdminButton } from "../../Pages/Admin/AdminButton";
 import SearchBar from "../SearchBar";
 import LocationBox from "../LocationBox";
 const Navigationbar = () => {
+  const toast = useToast();
+  let tokenfromlocal = localStorage.getItem("token") || "";
+  let UserName = localStorage.getItem("UserName");
 
-
-const toast=useToast()
-let tokenfromlocal=localStorage.getItem("token") || ""
   //let auth = JSON.parse(localStorage.getItem("auth"))||{user:""}
-  //console.log(auth.user.name)
-const handleLogout=()=>{
-  localStorage.removeItem("token")
-  localStorage.removeItem("UserName")
 
-  toast({
-    title: 'Succesfully Log Out',
-    description: "Shop more",
-    status: 'success',
-    duration: 2000,
-    isClosable: true,
-  })
-}
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("UserName");
 
-
-
+    toast({
+      title: "Succesfully Log Out",
+      description: "Shop more",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+  };
 
   return (
     <Box
@@ -96,7 +95,6 @@ const handleLogout=()=>{
             backgroundColor="#e9f6f7"
           />
           <Editable
-          
             align="left"
             placeholder="What is on Your mind today?"
             w={{ base: "50%", md: "40%", lg: "50%" }}
@@ -127,22 +125,18 @@ const handleLogout=()=>{
           w="15%"
           ml="-150px"
         >
-
           <Icon as={CiLocationOn} />
-          <Popover trigger={"hover"} placement='bottom' strategy='absolute'>
-  <PopoverTrigger>
-   <Icon as={BsBell} />
-  </PopoverTrigger>
-  <PopoverContent fontSize='20px' position='absolute' top='100%' >
-    <PopoverArrow />
-    <PopoverCloseButton />
-    <PopoverHeader>Empty 😀</PopoverHeader>
-    <PopoverBody>You have read all notifications</PopoverBody>
-  </PopoverContent>
-</Popover>
-         
-
-        
+          <Popover trigger={"hover"} placement="bottom" strategy="absolute">
+            <PopoverTrigger>
+              <Icon as={BsBell} />
+            </PopoverTrigger>
+            <PopoverContent fontSize="20px" position="absolute" top="100%">
+              <PopoverArrow />
+              <PopoverCloseButton />
+              <PopoverHeader>Empty 😀</PopoverHeader>
+              <PopoverBody>You have read all notifications</PopoverBody>
+            </PopoverContent>
+          </Popover>
 
           <Link to="/wishlistpage">
             {" "}
@@ -163,21 +157,19 @@ const handleLogout=()=>{
             ></MenuButton>
             <MenuList fontSize="14px">
               <MenuItem>
-
-                {
-                  tokenfromlocal != '' ? <Button onClick={handleLogout}>Log Out</Button> : <NavLink to="/login">LOGIN/SIGNUP</NavLink>
-                }
-
+                {tokenfromlocal != "" ? (
+                  <Button onClick={handleLogout}>Log Out</Button>
+                ) : (
+                  <NavLink to="/login">LOGIN/SIGNUP</NavLink>
+                )}
               </MenuItem>
               <MenuDivider m={0} />
-              <AdminButton />
-           
-             
+              {/* <AdminButton /> */}
             </MenuList>
           </Menu>
         </HStack>
         <Box w="5%" mt="2%" color="green" fontSize={"l"}>
-          hi-{`${auth.user}`}
+          <Flex w="100px">{!UserName ? "" : `Hi ${UserName}`} </Flex>
         </Box>
       </Flex>
       <NavDrop />

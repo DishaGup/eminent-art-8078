@@ -20,7 +20,7 @@ import { useNavigate, Link } from "react-router-dom";
 
 import { useColorModeValue } from "@chakra-ui/react";
 import Navigationbar from "../Components/HomePage/Navigationbar";
-import { Footer } from "./HomeComponents/Footer";
+// import { Footer } from "./HomeComponents/Footer";
 // import { CONFETTI_LIGHT, CONFETTI_DARK } from "../components/Confetti";
 // import Navbar from "../components/HomePage/Navbar";
 // import Footer from "../components/HomePage/Footer";
@@ -30,16 +30,17 @@ export default function SignInPage() {
     email: "",
     password: "",
   });
+
   const [emailError, setEmailError] = React.useState("");
   const [passError, setPassError] = React.useState("");
   const { email, password } = userData;
-
-  // const { authState, Login } = useContext(AuthContext);
 
   const toast = useToast();
 
   const Navigate = useNavigate();
 
+  let pattern = /admin/gi;
+  let result = email.match(pattern);
   React.useEffect(() => {
     if (!email && !password) {
       setEmailError("Email address is required.");
@@ -59,9 +60,8 @@ export default function SignInPage() {
           const getToken = res.data.token;
           const Name = res.data.Name;
 
-          console.log(res, "line55");
           localStorage.setItem("token", getToken);
-          localStorage.setItem("UserName",JSON.stringify(Name) );
+          localStorage.setItem("UserName", JSON.stringify(Name));
 
           toast({
             title: "Sucessfully Login.",
@@ -73,7 +73,11 @@ export default function SignInPage() {
           });
 
           // use this to useNavigate here
-          Navigate("/");
+          if (result) {
+            Navigate("/adminpage");
+          } else {
+            Navigate("/");
+          }
         })
         .catch((error) => {
           // fill the correct detail
@@ -87,7 +91,7 @@ export default function SignInPage() {
           });
         });
     } catch (error) {
-      console.log(error);
+      alert(error);
     }
   };
 

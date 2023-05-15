@@ -35,7 +35,6 @@ import ColorPalette from "./ColorPalette";
 
 import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 
-
 const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
 
@@ -77,10 +76,9 @@ const SingleProductPageMain = () => {
           setCartData(res.data.cart);
         });
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
-  console.log(cartData);
 
   const handleAddToCart = () => {
     const obj = {
@@ -147,10 +145,7 @@ const SingleProductPageMain = () => {
   };
 
   const handleAddToWishlist = (data) => {
-
-    let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist"
-
-    
+    let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
 
     //dispatch(AddtoWishlist(item))
     let product = {
@@ -169,7 +164,7 @@ const SingleProductPageMain = () => {
       })
       .then((res) => {
         // dispatch({ type: ADDTOWISHLIS_SUCCESS });
-        console.log("success");
+        alert("success");
       });
 
     toast({
@@ -196,14 +191,14 @@ const SingleProductPageMain = () => {
             </Button>
           </Flex>
           {/* Top section for image and prices */}
-          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }} m='auto'>
+          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }} m="auto">
             <Grid
               gridTemplateColumns={{
                 base: "90%",
                 md: "50% 50%",
                 lg: "60%,40%",
               }}
-              gap='10px'
+              gap="10px"
               direction={{ base: "column", md: "row" }}
               justifyContent="space-between"
             >
@@ -235,21 +230,26 @@ const SingleProductPageMain = () => {
                   </HStack>
                 </Box>
                 {/* for small screen */}
-                <Box display={{ base: "block", md: "block", lg: "none" }} w='90%' m='auto'>
-                  <VStack w='90%' m='auto' >
+                <Box
+                  display={{ base: "block", md: "block", lg: "none" }}
+                  w="90%"
+                  m="auto"
+                >
+                  <VStack w="90%" m="auto">
                     <Carousel
                       width="80%"
                       autoPlay={true}
                       infiniteLoop={true}
                       transitionTime={2000}
                       axis="vertical"
-                      stopOnHover={true} showThumbs={false}
+                      stopOnHover={true}
+                      showThumbs={false}
                       showStatus={false}
                     >
                       <div>
                         <img alt="1" src={product.image} />
                       </div>
-                  
+
                       {product.images?.map((el, ind) => (
                         <div key={ind}>
                           <img alt={el.substring(0, 5)} src={el} />
@@ -261,10 +261,15 @@ const SingleProductPageMain = () => {
               </Box>
 
               {/* Right sections */}
-              <Box py={{ base: 6, md: 0 }}  align="left" w={{base:'80%',lg:'auto'}} m='auto' >
+              <Box
+                py={{ base: 6, md: 0 }}
+                align="left"
+                w={{ base: "80%", lg: "auto" }}
+                m="auto"
+              >
                 <Heading
                   textAlign="center"
-                  fontSize={{base:'19px',lg:"24px"}}
+                  fontSize={{ base: "19px", lg: "24px" }}
                   textTransform={"uppercase"}
                   color={"#0076be"}
                 >
@@ -333,7 +338,7 @@ const SingleProductPageMain = () => {
                     <Divider borderColor={"#24a3b5"}></Divider>
                   </VStack>
 
-                  <Box my={3} base={{display:'none',lg:'block'}} >
+                  <Box my={3} base={{ display: "none", lg: "block" }}>
                     <Image src={discountoff} />
 
                     {/* <OneMoreOffer/> 
@@ -346,7 +351,7 @@ const SingleProductPageMain = () => {
                     w="max-content"
                     p={3}
                     borderRadius={"10px"}
-                    base={{display:'none',lg:'block'}}
+                    base={{ display: "none", lg: "block" }}
                   >
                     <ColorPalette
                       colors={colors}
@@ -378,10 +383,9 @@ const SingleProductPageMain = () => {
                 </HStack>
                 <Divider borderColor={"black"}></Divider>
 
-                <VStack spacing={3} display={{base:'none',lg:'flex'}}>
+                <VStack spacing={3} display={{ base: "none", lg: "flex" }}>
                   <HStack spacing="100px">
                     <Button
-                     
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
@@ -390,7 +394,6 @@ const SingleProductPageMain = () => {
                       Add to cart
                     </Button>
                     <Button
-                    
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
@@ -411,7 +414,6 @@ const SingleProductPageMain = () => {
                     <Text
                       color={"#0076be"}
                       fontWeight={"medium"}
-                     
                       cursor="pointer"
                       onClick={() => handleAddToWishlist(product)}
                     >
@@ -420,9 +422,8 @@ const SingleProductPageMain = () => {
                   </HStack>
                 </VStack>
 
-<Box  display={{base:'block',lg:'none'}}> 
-                <VStack spacing={3} > 
-                
+                <Box display={{ base: "block", lg: "none" }}>
+                  <VStack spacing={3}>
                     <Button
                       cursor="pointer"
                       w="200px"
@@ -432,26 +433,18 @@ const SingleProductPageMain = () => {
                     >
                       Add to cart
                     </Button>
-                
-                 
-                                       <Button
 
-w="200px"
-size="lg"
-backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
-                    
+                    <Button
+                      w="200px"
+                      size="lg"
+                      backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
                       cursor="pointer"
                       onClick={() => handleAddToWishlist(product)}
                     >
                       Add to Wish List
                     </Button>
-               
-                </VStack>
-
-</Box>
-
-
-
+                  </VStack>
+                </Box>
               </Box>
             </Grid>
             {/* Bottom section for description */}

@@ -1,8 +1,6 @@
 import {
-  Spinner,
   Icon,
   Box,
-  Center,
   Image,
   HStack,
   VStack,
@@ -11,28 +9,30 @@ import {
   Heading,
   Stack,
   Text,
-  useColorModeValue,
-  useToast,Skeleton, SkeletonCircle, SkeletonText 
+  useToast,
+  Skeleton,
+  SkeletonCircle,
+  SkeletonText,
 } from "@chakra-ui/react";
-import React, { useRef,useState } from "react";
+import React, { useRef, useState } from "react";
 import { FiTruck } from "react-icons/fi";
 import { BsFillHeartFill } from "react-icons/bs";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import StarRating from "./StarRating";
-import { memo } from "react";
+// import { memo } from "react";
 import NotfoundCategory from "../../Pages/NotfoundCategory";
 // import { AddToWishList } from "../../Redux/WishList/action";
 import { Addtowishlist } from "../../Redux/ProductReducer/action";
 import { useEffect } from "react";
 
 function ProductCard(props) {
-  const { path, category } = useParams();
-  const[times,settimes]=useState(0)
-  const toast=useToast()
-  const { id, image, title, price, rating,discount,_id } = props;
-  let { loading, productsData, wishlistdata,error } = useSelector(
+  const { category } = useParams();
+  const [times, settimes] = useState(0);
+  const toast = useToast();
+  const { id, image, title, price, rating, discount, _id } = props;
+  let { loading, productsData, wishlistdata, error } = useSelector(
     (store) => store.ProductReducer
   );
   const imagezoom = useRef();
@@ -60,56 +60,51 @@ function ProductCard(props) {
       reviews: ids.reviews,
       tag: ids.tag,
       title: ids.title,
-      _id:ids[_id]
-      
+      _id: ids[_id],
     };
     toast({
-      title: 'Product Added',
-          description: "Product added to wishlist.",
-          status: 'success',
-          duration: 2000,
-          isClosable: true,
-          position: 'top',
-    })
-    // console.log(data);
+      title: "Product Added",
+      description: "Product added to wishlist.",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+      position: "top",
+    });
+
     dispatch(Addtowishlist(data));
   };
 
   const navigate = useNavigate();
   const location = useLocation();
 
-useEffect(()=>{
-  const timer = setTimeout(() => {
-    settimes(times + 1);
-   if(times==10) clearTimeout(timer)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      settimes(times + 1);
+      if (times == 10) clearTimeout(timer);
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [times]);
 
-  }, 1000);
-  return () => clearTimeout(timer);
-
-},[times])
-
-
- if(loading && times<5){
-  return(
-    <Box padding='6' boxShadow='lg' bg='white' w='150px'>
-  <SkeletonCircle size='10' />
-  <Skeleton
-        p={"5px"}
-        onMouseOver={handleimagezoomin}
-        onMouseLeave={handleimagezoomout}
-        _hover={{ border: "1px solid #24a3b5" }}
-      ></Skeleton>
-  <SkeletonText mt='4' noOfLines={4} spacing='4' skeletonHeight='2' />
-</Box>
-
-  )
- }
- if(productsData.products.length<=0 || productsData.total==0 ){
-  return <NotfoundCategory />
-}
-// else if( loading==true && times>=10 ){
-//   return <h1>SERVER ERROR </h1>
-// }
+  if (loading && times < 5) {
+    return (
+      <Box padding="6" boxShadow="lg" bg="white" w="150px">
+        <SkeletonCircle size="10" />
+        <Skeleton
+          p={"5px"}
+          onMouseOver={handleimagezoomin}
+          onMouseLeave={handleimagezoomout}
+          _hover={{ border: "1px solid #24a3b5" }}
+        ></Skeleton>
+        <SkeletonText mt="4" noOfLines={4} spacing="4" skeletonHeight="2" />
+      </Box>
+    );
+  }
+  if (productsData.products.length <= 0 || productsData.total == 0) {
+    return <NotfoundCategory />;
+  }
+  // else if( loading==true && times>=10 ){
+  //   return <h1>SERVER ERROR </h1>
+  // }
   return (
     <Card maxW="sm">
       <CardBody
@@ -128,7 +123,7 @@ useEffect(()=>{
         >
           <Icon size="20px" as={BsFillHeartFill} />
         </Box>
-        <Link to={`/products/${category}/single/${_id}`} >
+        <Link to={`/products/${category}/single/${_id}`}>
           <VStack p="10px">
             <Box h="300px" overflow="hidden">
               <Box
@@ -184,7 +179,7 @@ useEffect(()=>{
                   {discount}% off
                 </Text>
               </HStack>
-              <StarRating rating={rating?rating : 3} />
+              <StarRating rating={rating ? rating : 3} />
               <HStack>
                 <Icon as={FiTruck} />
                 <Text>Free Delivery</Text>{" "}

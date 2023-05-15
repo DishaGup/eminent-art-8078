@@ -32,7 +32,7 @@ const Cartpage = () => {
           setCartData(res.data.cart);
         });
     } catch (err) {
-      console.log(err);
+      alert(err);
     }
   };
 
@@ -53,7 +53,7 @@ const Cartpage = () => {
         });
         getCartData();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alert(err));
   };
 
   const handleIncrease = (id) => {
@@ -70,7 +70,6 @@ const Cartpage = () => {
             }
           )
           .then((res) => {
-            // console.log(res);
             setRefresh(!refresh);
           });
       }
@@ -97,14 +96,16 @@ const Cartpage = () => {
     });
   };
 
-  const totalPrice =cartData && cartData.reduce((acc, curr) => {
-    const data = cartData.find((el) => el._id === curr._id);
-    return acc + data.price * data.quantity;
-  }, 0);
- // console.log(cartData);
+  const totalPrice =
+    cartData &&
+    cartData.reduce((acc, curr) => {
+      const data = cartData.find((el) => el._id === curr._id);
+      return acc + data.price * data.quantity;
+    }, 0);
+
   return (
     <>
-      <Link to="/products">
+      <Link to="/">
         <div id="headercart">
           <img
             src="https://secure.shopclues.com/atom_view/images/prev.png"
@@ -113,14 +114,17 @@ const Cartpage = () => {
           <img src={trendifyLogo} alt="" />
         </div>
       </Link>
-      { !cartData  ? (
+      {!cartData ? (
         <EmptyCart />
       ) : (
         <div style={{ marginTop: "100px" }}>
           <div class="cartwrapper">
             <div>
               <h1 id="mycartid">
-                My Cart ( <span id="spancartwrapper">{cartData.length>0 ? cartData.length : 0}</span>{" "}
+                My Cart ({" "}
+                <span id="spancartwrapper">
+                  {cartData.length > 0 ? cartData.length : 0}
+                </span>{" "}
                 Item )
               </h1>
             </div>

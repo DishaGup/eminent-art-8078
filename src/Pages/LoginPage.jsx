@@ -24,12 +24,11 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // console.log(user.accessToken);
+
         localStorage.setItem("Isauth", user.accessToken);
         if (user.accessToken) {
           navigate("/");
         }
-        // ...
       })
       .catch((error) => {
         // const errorCode = error.code;
@@ -53,7 +52,7 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        // console.log(user.accessToken);
+
         if (user.accessToken) {
           setMode("sign-in");
         }
@@ -61,8 +60,6 @@ const LoginPage = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // console.log(errorMessage);
-        // ..
       });
   };
 

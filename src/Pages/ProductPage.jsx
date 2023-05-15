@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import Sidebar from "../Components/ProductsPage/Sidebar";
-import { getAllProducts,getProducts } from "../Redux/ProductReducer/action";
+import { getAllProducts, getProducts } from "../Redux/ProductReducer/action";
 import {
   useLocation,
   useNavigate,
@@ -14,13 +14,13 @@ import Navmain from "../Components/HomePage/Navmain";
 const ProductPage = () => {
   const navigate = useNavigate();
   const { category } = useParams();
-  //console.log(category)
+
   const [searchParams, setSearchParams] = useSearchParams();
   let { loading, productsData, allData } = useSelector(
     (store) => store.ProductReducer
   );
   let location = useLocation();
-  //console.log(category)
+
   const initialsortdata = searchParams.get("sortingByPrice");
 
   const [sortingByPrice, setSortingByPrice] = useState(initialsortdata || "");
@@ -54,15 +54,6 @@ const ProductPage = () => {
     <div>
       {/* <Banner/> */}
       <Navmain />
-
-
-
-
-
-     
-     
-
-
     </div>
   );
 };

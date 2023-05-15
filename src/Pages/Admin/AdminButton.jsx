@@ -4,11 +4,8 @@ import {
   ModalBody,
   ModalCloseButton,
   ModalContent,
-  ModalFooter,
-  ModalHeader,
   ModalOverlay,
   useDisclosure,
-  Flex,
   Box,
   FormControl,
   FormLabel,
@@ -22,7 +19,7 @@ import {
 } from "@chakra-ui/react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { app } from "../../firebase/firebase";
 
@@ -34,19 +31,15 @@ export function AdminButton() {
   const navigate = useNavigate();
 
   const handlesubmit = (e) => {
-    // console.log("email: ", email, "password:", password);
-    // e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
+        //const user = userCredential.user;
         navigate("/adminpage");
-        console.log(user);
-        // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+        // const errorCode = error.code;
+        // const errorMessage = error.message;
       });
     setEmail("");
     setPassword("");

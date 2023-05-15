@@ -1,58 +1,63 @@
-import { Box, HStack, Text, Image, Button, VStack, useToast } from "@chakra-ui/react";
+import {
+  Box,
+  HStack,
+  Text,
+  Image,
+  Button,
+  VStack,
+  useToast,
+} from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const RightDiv = () => {
-
   const toast = useToast();
-  let url="https://erin-dizzy-clam.cyclic.app/trendify/wishlist"
-  
-  const naigate = useNavigate();
+  let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
 
+  const naigate = useNavigate();
 
   const [wishlistData, setWishlistData] = useState([]);
   const [render, setRender] = useState(false);
   const getData = () => {
-
-    axios.get(url,{
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      //console.log(res.data)
-      if(res.data.length)
-     { setWishlistData(res.data);}
-    });
-
+    axios
+      .get(url, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.length) {
+          setWishlistData(res.data);
+        }
+      });
   };
 
   useEffect(() => {
     getData();
-
-  }, [wishlistData.length,render]);
- 
-
+  }, [wishlistData.length, render]);
 
   const handleDelete = (item) => {
     let id = item._id;
-    console.log(id,item)
-    axios.delete(`${url}/delete/${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }}).then((res) => {
-      console.log(res);
-    });
+
+    axios
+      .delete(`${url}/delete/${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        
+      });
 
     toast({
       title: "Successful!",
-        description:
-          "Product deleted to wishlist!!",
-        status: "success",
-        duration: 4000,
-        isClosable: true,
-        position: "top",
-    })
+      description: "Product deleted to wishlist!!",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+      position: "top",
+    });
     getData();
     setRender(!render);
   };

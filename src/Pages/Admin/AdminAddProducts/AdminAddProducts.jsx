@@ -33,6 +33,22 @@ const initialState = {
   category: "",
 };
 
+/*
+  {
+    "image": "https://assets.ajio.com/medias/sys_master/root/20230110/UA6C/63bd251faeb269c651d26a58/-473Wx593H-465581669-wine-MODEL5.jpg",
+    "discount": 48,
+    "title": "Embellished Padded Back-Open Blouse",
+    "subcategory": "ethnic wear",
+    "brand": "satrani",
+    "price": 834,
+    "category": "women",
+    "reviews": 524,
+    "tag": "blouses",
+    "rating": 4.1,
+    "subcat2": "blouses"
+  }
+*/
+
 export function AdminAddProducts() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [addproduct, setAddProduct] = useState(initialState);
@@ -49,7 +65,6 @@ export function AdminAddProducts() {
 
   const handleSubmit = () => {
     dispatch(adminaddProduct(addproduct));
-
     setAddProduct(initialState);
   };
 
