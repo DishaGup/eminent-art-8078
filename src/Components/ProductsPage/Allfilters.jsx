@@ -15,11 +15,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector, } from "react-redux";
 import { Spinner } from "@chakra-ui/spinner";
 import { Button } from "@chakra-ui/button";
-import { getProducts } from "../../Redux/ProductReducer/action";
+import { DeleteAllParams, getProducts } from "../../Redux/ProductReducer/action";
 import { memo } from "react";
 
-const Allfilters = ({ filterHeading, handleGoBack ,uniquebrands,productsData}) => {
-
+const Allfilters = ({ filterHeading, handleGoBack ,}) => {
+  const [uniquebrands, setUniquebrand] = useState({})
   const [searchParams, setSearchParams] = useSearchParams()
   let dispatch = useDispatch();
   const navigate = useNavigate();
@@ -63,30 +63,37 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
     setcategorytag(filterdata)
 
   }
-//   let { loading, productsData } = useSelector((store) => store.ProductReducer);
-//   let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
-//  console.log(productsData)
-  
-// useEffect(()=>{
-//   let unibrands={}
-//   if(brands && brands.length>0){
-//    let answer= brands.map((product) => {
-//       if (unibrands[product.brand]) {
-//         unibrands[product.brand]++;
-//       } else {
-//         unibrands[product.brand] = 1;
-//       }
+   let { loading, productsData } = useSelector((store) => store.ProductReducer);
+  let { products,brands } = useSelector((store) => store.ProductReducer.productsData);
 
-//     })
-//     //console.log(unibrands)
-//     //console.log(answer)
-//      setUniquebrand([unibrands])
-//   }
+function clearAllFilters() {
+  const emptyParams = {};
 
-// },[])
-
+  setSearchParams(emptyParams);
+  setcategorytag([])
+  setratingplus('')
+  setSortingByPrice([])
+  setbrandrange([])
+  setsortrange([])
+ // dispatch(updateQueryParams(emptyParams));
+}
 
 // console.log(uniquebrands)
+
+  useEffect(() => {
+    let unibrands = new Object()
+    if (brands && brands.length > 0) {
+      let answer = brands.forEach((product) => {
+        if (unibrands[product.brand]) {
+          unibrands[product.brand]++;
+        } else {
+          unibrands[product.brand] = 1;
+        }
+      })
+
+      setUniquebrand(unibrands)
+    }
+  }, [brands, productsData])
 
   const handlebrand = (e) => {
     let sortdata = [...brandrange]
@@ -99,7 +106,7 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
     setbrandrange(sortdata)
 
   }
-  console.log(brandrange)
+  
 
   const handlesort = (e) => {
     let sortdata = [...sortrange]
@@ -184,7 +191,7 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
 
       <Divider h='0.5cm' colour='white' />
       {" "}
-      <Box maxH="400px" overflowY="scroll" w="full" >
+      <Box maxH="400px" w="full" >
         <Accordion flex="1" allowToggle>
           <AccordionItem>
             <h2>
@@ -195,7 +202,7 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
                 <AccordionIcon />
               </AccordionButton>
               <Box as="span" flex="1" textAlign="left">
-                <Flex> <AccordionPanel pb={4}>
+                <Flex> <AccordionPanel pb={4} overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px' >
                 {
                     productsData.tag && productsData.tag.map((el)=>  
                     <Box p={1} >
@@ -230,13 +237,13 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
                 <Flex>
 
 {
-    <AccordionPanel >
+    <AccordionPanel overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px'  >
 
      {Object.keys(uniquebrands).map((brand, ind) => (
 
     <Flex p={1} key={ind} justify={'space-around'}>
       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={brandrange.includes(brand)} name={brand} onChange={handlebrand} my={2} value={brand}  >{brand}</Checkbox>
-      <Text fontSize={"18px"}>{uniquebrands[brand]}</Text>
+      {/* <Text fontSize={"18px"}>{uniquebrands[brand]}</Text> */}
     </Flex>
        )
        )}
@@ -279,7 +286,7 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
 {
     <AccordionPanel >
               <Box p={1}>
-                        <Radio value='1'  isChecked={ratingplus==1} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2}>⭐</Radio>
+                        <Radio value='1'   isChecked={ratingplus==1} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2}>⭐</Radio>
                       </Box>
                  <Box p={1} >
                         <Radio isChecked={ratingplus==2} name='ratingplus' onChange={(e)=>setratingplus(e.target.value)} my={2} value='2' >⭐⭐</Radio>
@@ -304,6 +311,10 @@ const [ratingplus,setratingplus]=useState( searchParams.get('ratingplus') || '')
         </Accordion>
       </Box>
 
+      <Divider h='0.5cm' colour='white' />
+      <Button bg='#0076be' color='white' onClick={clearAllFilters}>
+        Clear All
+      </Button>
 
 
 

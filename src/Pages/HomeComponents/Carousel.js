@@ -7,7 +7,11 @@ export const Carousels = () => (
 
        <div style={{ width: "83%",marginTop:"20px",paddingLeft:"20px" }} >
  
-            <Carousel autoPlay>
+            <Carousel autoPlay   showThumbs={false}
+        showStatus={false}
+        infiniteLoop
+       
+        style={{ display: "flex", justifyContent: "center" }}>
                 <div>
                     <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Mar/31/HB1_Month_Web_Esha_31Mar23.jpg" />
 
@@ -22,6 +26,14 @@ export const Carousels = () => (
                 </div>
                 <div>
                     <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Mar/01/Intel_Web_12thGenGaming.jpg" />
+
+                </div>
+                <div>
+                    <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Jan/19/HB1_Refurb_Web_SYM_19Jan23.jpg" />
+
+                </div>
+                <div>
+                    <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Jan/19/JMAX_HB2_Web_Riya_19Jan22.jpg" />
 
                 </div>
 

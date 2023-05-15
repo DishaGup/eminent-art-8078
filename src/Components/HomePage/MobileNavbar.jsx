@@ -51,7 +51,7 @@ const MobileNavbar = () => {
           <Icon size="22px" colour="#24a3b5" as={BsCart3} />
         </Link>
         <Link to="/wishlistpage">
-          <Icon size="22px" colour="#24a3b5" as={BsHeart} />
+          <Icon size="28px" colour="#24a3b5" as={BsHeart} />
         </Link>
         <Menu zIndex={200}>
           <MenuButton

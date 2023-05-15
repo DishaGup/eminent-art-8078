@@ -20,7 +20,7 @@ import {
   ListItem,
   Flex,
 } from "@chakra-ui/react";
-import './productspage.css'
+import "./productspage.css";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { TbTruckDelivery } from "react-icons/tb";
 import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
@@ -36,9 +36,7 @@ import ColorPalette from "./ColorPalette";
 import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 
 
-
 const SingleProductPageMain = () => {
- 
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -59,11 +57,30 @@ const SingleProductPageMain = () => {
 
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
   let { product } = useSelector((store) => store.ProductReducer.productsData);
+  const [cartData, setCartData] = useState([]);
 
   useEffect(() => {
     // window.scrollTo(0, 0);
     dispatch(getSingleProducts(id));
+    getCartData();
   }, []);
+
+  const getCartData = async () => {
+    try {
+      axios
+        .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setCartData(res.data.cart);
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  console.log(cartData);
 
   const handleAddToCart = () => {
     const obj = {
@@ -113,8 +130,6 @@ const SingleProductPageMain = () => {
           position: "top",
         });
       });
-
-    // console.log(obj,"objClick")
   };
 
   const handlebuynow = () => {
@@ -132,7 +147,11 @@ const SingleProductPageMain = () => {
   };
 
   const handleAddToWishlist = (data) => {
+
     let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist"
+
+    
+
     //dispatch(AddtoWishlist(item))
     let product = {
       image: data.image,
@@ -141,7 +160,7 @@ const SingleProductPageMain = () => {
       category: data.category,
       quantity: 1,
     };
-  
+
     axios
       .post(`${url}/add`, product, {
         headers: {
@@ -149,20 +168,18 @@ const SingleProductPageMain = () => {
         },
       })
       .then((res) => {
-       // dispatch({ type: ADDTOWISHLIS_SUCCESS });
-       console.log("success")
+        // dispatch({ type: ADDTOWISHLIS_SUCCESS });
+        console.log("success");
       });
 
-      toast({
-        title: "Successful!",
-          description:
-            "Product Added to wishlist!!",
-          status: "success",
-          duration: 4000,
-          isClosable: true,
-          position: "top",
-      })
-    
+    toast({
+      title: "Successful!",
+      description: "Product Added to wishlist!!",
+      status: "success",
+      duration: 4000,
+      isClosable: true,
+      position: "top",
+    });
   };
 
   return (
@@ -179,13 +196,14 @@ const SingleProductPageMain = () => {
             </Button>
           </Flex>
           {/* Top section for image and prices */}
-          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }}>
+          <Container maxW={{ base: "80%", md: "95%", lg: "90%" }} m='auto'>
             <Grid
               gridTemplateColumns={{
-                base: "100%",
+                base: "90%",
                 md: "50% 50%",
                 lg: "60%,40%",
               }}
+              gap='10px'
               direction={{ base: "column", md: "row" }}
               justifyContent="space-between"
             >
@@ -217,23 +235,21 @@ const SingleProductPageMain = () => {
                   </HStack>
                 </Box>
                 {/* for small screen */}
-                <Box display={{ base: "block", md: "block", lg: "none" }}>
-                  <VStack>
+                <Box display={{ base: "block", md: "block", lg: "none" }} w='90%' m='auto'>
+                  <VStack w='90%' m='auto' >
                     <Carousel
-                      w="50%"
+                      width="80%"
                       autoPlay={true}
                       infiniteLoop={true}
                       transitionTime={2000}
                       axis="vertical"
-                      stopOnHover={false}
+                      stopOnHover={true} showThumbs={false}
+                      showStatus={false}
                     >
                       <div>
                         <img alt="1" src={product.image} />
                       </div>
-                      <div>
-                        <img alt="2" src={product.image2} />
-                      </div>
-
+                  
                       {product.images?.map((el, ind) => (
                         <div key={ind}>
                           <img alt={el.substring(0, 5)} src={el} />
@@ -245,9 +261,15 @@ const SingleProductPageMain = () => {
               </Box>
 
               {/* Right sections */}
-              <Box py={{ base: 6, md: 0 }} pl={{ md: 6 }} align="left">
-
-                <Heading textAlign='center' fontSize={'24px'} textTransform={'uppercase'} color={'#0076be'}>{product.brand}</Heading>
+              <Box py={{ base: 6, md: 0 }}  align="left" w={{base:'80%',lg:'auto'}} m='auto' >
+                <Heading
+                  textAlign="center"
+                  fontSize={{base:'19px',lg:"24px"}}
+                  textTransform={"uppercase"}
+                  color={"#0076be"}
+                >
+                  {product.brand}
+                </Heading>
                 <Heading
                   size={{ base: "md", md: "md", lg: "lg" }}
                   mb={3}
@@ -311,26 +333,32 @@ const SingleProductPageMain = () => {
                     <Divider borderColor={"#24a3b5"}></Divider>
                   </VStack>
 
-                  <Box my={3}>
+                  <Box my={3} base={{display:'none',lg:'block'}} >
                     <Image src={discountoff} />
 
                     {/* <OneMoreOffer/> 
    <Coupon product={product} />*/}
-
                   </Box>
 
-                  <Box my={3} border='3px solid #0076be' w='max-content' p={3} borderRadius={'10px'} >
-                  <ColorPalette colors={colors} selectedColor={selectedColor} onColorChange={handleColorChange} />
-    
-    
+                  <Box
+                    my={3}
+                    border="3px solid #0076be"
+                    w="max-content"
+                    p={3}
+                    borderRadius={"10px"}
+                    base={{display:'none',lg:'block'}}
+                  >
+                    <ColorPalette
+                      colors={colors}
+                      selectedColor={selectedColor}
+                      onColorChange={handleColorChange}
+                    />
                   </Box>
-
-
                 </Box>
 
                 {/* <Divider borderColor={"black"}></Divider> */}
                 <HStack
-                  fontSize={{ base: "16", md: "18px" }}
+                  fontSize={{ base: "13px", md: "18px" }}
                   mt="20px"
                   mb="20px"
                 >
@@ -350,7 +378,7 @@ const SingleProductPageMain = () => {
                 </HStack>
                 <Divider borderColor={"black"}></Divider>
 
-                <VStack spacing={3}>
+                <VStack spacing={3} display={{base:'none',lg:'flex'}}>
                   <HStack spacing="100px">
                     <Button
                       isLoading={loading}
@@ -371,7 +399,7 @@ const SingleProductPageMain = () => {
                       Buy Now
                     </Button>{" "}
                   </HStack>
-                  <HStack textAlign='center' justifyContent='center'  >
+                  <HStack textAlign="center" justifyContent="center">
                     <Text
                       color={"#0076be"}
                       fontWeight={"medium"}
@@ -391,6 +419,38 @@ const SingleProductPageMain = () => {
                     </Text>
                   </HStack>
                 </VStack>
+
+<Box  display={{base:'block',lg:'flex'}}> 
+                <VStack spacing={3} > 
+                
+                    <Button
+                      isLoading={loading}
+                      w="200px"
+                      size="lg"
+                      backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
+                      onClick={handleAddToCart}
+                    >
+                      Add to cart
+                    </Button>
+                
+                 
+                                       <Button
+
+                      color={"#0076be"}
+                      fontWeight={"medium"}
+                      // onClick={addtowishlist}
+                      cursor="pointer"
+                      onClick={() => handleAddToWishlist(product)}
+                    >
+                      Add to Wish List
+                    </Button>
+               
+                </VStack>
+
+</Box>
+
+
+
               </Box>
             </Grid>
             {/* Bottom section for description */}
@@ -421,7 +481,7 @@ const SingleProductPageMain = () => {
                       Numquam dolore aut, vero tenetur illum odit atque eveniet
                       accusamus laborum optio architecto? Non dolores rerum
                       impedit quas laborum facilis blanditiis voluptatibus.
-                                </Box>
+                    </Box>
                     <Box>
                       <Text
                         fontWeight="medium"
@@ -433,19 +493,14 @@ const SingleProductPageMain = () => {
                       </Text>
                       <Coupon Product={product} />
                       <List spacing="1">
-                     
                         <ListItem key={1}>
                           <Text
                             fontSize={{ base: "16", md: "18px" }}
                             fontWeight="medium"
                             display="inline-block"
                             w="35%"
-                          >
-                         
-                          </Text>
-                         
+                          ></Text>
                         </ListItem>
-                      
                       </List>
                     </Box>
                   </AccordionPanel>

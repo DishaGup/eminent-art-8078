@@ -6,10 +6,10 @@ import {
   GET_WISHLIST_FAIL,
   GET_WISHLIST_REQ,
   GET_WISHLIST_SUCCESS,
- 
+
 } from "./actiontype";
 
-let url = "http://localhost:8080/trendify/wishlist";
+let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
 export const GetWishlist = () => async (dispatch) => {
   dispatch({ type: GET_WISHLIST_REQ });
   try {

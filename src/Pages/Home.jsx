@@ -40,9 +40,6 @@ export const Home = () => {
   };
   return (
     <>
-      {/* <Navigationbar />  */}
-      {/* <Navbar/> */}
-      {/* <NavbarDrop /> */}
       <Navmain />
       <Carousels />
       <DIV>
