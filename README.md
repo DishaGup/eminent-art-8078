@@ -1,15 +1,15 @@
 ### Project-Code: eminent-art-8078
 
-<a href="https://trendifies.vercel.app/" >Deployed Link</a>
-<a href="https://erin-dizzy-clam.cyclic.app/" >Backened Deployed Link</a>
+<h1><a href="https://trendifies.vercel.app/](https://trendify-website.vercel.app/" >TRENDIFY</a></h1>
+<!-- <a href="https://erin-dizzy-clam.cyclic.app/" >Backened Deployed Link</a> -->
 
-# TRENDIFY
+<!-- # TRENDIFY -->
 
-<p> RESPONSIVE  |  DYNAMIC | COLLABORATIVE </p>
+<!-- <p> RESPONSIVE  |  DYNAMIC | COLLABORATIVE </p> -->
 
 <br>
 
-<a href="https://erin-dizzy-clam.cyclic.app/trendify/users">`Backend Link`</a>
+
 
 <div display='flex' ><h3 >Frontend</h3> 
 <img src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' />
