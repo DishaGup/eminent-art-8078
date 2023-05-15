@@ -11,7 +11,7 @@
 
 <a href="https://erin-dizzy-clam.cyclic.app/trendify/users">`Backend Link`</a>
 
-<div display='flex' align="center"><h3 align="center">Frontend</h3> 
+<div display='flex' ><h3 >Frontend</h3> 
 <img src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' />
 <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' />
 <img src='https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white' />
@@ -20,7 +20,7 @@
 <img src='https://img.shields.io/badge/Chakra--UI-319795?style=for-the-badge&logo=chakra-ui&logoColor=white' />
 <!-- <img src='' />
    </div> -->
-<div align="center"><h3 align="center">Backend</h3> 
+<div ><h3 >Backend</h3> 
 <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" align="center" alt="nodejs" />
 <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" align="center" alt="expressjs"/>
 <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white" align="center" alt="mongodb"/>
