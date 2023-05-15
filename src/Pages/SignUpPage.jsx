@@ -78,7 +78,7 @@ export default function SignUpPage() {
           });
         });
     } catch (error) {
-      alert(error);
+      // alert(error);
     }
   };
 

@@ -164,7 +164,7 @@ const SingleProductPageMain = () => {
       })
       .then((res) => {
         // dispatch({ type: ADDTOWISHLIS_SUCCESS });
-        alert("success");
+        // alert("success");
       });
 
     toast({

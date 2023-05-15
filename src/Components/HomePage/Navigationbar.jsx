@@ -58,6 +58,7 @@ const Navigationbar = () => {
       duration: 2000,
       isClosable: true,
     });
+    window.location.reload();
   };
 
   return (

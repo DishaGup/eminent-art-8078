@@ -53,7 +53,7 @@ const Cartpage = () => {
         });
         getCartData();
       })
-      .catch((err) => alert(err));
+      .catch((err) => console.log(err));
   };
 
   const handleIncrease = (id) => {
