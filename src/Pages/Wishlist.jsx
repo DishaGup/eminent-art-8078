@@ -10,8 +10,8 @@ const Wishlist = () => {
   return (
     <>
       <Navmain />
-      <Box w="95%" m="auto">
-        <LocationBox />
+      <Box w="95%" m="auto"   mt={"50px"} minHeight='600px'> 
+        {/* <LocationBox /> */}
         <Box
           display={"flex"}
           flexDirection={{
@@ -23,7 +23,7 @@ const Wishlist = () => {
             "2xl": "row",
           }}
           justifyContent="space-around"
-          mt={"2%"}
+        
           width={{
             base: "95%",
             sm: "95%",
@@ -32,6 +32,7 @@ const Wishlist = () => {
             xl: "95%",
             "2xl": "95%",
           }}
+          
         >
           <LeftDiv />
           <RightDiv />

@@ -20,6 +20,7 @@ const MobileNavbar = () => {
         aria-label="hamburger"
         icon={<GiHamburgerMenu />}
         onClick={onOpen}
+        fontSize="28px" 
       />
       <MobileMenu isOpen={isOpen} onClose={onClose} />
       <Link to="/">
@@ -27,7 +28,7 @@ const MobileNavbar = () => {
         <Image h="60px" src={logo} alt="logo" />
       </Link>{" "}
       <Link to="/cart">
-        <Icon size="22px" colour="#24a3b5" as={BsCart3} />
+        <Icon fontSize="28px" colour="#24a3b5" as={BsCart3} />
       </Link>
     </Flex>
   );

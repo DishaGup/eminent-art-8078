@@ -3,11 +3,15 @@ import { Carousel } from 'react-responsive-carousel';
 import { styled } from 'styled-components';
 
 export const Carousels = () => (
-    <div  style={{ display: "flex",zIndex:'-1' }}>
+   
 
-       <div style={{ width: "83%",marginTop:"80px" }}>
+       <div style={{ width: "98%",marginTop:"70px",margin:"auto" }}>
  
-            <Carousel autoPlay>
+            <Carousel autoPlay   showThumbs={false}
+        showStatus={false}
+        infiniteLoop
+       
+        style={{ display: "flex", justifyContent: "center" }}>
                 <div>
                     <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Mar/31/HB1_Month_Web_Esha_31Mar23.jpg" />
 
@@ -24,22 +28,19 @@ export const Carousels = () => (
                     <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Mar/01/Intel_Web_12thGenGaming.jpg" />
 
                 </div>
+                <div>
+                    <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Jan/19/HB1_Refurb_Web_SYM_19Jan23.jpg" />
+
+                </div>
+                <div>
+                    <img alt="" src="https://cdn.shopclues.com/images/banners/2023/Jan/19/JMAX_HB2_Web_Riya_19Jan22.jpg" />
+
+                </div>
 
 
             </Carousel>
 
         </div>
-        <div>
-            <div>
-                <img width={"183px"} src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_01.jpg" alt="" />
-            </div>
-            <div>
-                <img width={"191px"}  src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_02.jpg" alt="" />
-            </div>
-            <div>
-                <img width={"191px"}  src="https://cdn.shopclues.com/images/banners/2023/Feb/16/Platinum_Esha_16Feb23_03.jpg" alt="" />
-            </div>
-        </div>
-    </div>
-
+      
+  
 );

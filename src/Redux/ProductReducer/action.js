@@ -7,81 +7,89 @@ import {
   GET_PRODUCTS_SUCCESS,
   // GET_CART_DATA,
 } from "./actiontype";
+export const localhosturl='http://localhost:8080'
+export const backenedURL='https://erin-dizzy-clam.cyclic.app'
 
-export const getAllProducts = (data) => (dispatch) => {
-  dispatch({ type: GET_PRODUCTS_LOADING });
+// export const getAllProducts = (data) => (dispatch) => {
+//   dispatch({ type: GET_PRODUCTS_LOADING });
 
-  try {
-    axios
-      .get(`https://erin-dizzy-clam.cyclic.app/trendify/products`, {
-        params: data,
-      })
-      .then((res) => {
-        dispatch({
-          type: GET_PRODUCTS_SUCCESS,
-          payload: res,
-        });
-      });
-  } catch (error) {
-    console.log(error);
-    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
-  }
-};
+//   try {
+//     axios
+//       .get(`${localhosturl}/trendify/products`, {
+//         params: data,
+//       })
+//       .then((res) => {
+//         dispatch({
+//           type: GET_PRODUCTS_SUCCESS,
+//           payload: res,
+//         });
+//       });
+//   } catch (error) {
+//     console.log(error);
+//     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+//   }
+// };
 
-export const getProducts = (category, data) => (dispatch) => {
-  dispatch({ type: GET_PRODUCTS_LOADING });
+// export const getProducts = (category, data) => (dispatch) => {
+//   dispatch({ type: GET_PRODUCTS_LOADING });
 
-  try {
-    axios
-      .get(`https://erin-dizzy-clam.cyclic.app/trendify/products/${category}`, {
-        params: data,
-      })
-      .then((res) => {
-        dispatch({
-          type: GET_PRODUCTS_SUCCESS,
-          payload: res,
-        });
-      });
-  } catch (error) {
-    console.log(error);
-    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
-  }
-};
+//   try {
+//     axios
+//       .get(`${localhosturl}/trendify/products/${category}`, {
+//         params: data,
+//       })
+//       .then((res) => {
+//         dispatch({
+//           type: GET_PRODUCTS_SUCCESS,
+//           payload: res,
+//         });
+//       });
+//   } catch (error) {
+//     console.log(error);
+//     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+//   }
+// };
 
-export const getProductsSubcategory =
-  (category, data, subcategory) => (dispatch) => {
-    dispatch({ type: GET_PRODUCTS_LOADING });
+// export const getProductsSubcategory =
+//   (category, data, subcategory) => (dispatch) => {
+//     dispatch({ type: GET_PRODUCTS_LOADING });
 
-    try {
-      axios
-        .get(
-          `https://erin-dizzy-clam.cyclic.app/trendify/products/${category}/${subcategory}`,
-          { params: data }
-        )
-        .then((res) => {
-          dispatch({
-            type: GET_PRODUCTS_SUCCESS,
-            payload: res,
-          });
-        });
-    } catch (error) {
-      console.log(error);
-      dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
-    }
-  };
+//     try {
+//       axios
+//         .get(
+//           `${localhosturl}/trendify/products/${category}/${subcategory}`,
+//           { params: data }
+//         )
+//         .then((res) => {
+//           dispatch({
+//             type: GET_PRODUCTS_SUCCESS,
+//             payload: res,
+//           });
+//         });
+//     } catch (error) {
+//       console.log(error);
+//       dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+//     }
+//   };
 //get bu sub sub category--
-export const getProductsSubSubcategory =
-  (category, data, subcategory, subcat2) => (dispatch) => {
-    dispatch({ type: GET_PRODUCTS_LOADING });
+export const getProductsSubSubcategory =(category, data, subcategory, subcat2) => (dispatch) => {
+    
+  dispatch({ type: GET_PRODUCTS_LOADING });
+ 
+  let urlProducts=`${localhosturl}/trendify/products/all`
+    if(category) urlProducts=`${localhosturl}/trendify/products/all/${category}`
+    else if(category && subcategory) urlProducts=`${localhosturl}/trendify/products/all/${category}/${subcategory}`
+    else if(subcat2 && category && subcategory) urlProducts=`${localhosturl}/trendify/products/all/${category}/${subcategory}/${subcat2}`
+
 
     try {
       axios
         .get(
-          `https://erin-dizzy-clam.cyclic.app/trendify/products/${category}/${subcategory}/${subcat2}`,
+          `${urlProducts}`,
           { params: data }
         )
         .then((res) => {
-          dispatch({
+        dispatch({
             type: GET_PRODUCTS_SUCCESS,
             payload: res,
           });
@@ -97,7 +105,7 @@ export const getSingleProducts = (id) => (dispatch) => {
 
   axios
     .get(
-      `https://erin-dizzy-clam.cyclic.app/trendify/products/:category/:subcategory/single/${id}`
+      `${localhosturl}/trendify/products/single/${id}`
     )
     .then((res) => {
       dispatch({
@@ -162,6 +170,21 @@ export const Addtowishlist = (data) => (dispatch) => {
     );
 };
 
-export const DeleteAllParams=(obj)=>{
-  Object.keys(obj).forEach(key => delete obj[key]);
-}
+
+export const searchProducts = (title) => (dispatch) => {
+  dispatch({ type: GET_PRODUCTS_LOADING });
+
+  try {
+    axios
+      .get(`${localhosturl}/trendify/products/search?title=${title}`)
+      .then((res) => {
+        dispatch({
+          type: GET_PRODUCTS_SUCCESS,
+          payload: res,
+        });
+      });
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });
+  }
+};

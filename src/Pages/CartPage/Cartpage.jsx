@@ -97,7 +97,7 @@ const Cartpage = () => {
     });
   };
 
-  const totalPrice = cartData.reduce((acc, curr) => {
+  const totalPrice =cartData && cartData.reduce((acc, curr) => {
     const data = cartData.find((el) => el._id === curr._id);
     return acc + data.price * data.quantity;
   }, 0);
@@ -113,14 +113,14 @@ const Cartpage = () => {
           <img src={trendifyLogo} alt="" />
         </div>
       </Link>
-      {cartData.length === 0 ? (
+      { cartData && cartData.length <= 0 ? (
         <EmptyCart />
       ) : (
         <div style={{ marginTop: "100px" }}>
           <div class="cartwrapper">
             <div>
               <h1 id="mycartid">
-                My Cart ( <span id="spancartwrapper">{cartData.length}</span>{" "}
+                My Cart ( <span id="spancartwrapper">{cartData.length>0 ? cartData.length : 0}</span>{" "}
                 Item )
               </h1>
             </div>
