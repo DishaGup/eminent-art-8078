@@ -51,17 +51,16 @@
 
   overflow: hidden;
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 5px;
   display: none;
   position: absolute;
   z-index: 10;
   top: 98%;
   left: 0;
-  
   width: 850px;
   background-color: #fff;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  height: 600px;
+  height: 400px;
 }
 
 #dropdown:hover #dropbtn {
@@ -93,34 +92,34 @@
 #parent {
   width: 20%;
   padding: 5px;
-  margin: 10px 5px;
+  margin: 5px 4px;
   height: 100%;
   background-color: #e9f6f7;
 }
 
 .q {
-  font-size: 20px;
+  font-size: 15px;
   text-align: left;
   font-family: sans-serif;
-  line-height: 20px;
-  font-weight: 600;
+  line-height: 15px;
+  font-weight: 500;
   color: black;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
 .hub {
-  font-size: 17px;
+  font-size: 12px;
   text-align: left;
   font-family: sans-serif;
-  line-height: 17px;
-  font-weight: 400;
+  line-height: 10px;
+  font-weight: 300;
   color: black;
-  padding-left: 8px;
+  padding-left: 5px;
 }
 
 .hub:hover {
   cursor: pointer;
-  border-left: 2px solid;
+  border-left: 1px solid;
 }
 
 .big_parent {
@@ -132,7 +131,7 @@
   font-size: 15px;
   text-align: left;
   font-family: sans-serif;
-  line-height: 20px;
+  line-height: 15px;
   font-weight: bold;
   color: black;
   margin-bottom: 5px;
@@ -142,7 +141,7 @@
   width: 60%;
   display: flex;
   flex-wrap: wrap;
-  min-width: 100px;
+  min-width: 80px;
  
 }
 

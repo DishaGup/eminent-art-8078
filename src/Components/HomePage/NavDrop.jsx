@@ -48,7 +48,7 @@ const NavDrop = () => {
             <h2 className="grid_head">{divs.heading}</h2>
           </Link>
           {divs.child?.map((fields, ind) => (
-            <Link
+            <Link m='1px' p='1px'
               key={fields + ind}
               to={`/products/${el.lists.title.toLowerCase()}/${divs.heading.toLowerCase()}/${fields.toLowerCase()}`}
             >

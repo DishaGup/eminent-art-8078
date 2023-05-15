@@ -12,6 +12,8 @@ import {
   import useThrottle from "./customHooks/useThrottle";
   import React, { useEffect, useState } from "react";
   import { FaSearchLocation } from "react-icons/fa";
+import { useDispatch, useSelector } from "react-redux";
+import { searchProducts } from "../Redux/ProductReducer/action";
   function SearchBar() {
     
     const [onChangeValue, setOnChangeValue] = useState("");
@@ -19,22 +21,27 @@ import {
     const [Products, setProducts] = useState([]);
     const [showDropdown, setShowDropdown] = useBoolean();
     const throttledText = useThrottle(onChangeValue, 1000);
+  const dispatch=useDispatch()
   
-    const searchProducts = async () => {
-      const data = await fetch(`https://erin-dizzy-clam.cyclic.app/trendify/products`);
-      const res = await data.json();
-      //console.log(res.products)
-    setProducts(res.products);
-    };
+    // const searchProducts = async () => {
+    //   const data = await fetch(`https://erin-dizzy-clam.cyclic.app/trendify/products`);
+    //   const res = await data.json();
+    //   //console.log(res.products)
+    // setProducts(res.products);
+    // };
     useEffect(() => {
-      searchProducts();
-    }, []);
+      // searchProducts();
+ dispatch(searchProducts(onChangeValue)).then((res)=>{
+  //console.log(res)
+  setProducts(res.data.products);
+ }).catch((err)=>console.log(err))
+    }, [onChangeValue]);
     useEffect(() => {
       if (throttledText === "") {
         setSearch([]);
       } else {
         //console.log(throttledText);
-        if(Products.length){
+        if(Products && Products.length>0){
         let newSuggestions = Products.filter((item) => {
           return item.title
             .split(" ")
@@ -70,7 +77,7 @@ import {
               w={"100%"}
               onChange={(e) => setOnChangeValue(e.target.value)}
             />
-            {search.length > 0 && (
+            { onChangeValue.length>0 && search.length > 0 && (
               <Box
                 borderRadius="5px"
                 position="absolute"
@@ -85,7 +92,7 @@ import {
               >
                 {search.map((item, i) => {
                   return (
-                    <Link href={`/products/:category/single/${item._id}`} key={i + 1}>
+                    <Link href={`/products/:category/single/${item._id}`} target="_blank" key={i + 1}>
                       <Text
                         fontSize="16px"
                         p="10px"

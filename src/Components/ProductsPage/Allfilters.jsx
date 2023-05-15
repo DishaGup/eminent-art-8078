@@ -204,8 +204,8 @@ function clearAllFilters() {
               <Box as="span" flex="1" textAlign="left">
                 <Flex> <AccordionPanel pb={4} overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px' >
                 {
-                    productsData.tag && productsData.tag.map((el)=>  
-                    <Box p={1} >
+                    productsData.tag && productsData.tag.map((el,ind)=>  
+                    <Box p={1} key={ind} >
                       <Checkbox isChecked={categorytag.includes(el)} name='categorytag' onChange={handlechange} my={2} value={el} >{el}</Checkbox>
                     </Box>
                 )  
@@ -241,10 +241,10 @@ function clearAllFilters() {
 
      {Object.keys(uniquebrands).map((brand, ind) => (
 
-    <Flex p={1} key={ind} justify={'space-around'}>
+    <Box p={1} key={ind} justify={'space-around'}>
       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={brandrange.includes(brand)} name={brand} onChange={handlebrand} my={2} value={brand}  >{brand}</Checkbox>
       {/* <Text fontSize={"18px"}>{uniquebrands[brand]}</Text> */}
-    </Flex>
+    </Box>
        )
        )}
   </AccordionPanel>

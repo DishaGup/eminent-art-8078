@@ -17,6 +17,7 @@ import {
 import { getProducts, getProductsSubcategory, getProductsSubSubcategory, getAllProducts } from "../../Redux/ProductReducer/action";
 import ProductCard from "./ProductCard";
 import Pagination from "./Pagination";
+import { FiChevronRight} from 'react-icons/fi'
 import { memo } from "react";
 import NotfoundCategory from "../../Pages/NotfoundCategory";
 import Navmain from "../HomePage/Navmain";
@@ -82,19 +83,19 @@ const Sidebar = () => {
         margin="auto"
         pt={{ base: "30px", md: "60px", lg: "80px" }}
       >
-        <Flex alignItems={"center"} pb={{ base: "10px", sm: "5px" }} border='1px solid black' borderRadius={'10px'} w='fit-content' m={1} >
-          <Breadcrumb separator="/" fontSize={{ base: "16px", md: "18px" }}>
+        <Flex alignItems={"center"} pb={{ base: "10px", sm: "5px" }} p={1} border='1px solid black' borderRadius={'10px'} w='max-content' m={1} >
+          <Breadcrumb separator={<FiChevronRight color='gray.500' />} fontSize={{ base: "16px", md: "18px" }}>
             <BreadcrumbItem>
               <BreadcrumbLink href="/products">products</BreadcrumbLink>
             </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Text>{category ? category : "men"}</Text>
+            <BreadcrumbItem> 
+              <BreadcrumbLink href='#'>{category ? category : "men"}</BreadcrumbLink >
             </BreadcrumbItem>
             <BreadcrumbItem>
-              <Text>{subcategory ? subcategory : "Clothings"}</Text>
+              <BreadcrumbLink href='#'>{subcategory ? subcategory : "Clothings"}</BreadcrumbLink >
             </BreadcrumbItem>
-            <BreadcrumbItem>
-              <Text>{subcat2 ? subcat2 : "Festives"}</Text>
+            <BreadcrumbItem >
+              <BreadcrumbLink href='#'>{subcat2 ? subcat2 : "Festives"}</BreadcrumbLink >
             </BreadcrumbItem>
           
           </Breadcrumb>

@@ -17,6 +17,14 @@ import {
   MenuGroup,
   MenuOptionGroup,
   MenuDivider,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverHeader,
+  PopoverBody,
+  PopoverFooter,
+  PopoverArrow,
+  PopoverCloseButton,useToast 
 } from "@chakra-ui/react";
 import React from "react";
 import trendify_logo from "../../Assests/trendifyLogo.jpeg";
@@ -32,9 +40,24 @@ import SearchBar from "../SearchBar"
 import LocationBox from "../LocationBox";
 const Navigationbar = () => {
 
-
-  let auth = JSON.parse(localStorage.getItem("auth"))||{user:""}
+const toast=useToast()
+let tokenfromlocal=localStorage.getItem("token") || ""
+  //let auth = JSON.parse(localStorage.getItem("auth"))||{user:""}
   //console.log(auth.user.name)
+const handleLogout=()=>{
+  localStorage.removeItem("token")
+  localStorage.removeItem("UserName")
+
+  toast({
+    title: 'Succesfully Log Out',
+    description: "Shop more",
+    status: 'success',
+    duration: 2000,
+    isClosable: true,
+  })
+}
+
+
 
   return (
     <Box
@@ -105,7 +128,18 @@ const Navigationbar = () => {
           ml="-150px"
         >
           <Icon as={CiLocationOn} />
-          <Icon as={BsBell} />
+          <Popover trigger={"hover"} placement='bottom' strategy='absolute'>
+  <PopoverTrigger>
+   <Icon as={BsBell} />
+  </PopoverTrigger>
+  <PopoverContent fontSize='20px' position='absolute' top='100%' >
+    <PopoverArrow />
+    <PopoverCloseButton />
+    <PopoverHeader>Empty 😀</PopoverHeader>
+    <PopoverBody>You have read all notifications</PopoverBody>
+  </PopoverContent>
+</Popover>
+         
 
           <Link to="/wishlistpage">
             {" "}
@@ -127,11 +161,13 @@ const Navigationbar = () => {
             <MenuList fontSize="14px">
               <MenuItem>
                 {
-                  auth.user.name ? <h3>{`UserName : ${auth.user.name}`}</h3> : <NavLink to="/login">LOGIN/SIGNUP</NavLink>
+                  tokenfromlocal != '' ? <Button onClick={handleLogout}>Log Out</Button> : <NavLink to="/login">LOGIN/SIGNUP</NavLink>
                 }
               </MenuItem>
               <MenuDivider m={0} />
               <AdminButton />
+           
+             
             </MenuList>
           </Menu>
         </HStack>
