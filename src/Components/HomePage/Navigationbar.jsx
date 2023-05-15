@@ -28,13 +28,11 @@ import { NavLink, Link } from "react-router-dom";
 import { TbLogin } from "react-icons/tb";
 import NavDrop from "./NavDrop";
 import { AdminButton } from "../../Pages/Admin/AdminButton";
-import SearchBar from "../SearchBar"
+import SearchBar from "../SearchBar";
 import LocationBox from "../LocationBox";
 const Navigationbar = () => {
-
-
-  let auth = JSON.parse(localStorage.getItem("auth"))||{user:""}
-  //console.log(auth.user.name)
+  let auth = JSON.parse(localStorage.getItem("UserName")) || { user: "user" };
+  //console.log(auth.user)
 
   return (
     <Box
@@ -51,7 +49,7 @@ const Navigationbar = () => {
       backgroundColor="#fff"
     >
       <Flex justify="space-around">
-        <Box w="15%" mx="20px">
+        <Box w="15%" mx="20px" my="5px">
           <Center w="90%">
             <button>
               <NavLink to="/">
@@ -65,27 +63,25 @@ const Navigationbar = () => {
             cursor="pointer"
             w="20px"
             h="20px"
-            width="20px"
+            width={{ base: "10px", md: "10px", lg: "20px" }}
             ml="5px"
             as={BsSearch}
             backgroundColor="#e9f6f7"
           />
           <Editable
+          
             align="left"
             placeholder="What is on Your mind today?"
-            p={1}
-            w="50%"
+            w={{ base: "50%", md: "40%", lg: "50%" }}
             backgroundColor="#e9f6f7"
             color="#353535"
             fontWeight={"400"}
-          
           >
-            <SearchBar/>
-           
+            <SearchBar />
           </Editable>
           <Button
             borderRadius="0"
-            width="100px"
+            width={{ base: "10px", md: "70px", lg: "100px" }}
             h="auto 40px"
             lineHeight="14px"
             p="13px 25px"
@@ -94,7 +90,7 @@ const Navigationbar = () => {
           >
             Search
           </Button>
-          <LocationBox/>
+          <LocationBox />
         </HStack>
 
         <HStack
@@ -104,8 +100,8 @@ const Navigationbar = () => {
           w="15%"
           ml="-150px"
         >
-          <Icon as={CiLocationOn} />
-          <Icon as={BsBell} />
+          <Icon as={CiLocationOn}  display={{ base: "nobe", md: "none", lg: "block" }} />
+          <Icon as={BsBell}  display={{ base: "nobe", md: "none", lg: "block" }} />
 
           <Link to="/wishlistpage">
             {" "}
@@ -126,16 +122,18 @@ const Navigationbar = () => {
             ></MenuButton>
             <MenuList fontSize="14px">
               <MenuItem>
-                {
-                  auth.user.name ? <h3>{`UserName : ${auth.user.name}`}</h3> : <NavLink to="/login">LOGIN/SIGNUP</NavLink>
-                }
+                
+                  <NavLink to="/login">LOGIN/SIGNUP</NavLink>
+               
               </MenuItem>
               <MenuDivider m={0} />
               <AdminButton />
             </MenuList>
           </Menu>
         </HStack>
-        <Box w="3%">{/* username */}</Box>
+        <Box w="5%" mt="2%" color="green" fontSize={"l"}>
+          hi-{`${auth.user}`}
+        </Box>
       </Flex>
       <NavDrop />
     </Box>
