@@ -381,7 +381,7 @@ const SingleProductPageMain = () => {
                 <VStack spacing={3} display={{base:'none',lg:'flex'}}>
                   <HStack spacing="100px">
                     <Button
-                      isLoading={loading}
+                     
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
@@ -390,7 +390,7 @@ const SingleProductPageMain = () => {
                       Add to cart
                     </Button>
                     <Button
-                      isLoading={loading}
+                    
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
@@ -411,7 +411,7 @@ const SingleProductPageMain = () => {
                     <Text
                       color={"#0076be"}
                       fontWeight={"medium"}
-                      // onClick={addtowishlist}
+                     
                       cursor="pointer"
                       onClick={() => handleAddToWishlist(product)}
                     >
@@ -420,11 +420,11 @@ const SingleProductPageMain = () => {
                   </HStack>
                 </VStack>
 
-<Box  display={{base:'block',lg:'flex'}}> 
+<Box  display={{base:'block',lg:'none'}}> 
                 <VStack spacing={3} > 
                 
                     <Button
-                      isLoading={loading}
+                      cursor="pointer"
                       w="200px"
                       size="lg"
                       backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
@@ -436,9 +436,10 @@ const SingleProductPageMain = () => {
                  
                                        <Button
 
-                      color={"#0076be"}
-                      fontWeight={"medium"}
-                      // onClick={addtowishlist}
+w="200px"
+size="lg"
+backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
+                    
                       cursor="pointer"
                       onClick={() => handleAddToWishlist(product)}
                     >

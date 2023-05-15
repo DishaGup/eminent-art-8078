@@ -101,7 +101,7 @@ const Cartpage = () => {
     const data = cartData.find((el) => el._id === curr._id);
     return acc + data.price * data.quantity;
   }, 0);
-  console.log(cartData);
+ // console.log(cartData);
   return (
     <>
       <Link to="/products">
@@ -113,7 +113,7 @@ const Cartpage = () => {
           <img src={trendifyLogo} alt="" />
         </div>
       </Link>
-      { cartData && cartData.length <= 0 ? (
+      { !cartData  ? (
         <EmptyCart />
       ) : (
         <div style={{ marginTop: "100px" }}>
@@ -221,7 +221,7 @@ const Cartpage = () => {
                 <p id="cartinclusive">Inclusive of all the applicable taxes</p>
               </div>
               <div>
-                <Link to="/payment">
+                <Link to="/payments">
                   <button id="placeorder">Place Order</button>
                 </Link>
               </div>
