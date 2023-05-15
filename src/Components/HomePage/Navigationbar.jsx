@@ -69,6 +69,7 @@ const Navigationbar = () => {
             backgroundColor="#e9f6f7"
           />
           <Editable
+          
             align="left"
             placeholder="What is on Your mind today?"
             w={{ base: "50%", md: "40%", lg: "50%" }}
