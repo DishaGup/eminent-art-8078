@@ -82,14 +82,18 @@ function SearchBar() {
             <Box
               borderRadius="5px"
               position="absolute"
-              top="100px"
+             
               zIndex="100"
               bgColor="white"
               overflow="scroll"
-              w="38%"
+              w={{base:'80%',xl:"35%"}}
               maxH="400px"
               m="auto"
-              left={"280"}
+               px={3}
+               top={{base:'2%'  ,xl:'1.1%'}}
+              pt={2}
+              border={'2px solid gray'}
+              scrollBehavior={'smooth'}
             >
               {search.map((item, i) => {
                 return (
@@ -97,10 +101,11 @@ function SearchBar() {
                     href={`/products/:category/single/${item._id}`}
                     target="_blank"
                     key={i + 1}
+                    borderBottom={'1px solid gray'}
                   >
                     <Text
-                      fontSize="16px"
-                      p="10px"
+                      fontSize="14px"
+                      p="8px"
                       cursor="pointer"
                       onClick={setShowDropdown.off}
                     >

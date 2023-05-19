@@ -71,7 +71,7 @@ const Sidebar = () => {
 
   useEffect(() => {
     dispatch(getProductsSubSubcategory(category, queryParams, subcategory, subcat2))
-  }, [location.search])
+  }, [location.search,category,subcat2,subcategory])
 
  
 

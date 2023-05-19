@@ -36,7 +36,7 @@ import { BsBell, BsHeart, BsCart3, BsSearch } from "react-icons/bs";
 import { NavLink, Link } from "react-router-dom";
 
 import { TbLogin } from "react-icons/tb";
-import NavDrop from "./NavDrop";
+import {NavReal} from "./NavDrop";
 import { AdminButton } from "../../Pages/Admin/AdminButton";
 import SearchBar from "../SearchBar";
 import LocationBox from "../LocationBox";
@@ -121,20 +121,19 @@ const Navigationbar = () => {
 
         <HStack
           color="#24a3b5"
-          fontSize={22}
+          fontSize={24}
           justify="space-between"
           w="15%"
-          ml="-150px"
+         
         >
-          <Icon as={CiLocationOn} />
-          <Popover trigger={"hover"} placement="bottom" strategy="absolute">
+          <Popover trigger={"hover"} >
             <PopoverTrigger>
               <Icon as={BsBell} />
             </PopoverTrigger>
-            <PopoverContent fontSize="20px" position="absolute" top="100%">
+            <PopoverContent >
               <PopoverArrow />
               <PopoverCloseButton />
-              <PopoverHeader>Empty 😀</PopoverHeader>
+              <PopoverHeader>Empty</PopoverHeader>
               <PopoverBody>You have read all notifications</PopoverBody>
             </PopoverContent>
           </Popover>
@@ -173,7 +172,8 @@ const Navigationbar = () => {
           <Flex w="100px">{!UserName ? "" : `Hi ${UserName}`} </Flex>
         </Box>
       </Flex>
-      <NavDrop />
+      {/* <NavDrop /> */}
+<NavReal />
     </Box>
   );
 };

@@ -18,6 +18,7 @@ import { Footer } from "./HomeComponents/Footer";
 import Navmain from "../Components/HomePage/Navmain";
 import Footer1 from "../Components/Footer1";
 import SearchBar from "../Components/SearchBar"
+
 export const Home = () => {
   const responsive = {
     superLargeDesktop: {
@@ -267,6 +268,7 @@ export const Home = () => {
       <FestiveSpecials />
       <TrendingFashionZone />
       <BudgetBazaar />
+     
       {/* <SportsHealth /> */}
       <BrandStore />
       <BrandedDeals />

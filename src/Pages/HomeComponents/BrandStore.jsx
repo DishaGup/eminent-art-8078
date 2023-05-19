@@ -5,8 +5,13 @@ import styled from "styled-components";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-export const BrandStore = () => {
+export const BrandStore = () =>
+{
 
+
+
+
+    
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
