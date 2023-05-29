@@ -47,13 +47,11 @@ export const gift = [
           child: [
             "toshiba",
             "sandisk",
-            "philips",
-            "portronics",
-            "boat",
+               "boat",
             "jbl",
             "zebronics",
             "syska",
-            "jbl",
+        
           ],
         },
         {
@@ -70,95 +68,19 @@ export const gift = [
       ],
     },
   
-  {
-    text: "men",
-    
-      alldata: [
-        {
-          heading: "clothing",
-          child: [
-            "accessories & combo sets",
-            "cargos, shorts & 3/4ths",
-            "ethnic Wear",
-            "fabrics",
-            "inner Wear & sleep Wear",
-            "jeans",
-            "shirts",
-            "sports Wear",
-            "suits & blazers",
-            "t-shirts",
-            "trousers",
-            "Winter & seasonal Wear",
-          ],
-        },
-        {
-          heading: "big & tall clothing",
-          child: [
-            "active & Outdoor",
-            "pants",
-            "polos",
-            "shirts",
-            "suits & sport coats",
-            "shop all...",
-          ],
-        },
-        {
-          heading: "Young men's clothing",
-          child: [
-            "active & Outdoor",
-            "graphic tees",
-            "hoodies & sweatshirts",
-            "jeans",
-            "shirts",
-            "show all...",
-          ],
-        },
-        {
-          heading: "footwear",
-          child: [
-            "casual shoes",
-            "formal shoes",
-            "sandals & floaters",
-            "slippers & flip flops",
-            "sports shoes",
-          ],
-        },
-        {
-          heading: "beauty and personal care",
-          child: [
-            "sivanna men's grooming",
-            "gifts & gadgets",
-            "hats",
-            "ties & pocket squares",
-            "Wallets & money clips",
-            "shop all...",
-          ],
-        },
-        {
-          heading: "men's jewelry & Watches",
-          child: [
-            "bracelets",
-            "jewelry sets",
-            "necklaces",
-            "Rings",
-            "Watches",
-            "shop all...",
-          ],
-        },
-      ],
-    },
+ 
   
   {
     text: "women",
       alldata: [
         {
-          heading: "clothing",
+          heading: "ethnic wear",
           child: [
-            "lingeries",
-            "coats & Outerwear",
-            "dresses",
-            "pants & leggings",
-            "sweaters",
+            "sareess",
+            "kurtas & kurtis",
+             "lehengas and gowns",
+              "dress material",
+           
             "shop all...",
           ],
         },
@@ -174,15 +96,13 @@ export const gift = [
           ],
         },
         {
-          heading: "footwear",
+          heading: "western wear",
           child: [
-            "ballerinas",
-            "casual shoes",
-            "flats",
-            "heels",
-            "slippers & flip flops",
-            "sports sandals",
-            "sports shoes",
+            "top & tees",
+            "leggings",
+            "jeans",
+            "pantalons & shorts",
+          
           ],
         },
         {
@@ -192,30 +112,19 @@ export const gift = [
             "button down tops",
             "hoodies & sweatshirts",
             "tunices",
-            "t-shirts",
+            "chemises",
+            "T-shirts",
             "shop all...",
           ],
         },
         {
-          heading: "junior`s clothing",
+          heading: "Women`s footwear",
           child: [
-            "activewear",
-            "dresses",
-            "jeans",
-            "junior`s plus",
-            "tops",
-            "shop all...",
-          ],
-        },
-        {
-          heading: "Women`s dresses",
-          child: [
-            "casual",
-            "cocktail & party",
-            "formal",
-            "maxi",
-            "Work",
-            "shop all...",
+            "Heels",
+            "wedges",
+            "sneakers",
+            "boots",
+          
           ],
         },
       ],
@@ -287,7 +196,68 @@ export const gift = [
     },
 
   {
-    text: "OffeRs",
+    text: "Offers",
     
   },
+  {
+    text: "men",
+    
+      alldata: [
+        {
+          heading: "clothing",
+          child: [
+            "accessories & combo sets",
+            "cargos, shorts & 3/4ths",
+              "inner Wear & sleep Wear",
+            "jeans",
+            "shirts",
+                  "trousers",
+            "Winter & seasonal Wear",
+          ],
+        },
+        {
+          heading: "big & tall clothing",
+          child: [
+            "active & Outdoor",
+            "pants",
+            "polos",
+            "shirts",
+            "suits & sport coats",
+            "shop all...",
+          ],
+        },
+              {
+          heading: "footwear",
+          child: [
+            "casual shoes",
+            "formal shoes",
+            "sandals & floaters",
+            "slippers & flip flops",
+            "sports shoes",
+          ],
+        },
+        {
+          heading: "beauty and personal care",
+          child: [
+            "sivanna men's grooming",
+            "gifts & gadgets",
+            "hats",
+            "ties & pocket squares",
+            "Wallets & money clips",
+            "shop all...",
+          ],
+        },
+        {
+          heading: "men's jewelry & Watches",
+          child: [
+            "bracelets",
+            "jewelry sets",
+            "necklaces",
+            "Rings",
+            "Watches",
+            "shop all...",
+          ],
+        },
+      ],
+    },
 ];

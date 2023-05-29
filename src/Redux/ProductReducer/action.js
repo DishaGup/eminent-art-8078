@@ -7,15 +7,15 @@ import {
   GET_PRODUCTS_SUCCESS,
   // GET_CART_DATA,
 } from "./actiontype";
-export const localhosturl = "http://localhost:8080";
+//export const localhosturl = "http://localhost:8080";
  export const backenedURL = "https://erin-dizzy-clam.cyclic.app";
-
+ export const localhosturl = "https://erin-dizzy-clam.cyclic.app";
 //get all products
 
 export const getProductsSubSubcategory =
   (category, data, subcategory, subcat2) => (dispatch) => {
     dispatch({ type: GET_PRODUCTS_LOADING });
-console.log(category,subcategory,subcat2)
+//console.log(category,subcategory,subcat2)
     let urlProducts = `${localhosturl}/trendify/products/all`;
     if (subcat2!=undefined && category!=undefined && subcategory!=undefined )  urlProducts = `${localhosturl}/trendify/products/all/${category}/${subcategory}/${subcat2}`;
     else if (category!=undefined && subcategory!=undefined)   urlProducts = `${localhosturl}/trendify/products/all/${category}/${subcategory}`;

@@ -22,26 +22,22 @@ function SearchBar() {
   const throttledText = useThrottle(onChangeValue, 1000);
   const dispatch = useDispatch();
 
-  // const searchProducts = async () => {
-  //   const data = await fetch(`https://erin-dizzy-clam.cyclic.app/trendify/products`);
-  //   const res = await data.json();
-  //   //console.log(res.products)
-  // setProducts(res.products);
-  // };
+  
   useEffect(() => {
-    // searchProducts();
+    
     dispatch(searchProducts(onChangeValue))
       .then((res) => {
-        //console.log(res)
+      
         setProducts(res.data.products);
       })
       .catch((err) => console.log(err));
   }, [onChangeValue]);
+  
   useEffect(() => {
     if (throttledText === "") {
       setSearch([]);
     } else {
-      //console.log(throttledText);
+    
       if (Products && Products.length > 0) {
         let newSuggestions = Products.filter((item) => {
           return item.title
@@ -81,7 +77,7 @@ function SearchBar() {
           {onChangeValue.length > 0 && search.length > 0 && (
             <Box
               borderRadius="5px"
-              position="absolute"
+              position="relative"
              
               zIndex="100"
               bgColor="white"
@@ -94,6 +90,7 @@ function SearchBar() {
               pt={2}
               border={'2px solid gray'}
               scrollBehavior={'smooth'}
+             
             >
               {search.map((item, i) => {
                 return (

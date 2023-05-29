@@ -1,4 +1,4 @@
-import {
+  import {
   Box,
   Button,
   Container,
@@ -19,23 +19,23 @@ import {
   List,
   ListItem,
   Flex,
-} from "@chakra-ui/react";
-import "./productspage.css";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { TbTruckDelivery } from "react-icons/tb";
-import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
-import React, { useEffect, useState } from "react";
-import discountoff from "../../Assests/singlepage.png";
-import { useDispatch, useSelector } from "react-redux";
-import { Carousel } from "react-responsive-carousel";
-import Navmain from "../HomePage/Navmain.jsx";
-import axios from "axios";
-import { getSingleProducts } from "../../Redux/ProductReducer/action";
-import ColorPalette from "./ColorPalette";
+  } from "@chakra-ui/react";
+  import "./productspage.css";
+  import { Link, useParams, useNavigate } from "react-router-dom";
+  import { TbTruckDelivery } from "react-icons/tb";
+  import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
+  import React, { useEffect, useState } from "react";
+  import discountoff from "../../Assests/singlepage.png";
+  import { useDispatch, useSelector } from "react-redux";
+  import { Carousel } from "react-responsive-carousel";
+  import Navmain from "../HomePage/Navmain.jsx";
+  import axios from "axios";
+  import { getSingleProducts } from "../../Redux/ProductReducer/action";
+  import ColorPalette from "./ColorPalette";
 
-import { Coupon, OneMoreOffer } from "./OneMoreOffer";
+  import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 
-const SingleProductPageMain = () => {
+  const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -51,7 +51,7 @@ const SingleProductPageMain = () => {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate("/products");
+    navigate(-1);
   };
 
   let { loading, productsData } = useSelector((store) => store.ProductReducer);
@@ -342,12 +342,12 @@ const SingleProductPageMain = () => {
                     <Image src={discountoff} />
 
                     {/* <OneMoreOffer/> 
-   <Coupon product={product} />*/}
+    <Coupon product={product} />*/}
                   </Box>
 
                   <Box
                     my={3}
-                    border="3px solid #0076be"
+                    border="2px solid #0076be"
                     w="max-content"
                     p={3}
                     borderRadius={"10px"}
@@ -552,6 +552,6 @@ const SingleProductPageMain = () => {
       )}
     </>
   );
-};
+  };
 
-export default SingleProductPageMain;
+  export default SingleProductPageMain;
