@@ -22,26 +22,22 @@ function SearchBar() {
   const throttledText = useThrottle(onChangeValue, 1000);
   const dispatch = useDispatch();
 
-  // const searchProducts = async () => {
-  //   const data = await fetch(`https://erin-dizzy-clam.cyclic.app/trendify/products`);
-  //   const res = await data.json();
-  //   //console.log(res.products)
-  // setProducts(res.products);
-  // };
+  
   useEffect(() => {
-    // searchProducts();
+    
     dispatch(searchProducts(onChangeValue))
       .then((res) => {
-        //console.log(res)
+      
         setProducts(res.data.products);
       })
       .catch((err) => console.log(err));
   }, [onChangeValue]);
+  
   useEffect(() => {
     if (throttledText === "") {
       setSearch([]);
     } else {
-      //console.log(throttledText);
+    
       if (Products && Products.length > 0) {
         let newSuggestions = Products.filter((item) => {
           return item.title
@@ -81,15 +77,20 @@ function SearchBar() {
           {onChangeValue.length > 0 && search.length > 0 && (
             <Box
               borderRadius="5px"
-              position="absolute"
-              top="100px"
+              position="relative"
+             
               zIndex="100"
               bgColor="white"
               overflow="scroll"
-              w="38%"
+              w={{base:'80%',xl:"35%"}}
               maxH="400px"
               m="auto"
-              left={"280"}
+               px={3}
+               top={{base:'2%'  ,xl:'1.1%'}}
+              pt={2}
+              border={'2px solid gray'}
+              scrollBehavior={'smooth'}
+             
             >
               {search.map((item, i) => {
                 return (
@@ -97,10 +98,11 @@ function SearchBar() {
                     href={`/products/:category/single/${item._id}`}
                     target="_blank"
                     key={i + 1}
+                    borderBottom={'1px solid gray'}
                   >
                     <Text
-                      fontSize="16px"
-                      p="10px"
+                      fontSize="14px"
+                      p="8px"
                       cursor="pointer"
                       onClick={setShowDropdown.off}
                     >

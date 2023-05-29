@@ -141,7 +141,7 @@ function clearAllFilters() {
       
       {/* Category 1    using Price */}
 
-      <Box maxH="400px" overflowY="scroll" w="full" overflow='scroll' >
+      <Box w="full"  >
         <Accordion flex="1" allowToggle >
           <AccordionItem>
             <h2>
@@ -155,7 +155,7 @@ function clearAllFilters() {
                 <Flex>
 
 
-                  <AccordionPanel >
+                  <AccordionPanel height="320px" overflow="scroll"  scrollBehavior={'smooth'} >
                     <Box p={1} >
                       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={sortrange.includes("100-699")} name='sortrange' onChange={handlesort} my={2} value='100-699' >100-699</Checkbox>
                     </Box>
@@ -170,15 +170,23 @@ function clearAllFilters() {
                       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='2300-3199' isChecked={sortrange.includes("2300-3199")} name='sortrange' onChange={handlesort} my={2}>2300-3199</Checkbox>
                     </Box>
                     <Box p={1}>
-                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='3200-5000' isChecked={sortrange.includes("3200-5000")} name='sortrange' onChange={handlesort} my={2}>3200-5000</Checkbox>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='3200-4999' isChecked={sortrange.includes("3200-4999")} name='sortrange' onChange={handlesort} my={2}>3200-4999</Checkbox>
                     </Box>
-                    <Box>
-
+                    <Box p={1}>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='5000-9000' isChecked={sortrange.includes("5000-9000")} name='sortrange' onChange={handlesort} my={2}>5000-9000</Checkbox>
                     </Box>
-                    <Box>
-
+                    <Box p={1}>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='9000-15000' isChecked={sortrange.includes("9000-15000")} name='sortrange' onChange={handlesort} my={2}>9000-15000</Checkbox>
                     </Box>
-
+                    <Box p={1}>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='15000-50000' isChecked={sortrange.includes("15000-50000")} name='sortrange' onChange={handlesort} my={2}>15000-50000</Checkbox>
+                    </Box>
+                    <Box p={1}>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='50000-90000' isChecked={sortrange.includes("50000-90000")} name='sortrange' onChange={handlesort} my={2}>50000-90000</Checkbox>
+                    </Box>
+                    <Box p={1}>
+                      <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} value='90000-129999' isChecked={sortrange.includes("90000-129999")} name='sortrange' onChange={handlesort} my={2}>90000-129999</Checkbox>
+                    </Box>
                   </AccordionPanel>
                 </Flex>
               </Box>
@@ -239,7 +247,7 @@ function clearAllFilters() {
 {
     <AccordionPanel overflowY="scroll" scrollBehavior='smooth' scrollMarginRight={'10px'} maxH='300px'  >
 
-     {Object.keys(uniquebrands).map((brand, ind) => (
+     {productsData.brands && productsData.brands.map((brand, ind) => (
 
     <Box p={1} key={ind} justify={'space-around'}>
       <Checkbox _hover={{ color: "#24a3b5", fontWeight: "bold" }} isChecked={brandrange.includes(brand)} name={brand} onChange={handlebrand} my={2} value={brand}  >{brand}</Checkbox>

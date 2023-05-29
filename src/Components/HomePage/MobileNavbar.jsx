@@ -11,9 +11,9 @@ import {
   MenuButton,
   Button,
   MenuList,
-  MenuItem,
+  MenuItem,HStack,VStack
 } from "@chakra-ui/react";
-import { BsCart3, BsHeart } from "react-icons/bs";
+import { BsCart3, BsHeart ,BsSearch} from "react-icons/bs";
 import { TbLogin } from "react-icons/tb";
 import { Link, NavLink } from "react-router-dom";
 import MobileMenu from "./Mobilemenu";
@@ -27,12 +27,12 @@ const MobileNavbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     
-    <Flex display={{ base: "flex", md: "none" }} flexDirection='column'  width="100%" >
-     <Flex paddingLeft="20%" width="95%" border="1px solid " margin="auto"> <SearchBar/></Flex>
+    <VStack  width="100%" display={{ base: "flex", md: "none" }} >
+     
        <Flex
         display={{ base: "flex", md: "none" }}
         justify={"space-between"}
-        p="10px 60px 10px 30px"
+        p="10px 60px 5px 30px"
         align="center"
         w="100%"
         >
@@ -42,15 +42,18 @@ const MobileNavbar = () => {
           onClick={onOpen}
         />
         <MobileMenu isOpen={isOpen} onClose={onClose} />
-        <Link to="/">
+        <Link to="/"  color="#24a3b5"
+          fontSize={22}>
           {" "}
           <Image h="60px" src={logo} alt="logo" />
         </Link>{" "}
-        <Link to="/cart">
+        <Link to="/cart"  color="#24a3b5"
+          fontSize={22}>
        
           <Icon size="22px" colour="#24a3b5" as={BsCart3} />
         </Link>
-        <Link to="/wishlistpage">
+        <Link to="/wishlistpage"  color="#24a3b5"
+          fontSize={22}>
           <Icon size="28px" colour="#24a3b5" as={BsHeart} />
         </Link>
         <Menu zIndex={200}>
@@ -72,9 +75,34 @@ const MobileNavbar = () => {
         </Menu>
         
       </Flex>
+      <HStack h="2cm" role="search" w="80%"  m='auto' justifyContent={'space-between'} >
+          <Icon
+            cursor="pointer"
+            w="20px"
+            h="20px"
+            width={{ base: "10px", md: "10px", lg: "20px" }}
+            ml="5px"
+            as={BsSearch}
+            backgroundColor="#e9f6f7"
+            
+          />
+            <SearchBar  />
+             <Button
+            borderRadius="0"
+            w='fit-content'
+            h="auto 40px"
+            lineHeight="14px"
+            p="13px 25px"
+            cursor="pointer"
+            color='white'
+            backgroundImage="-webkit-linear-gradient(0deg,#ff934b 0%,#ff5e62 100%)"
+          >
+            Search
+          </Button>
+          <LocationBox />
+        </HStack>
      
-     
-    </Flex>
+    </VStack>
   );
 };
 
