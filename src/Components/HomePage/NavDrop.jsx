@@ -92,7 +92,7 @@ return(
       <ul id="bottom_category" fontsize={["5px","5px","5px","5px","10px","10px"]}>
      
     {gift?.map((el,index)=>(
-    <Popover key={el+index} id="dropbtn" trigger={"hover"} placement={"bottom-start"}>
+    <Popover key={el+index} id="dropbtn" trigger={"hover"} placement={"bottom-start"} boundary='scrollParent'>
      
   <PopoverTrigger>
   

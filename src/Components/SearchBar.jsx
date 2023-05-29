@@ -66,6 +66,7 @@ function SearchBar() {
           width={{ base: "100%", md: "90%" }}
           flexDir={{ base: "column", md: "row" }}
           align={"center"}
+          position="relative"
         >
           <Input
             variant="filled"
@@ -76,20 +77,19 @@ function SearchBar() {
           />
           {onChangeValue.length > 0 && search.length > 0 && (
             <Box
-              borderRadius="5px"
-              position="relative"
-             
-              zIndex="100"
-              bgColor="white"
-              overflow="scroll"
-              w={{base:'80%',xl:"35%"}}
-              maxH="400px"
-              m="auto"
-               px={3}
-               top={{base:'2%'  ,xl:'1.1%'}}
-              pt={2}
-              border={'2px solid gray'}
-              scrollBehavior={'smooth'}
+            position="absolute"
+            zIndex="100"
+            bgColor="white"
+            overflow="scroll"
+           
+            maxH="400px"
+            m="auto"
+            px={3}
+            top="calc(100% + 8px)" 
+            left={0} 
+            right={0} 
+            border="2px solid gray"
+            scrollBehavior="smooth"
              
             >
               {search.map((item, i) => {

@@ -14,221 +14,73 @@ productTrendifyRouter.post("/add",auth ,async (req, res) => {
     res.status(400).send({ err: err.message });
   }
 });
+
+
+
 //get all products-
 
-productTrendifyRouter.get('/', async (req, res) => {
-  let filters={}
-  let {sort}=req.query
+productTrendifyRouter.get("/all/:category?/:subcategory?/:subcat2?", async (req, res) => {
+  const { category, subcategory, subcat2 } = req.params;
+
+  let filters = {};
+
+let uniques={}
+if(category){
+uniques.category=category
+}
+
+if (subcategory!=undefined) {
+  uniques.subcategory = subcategory;
+}
+
+if (subcat2!=undefined) {
+  uniques.subcat2 = subcat2;
+}
+
+  if (category!=undefined) {
+    filters.category = category;
+  }
+  
+  
+  if (subcategory!=undefined) {
+    filters.subcategory = subcategory;
+  }
+  
+  if (subcat2!=undefined) {
+    filters.subcat2 = subcat2;
+  }
+
+  
+  let {sort,page}=req.query
+  let pageSize=10
+  page = parseInt(page) || 1;
   let value = 0;
-  console.log(req.query)
-  if (req.query.brand) {
-    filters.brand = req.query.brand;
+  
+
+
+if (req.query.brand) {
+  filters.brand = { $in: req.query.brand };
+}
+  if (req.query.subcat2) {
+    filters.subcat2 = req.query.subcat2;
+  }
+  if (req.query.name) {
+    filters.name = { $regex: req.query.name, $options: "i" };
+  }
+  if (req.query.priceMinn) {
+    filters.price = { ...filters.price, $gte: parseFloat(req.query.priceMinn) };
   }
   if (req.query.tag) {
     filters.tag = req.query.tag;
-  }
-  if (req.query.name) {
-    filters.name = { $regex: req.query.name, $options: "i" };
-  }
-
-  if (req.query.rating) {
-    filters.rating = { $gte: req.query.rating};
- }
- 
-  if (req.query.priceMinn) {
-    let priceMin =  filters.price = { $gte: parseFloat(req.query.priceMinn) };
-  }
-
+}
   if (req.query.priceMaxx) {
-    let priceMax =filters.price = { ...filters.price, $lte: parseFloat(req.query.priceMaxx) };
-  }
-
-  let { page } = req.query;
-  let total = await ProductTrendifyModel.find(filters).count()
-  let maxPage = total / 10;
-
-  page = page > maxPage ? maxPage : page;
-  if (page == 0 || page == undefined) page = 1;
-  let realpage = (page - 1) * 10
-  if (req.query.order == "asc") {
-    value = 1
-  } else if (req.query.order == "desc") {
-    value = -1
-  } else {
-    value = 0;
-  }
-  
-  try {
-    let medi = await ProductTrendifyModel.find(filters).skip(realpage).sort({ [sort]: value }).limit(10);
-    let pro= await ProductTrendifyModel.find({},{"brand":1});
-    res.status(200).send({ products: medi,total,brands:pro });
-  } catch (err) {
-    res.status(400).send({ err: err.message });
-  }
-});
-
-
-//getting by category
-productTrendifyRouter.get("/:category", async (req, res) => {
-  let filters = { category: req.params.category }
-  let {sort}=req.query
-  let value = 0;
-  
-console.log(req.query)
-
-  if (req.query.brand) {
-    filters.brand = req.query.brand;
-  }
-  if (req.query.subcat2) {
-    filters.subcat2 = req.query.subcat2;
-  }
-  if (req.query.tag) {
-    filters.tag = req.query.tag;
-  }
-  if (req.query.name) {
-    filters.name = { $regex: req.query.name, $options: "i" };
-  }
-
-  if (req.query.priceMinn) {
-    let priceMin =  filters.price = { $gte: parseFloat(req.query.priceMinn) };
-  }
-
-  if (req.query.rating) {
-    filters.rating = { $gte: req.query.rating};
- }
-  if (req.query.priceMaxx) {
-    let priceMax =filters.price = { ...filters.price, $lte: parseFloat(req.query.priceMaxx) };
-  }
-
-  let { page } = req.query;
-  let total = await ProductTrendifyModel.find(filters).count()
-  let maxPage = total / 10;
-
-  page = page > maxPage ? maxPage : page;
-  if (page == 0 || page == undefined) page = 1;
-  let realpage = (page - 1) * 10
-
-  if (req.query.order == "asc") {
-    value = 1
-  } else if (req.query.order == "desc") {
-    value = -1
-  } else {
-    value = 0;
-  }
-  
-  try {
-    let medi = await ProductTrendifyModel.find(filters).skip(realpage).sort({ [sort]: value }).limit(10);
-   
-    res.status(200).send({ products: medi,total });
-  } catch (err) {
-    res.status(400).send({ err: err.message });
-  }
-});
-
-
-
-//getting by subcategory
-productTrendifyRouter.get("/:category/:subcategory", async (req, res) => {
-  let filters = { category: req.params.category };
-
-  if(req.params.subcategory){
-    filters.subcategory = req.params.subcategory
-  }
-  let {sort}=req.query
-  let value = 0;
-  
-console.log(req.query)
-
-  if (req.query.brandrange) {
-    filters.brand = req.query.brandrange;
-  }
-  if (req.query.subcat2) {
-    filters.subcat2 = req.query.subcat2;
-  }
-  if (req.query.name) {
-    filters.name = { $regex: req.query.name, $options: "i" };
-  }
-
-  if (req.query.priceMinn) {
-    let priceMin =  filters.price = { $gte: parseFloat(req.query.priceMinn) };
-  }
-
-  if (req.query.priceMaxx) {
-    let priceMax =filters.price = { ...filters.price, $lte: parseFloat(req.query.priceMaxx) };
-  }
-
-  if (req.query.rating) {
-    filters.rating = { $gte: req.query.rating};
- }
-  let { page } = req.query;
-  let total = await ProductTrendifyModel.find(filters).count()
-  let maxPage = total / 10;
-
-  page = page > maxPage ? maxPage : page;
-  if (page == 0 || page == undefined) page = 1;
-  let realpage = (page - 1) * 10
-
-  if (req.query.order == "asc") {
-    value = 1
-  } else if (req.query.order == "desc") {
-    value = -1
-  } else {
-    value = 0;
-  }
-  
-  try {
-    let medi = await ProductTrendifyModel.find(filters).skip(realpage).sort({ [sort]: value }).limit(10);
-   
-    res.status(200).send({ products: medi,total });
-  } catch (err) {
-    res.status(400).send({ err: err.message });
-  }
-});
-
-
-//getting by subcategory
-productTrendifyRouter.get("/:category/:subcategory/:subcat2?", async (req, res) => {
-  let filters = { category: req.params.category,subcat2:req.params.subcat2 };
-
-  if(req.params.subcategory){
-    filters.subcategory = req.params.subcategory
-  }
-
-  let {sort}=req.query
-  let value = 0;
-  
-console.log(req.query)
-
-  if (req.query.brandrange) {
-    filters.brand = req.query.brandrange;
-  }
-  if (req.query.subcat2) {
-    filters.subcat2 = req.query.subcat2;
-  }
-  if (req.query.name) {
-    filters.name = { $regex: req.query.name, $options: "i" };
-  }
-
-  if (req.query.priceMinn) {
-    let priceMin =  filters.price = { $gte: parseFloat(req.query.priceMinn) };
+    filters.price = { ...filters.price, $lte: parseFloat(req.query.priceMaxx) };
   }
   
   if (req.query.rating) {
      filters.rating = { $gte: req.query.rating};
   }
 
-  if (req.query.priceMaxx) {
-    let priceMax =filters.price = { ...filters.price, $lte: parseFloat(req.query.priceMaxx) };
-  }
-
-  let { page } = req.query;
-  let total = await ProductTrendifyModel.find(filters).count()
-  let maxPage = total / 10;
-
-  page = page > maxPage ? maxPage : page;
-  if (page == 0 || page == undefined) page = 1;
-  let realpage = (page - 1) * 10
-
   if (req.query.order == "asc") {
     value = 1
   } else if (req.query.order == "desc") {
@@ -238,15 +90,24 @@ console.log(req.query)
   }
   
   try {
-    let medi = await ProductTrendifyModel.find(filters).skip(realpage).sort({ [sort]: value }).limit(10);
+
+    const total = await ProductTrendifyModel.countDocuments(filters)
+    const maxPage = Math.ceil(total / pageSize);
+page = Math.min(maxPage, Math.max(1, page)); 
+let skip = (page - 1) * pageSize;
+skip<1?skip=0:skip=skip
+    const products = await ProductTrendifyModel.find(filters).sort({[sort]: value}).skip(skip).limit(pageSize);
+    let brands = await ProductTrendifyModel.distinct("brand",uniques);
+    let tag = await ProductTrendifyModel.distinct("tag",uniques);
+    res.status(200).send({ products, currentPage: page, totalPages: maxPage, totalResults: total,brands,tag });
    
-    res.status(200).send({ products: medi,total });
+  
+   
+   
   } catch (err) {
     res.status(400).send({ err: err.message });
   }
 });
-
-
 
 
 //get particular Products for logged-in user
@@ -274,17 +135,6 @@ productTrendifyRouter.patch("/update/:id",async (req, res) => {
   }
 });
 
-productTrendifyRouter.get('/brand',async(req,res)=>{
-
-let {brand}=req.query
-try {
-  let pro=await ProductTrendifyModel.brand()
-  res.send({brand,pro})
-} catch (error) {
-  
-}
-
-})
 
 productTrendifyRouter.delete("/delete/:id", auth,async (req, res) => {
   const { id } = req.params;
@@ -297,7 +147,7 @@ productTrendifyRouter.delete("/delete/:id", auth,async (req, res) => {
 });
 
 
-productTrendifyRouter.get("/:category?/single/:id", async (req, res) => {
+productTrendifyRouter.get("/single/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
@@ -310,15 +160,28 @@ productTrendifyRouter.get("/:category?/single/:id", async (req, res) => {
 
 
 
-productTrendifyRouter.get("/:category?/:subcategory?/single/:id", async (req, res) => {
-  const { id } = req.params;
+
+
+productTrendifyRouter.get("/search", async (req, res) => {
+  
+
+let filters={}
+  if (req.query.title) {
+    filters.title = { $regex: req.query.title, $options: "i" };
+  }
 
   try {
-    const medi = await ProductTrendifyModel.findById({ _id: id });
-    res.status(200).send({ product: medi });
+    
+    const products = await ProductTrendifyModel.find(filters).skip(0)
+   
+    res.status(200).send({ products});
+   
   } catch (err) {
     res.status(400).send({ err: err.message });
   }
 });
+
+
+
 
 module.exports = { productTrendifyRouter };
