@@ -27,10 +27,11 @@
  </div>
 <!-- An e-commerce website for clothing, health & care products. A Collaborative project Built in 5 Days. -->
 
+
 ## Members:
 
 - Team Lead : <strong> Disha Gupta </strong>
-  (Product page, Responsiveness, Single Product Page,Backend )
+  (Product page, Responsiveness, Single Product Page, Backend using Node.js, Express.js, Mongoose.
 
 <ul>
 <li> Team Member: Lokesh Chaudhary ( HomePage, Responsiveness, Login Page) </li>
@@ -58,7 +59,7 @@
 
 ### Men's-
 
-<img  src='./src/Assests/menpage.png' alt='homepage' />
+![menpage](https://github.com/DishaGup/eminent-art-8078/assets/115460391/8bc6dfe0-bd22-4221-b483-b2092808f4b9)
 
 <br/>
 
