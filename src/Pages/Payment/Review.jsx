@@ -12,14 +12,14 @@ import axios from "axios";
 let products = [{ name: "Shipping", desc: "", price: "Free" }];
 
 axios
-  .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
+  .get(`${process.env.REACT_APP_BE_URL}/cart`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
   })
   .then((res) => {
     let x = res.data.cart || [];
-    
+
     if (x.length) {
       products = [...x, ...products];
     }

@@ -52,10 +52,7 @@ export default function SignInPage() {
   const handleSubmit = async () => {
     try {
       axios
-        .post(
-          `https://erin-dizzy-clam.cyclic.app/trendify/users/login`,
-          userData
-        )
+        .post(`${process.env.REACT_APP_BE_URL}/users/login`, userData)
         .then((res) => {
           const getToken = res.data.token;
           const Name = res.data.Name;

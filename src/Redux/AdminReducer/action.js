@@ -13,7 +13,7 @@ export const getAdminProducts = (paramObj) => (dispatch) => {
   dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
   axios
-    .get(`https://erin-dizzy-clam.cyclic.app/trendify/products/all`, {
+    .get(`${process.env.REACT_APP_BE_URL}/products/all`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -28,7 +28,7 @@ export const adminaddProduct = (addData) => (dispatch) => {
   dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
   axios
-    .post(`https://erin-dizzy-clam.cyclic.app/trendify/products/add`, addData)
+    .post(`${process.env.REACT_APP_BE_URL}/products/add`, addData)
     .then((res) => {
       dispatch({ type: ADMIN_ADD_PRODUCT_SUCCESS });
     })
@@ -41,10 +41,7 @@ export const adminEditProduct = (editObj, id) => (dispatch) => {
   dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
   return axios
-    .patch(
-      `https://erin-dizzy-clam.cyclic.app/trendify/products/update/${id}`,
-      editObj
-    )
+    .patch(`${process.env.REACT_APP_BE_URL}/products/update/${id}`, editObj)
     .then(() => {
       dispatch({ type: ADMIN_EDIT_PRODUCT_SUCCESS });
     })
@@ -57,7 +54,7 @@ export const adminDeleteProduct = (id) => (dispatch) => {
   dispatch({ type: ADMIN_PRODUCT_REQUEST });
 
   return axios
-    .delete(`https://erin-dizzy-clam.cyclic.app/trendify/products/delete/${id}`)
+    .delete(`${process.env.REACT_APP_BE_URL}/products/delete/${id}`)
     .then(() => {
       dispatch({ type: ADMIN_DELETE_PRODUCT });
     })

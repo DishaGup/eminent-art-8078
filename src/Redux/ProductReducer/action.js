@@ -8,20 +8,27 @@ import {
   // GET_CART_DATA,
 } from "./actiontype";
 //export const localhosturl = "http://localhost:8080";
- export const backenedURL = "https://erin-dizzy-clam.cyclic.app";
- export const localhosturl = "https://erin-dizzy-clam.cyclic.app";
+export const localhosturl = process.env.REACT_APP_BE_URL;
 //get all products
 
 export const getProductsSubSubcategory =
   (category, data, subcategory, subcat2) => (dispatch) => {
     dispatch({ type: GET_PRODUCTS_LOADING });
-//console.log(category,subcategory,subcat2)
-    let urlProducts = `${localhosturl}/trendify/products/all`;
-    if (subcat2!=undefined && category!=undefined && subcategory!=undefined )  urlProducts = `${localhosturl}/trendify/products/all/${category}/${subcategory}/${subcat2}`;
-    else if (category!=undefined && subcategory!=undefined)   urlProducts = `${localhosturl}/trendify/products/all/${category}/${subcategory}`;
-    else if (category!=undefined)   urlProducts = `${localhosturl}/trendify/products/all/${category}`;
-   
-if(category=="global shopping" || category=="offers") urlProducts = `${localhosturl}/trendify/products/all`
+    //console.log(category,subcategory,subcat2)
+    let urlProducts = `${localhosturl}/products/all`;
+    if (
+      subcat2 != undefined &&
+      category != undefined &&
+      subcategory != undefined
+    )
+      urlProducts = `${localhosturl}/products/all/${category}/${subcategory}/${subcat2}`;
+    else if (category != undefined && subcategory != undefined)
+      urlProducts = `${localhosturl}/products/all/${category}/${subcategory}`;
+    else if (category != undefined)
+      urlProducts = `${localhosturl}/products/all/${category}`;
+
+    if (category == "global shopping" || category == "offers")
+      urlProducts = `${localhosturl}/products/all`;
 
     try {
       axios.get(`${urlProducts}`, { params: data }).then((res) => {
@@ -39,7 +46,7 @@ export const getSingleProducts = (id) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
 
   axios
-    .get(`${localhosturl}/trendify/products/single/${id}`)
+    .get(`${localhosturl}/products/single/${id}`)
     .then((res) => {
       dispatch({
         type: GET_PRODUCTS_SUCCESS,
@@ -54,7 +61,7 @@ export const getSingleProducts = (id) => (dispatch) => {
 export const Addtowishlist = (data) => (dispatch) => {
   dispatch({ type: GET_PRODUCTS_LOADING });
   axios
-    .post(`${localhosturl}/trendify/wishlist`, data)
+    .post(`${localhosturl}/wishlist`, data)
     .then((res) =>
       dispatch({
         type: ADD_WISHLIST_SUCCESS,
@@ -71,7 +78,7 @@ export const searchProducts = (title) => (dispatch) => {
 
   try {
     return axios.get(
-      `${localhosturl}/trendify/products/search?title=${title.toString()}`
+      `${localhosturl}/products/search?title=${title.toString()}`
     );
   } catch (error) {
     dispatch({ type: GET_PRODUCTS_ERROR, payload: error.message });

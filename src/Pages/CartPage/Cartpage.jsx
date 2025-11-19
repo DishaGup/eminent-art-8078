@@ -23,7 +23,7 @@ const Cartpage = () => {
   const getCartData = async () => {
     try {
       axios
-        .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
+        .get(`${process.env.REACT_APP_BE_URL}/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -38,7 +38,7 @@ const Cartpage = () => {
 
   const handleDelete = (id) => {
     axios
-      .delete(`https://erin-dizzy-clam.cyclic.app/trendify/cart/delete/${id}`, {
+      .delete(`${process.env.REACT_APP_BE_URL}/cart/delete/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -61,7 +61,7 @@ const Cartpage = () => {
       if (el._id === id) {
         axios
           .patch(
-            `https://erin-dizzy-clam.cyclic.app/trendify/cart/update/${id}`,
+            `${process.env.REACT_APP_BE_URL}/cart/update/${id}`,
             { quantity: el.quantity + 1 },
             {
               headers: {
@@ -81,7 +81,7 @@ const Cartpage = () => {
       if (el._id === id) {
         axios
           .patch(
-            `https://erin-dizzy-clam.cyclic.app/trendify/cart/update/${id}`,
+            `${process.env.REACT_APP_BE_URL}/cart/update/${id}`,
             { quantity: el.quantity - 1 },
             {
               headers: {

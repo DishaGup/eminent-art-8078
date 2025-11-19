@@ -1,4 +1,4 @@
-  import {
+import {
   Box,
   Button,
   Container,
@@ -19,23 +19,23 @@
   List,
   ListItem,
   Flex,
-  } from "@chakra-ui/react";
-  import "./productspage.css";
-  import { Link, useParams, useNavigate } from "react-router-dom";
-  import { TbTruckDelivery } from "react-icons/tb";
-  import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
-  import React, { useEffect, useState } from "react";
-  import discountoff from "../../Assests/singlepage.png";
-  import { useDispatch, useSelector } from "react-redux";
-  import { Carousel } from "react-responsive-carousel";
-  import Navmain from "../HomePage/Navmain.jsx";
-  import axios from "axios";
-  import { getSingleProducts } from "../../Redux/ProductReducer/action";
-  import ColorPalette from "./ColorPalette";
+} from "@chakra-ui/react";
+import "./productspage.css";
+import { Link, useParams, useNavigate } from "react-router-dom";
+import { TbTruckDelivery } from "react-icons/tb";
+import { AiOutlineQuestionCircle, AiFillStar } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+import discountoff from "../../Assests/singlepage.png";
+import { useDispatch, useSelector } from "react-redux";
+import { Carousel } from "react-responsive-carousel";
+import Navmain from "../HomePage/Navmain.jsx";
+import axios from "axios";
+import { getSingleProducts } from "../../Redux/ProductReducer/action";
+import ColorPalette from "./ColorPalette";
 
-  import { Coupon, OneMoreOffer } from "./OneMoreOffer";
+import { Coupon, OneMoreOffer } from "./OneMoreOffer";
 
-  const SingleProductPageMain = () => {
+const SingleProductPageMain = () => {
   const token = localStorage.getItem("token");
 
   const { id } = useParams();
@@ -67,7 +67,7 @@
   const getCartData = async () => {
     try {
       axios
-        .get("https://erin-dizzy-clam.cyclic.app/trendify/cart", {
+        .get(`${process.env.REACT_APP_BE_URL}/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -90,7 +90,7 @@
     };
 
     axios
-      .post(`https://erin-dizzy-clam.cyclic.app/trendify/cart/add`, obj, {
+      .post(`${process.env.REACT_APP_BE_URL}/cart/add`, obj, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -145,7 +145,7 @@
   };
 
   const handleAddToWishlist = (data) => {
-    let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
+    let url = `${process.env.REACT_APP_BE_URL}/wishlist`;
 
     //dispatch(AddtoWishlist(item))
     let product = {
@@ -552,6 +552,6 @@
       )}
     </>
   );
-  };
+};
 
-  export default SingleProductPageMain;
+export default SingleProductPageMain;

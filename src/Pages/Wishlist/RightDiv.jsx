@@ -13,7 +13,7 @@ import axios from "axios";
 
 export const RightDiv = () => {
   const toast = useToast();
-  let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
+  let url = `${process.env.REACT_APP_BE_URL}/wishlist`;
 
   const naigate = useNavigate();
 
@@ -46,9 +46,7 @@ export const RightDiv = () => {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
       })
-      .then((res) => {
-        
-      });
+      .then((res) => {});
 
     toast({
       title: "Successful!",

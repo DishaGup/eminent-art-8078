@@ -6,10 +6,9 @@ import {
   GET_WISHLIST_FAIL,
   GET_WISHLIST_REQ,
   GET_WISHLIST_SUCCESS,
-
 } from "./actiontype";
 
-let url = "https://erin-dizzy-clam.cyclic.app/trendify/wishlist";
+let url = `${process.env.REACT_APP_BE_URL}/wishlist`;
 export const GetWishlist = () => async (dispatch) => {
   dispatch({ type: GET_WISHLIST_REQ });
   try {
@@ -47,4 +46,3 @@ export const AddtoWishlist = (data) => (dispatch) => {
       dispatch({ type: ADDTOWISHLIS_SUCCESS });
     });
 };
-
